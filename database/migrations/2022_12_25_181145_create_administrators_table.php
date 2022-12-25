@@ -8,18 +8,18 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * id int
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('administrators', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->string('avatar');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('frist_name');
+            $table->string('password');
+            $table->string('first_name');
             $table->string('last_name');
             $table->string('full_name');
             $table->boolean('gender');
@@ -28,12 +28,11 @@ return new class extends Migration
             $table->string('province');
             $table->string('district');
             $table->string('ward');
-            $table->string('lat');
-            $table->string('long');
+            $table->foreignId('role_id')->constrained('roles');
             $table->boolean('is_active');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->timestamp('deleted_at')->nullable();
+            $table->string('created_by')->default(null);
+            $table->string('updated_by')->default(null);
             $table->timestamps();
         });
     }
@@ -45,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('administrators');
     }
 };
