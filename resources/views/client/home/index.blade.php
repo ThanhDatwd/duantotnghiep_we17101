@@ -1,4 +1,4 @@
 @extends('client.appLayout.index')
 @section('main-content')
-    <h1>Trang home</h1>
+    <h1>Đây là trang home</h1>
 @endsection
