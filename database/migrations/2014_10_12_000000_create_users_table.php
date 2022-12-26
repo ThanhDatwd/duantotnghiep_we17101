@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('avatar');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->string('frist_name');
+            $table->string('first_name');
             $table->string('last_name');
             $table->string('full_name');
             $table->boolean('gender');

@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('stt');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->boolean('is_active')->default(1);
             $table->timestamp('deleted_at')->nullable();
-            $table->timestamp('created_by')->nullable();
-            $table->timestamp('updated_by')->nullable();
+            $table->string('created_by')->default(null);
+            $table->string('updated_by')->default(null);
             $table->timestamps();
 
         });
