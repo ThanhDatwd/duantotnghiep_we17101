@@ -33,6 +33,7 @@ a:hover{
     --toastErrorCl: #842029;
     --toastSystemBg: #d3d3d4;
     --toastSystemCl: #141619;
+    --txtColorW:#fff;
     
     --blue: #007bff;
     --indigo: #6610f2;
@@ -55,7 +56,7 @@ a:hover{
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
-    --transition:all 0.5s ease ;
+    --transition:all 0.5s linear ;
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;

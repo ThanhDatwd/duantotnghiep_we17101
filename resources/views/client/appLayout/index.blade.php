@@ -19,7 +19,9 @@
 </head>
 <body>
     <x-AppHeader/>
-
+    <div class="container">
+        <x-ProductCard/>
+    </div>
     <div class="container">
         @yield('main-content')
     </div>
