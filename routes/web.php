@@ -20,4 +20,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('client.home.index');
 });
+Route::get('/product', function () {
+    return view('client.products.index');
+});
 
