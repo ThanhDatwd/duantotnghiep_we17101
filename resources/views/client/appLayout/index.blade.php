@@ -13,6 +13,12 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     {{-- icon --}}
+    {{-- slider --}}
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  />
+    {{-- slider --}}
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('css/client/base.css')}}">
     @yield("css")
@@ -21,9 +27,8 @@
     <x-AppHeader/>
     <div class="container">
     </div>
-    <div class="container">
-        @yield('main-content')
-    </div>
+    @yield('main-content')
 </body>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 @yield("js")
 </html>
