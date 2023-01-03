@@ -1,27 +1,34 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
 }
-a{
+
+a {
     text-decoration: none;
-    color: var(--dark) ;
+    color: var(--dark);
     transition: var(--transition);
 }
-a:hover{
+
+a:hover {
     color: var(--mainColor);
     transition: var(--transition);
 
 }
-:root{
-   
+
+:root {
+
     --menuWidth: calc(100% - 20px);
     --leftColBackground: #fff;
     --darkLeftColBackground: #22272b;
     --mainColor: #2e9f3c;
     --mainColor2: #5ea700;
     --menuHover: #ffc107;
-    --secondColor:#929292;
+    --pinkColor: #ffbda6;
+    --secondColor: #929292;
     --accentColor1: #929292;
     --accentColor2: #d80000;
     --textColor: #4c4c4c;
@@ -33,7 +40,8 @@ a:hover{
     --toastErrorCl: #842029;
     --toastSystemBg: #d3d3d4;
     --toastSystemCl: #141619;
-    
+    --txtColorW: #fff;
+
     --blue: #007bff;
     --indigo: #6610f2;
     --purple: #6f42c1;
@@ -55,24 +63,55 @@ a:hover{
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
-    --transition:all 0.5s ease ;
+    --transition: all 0.5s linear;
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
-    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 
-/* // size */
---logo-height: 50px;
+    /* // size */
+    --logo-height: 50px;
 
 
---box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
---tablet-width: 600px;
---pc-width: 1024px;
+    --tablet-width: 600px;
+    --pc-width: 1024px;
 
+}
 
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

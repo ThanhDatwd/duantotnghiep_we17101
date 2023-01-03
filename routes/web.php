@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\client\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
@@ -14,10 +15,6 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::get('/', function () {
-    return view('client.appLayout.index');
-});
-Route::get('/home', function () {
-    return view('client.home.index');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/exam', [HomeController::class,'exam'])->name('exam');
 
