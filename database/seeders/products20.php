@@ -21,11 +21,11 @@ class products20 extends Seeder
        
 
         for($i=0;$i<5;$i++){
-            $name=$thit.' '.$tenthit[rand(0,3)];
+            $name=$thit.' '.$tenthit[random_int(0,3)];
            
          
             
-            $thumb=rand(1,5).'.jpg';
+            $thumb=random_int(1,5).'.jpg';
             DB::table('products')->insert([
                 "name"=>$name,
                 "thumb"=>"https://loremflickr.com/320/240/food?random=".$thumb,
@@ -41,7 +41,7 @@ class products20 extends Seeder
                 "brand"=>"Đà Lạt",
                 "unit"=>"kg",
                 "color"=>'',
-                "slug"=>'food-'.rand(1,1000)
+                "slug"=>'food-'.random_int(1,1000)
             ]);
         }
 
