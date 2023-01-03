@@ -20,6 +20,8 @@
 <body>
     <x-AppHeader/>
     <div class="container">
+    </div>
+    <div class="container">
         @yield('main-content')
     </div>
 </body>

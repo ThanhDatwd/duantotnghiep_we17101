@@ -21,19 +21,19 @@ return new class extends Migration
             $table->longText('content');
             $table->integer('price');
             $table->string('price_format');
-            $table->integer('promotional_price');
-            $table->string('promotional_price_format');
-            $table->integer('quantity_input');
-            $table->integer('quantity_output');
-            $table->integer('discount');
+            $table->integer('price_current');
+            $table->string('price_current_format');
+            $table->integer('quantity_input')->default(0);
+            $table->integer('quantity_output')->default(0);
+            $table->integer('discount')->default(0);
             $table->string('brand');
             $table->string('unit');
-            $table->string('color');
+            $table->string('color')->nullable();
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(1);
             $table->timestamp('deleted_at')->nullable();
-            $table->string('created_by')->default(null);
-            $table->string('updated_by')->default(null);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

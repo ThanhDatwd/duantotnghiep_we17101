@@ -41,6 +41,145 @@
                     <li><a href="">
                         Trang chủ
                     </a></li>
+                    <li><a href="">
+                        Về chúng tôi
+                    </a></li>
+                    <li>
+                        <a href="">
+                           Sản phẩm 
+                           <i class='bx bxs-down-arrow'></i>
+                        </a>
+                        <div class="categoryGroupList">
+                            <div class="categoryGroupItem">
+                                <div class="title">Thịt Trứng</div>
+                                <div class="categoryList">
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                </div>
+                            </div>
+                            <div class="categoryGroupItem">
+                                <div class="title">Thịt Trứng</div>
+                                <div class="categoryList">
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                </div>
+                            </div>
+                            <div class="categoryGroupItem">
+                                <div class="title">Thịt Trứng</div>
+                                <div class="categoryList">
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                </div>
+                            </div>
+                            <div class="categoryGroupItem">
+                                <div class="title">Thịt Trứng</div>
+                                <div class="categoryList">
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                </div>
+                            </div>
+                            <div class="categoryGroupItem">
+                                <div class="title">Thịt Trứng</div>
+                                <div class="categoryList">
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                </div>
+                            </div>
+                            <div class="categoryGroupItem">
+                                <div class="title">Thịt Trứng</div>
+                                <div class="categoryList">
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                </div>
+                            </div>
+                            <div class="categoryGroupItem">
+                                <div class="title">Thịt Trứng</div>
+                                <div class="categoryList">
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                        <div><a href="">
+                                            Trang chủ
+                                        </a></div>
+                                </div>
+                            </div>
+                        </div></li>
+                    <li><a href="">
+                        Tin tức 
+                    </a></li>
+                    <li><a href="">
+                        Tuyển dụng 
+                    </a></li>
+                    <li><a href="">
+                        Liên hệ
+                    </a></li>
+                    
                 </ul>
             </div>
         </div>
