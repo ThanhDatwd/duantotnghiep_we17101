@@ -1,0 +1,182 @@
+.news-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 6px;
+    gap: 10px;
+    height: auto;
+}
+.news-card.isRow{
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+}
+.news-card.isRow .thumb{
+    flex: 2;
+}
+.news-card.isRow .content{
+    flex: 3;
+}
+.news-card .thumb{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    object-fit: cover;
+    cursor: pointer;
+
+}
+.news-card.isRow .thumb{
+    position: relative;
+    height: 100%;
+}
+.news-card.isRow .thumb .thumb-layer{
+    display: none;
+}
+.news-card.isRow .thumb .date{
+    display: none;
+}
+.news-card .thumb:hover .thumb-layer{
+    opacity: 1;
+    width: 75%;
+    height: 75%;
+    transition: 0.3s;
+}
+.news-card .thumb:hover img{
+    /* opacity: 0.7; */
+}
+.news-card .thumb .thumb-layer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    color: var(--white);
+    transition: var(--transition);
+    border-radius: inherit;
+    overflow: hidden;
+    border: 1px solid var(--white);
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 3;
+
+}
+.news-card .thumb .thumb-layer-img{
+    z-index: 2;
+    width: 40%;
+    height: auto;
+}
+.news-card .thumb .thumb-layer::after{
+    position: absolute;
+    content: "";
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid var(--white); */
+    background: var(--mainColor);
+    opacity: 0.3;
+}
+
+.news-card:hover .thumb i{
+    right: 0;
+    transition: var(--transition);
+} 
+.news-card .thumb img{
+    width: 100%;
+    height: 100%;
+    
+}
+/* Css ngày đăng */
+.news-card .thumb .date{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top: 0%;
+    left: 20px;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    color: var(--white);
+    background: var(--mainColor);
+    transition: var(--transition);
+    border-radius: 50%;
+    padding: 20px;
+    padding-right:30px ;
+    transition: 0.2s;
+    z-index: 2;
+
+}.news-card .thumb .date .day {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+.news-card .thumb .date .month{
+    font-size: 12px;
+}
+.news-card .content{
+
+
+}
+.news-card .content .title{
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--textColor);
+    margin: 0;
+    line-height: 22px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+.news-card .content.isRow .title{
+    margin-bottom: 0;
+}
+.news-card .content .title:hover{
+    color: var(--mainColor);
+}
+.news-card .content.isRow .summary{
+    font-size: 16px;
+}
+.news-card .content .summary {
+    display: block;
+    display: -webkit-box;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 21px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  
+}
+.news-card .discount{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 4px 8px;
+    background: var(--accentColor2);
+    color: var(--txtColorW);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    display: none;
+
+}
+.news-card.isRow  .discount{
+    font-size: 10px;
+    padding: 2px 6px;
+}
+.news-card .discount.isActive{
+    display: block;
+}

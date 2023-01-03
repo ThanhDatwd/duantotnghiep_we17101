@@ -16,4 +16,5 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/exam', [HomeController::class,'exam'])->name('exam');
 

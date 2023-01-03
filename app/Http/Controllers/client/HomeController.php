@@ -16,4 +16,12 @@ class HomeController extends Controller
         ];
         return view('client.home.index',$data);
     }
+    public function exam()
+    {
+        $products=product::all();
+        $data=[
+            "products"=>$products
+        ];
+        return view('client.home.index',$data);
+    }
 }
