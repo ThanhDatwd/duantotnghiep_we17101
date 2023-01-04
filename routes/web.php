@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\client\HomeController;
+use App\Http\Controllers\client\NewsController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +20,5 @@ use Illuminate\Support\Str;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/exam', [HomeController::class,'exam'])->name('exam');
+Route::get('/news', [NewsController::class,'index'])->name('news');
 

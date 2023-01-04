@@ -22,6 +22,6 @@ class HomeController extends Controller
         $data=[
             "products"=>$products
         ];
-        return view('client.home.index',$data);
+        return view('client.exam',$data);
     }
 }

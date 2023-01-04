@@ -5,7 +5,7 @@
    <div style="display: grid;grid-template-columns:repeat(4,1fr);gap :10px;">
    
       <x-NewsCard
-        isRow={{true}}
+        isRow={{false}}
          {{-- title="tiêu đề bài viết " --}}
          thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
          summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
