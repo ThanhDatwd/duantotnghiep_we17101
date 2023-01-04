@@ -31,7 +31,7 @@ class products20 extends Seeder
                 "thumb"=>"https://loremflickr.com/320/240/food?random=".$thumb,
                 "summary"=>"Đây là đoạn giới thiệu tóm tắt sản phẩm",
                 "content"=>"Nội dung chính giới  thiệu về sản phẩm ",
-                "price"=>100000,
+                "price"=>rand(10,10000),
                 "price_format"=>"100.000 đ",
                 "price_current"=>100000,
                 "price_current_format"=>"100.000 đ",
