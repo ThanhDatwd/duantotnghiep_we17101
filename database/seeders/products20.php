@@ -18,22 +18,22 @@ class products20 extends Seeder
      */
     public function run()
     {
-        category_group::create([
-            "name"=>"Thịt Trứng",
-            "thumb"=>"https://loremflickr.com/320/240/food?random=1.jpg",
-            "stt"=>1,
-            "slug"=>Str::slug("thịt trứng")
-        ]);
-        category::create(
-            [
-              "name"=>"Thịt bò kobe",
-              "thumb"=>"https://loremflickr.com/320/240/food?random=1.jpg",
-              "stt"=>1,
-              "type"=>"combo",
-              "category_group_id"=>1,
-              "slug"=>Str::slug("thịt bò kobe")
-            ]
-        );
+        // category_group::create([
+        //     "name"=>"Thịt Trứng",
+        //     "thumb"=>"https://loremflickr.com/320/240/food?random=1.jpg",
+        //     "stt"=>1,
+        //     "slug"=>Str::slug("thịt trứng")
+        // ]);
+        // category::create(
+        //     [
+        //       "name"=>"Thịt gà đông tảo",
+        //       "thumb"=>"https://loremflickr.com/320/240/food?random=1.jpg",
+        //       "stt"=>1,
+        //       "type"=>"combo",
+        //       "category_group_id"=>1,
+        //       "slug"=>Str::slug("thịt ga kobe")
+        //     ]
+        // );
         $thit='Thịt';
         $tenthit=['gà Đông Tảo', 'cá hồi', 'nai','cá'];
        
@@ -60,7 +60,7 @@ class products20 extends Seeder
                 "unit"=>"kg",
                 "color"=>'',
                 "slug"=>'food-'.random_int(1,1000),
-                "category_id"=>1
+                "category_id"=>3
             ]);
         }
 

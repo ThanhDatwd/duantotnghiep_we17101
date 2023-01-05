@@ -31,7 +31,7 @@ class HomeController extends Controller
         // dd($category->products);
         // $pro=$category->products;
         // return json_encode($category->products);
-        dd($category_group);
+        // dd($category_group);
         $data=[
             "products"=>$products,
             "cate"=>$category,
