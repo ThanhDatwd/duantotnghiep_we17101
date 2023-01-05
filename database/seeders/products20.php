@@ -18,7 +18,7 @@ class products20 extends Seeder
         //
         $thit='Thịt';
         $tenthit=['gà Đông Tảo', 'cá hồi', 'nai','cá'];
-       
+       $color=['Đỏ','Cam','Hồng','Tím','Vàng','Lục','Lam','Xanh lá','Xanh dương'];
 
         for($i=0;$i<5;$i++){
             $name=$thit.' '.$tenthit[random_int(0,3)];
@@ -31,7 +31,7 @@ class products20 extends Seeder
                 "thumb"=>"https://loremflickr.com/320/240/food?random=".$thumb,
                 "summary"=>"Đây là đoạn giới thiệu tóm tắt sản phẩm",
                 "content"=>"Nội dung chính giới  thiệu về sản phẩm ",
-                "price"=>rand(10,10000),
+                "price"=>rand(50000,1000000),
                 "price_format"=>"100.000 đ",
                 "price_current"=>100000,
                 "price_current_format"=>"100.000 đ",
