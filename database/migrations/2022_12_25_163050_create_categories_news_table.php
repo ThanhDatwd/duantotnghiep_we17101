@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->timestamp('deleted_at')->nullable();
-            $table->string('created_by')->default(null);
-            $table->string('updated_by')->default(null);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

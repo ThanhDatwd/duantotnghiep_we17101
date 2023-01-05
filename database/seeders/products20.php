@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\category;
+use App\Models\category_group;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class products20 extends Seeder
 {
@@ -15,7 +18,22 @@ class products20 extends Seeder
      */
     public function run()
     {
-        //
+        category_group::create([
+            "name"=>"Thịt Trứng",
+            "thumb"=>"https://loremflickr.com/320/240/food?random=1.jpg",
+            "stt"=>1,
+            "slug"=>Str::slug("thịt trứng")
+        ]);
+        category::create(
+            [
+              "name"=>"Thịt bò kobe",
+              "thumb"=>"https://loremflickr.com/320/240/food?random=1.jpg",
+              "stt"=>1,
+              "type"=>"combo",
+              "category_group_id"=>1,
+              "slug"=>Str::slug("thịt bò kobe")
+            ]
+        );
         $thit='Thịt';
         $tenthit=['gà Đông Tảo', 'cá hồi', 'nai','cá'];
        
@@ -41,7 +59,8 @@ class products20 extends Seeder
                 "brand"=>"Đà Lạt",
                 "unit"=>"kg",
                 "color"=>'',
-                "slug"=>'food-'.random_int(1,1000)
+                "slug"=>'food-'.random_int(1,1000),
+                "category_id"=>1
             ]);
         }
 

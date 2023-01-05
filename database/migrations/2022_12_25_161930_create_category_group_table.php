@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('category_group', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('thumb');
             $table->integer('stt');
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(1);
             $table->timestamp('deleted_at')->nullable();
-            $table->string('created_by')->default(null);
-            $table->string('updated_by')->default(null);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
 
         });

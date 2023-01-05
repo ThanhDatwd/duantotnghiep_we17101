@@ -18,32 +18,25 @@
          summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
       />
    </div>
-   <div style="display: grid;grid-template-columns:repeat(5,1fr);gap :10px;">
-      @foreach ($products as $item)
-      <x-ProductCard name="{{$item->name}}" 
-                     thumb="{{$item->thumb}}"
-                     priceOld="{{$item->price_format}}"
-                     priceCurrent="{{$item->price_current_format}}"
-                     discount="{{$item->discount}}"
-                     isProgress={{true}}
-                     progressValue={{40}}
-                     progressTxt="Sắp cháy hàng"
-                     />
+   <div >
+      @foreach ($cate as $item)
+       <h1>{{$item->name}}</h1>
+       <div style="display: grid;grid-template-columns:repeat(5,1fr);gap :10px;"> 
+         @foreach ($item->products as $pro )
+         <x-ProductCard name="{{$pro->name}}" 
+           thumb="{{$pro->thumb}}"
+           priceOld="{{$pro->price_format}}"
+           priceCurrent="{{$pro->price_current_format}}"
+           discount="{{$pro->discount}}"
+           isProgress={{true}}
+           progressValue={{40}}
+           progressTxt="Sắp cháy hàng"
+           />
+         @endforeach
+
+       </div>
        
    @endforeach
    </div>
-    <div style="display: grid;grid-template-columns:repeat(4,1fr);gap :10px">
-      @foreach ($products as $item)
-    
-    <x-ProductCard isRow={{true}}
-                   name="{{$item->name}}" 
-                   thumb="{{$item->thumb}}"
-                   priceOld="{{$item->price_format}}"
-                   priceCurrent="{{$item->price_current_format}}"
-                   discount="{{$item->discount}}"
-                   />
-     
- @endforeach
-    </div>
    </div>
 @endsection
