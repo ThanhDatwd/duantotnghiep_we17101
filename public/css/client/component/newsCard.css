@@ -38,6 +38,9 @@
 .news-card.isRow .thumb .date{
     display: none;
 }
+.news-card.isRow .content .title{
+    display: none;
+}
 .news-card .thumb:hover .thumb-layer{
     opacity: 1;
     width: 75%;
@@ -71,7 +74,8 @@
 .news-card .thumb .thumb-layer-img{
     z-index: 2;
     width: 40%;
-    height: auto;
+    aspect-ratio: 1/1
+    
 }
 .news-card .thumb .thumb-layer::after{
     position: absolute;
@@ -93,7 +97,7 @@
 } 
 .news-card .thumb img{
     width: 100%;
-    aspect-ratio: 1/1
+    aspect-ratio: 3/2
 
     
 }

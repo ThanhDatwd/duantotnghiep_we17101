@@ -38,41 +38,41 @@
 	</ul>
        </div>
         
-    <div style="display: grid;grid-template-columns:repeat(3,32%);gap :10px;margin-top: 20px;">
+    <div style="display: grid;grid-template-columns:repeat(3,1fr);gap :10px;margin-top: 20px;">
     
         <x-NewsCard
           isRow={{false}}
-            {{-- title="tiêu đề bài viết " --}}
+            title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
             summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
         />
         <x-NewsCard
           isRow={{false}}
-            {{-- title="tiêu đề bài viết " --}}
+            title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
             summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
         />
         <x-NewsCard
           isRow={{false}}
-            {{-- title="tiêu đề bài viết " --}}
+            title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
             summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
         />
         <x-NewsCard
           isRow={{false}}
-            {{-- title="tiêu đề bài viết " --}}
+            title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
             summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
         />
         <x-NewsCard
           isRow={{false}}
-            {{-- title="tiêu đề bài viết " --}}
+            title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
             summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
         />
         <x-NewsCard
           isRow={{false}}
-            {{-- title="tiêu đề bài viết " --}}
+            title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
             summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi "
         />

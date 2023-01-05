@@ -28,7 +28,7 @@
 @section("js")
 <script>
    var swiper = new Swiper(".mySwiper", {
-     slidesPerView: 5,
+     slidesPerView: 4,
      spaceBetween: 20,
    });
  </script>

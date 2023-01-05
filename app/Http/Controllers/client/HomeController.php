@@ -15,7 +15,6 @@ class HomeController extends Controller
     {
         $products=product::all();
         $category=category::get();
-        return json_encode($category);
         $data=[
             "products"=>$products,
             "cate"=>$category
