@@ -12,14 +12,12 @@
                   priceOld="{{$item->price_format}}"
                   priceCurrent="{{$item->price_current_format}}"
                   discount="{{$item->discount}}"
-                  
-                  />
-
-            </div>
-             
+                />
+            </div>         
          @endforeach
-        
           </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
           <div class="swiper-pagination"></div>
         </div>
        </div>
@@ -30,6 +28,10 @@
    var swiper = new Swiper(".mySwiper", {
      slidesPerView: 4,
      spaceBetween: 20,
+     navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
    });
  </script>
 @endsection

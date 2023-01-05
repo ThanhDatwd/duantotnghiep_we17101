@@ -110,3 +110,44 @@ a:hover {
     font-size: 22px;
     font-weight: 700;
 }
+.swiper-button-prev {
+    left: -30px;
+    right: auto;
+    height: 60px;
+    width: 60px;
+    background: #f7f7f7;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+    color: #707070;
+    border-radius: 50%;
+}
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    right: -30px;
+    height: 60px;
+    width: 60px;
+    background: #f7f7f7;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+    color: #707070;
+    border-radius: 50%;
+}
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+    content: 'prev';
+}
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+    content: 'next';
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-family: swiper-icons;
+    font-size: 20px;
+    letter-spacing: 0;
+    font-weight: 900;
+    font-variant: initial;
+    line-height: 1;
+    position: absolute;
+}
+.swiper-button-prev:after{
+    left: 60%;
+}
+.swiper-button-next:after{
+    right: 60% ;
+}
