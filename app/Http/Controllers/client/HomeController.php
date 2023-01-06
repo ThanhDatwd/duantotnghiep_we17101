@@ -7,6 +7,7 @@ use App\Models\category;
 use App\Models\category_group;
 use Illuminate\Http\Request;
 use App\Models\product;
+use Illuminate\Support\Facades\DB;
 use Nette\Utils\Json;
 
 class HomeController extends Controller
@@ -23,17 +24,17 @@ class HomeController extends Controller
     }
     public function exam()
     {
-        
-        $products=product::all();
-        $category=category::with('products')->distinct()->get();
+        $category=category::all();
         $category_group=category_group::with('categories')->distinct()->get();
 
         // dd($category->products);
         // $pro=$category->products;
         // return json_encode($category->products);
         // dd($category_group);
+        // $category->pruduct;
+        // $category->images;
         $data=[
-            "products"=>$products,
+            // "products"=>$products,
             "cate"=>$category,
             "category_group"=>$category_group
         ];

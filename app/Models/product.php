@@ -17,12 +17,13 @@ class product extends Model
             ]
         ];
     }
-    public function category()
+    public function categories()
     {
-        $this->belongsTo(category::class,"category_id","id");
+       return $this->belongsToMany(category::class,"category_product","product_id","category_id","id","id");
     }
     public function products_images()
     {
         return $this->hasMany(product_images::class,"product_id","id");
     }
 }
+
