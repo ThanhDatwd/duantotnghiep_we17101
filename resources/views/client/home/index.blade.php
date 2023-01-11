@@ -3,24 +3,6 @@
 <link rel="stylesheet" href="{{asset('css/client/home.css')}}">
 @endsection
 @section('main-content')
-<section class="app-section pt-3 pb-3">
-  <div class="container">
-    <h2 class="title pt-3 pb-3 mb-0"><a href="">Flash Sale</a></h2>
-    <div class="swiper mySwiperTypeEvent">
-      <div class="swiper-wrapper">
-        @foreach ($products as $item)
-        <div class="swiper-slide">
-          <x-ProductCard name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
-            priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
-        </div>
-        @endforeach
-      </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </div>
-</section>
 
 {{-- --}}
 @foreach ($categories as $category )
