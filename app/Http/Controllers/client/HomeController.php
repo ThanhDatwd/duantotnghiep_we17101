@@ -15,10 +15,10 @@ class HomeController extends Controller
     public function index()
     {
         $products=product::all();
-        $category=category::get();
+        $categories=category::all();
         $data=[
             "products"=>$products,
-            "cate"=>$category
+            "categories"=>$categories
         ];
         return view('client.home.index',$data);
     }
