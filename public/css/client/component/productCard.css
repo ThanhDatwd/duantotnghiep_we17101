@@ -64,6 +64,13 @@
     color: var(--textColor);
     margin: 0;
     line-height: 22px;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
 }
 .products-card .content .price {
   display: flex;

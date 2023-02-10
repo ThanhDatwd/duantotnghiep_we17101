@@ -1,0 +1,63 @@
+.navbar__mobile{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    background: var(--white);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display:none;
+}
+.navbar__mobile .item{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 10px; */
+}
+.navbar__mobile.item.active{
+    color: var(--mainColor)
+}
+.navbar__mobile.item:hover{
+    color: var(--mainColor)
+}
+.navbar__mobile .item i{
+    font-size: 26px;
+}
+.navbar__mobile .item span{
+    font-size: 12px;
+}
+
+
+/* Phần navbar liên hệ */
+.navbar__mobile .contact{
+    position: fixed;
+    bottom:75px;
+    /* left: 50%; */
+    /* transform: translate(-50%,50%); */
+    display: flex; 
+    align-items: center;
+    gap: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    background: var(--lightLeftColBackground);
+    display:none;
+}
+.navbar__mobile .contact-item{
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--mainColor);
+}
+.navbar__mobile .contact-item img{
+    width: 25px;
+    height: 25px;
+}
+@media only screen and (max-width: 600px){
+    .navbar__mobile{
+        display: flex;
+    }
+}
