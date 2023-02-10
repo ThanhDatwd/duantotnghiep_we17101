@@ -19,9 +19,9 @@ class product extends Model
             ]
         ];
     }
-    public function categories()
+    public function category()
     {
-       return $this->belongsToMany(category::class,"category_product","product_id","category_id","id","id");
+       return $this->belongsTo(category::class,"category_id","id");
     }
     public function products_images()
     {

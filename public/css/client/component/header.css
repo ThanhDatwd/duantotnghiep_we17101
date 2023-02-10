@@ -31,6 +31,7 @@
     padding: 8px;
     border: 1px solid var(--secondColor);
     border-radius: 4px;
+    position: relative;
 }
 .action-item.search input,
 .action-item.search button{
@@ -38,10 +39,14 @@
    outline: none;
 }
 .action-item.search input{
-    width: 100%;
+    width: calc( 100% - 30px);
     color: var(--secondColor);
 }
 .action-item.search button{
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-45%);
     background: none;
     font-size: 24px;
 }
@@ -157,4 +162,24 @@
 .categoryList >div a{
     color: var(--dark);
     font-weight: 400;
+}
+
+@media only screen and (max-width: 600px){
+    .app__header{
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--mainColor);
+    }
+    .app__header__navigation{
+        display: none;
+    }
+    .app__header__control .action .action-item{
+        display: none;
+    }
+    .app__header__control .action .action-item.search{
+        display: block;
+        width: 100%;
+        background: var(--white);
+    }
 }
