@@ -27,7 +27,7 @@ class HomeController extends Controller
         $category=category::all();
         $category_group=category_group::with('categories')->distinct()->get();
 
-        // dd($category->products);
+        dd($category->products);
         // $pro=$category->products;
         // return json_encode($category->products);
         // dd($category_group);
@@ -39,5 +39,8 @@ class HomeController extends Controller
             "category_group"=>$category_group
         ];
         return view('client.exam',$data);
+
+        // return Json($data);
+        
     }
 }

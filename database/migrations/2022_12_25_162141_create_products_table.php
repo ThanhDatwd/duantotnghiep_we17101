@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('color')->nullable();
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(1);
+            $table->foreignId('category_id')->constrained('categories');
             $table->timestamp('deleted_at')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

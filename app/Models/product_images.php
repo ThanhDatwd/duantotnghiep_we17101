@@ -10,6 +10,6 @@ class product_images extends Model
     use HasFactory;
     public function product()
     {
-        return $this->belongsTo('product_id',"id");
+        return $this->belongsTo(product::class,'product_id',"id");
     }
 }

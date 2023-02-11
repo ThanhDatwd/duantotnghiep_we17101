@@ -21,7 +21,7 @@ class category extends Model
     }
     public function products()
     {
-       return $this->belongsToMany(product::class,"category_product","category_id","product_id","id","id");
+       return $this->hasMany(product::class,"category_id","id");
     }
     
     public function category_images()

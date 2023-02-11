@@ -35,7 +35,7 @@ class products20 extends Seeder
                 ['Ba chỉ heo', 'Thăn Heo', 'Tai Heo', 'Sườn non Heo'],
                 ['Thăn lưng bò mỹ', 'sườn non bò mỹ', 'Lõi nạc vai bò mỹ', 'Bẹ vai bò mỹ', 'Ba chỉ bò'],
                 ['Đùi Gà một Phần tư', 'Ức gà', 'Chân gà', 'Canh gà', 'Lòng gà'],
-                ['Trứng gà', 'Trứng vịt', 'Trứng cút', 'Trứng vịt lộn', 'Trứng cút lộn'],
+                ['Trứng gà', 'Trứng vịt', 'Trứng cút', 'Trứng vịt lộn', 'Trứng cút lộn']
             ],
             [
                 ['Cua Hoàn đế', 'Ghẹ Xanh sống', 'Cua Gạch cà mau'],
@@ -60,58 +60,50 @@ class products20 extends Seeder
         $indexP = 0;
         $indexPC = 0;
         $indexCheck = 0;
-        foreach ($group_category as $grC) {
+        for($i=0;$i<(count($group_category));$i++){
             category_group::create([
-                "name" => $grC,
+                "name" => $group_category[$i],
                 "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
                 "stt" => 1,
-                "slug" => Str::slug($grC)
+                "slug" => Str::slug($group_category[$i])
             ]);
-            if($indexC<(count($categories[$indexC]))){
-                foreach ($categories[$indexC] as $category) {
-                    category::create(
-                        [
-                            "name" => $category,
-                            "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
-                            "stt" => 1,
-                            "type" => "combo",
-                            "category_group_id" => ($indexC + 1),
-                            "slug" => Str::slug($category)
-                        ]
-                    );
-                   
-                   if($indexP<(count($productsss[$indexC][$indexP])-1)){
-                     foreach ($productsss[$indexC][$indexP]  as $p) {
-                        $thumb = random_int(1, 100) . '.jpg';
-                        product::create(
-                            [
-                                "name" => $p,
-                                "thumb" => "https://loremflickr.com/320/240/food?random=" . $thumb,
-                                "summary" => "Đây là đoạn giới thiệu tóm tắt sản phẩm",
-                                "content" => "Nội dung chính giới  thiệu về sản phẩm ",
-                                "price" => rand(50000, 1000000),
-                                "price_format" => "100.000 đ",
-                                "price_current" => 100000,
-                                "price_current_format" => "100.000 đ",
-                                "quantity_input" => 100,
-                                "quantity_output" => 10,
-                                "discount" => 5,
-                                "brand" => "Đà Lạt",
-                                "unit" => "kg",
-                                "color" => '',
-                                "slug" => Str::slug($p),
-                                "category_id" => ($indexP + 1),
-    
-                            ]
-                        );
-                        $indexPC += 1;
+            for ($ic=0;$ic<(count($categories[$i]));$ic++) {
+                category::create(
+                    [
+                        "name" => $categories[$i][$ic],
+                        "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
+                        "stt" => 1,
+                        "type" => "combo",
+                        "category_group_id" => ($i+1),
+                        "slug" => Str::slug($categories[$i][$ic])
+                    ]
+                );
+                        for($ip=0;$ip<count($productsss[$i][$ic]);$ip++) {
+                            $thumb = random_int(1, 100) . '.jpg';
+                            product::create(
+                                [
+                                    "name" => $productsss[$i][$ic][$ip],
+                                    "thumb" => "https://loremflickr.com/320/240/food?random=" . $thumb,
+                                    "summary" => "Đây là đoạn giới thiệu tóm tắt sản phẩm",
+                                    "content" => "Nội dung chính giới  thiệu về sản phẩm ",
+                                    "price" => rand(50000, 1000000),
+                                    "price_format" => "100.000 đ",
+                                    "price_current" => 100000,
+                                    "price_current_format" => "100.000 đ",
+                                    "quantity_input" => 100,
+                                    "quantity_output" => 10,
+                                    "discount" => 5,
+                                    "brand" => "Đà Lạt",
+                                    "unit" => "kg",
+                                    "color" => '',
+                                    "slug" => Str::slug($productsss[$i][$ic][$ip]),
+                                    "category_id" => ($ic + 1)
+                                ]
+                            );
+                            $indexPC += 1;
+                        
                     }
-    
-                   }
-                  $indexP+=1;
-                }
             }
-            $indexP=0;
             $indexC += 1;
         }
     }

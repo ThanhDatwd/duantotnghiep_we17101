@@ -1,15 +1,88 @@
+
 .homeContainer{
     
 }
 .app-section{
 
 }
+.banner{
+
+}
+.banner img{
+    width: 100%;
+    aspect-ratio: 6/2;
+}
+.service-section{
+    position: relative;
+    background: var(--lightLeftColBackground);
+    /* height: 80px; */
+    padding-top: 30px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.service-section svg{
+    position: absolute;
+    top: 100%;
+    /* color: var(--secondColor) ; */
+}
+.service__card{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* CSS PHẦN DANH MỤC NỔI BẬT */
+.category__group__card{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    gap: 8px;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--mainColor),var(--mainColor2))
+}
+.category__group__card .content{
+    width: 50%;
+}
+.category__group__card .content a{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    -webkit-line-clamp: 1;
+    height: calc(21px* 1);
+    line-height: 21px;
+    transition: 0.3s all ease;
+    color: var(--white);
+}
+.category__group__card .content .name{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+}
+.category__group__card .thumb{
+    width: 50%;
+}
+.category__group__card .thumb img{
+    width: 100%;
+    height: auto;
+    /* filter: drop-shadow(0px 3px 0px #fff); */
+}
+/* CSS PHẦN DANH MỤC NỔI BẬT */
+
 .app-section .title{
     text-transform: uppercase;
+}
+
+.products-section.left{
+  flex-direction: row-reverse;   
+}
+.products-section.right{
+    
 }
 .app-section .category-thumb{
     border-radius: 6px;
 }
+
 .view_more{
     margin-bottom: -15px;
 }
@@ -32,16 +105,18 @@
 }
 
 .feedback-card{
-
+    box-shadow: 0 0 10px 0 rgb(4 4 4 / 10%);
+    border-radius: 10px;
+    padding:20px;
 }
 .feedback-card .info{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 16px;
 }
 .feedback-card .thumb {
-   height: 60px;
-   width: 60px;
+   height: 70px;
+   width: 70px;
    border-radius: 50%;
    border: 2px solid var(--mainColor);
 }
@@ -56,4 +131,14 @@
 .feedback-card .auth .posittion{
     font-size: 16px;
     font-weight: 400;
+}
+.feedback-card .content{
+    margin-top:16px ;
+}
+
+/*  css phần reponsive cho  trang home  */
+@media only screen and (max-width: 600px){
+    .products-row{
+        height:100vw;
+    }
 }
