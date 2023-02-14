@@ -28,6 +28,10 @@ Route::get('/news', [NewsController::class,'index'])->name('news');
 Route::get('/home', function () {
     return view('client.home.index');
 });
+Route::get('/admin', function () {
+    return view('admin.home.index');
+});
+
 Route::get('/admin/pro', function () {
     return view('admin.product.them');
 });
