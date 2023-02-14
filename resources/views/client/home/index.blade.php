@@ -153,13 +153,13 @@ $indexCategory++;
             src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/bn_pr_3.png?1669280565026" alt="">
         </a>
       </div>
-      <div class="col-xl-9 col-lg-8 col-md-7 col-xs-12" style="height:100%" >
-        <div class="products-row" >
+      <div class="col-xl-9 col-lg-8 col-md-7 col-xs-12" style="height:100%">
+        <div class="products-row">
           <div class="swiper mySwiperTypeCategory">
             <div class="swiper-wrapper">
               @foreach ($category->products as $item)
               <div class="swiper-slide">
-                <x-ProductCard name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
+                <x-ProductCard  name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
                   priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
               </div>
               @endforeach
@@ -212,7 +212,7 @@ $indexCategory++;
 {{-- hiển thị tin tức nổi bật --}}
 <section class="app-section pt-3 pb-3">
   <div class="container">
-    <h2 class="title pt-3 pb-3 mb-0"><a href="">Flash Sale</a></h2>
+    <h2 class="title pt-3 pb-3 mb-0"><a href="">Bài viết nổi bật</a></h2>
     <div class="swiper mySwiperNews">
       <div class="swiper-wrapper">
         @foreach ($products as $item)
@@ -229,26 +229,6 @@ $indexCategory++;
     </div>
   </div>
 </section>
- <div class="container">
-  <div style="position: relative; height: 200px;">
-    <div class="swiper mySwiperTypeCategory">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
-      </div>
-      <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    </div>
- </div>
-
 @endsection
 @section("js")
 
@@ -363,6 +343,26 @@ $indexCategory++;
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
+     breakpoints: {
+        0: {
+          slidesPerView: 1.3,
+          spaceBetween: 20,
+          pagination: {
+              el: ".swiper-pagination",
+              dynamicBullets: true,
+
+            },
+        },
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+      },
+      
    });
    var mySwiperNews = new Swiper(".mySwiperService", {
      slidesPerView: 4,

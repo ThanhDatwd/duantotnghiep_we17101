@@ -39,3 +39,6 @@ Route::prefix('/')->name('site')->group(function(){
     });
     
 });
+Route::prefix('/admin')->name('site')->group(function(){
+    Route::get('/home', [HomeController::class,'index'])->name('home');
+});
