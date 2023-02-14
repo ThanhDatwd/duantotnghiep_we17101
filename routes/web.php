@@ -3,6 +3,8 @@
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\NewsController;
 use App\Http\Controllers\client\ProductsController;
+use App\Http\Controllers\admin\NewsController as AdminNewsController;
+
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -29,6 +31,10 @@ Route::get('/home', function () {
 Route::get('/admin/pro', function () {
     return view('admin.product.them');
 });
+
+
+
+
 Route::get('/product', [ProductsController::class,'index'])->name('product');
 Route::get('/ss', [ProductsController::class,'index'])->name('product');
  
@@ -45,5 +51,11 @@ Route::prefix('/')->name('site')->group(function(){
     Route::get('thanks',function(){
         return view('client.thankyou.index');
     });
+    //
+    Route::prefix('/admin')->name('site')->group(function(){
+        Route::get('/product', [ProductsController::class,'index'])->name('product');
+        Route::get('/news', [AdminNewsController::class,'index'])->name('news');
+    });
+
     
 });

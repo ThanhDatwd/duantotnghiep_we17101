@@ -4,7 +4,7 @@
     <div class="container" style="margin-top: 20px;">
     <div class="path">
         <a href="">Trang chủ</a>
-        <span>></span>
+        <span></span>
         <a href="">Tin tức</a>
       
         <hr>
