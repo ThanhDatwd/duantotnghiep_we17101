@@ -8,18 +8,18 @@
 
         
     <!-- Icon Font Stylesheet -->
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link rel="stylesheet" href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin/lib/owlcarousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}">
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/bootstrap.min.css')}}">
     <!-- Template Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
     
-    @yield("css")
 </head>
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
@@ -74,7 +74,7 @@
         <!-- Sidebar End -->
 
         <!-- Spinner End -->
-        <div class="container">
+        <div class="content">
             @yield('content')
         </div>
 
