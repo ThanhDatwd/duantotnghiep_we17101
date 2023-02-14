@@ -23,7 +23,15 @@ Route::get('/exam', [HomeController::class,'exam'])->name('exam');
 // Route::get('/', function () {
 //     return view('client.appLayout.index');
 // });
-
+Route::get('/home', function () {
+    return view('client.home.index');
+});
+Route::get('/admin/pro', function () {
+    return view('admin.product.them');
+});
+Route::get('/product', [ProductsController::class,'index'])->name('product');
+Route::get('/ss', [ProductsController::class,'index'])->name('product');
+ 
 
 
 Route::prefix('/')->name('site')->group(function(){
