@@ -1,0 +1,300 @@
+.order-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price::after{
+    content: " đ";
+    font-size: 80%;
+}
+.order-title h3{
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+}
+.order-title a{
+    color: black;
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+}
+.order-title i{
+    font-size: 24px;
+    margin-right: 4px;
+}
+.order-title span{
+    font-size: 14px;
+}
+/* =========================================== */
+.container.order {
+    display: flex;
+    align-items: flex-start;
+}
+.input-infomation{
+    width: 66%;
+    /* margin-top: 60px; */
+    display: flex;
+    align-items: flex-start;
+    padding-right: 20px;
+}
+.form-order{
+    width: 50%;
+    padding-right: 10px;
+}
+.error-txt{
+    height: max-content;
+    font-size: 14px;
+   
+    padding: 10px 20px ;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: rgb(82, 8, 8);
+    background: rgba(232, 64, 64, 0.727);
+    display: none;
+}
+.error-txt.active{
+    display: block;
+}
+.form-group.order{
+    position: relative;
+    padding: 8px 0px;
+    display: flex;
+}
+ button.btn-buyNow{
+    font-size: 18px;
+    min-width: 120px;
+    padding: 0 10px;
+    margin-left: 10px;
+    color: var(--white-color);
+    background-color: #333;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.form-group.order input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+form textarea{
+    width: 100%;
+    height: 80px;
+    max-height: 160px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    resize: none;
+}
+textarea:is(:focus, :valid){
+    border-color: rgb(46, 113, 214);
+}
+textarea::-webkit-scrollbar{
+    width: 0px;
+}
+.transition{
+    width: 50%;
+    padding-left: 10px;
+}
+/* ================================= */
+ .transition .fee-ship{
+     width: 100%;
+     padding: 12px;
+     border: 1px solid #ccc;
+     border-radius: 6px;
+     display: flex;
+     justify-content: space-between;
+ }
+.info-product.order{
+    width: 34%;
+    height: 100vh;
+    background: rgb(247, 244, 244);
+    padding: 10px 16px 10px 0px;
+    border-left: 1px solid #ccc;
+    margin: 0;
+}
+.info-product.order .order-title{
+    padding: 16px 10px;
+    border-bottom: 1px solid #ccc;
+}
+.info-product.order .btnDL.active i{
+        transform: rotate(180deg);
+}
+.order-list{
+    margin: 16px 0;
+    padding: 0px 16px ;
+    margin-bottom: 0;
+    max-height: 230px;
+    border-bottom: 1px solid #ccc;
+    overflow: auto;
+    
+
+}
+.order-list.active{
+    height: 0px;
+}
+.order-list::-webkit-scrollbar{
+    width: 3px;
+}
+.order-item{
+    display: flex;
+    margin: 10px 0;
+
+}
+.order-item_img{
+    position: relative;
+    width: 46px;
+    height: 46px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.order-item_img img{
+    width: 100%;
+    height: 100%;
+    
+    border-radius: 5px;
+    background-size: cover;
+}
+.order-item_img span{
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 4px;
+    background: black;
+    color: var(--white-color);
+    border-radius: 50%;
+}
+.order-item_txt{
+    width: calc(100% - 70px);
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-item_txt .weight{
+    font-size: 12px;
+}
+.order-item_txt .name{
+    margin: 0;
+}
+.discountCode {
+    padding:0 16px;
+    border-bottom: 1px solid #ccc;
+
+}
+.orderSumary{
+    padding:0 16px;
+    padding-top: 16px;
+}
+.orderSumary-line{
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+.orderSumary-line.tmp-fee{
+    font-size: 18px;
+    color: #757575;
+}
+.orderSumary-line.ship-fee{
+    font-size: 16px;
+    color: #757575;
+}
+.orderSumary-line.total{
+    margin-top: 5px;
+    font-size: 22px;
+    border-top: 1px solid #ccc;
+}
+
+/* Phần button đặt hàng ngay lập tức */
+.form-orderNow{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-orderNow button{
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background: black;
+    border-radius: 5px;
+}
+.form-orderNow a{
+    display: flex;
+    align-items: center;
+}
+.form-orderNow a:hover i{
+    position: relative;
+    right:3px;
+}
+.form-orderNow i{
+    font-size: 26px;
+}
+
+/* =====================PHẦN REPONSIVE CHO TRANG ORDER======================= */
+@media only screen and (max-width: 600px){
+    .container {
+        flex-wrap:wrap-reverse;
+    }
+    .input-infomation{
+        width: 100%;
+       padding: 10px 0;
+       flex-wrap: wrap;
+    }
+    .order-list{
+        max-height: max-content;
+    }
+    .form-order{
+        width: 100%;
+    }
+    .transition{
+        width: 100%;
+        padding: 5px 0;
+    }
+    .info-product.order{
+        width: 100%;
+        height: max-content;
+        padding-right: 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+}
+
+
+/* PHẦN NHẬP MÃ XÁC NHẬN ĐƠN HÀNG */
+
+.orderCode_area{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.orderCode{
+    background: red;
+}
+.orderCode input{
+    width: 100%;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

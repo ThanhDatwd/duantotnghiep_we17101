@@ -4,6 +4,7 @@ use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\NewsController;
 use App\Http\Controllers\client\ProductsController;
 use App\Http\Controllers\admin\NewsController as AdminNewsController;
+use App\Http\Controllers\admin\AdminController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,8 @@ Route::prefix('/')->name('site')->group(function(){
     Route::prefix('/admin')->name('site')->group(function(){
         Route::get('/product', [ProductsController::class,'index'])->name('product');
         Route::get('/news', [AdminNewsController::class,'index'])->name('news');
+        Route::get('/', [AdminController::class,'index']);
+
     });
 
     

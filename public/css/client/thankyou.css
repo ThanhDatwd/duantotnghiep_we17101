@@ -1,0 +1,125 @@
+body{
+    background: rgb(220, 218, 218);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    display: none;
+}
+footer{
+    display: none;
+}
+.thankyou-page .logo{
+    margin: auto;
+    width: 140px;
+    height: auto;
+}
+.thankyou-page .logo img{
+    width: 100%;
+    height: 100%;
+    margin: 20px 0;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+.thankyou-area{
+    width: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+.thankyou-area .icon{
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+
+    font-size: 50px;
+    text-align: center;
+
+    margin-right: 10px;
+    border: 2px solid green;
+    border-radius: 50%;
+    color: green;
+    background: transparent;
+}
+
+.thankyou-area .text h3{
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+.thankyou-area .text p{
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+}
+
+.confirm-orderList{
+    
+    width: 45%;
+    background:#fff;
+}
+.confirm-orderList h4{
+    padding: 10px 16px;
+    border-bottom: 1px solid #ccc;
+}
+.confirm-info{
+    padding: 10px;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    margin-top: -140px;
+}
+.confirm-line{
+    width: 50%;
+    margin-bottom: 10px;
+}
+.confirm-line h3{
+    font-size: 23px;
+    font-weight: 500;
+    color: rgb(38, 37, 37);
+}
+.confirm-line p{
+    margin: 8px 0;
+    font-size: 14px;
+}
+.black-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+.bx-printer{
+    font-size: 36px;
+}
+/*  css c reponsive cho phẩn  đặt hàng thành công */
+@media only screen and (max-width: 960px){
+    .thankyou-area{
+        width: 100%;
+        flex-wrap: wrap;
+       text-align: center;
+       justify-content: center;
+       margin: 20px 0;
+    }
+    .thankyou-area .text{
+        width: 100%;
+    }
+    
+    .confirm-orderList{
+        width: 100%;
+    }
+    .confirm-info{
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0;
+    }
+    .confirm-line{
+        width: 100%;
+    }
+}
