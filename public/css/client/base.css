@@ -86,6 +86,9 @@ a:hover {
     --pc-width: 1024px;
 
 }
+::-webkit-scrollbar{
+    display: none;
+}
 
 .title{
     

@@ -4,7 +4,7 @@
         <i class='bx bx-home'></i>
         <span>Trang chủ</span>
     </a>
-    <div class="item">
+    <div class="item" onclick="handelDisplayDashboardMobile()">
         <i class='bx bx-menu-alt-right bx-rotate-180'></i>
         <span>Menu</span>
     </div>
@@ -56,42 +56,138 @@
     </a>
 
 </div>
-<div class="dashboard-area">
+<div class="dashboard-area active">
+    <div class="layer" onclick="handelDisplayNoneDashboardMobile()"></div>
     <div class="dashboard-menu">
         <div class="dashboard-navbar">
-            <a href="" class="dashboard-navbar__item">
-                <div> <img
-                        src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_1.png?1669280565026"
-                        alt=""></div>
-                <span>Trang chủ</span>
+            <a href="">
+                <div class="dashboard-navbar__item">
+                    <div class="img"> <img
+                            src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_1.png?1669280565026"
+                            alt="">
+                    </div>
+                    <span>Trang chủ</span>
+                </div>
             </a>
-            <a href="" class="dashboard-navbar__item active">
-                <div> <img
-                        src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_1.png?1669280565026"
-                        alt=""></div>
-                <span>Trang chủ</span>
+            <a href="">
+                <div class="dashboard-navbar__item">
+                    <div class="img"> <img
+                            src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_2.png?1669280565026"
+                            alt="">
+                    </div>
+                    <span>Giới thiệu</span>
+                </div>
             </a>
-            <a href="" class="dashboard-navbar__item">
-                <div> <img
-                        src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_1.png?1669280565026"
-                        alt=""></div>
-                <span>Trang chủ</span>
+            <a href="">
+                <div class="dashboard-navbar__item active">
+                    <div class="img"> <img
+                            src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_3.png?1669280565026"
+                            alt="">
+                    </div>
+                    <span>Sản phẩm</span>
+                </div>
             </a>
-            <a href="" class="dashboard-navbar__item">
-                <div> <img
-                        src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_1.png?1669280565026"
-                        alt=""></div>
-                <span>Trang chủ</span>
+            <a href="">
+                <div class="dashboard-navbar__item">
+                    <div class="img"> <img
+                            src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_4.png?1669280565026"
+                            alt="">
+                    </div>
+                    <span>Tin tức </span>
+                </div>
             </a>
-            <a href="" class="dashboard-navbar__item">
-                <div> <img
-                        src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_1.png?1669280565026"
-                        alt=""></div>
-                <span>Trang chủ</span>
+            <a href="">
+                <div class="dashboard-navbar__item">
+                    <div class="img"> <img
+                            src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_5.png?1669280565026"
+                            alt="">
+                    </div>
+                    <span>Tuyển dụng</span>
+                </div>
             </a>
+            <a href="">
+                <div class="dashboard-navbar__item">
+                    <div class="img"> <img
+                            src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_5.png?1669280565026"
+                            alt="">
+                    </div>
+                    <span>Liên hệ</span>
+                </div>
+            </a>
+            
         </div>
-        <div class="dashboard-categories">
-
+        <div class="list-categories">
+           <ul class="level1">
+              <li>
+                <a href="" class="d-flex">Thịt trứng</a>
+                <ul class="level2">
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
+                    </li>
+                </ul>
+              </li>
+              <li>
+                <a href="" class="d-flex">Thịt trứng</a>
+                <ul class="level2">
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
+                    </li>
+                </ul>
+              </li>
+              <li>
+                <a href="" class="d-flex">Thịt trứng</a>
+                <ul class="level2">
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
+                    </li>
+                </ul>
+              </li>
+              <li>
+                <a href="" class="d-flex">Thịt trứng</a>
+                <ul class="level2">
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
+                    </li>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
+                    </li>
+                </ul>
+              </li>
+           </ul>
         </div>
     </div>
 </div>
+<script src="{{asset('js/client/component/navbarMobile.js')}}"></script>
