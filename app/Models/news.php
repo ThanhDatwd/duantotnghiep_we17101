@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class news extends Model
 {
     use HasFactory;
+    protected $table = "news";
+    
 
     public function category_news()
     {
