@@ -71,7 +71,7 @@ class products20 extends Seeder
                 foreach ($categories[$indexC] as $category) {
                     category::create(
                         [
-                            "name" => $category,
+                            "category_name" => $category,
                             "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
                             "stt" => 1,
                             "type" => "combo",
