@@ -6,6 +6,8 @@ use App\Http\Controllers\client\ProductsController;
 use App\Http\Controllers\admin\ProductsController as AdminProductController;
 use App\Http\Controllers\admin\NewsController as AdminNewsController;
 use App\Http\Controllers\admin\AdminController;
+
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Symfony\Component\Routing\Router;
@@ -20,6 +22,7 @@ use Symfony\Component\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/exam', [HomeController::class,'exam'])->name('exam');
 // Route::get('/', function () {
 //     return view('client.appLayout.index');
@@ -27,6 +30,16 @@ Route::get('/exam', [HomeController::class,'exam'])->name('exam');
 Route::get('/home', function () {
     return view('client.home.index');
 });
+Route::get('/admin/pro', function () {
+    return view('admin.product.them');
+});
+
+
+
+
+Route::get('/product', [ProductsController::class,'index'])->name('product');
+Route::get('/ss', [ProductsController::class,'index'])->name('product');
+ 
 
 
 Route::prefix('/')->name('site')->group(function(){
