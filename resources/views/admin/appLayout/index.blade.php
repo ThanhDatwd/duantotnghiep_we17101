@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trang danh cho admin</title>
-
-        
+    <title>Trang danh cho admin</title>     
     <!-- Icon Font Stylesheet -->
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/lib/owlcarousel/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}">
@@ -19,12 +15,13 @@
     <link rel="stylesheet" href="{{asset('css/admin/bootstrap.min.css')}}">
     <!-- Template Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
-    
+    @yield("css")
+
 </head>
 <body>
     <div class="position-relative bg-white d-flex p-0">
 <body style="background-color: white;">
-    <div class="position-relative bg-white d-flex p-0">
+    <div class=" position-relative bg-white d-flex p-0" style="width:100%">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -34,8 +31,9 @@
          <!-- Sidebar Start -->
          <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                <a href="index.html" class="navbar-brand" style="margin:0  auto">
+                   
+                   
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -76,8 +74,7 @@
         <!-- Sidebar End -->
 
         <!-- Spinner End -->
-        <div class="content">
-        
+        <div class="content" >
         
         <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">

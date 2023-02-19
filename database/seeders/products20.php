@@ -71,7 +71,7 @@ class products20 extends Seeder
                 foreach ($categories[$indexC] as $category) {
                     category::create(
                         [
-                            "name" => $category,
+                            "category_name" => $category,
                             "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
                             "stt" => 1,
                             "type" => "combo",
@@ -90,9 +90,7 @@ class products20 extends Seeder
                                 "summary" => "Đây là đoạn giới thiệu tóm tắt sản phẩm",
                                 "content" => "Nội dung chính giới  thiệu về sản phẩm ",
                                 "price" => rand(50000, 1000000),
-                                "price_format" => "100.000 đ",
                                 "price_current" => 100000,
-                                "price_current_format" => "100.000 đ",
                                 "quantity_input" => 100,
                                 "quantity_output" => 10,
                                 "discount" => 5,

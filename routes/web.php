@@ -3,10 +3,9 @@
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\NewsController;
 use App\Http\Controllers\client\ProductsController;
+use App\Http\Controllers\admin\ProductsController as AdminProductController;
 use App\Http\Controllers\admin\NewsController as AdminNewsController;
 use App\Http\Controllers\admin\AdminController;
-
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Symfony\Component\Routing\Router;
@@ -21,7 +20,6 @@ use Symfony\Component\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/exam', [HomeController::class,'exam'])->name('exam');
 // Route::get('/', function () {
 //     return view('client.appLayout.index');
@@ -29,16 +27,6 @@ Route::get('/exam', [HomeController::class,'exam'])->name('exam');
 Route::get('/home', function () {
     return view('client.home.index');
 });
-Route::get('/admin/pro', function () {
-    return view('admin.product.them');
-});
-
-
-
-
-Route::get('/product', [ProductsController::class,'index'])->name('product');
-Route::get('/ss', [ProductsController::class,'index'])->name('product');
- 
 
 
 Route::prefix('/')->name('site')->group(function(){
@@ -53,9 +41,18 @@ Route::prefix('/')->name('site')->group(function(){
         return view('client.thankyou.index');
     });
     //
+    // Route::resource('/admin/product', AdminProductController::class);
+
     Route::prefix('/admin')->name('site')->group(function(){
-        Route::get('/product', [ProductsController::class,'index'])->name('product');
+        Route::get('/product', [AdminProductController::class,'index'])->name('admin-product');
+        Route::get('/product/create', [AdminProductController::class,'create']);
+        Route::post('/product/create', [AdminProductController::class,'create_']);
+        Route::get('/product/delete/{id}', [AdminProductController::class,'delete']);
+        Route::get('/product/update/{id}', [AdminProductController::class,'update']);
+        Route::post('/product/update/{id}', [AdminProductController::class,'update_']);
+
         Route::get('/news', [AdminNewsController::class,'index'])->name('news');
+
         Route::get('/', [AdminController::class,'index']);
 
     });
