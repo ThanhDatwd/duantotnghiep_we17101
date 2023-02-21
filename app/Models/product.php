@@ -29,7 +29,7 @@ class product extends Model
     }
     public function history()
     {
-        return $this->hasMany(historyProduct::class,"product_id","id");
+        return $this->hasMany(importHistory::class,"product_id","id");
     }
 }
 

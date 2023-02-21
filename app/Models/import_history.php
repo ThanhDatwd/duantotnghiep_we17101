@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class historyProduct extends Model
+class importHistory extends Model
 {
     use HasFactory;
     public function product()

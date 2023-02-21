@@ -19,6 +19,7 @@ class NewsCard extends Component
     public $id;
     public $isRow;
     public $slug;
+    public $content;
     public function __construct($title=null,$thumb=null,$date=0,$summary=null,$content=null,$link='',$id=null,$isRow=false,$slug=null)
     {  
        $this->slug=$slug;
