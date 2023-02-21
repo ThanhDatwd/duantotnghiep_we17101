@@ -7,7 +7,7 @@
 <section class="banner">
   <div class="swiper mySwiperBanner">
     <div class="swiper-wrapper">
-      @foreach ($products as $item)
+      @foreach ($productsFlashSale as $item)
       <div class="swiper-slide">
         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/slide-img2.png?1669280565026" alt="">
       </div>
@@ -83,7 +83,7 @@
     <h2 class="title pt-3 pb-3 mb-0"><a href="">Danh mục nổi bật</a></h2>
     <div class="swiper mySwiperCategoryGroup">
       <div class="swiper-wrapper">
-        @foreach ($products as $item)
+        @foreach ($productsFlashSale as $item)
         <div class="swiper-slide">
           <div class="category__group__card">
             <div class="content">
@@ -119,9 +119,11 @@
     <div class="products-row">
       <div class="swiper mySwiperTypeEvent">
         <div class="swiper-wrapper">
-          @foreach ($products as $item)
+          @foreach ($productsFlashSale as $item)
           <div class="swiper-slide">
-            <x-ProductCard name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
+            <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" 
+              isProgress={{true}} progressTxt="hết hàng" progressValue=20
+              name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
               priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
           </div>
           @endforeach
@@ -185,7 +187,7 @@ $indexCategory++;
     <h2 class="title pt-3 pb-3 mb-0"><a href="">Phản hồi tù khách hàng</a></h2>
     <div class="swiper mySwiperFeeback " style="padding: 10px">
       <div class="swiper-wrapper ">
-        @foreach ($products as $item)
+        @foreach ($productsFlashSale as $item)
         <div class="swiper-slide ">
           <div class="feedback-card">
             <div class="info">
@@ -215,7 +217,7 @@ $indexCategory++;
     <h2 class="title pt-3 pb-3 mb-0"><a href="">Bài viết nổi bật</a></h2>
     <div class="swiper mySwiperNews">
       <div class="swiper-wrapper">
-        @foreach ($products as $item)
+        @foreach ($productsFlashSale as $item)
         <div class="swiper-slide">
           <x-NewsCard title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"

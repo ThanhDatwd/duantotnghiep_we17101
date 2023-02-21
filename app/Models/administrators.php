@@ -10,10 +10,10 @@ class administrators extends Model
     use HasFactory;
     public function historyCreateProduct()
     {
-        return $this->hasMany(historyProduct::class,"created_by","id");
+        return $this->hasMany(importHistory::class,"created_by","id");
     }
     public function historyUpdateProduct()
     {
-        return $this->hasMany(historyProduct::class,"updated_by","id");
+        return $this->hasMany(importHistory::class,"updated_by","id");
     }
 }

@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('history_product', function (Blueprint $table) {
+        Schema::create('import_history', function (Blueprint $table) {
             $table->id();
-            $table->int('quantity_input');
-            $table->int('price_input');
+            $table->int('quantity_import');
+            $table->int('price_import');
             $table->foreignId('product_id')->constrained('products');
             $table->timestamp('deleted_at')->nullable();
             $table->foreignId('created_by')->constrained('administrators')->nullable();

@@ -67,6 +67,7 @@
     width: 100%;
     height: 100%;
     z-index: 99;
+    display: none;
 
 }
 .dashboard-area .layer{
@@ -81,7 +82,7 @@
     left: -100%;
     width: calc(100%);
     margin: auto ;
-    height: 70%;
+    height: 60%;
     background: var(--white);
     border-radius: 20px;
     z-index: 1000;
@@ -182,5 +183,8 @@
 @media only screen and (max-width: 600px){
     .navbar__mobile{
         display: flex;
+    }
+    .dashboard-area{
+        display: block;
     }
 }

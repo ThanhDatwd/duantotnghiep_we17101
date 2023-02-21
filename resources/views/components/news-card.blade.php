@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{asset('css/client/component/newsCard.css')}}">
-<div class="news-card {{$isRow==true?'isRow':''}}">
+<a href="{{$link}}" class="news-card {{$isRow==true?'isRow':''}}">
     <div class="thumb">
         <img src={{$thumb??null}} alt="">
         <div class="thumb-layer">
@@ -18,8 +18,7 @@
             {{$summary??null}}
         </div>
     </div>
-    
-</div>
+</a>
 
 
 

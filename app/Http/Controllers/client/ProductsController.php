@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\client;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -17,5 +17,9 @@ class ProductsController extends Controller
             "products"=>$products
         ];
         return view('client.products.index',$data);
+    }
+    public function productDetail($slug)
+    {
+        dd($slug);
     }
 }
