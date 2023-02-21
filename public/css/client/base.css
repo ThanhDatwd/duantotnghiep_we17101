@@ -86,6 +86,9 @@ a:hover {
     --pc-width: 1024px;
 
 }
+::-webkit-scrollbar{
+    display: none;
+}
 
 .title{
     
@@ -171,7 +174,7 @@ a:hover {
   }
 
   .swiper-slide {
-    text-align: center;
+    /* text-align: center; */
     font-size: 18px;
     height: calc((100% - 30px) / 2) !important;
 
