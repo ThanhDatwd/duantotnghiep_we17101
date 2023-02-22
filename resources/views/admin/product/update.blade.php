@@ -5,7 +5,6 @@
 @endsection
 @section('content')
 {{-- <a href="/admin/product"><button>danh sách</button></a> --}}
-
 <form action="/admin/product/update/{{$p->id}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="adproduct">

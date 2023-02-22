@@ -7,7 +7,7 @@
 <section class="banner">
   <div class="swiper mySwiperBanner">
     <div class="swiper-wrapper">
-      @foreach ($products as $item)
+      @foreach ($productsFlashSale as $item)
       <div class="swiper-slide">
         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/slide-img2.png?1669280565026" alt="">
       </div>
@@ -83,7 +83,7 @@
     <h2 class="title pt-3 pb-3 mb-0"><a href="">Danh mục nổi bật</a></h2>
     <div class="swiper mySwiperCategoryGroup">
       <div class="swiper-wrapper">
-        @foreach ($products as $item)
+        @foreach ($productsFlashSale as $item)
         <div class="swiper-slide">
           <div class="category__group__card">
             <div class="content">
@@ -119,9 +119,11 @@
     <div class="products-row">
       <div class="swiper mySwiperTypeEvent">
         <div class="swiper-wrapper">
-          @foreach ($products as $item)
+          @foreach ($productsFlashSale as $item)
           <div class="swiper-slide">
-            <x-ProductCard name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
+            <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" 
+              isProgress={{true}} progressTxt="hết hàng" progressValue=20
+              name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
               priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
           </div>
           @endforeach
@@ -153,13 +155,13 @@ $indexCategory++;
             src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/bn_pr_3.png?1669280565026" alt="">
         </a>
       </div>
-      <div class="col-xl-9 col-lg-8 col-md-7 col-xs-12" style="height:100%" >
-        <div class="products-row" >
+      <div class="col-xl-9 col-lg-8 col-md-7 col-xs-12" style="height:100%">
+        <div class="products-row">
           <div class="swiper mySwiperTypeCategory">
             <div class="swiper-wrapper">
               @foreach ($category->products as $item)
               <div class="swiper-slide">
-                <x-ProductCard name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
+                <x-ProductCard  name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
                   priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
               </div>
               @endforeach
@@ -185,7 +187,7 @@ $indexCategory++;
     <h2 class="title pt-3 pb-3 mb-0"><a href="">Phản hồi tù khách hàng</a></h2>
     <div class="swiper mySwiperFeeback " style="padding: 10px">
       <div class="swiper-wrapper ">
-        @foreach ($products as $item)
+        @foreach ($productsFlashSale as $item)
         <div class="swiper-slide ">
           <div class="feedback-card">
             <div class="info">
@@ -212,10 +214,10 @@ $indexCategory++;
 {{-- hiển thị tin tức nổi bật --}}
 <section class="app-section pt-3 pb-3">
   <div class="container">
-    <h2 class="title pt-3 pb-3 mb-0"><a href="">Flash Sale</a></h2>
+    <h2 class="title pt-3 pb-3 mb-0"><a href="">Bài viết nổi bật</a></h2>
     <div class="swiper mySwiperNews">
       <div class="swiper-wrapper">
-        @foreach ($products as $item)
+        @foreach ($productsFlashSale as $item)
         <div class="swiper-slide">
           <x-NewsCard title="tiêu đề bài viết "
             thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
@@ -229,26 +231,6 @@ $indexCategory++;
     </div>
   </div>
 </section>
- <div class="container">
-  <div style="position: relative; height: 200px;">
-    <div class="swiper mySwiperTypeCategory">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
-      </div>
-      <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    </div>
- </div>
-
 @endsection
 @section("js")
 
@@ -363,6 +345,26 @@ $indexCategory++;
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
+     breakpoints: {
+        0: {
+          slidesPerView: 1.3,
+          spaceBetween: 20,
+          pagination: {
+              el: ".swiper-pagination",
+              dynamicBullets: true,
+
+            },
+        },
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+      },
+      
    });
    var mySwiperNews = new Swiper(".mySwiperService", {
      slidesPerView: 4,

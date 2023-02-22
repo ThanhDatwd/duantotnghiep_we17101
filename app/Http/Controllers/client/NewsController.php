@@ -11,5 +11,8 @@ class NewsController extends Controller
     public function index(){
         return view('client.news.index');
     }
-    
+    public function newsDetail($slug)
+    {
+        dd($slug);
+    }
 }
