@@ -12,7 +12,6 @@
 
         <h2>Cập nhật sản phẩm</h2>
         
-        
         <div class= "container-fluid">
             <div class= "row">
                <div class ="col-md-8 col-sm-6 ">
@@ -29,15 +28,14 @@
                     <div class="addpro">        
                         <div class="adpro1">
                             <p>Loại sản phẩm <span>(*)</span></p>
-                            
                             <select name="category_id">
-                                @if($p->category->category_name=='')
-                                <option  value="{{$p->category->category_name}}">{{$p->category->category_name}}</option>
+                                @foreach($categories as $c)
+                                @if ($p->category_id==$c->id)
+                                <option selected value="{{$c->id}}">{{$c->category_name}}</option>
+                                @else
+                                <option value="{{$c->id}}">{{$c->category_name}}</option>
 
                                 @endif
-                                @foreach($categories as $c)
-                                <option value="{{$c->id}}">{{$c->category_name}}</option>
-                              
                                 @endforeach
                             </select>
                         </div>
@@ -57,25 +55,21 @@
                         <div class="adpro1">
                             <p>Giảm giá</p>
                             <input type="number" name="discount" min="0" max="100" value="{{$p->discount}}" placeholder="Nhập giá bán">
-                        </div>
-                        {{-- <div class="adpro1">
-                            <p>Tình trạng <span>(*)</span></p>
-                            <select>
-                                <option value="">Còn hàng</option>
-                                <option value="">2</option>
-                                <option value="">2</option>
-                
-                            </select>
-                        </div> --}}
-                        
+                        </div>   
                     </div>
                 <div class="addpro">
                    <div class="adpro1" style="width:200px">
                        <p>Xuất xứ</p>
-                       <select name="brand">
-                           <option value="">Không</option>
-                           <option  value="">2</option>
-                           <option value="">2</option>
+                       <select name="brand"> 
+                     @foreach($brands as $b)
+                     @if ($p->brand == $b->brands)
+                     <option selected value="{{$b->brands}}">{{$b->brands}}</option>
+                     @else   
+                      <option value="{{$b->brands}}">{{$b->brands}}</option>
+                     @endif
+                        @endforeach
+                       
+                       
                        </select>
                    </div>
                  
@@ -102,15 +96,16 @@
                     <div class="addpro">
                         <div class="adpro1">
                             <p>Trạng thái</p>
-                            <select>
+                            <select name="is_active">
                                 @if(($p->is_active)=='1')
-                                <option selected >Còn hàng</option>
-                                <option  >Hết hàng</option>
-
+                                <option value="1" selected >Còn hàng</option>
+                                <option value="0" >Hết hàng</option>
                                 @else
-                                <option selected>Hết hàng</option>                      @endif
-                                <option  >Còn hàng</option>
+                                <option value="1" >Còn hàng</option>
+                                <option value="0" selected>Hết hàng</option>   
 
+                                @endif
+                               
                             </select>
                         </span>
                 
@@ -136,11 +131,14 @@
         <div class="addpro" style="margin:0 25px">
             <div class="adpro1">
                 <p>Ảnh<span>(*)</span></p>
-                <canvas  id="cvas1"></canvas>
+                <canvas  id="cvas1">
+                    <img src="{{asset('upload/'.$p->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'">
+                </canvas>
                 <br>
-                <!--<input type="text" id="textinput"/>--
+                <!--<input type="text"
+                     id="textinput"/>--
                 <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
-                <input name="thumb" value="{{asset('upload/'.$p->thumb)}}" type="file" id="image" multiple="false" accept="{{asset('upload/'.$p->thumb)}}" onchange="uploadIm()"/><br>
+                <input name="thumb"  value="{{asset('upload/')}}" type="file" id="image" multiple="false" accept="{{asset('upload/news.jpg')}}" onchange="uploadIm()"/><br>
                 <script>
                 var img = {{$p->thumb}};
                 const input = document.querySelector("input[type=file]");

@@ -6,6 +6,7 @@ use App\Http\Controllers\client\ProductsController;
 use App\Http\Controllers\admin\ProductsController as AdminProductController;
 use App\Http\Controllers\admin\NewsController as AdminNewsController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ProductCategorysController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -57,13 +58,21 @@ Route::prefix('/')->name('site')->group(function(){
     // Route::resource('/admin/product', AdminProductController::class);
 
     Route::prefix('/admin')->name('site')->group(function(){
+        //-----------sản phẩm-------------
         Route::get('/product', [AdminProductController::class,'index'])->name('admin-product');
         Route::get('/product/create', [AdminProductController::class,'create']);
         Route::post('/product/create', [AdminProductController::class,'create_']);
         Route::get('/product/delete/{id}', [AdminProductController::class,'delete']);
         Route::get('/product/update/{id}', [AdminProductController::class,'update']);
         Route::post('/product/update/{id}', [AdminProductController::class,'update_']);
-
+        //------------ danh mục sản phẩm ---------------
+        Route::get('/product_category', [ProductCategorysController::class,'index']);
+        Route::get('/product_category/create', [ProductCategorysController::class,'create']);
+        Route::post('/product_category/create', [ProductCategorysController::class,'create_']);
+        Route::get('/product_category/delete/{id}', [ProductCategorysController::class,'delete']);
+        Route::get('/product_category/update/{id}', [ProductCategorysController::class,'update']);
+        Route::post('/product_category/update/{id}', [ProductCategorysController::class,'update_']);
+        //---------------tin tức ----------------
         Route::get('/news', [AdminNewsController::class,'index'])->name('news');
 
         Route::get('/', [AdminController::class,'index']);

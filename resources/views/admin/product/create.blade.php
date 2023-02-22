@@ -12,7 +12,15 @@
 
         <h2>Thêm sản phẩm</h2>
         
-        
+        @if ($errors->any())
+        <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
+        @endif
         <div class= "container-fluid">
             <div class= "row">
                <div class ="col-md-8 col-sm-6 ">
@@ -30,9 +38,15 @@
                         <div class="adpro1">
                             <p>Loại sản phẩm <span>(*)</span></p>
                             <select name="category_id">
-                                <option value="1">Không</option>
-                                <option value="2">2</option>
-                                <option value="3">2</option>
+
+                 
+                                    @foreach($categories as $c)
+                                    <option value="{{$c->id}}">{{$c->category_name}}</option>
+                                  
+                                    @endforeach
+                              
+                              
+                                
                             </select>
                         </div>
                      
@@ -50,31 +64,25 @@
                         </div>
                         <div class="adpro1">
                             <p>Giảm giá</p>
-                            <input type="number" name="discount" value="{{old('discount')}}"  min="0" max="100" placeholder="Nhập giá bán">
+                            <input type="number" style="width:100%" name="discount" value="{{old('discount')}}"  min="0" max="100" placeholder="Nhập giảm giá">
                         </div>
-                        {{-- <div class="adpro1">
-                            <p>Tình trạng <span>(*)</span></p>
-                            <select>
-                                <option value="">Còn hàng</option>
-                                <option value="">2</option>
-                                <option value="">2</option>
-                
-                            </select>
-                        </div> --}}
-                        
+                    
                     </div>
                 <div class="addpro">
                    <div class="adpro1" style="width:200px">
                        <p>Xuất xứ</p>
                        <select name="brand">
-                       <option value="">fsd</option>                         
+                        @foreach($brands as $b)
+                        <option value="{{$b->brands}}">{{$b->brands}}</option>
+                      
+                        @endforeach
+                                              
                        </select>
                    </div>
                  
                    <div class="adpro1" style="width:200px">
                     <p>Đơn vị <span>(*)</span></p>
                     <select name="unit">
-                        <option value="*">Chọn quy cách</option>
                         <option value="kg">Kg</option>
                         <option value="tấn">Tấn</option>
                         <option value="tạ">Tạ</option>
@@ -93,8 +101,11 @@
                     </div>
                     <div class="addpro">
                         <div class="adpro1">
-                            <p>Thuộc tính</p>
-                            <button class="btnThuoc">Thêm thuộc tính</button>
+                            <p>Trạng thái</p>
+                           <select name="is_active">
+                            <option value="1">Còn hàng</option>
+                            <option value="0">Hết hàng</option>
+                           </select>
                 
                         </div>
                     </div>
