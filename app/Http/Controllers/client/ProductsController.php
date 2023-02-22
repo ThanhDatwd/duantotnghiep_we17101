@@ -19,7 +19,11 @@ class ProductsController extends Controller
         return view('client.products.index',$data);
     }
     public function productDetail($slug)
-    {
-        dd($slug);
+    {   
+        $product=product::where('slug',$slug)->first();
+        $data=[
+          "product"=>$product
+        ];
+        return view('client.productDetail.index',$data);
     }
 }

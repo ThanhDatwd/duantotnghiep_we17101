@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->int('quantity_import');
             $table->int('price_import');
+            $table->int('price_current');
             $table->foreignId('product_id')->constrained('products');
             $table->timestamp('deleted_at')->nullable();
             $table->foreignId('created_by')->constrained('administrators')->nullable();
