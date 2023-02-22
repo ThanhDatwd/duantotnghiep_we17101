@@ -1,0 +1,29 @@
+
+.nav{
+    border: 1px solid #E8E8E8 !important;
+    border-radius: 8px !important; 
+    padding: 0px 16px;
+}
+
+.nav-link{
+    color: black !important;
+    text-align: left !important;
+    border-bottom: 1px solid #E8E8E8 !important;
+    padding: 16px 0px;
+    
+}
+.nav-link.active{
+    background-color: #fff !important; 
+    color: var(--mainColor) !important;
+    font-weight: 700 !important;
+}
+
+.account-tab{
+        border: 1px solid #E8E8E8 !important;
+    border-radius: 8px !important; 
+    padding: 0px 16px;
+}
+
+.account-tab img{
+    width: 25px;
+}
