@@ -1,37 +1,9 @@
 @extends('admin.appLayout.index')
 @section("css")
+<link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
 @endsection
 @section('content')
-<style>
-    td img{
-        width: 150px;
-        height: 120px;
-    }
-    .text {
-      display: flex;
-      margin: 0px 0 30px 0px;
-      width: 100%;
-      border-radius: 20px;
-      background: white;
-      padding:20px;
-      text-transform: uppercase;
-    }
-    .text a{
-      margin: 10px 20px;
-    }
-    .button{
-      font-size: 30px;  
-      font-weight:  normal;
-      line-height:  inherit;
-    }
-    .table {
-      background: #fff;
-      border-radius: 20px;
-    }
-   .table thead th {
-    padding-top:20px
-   }
-</style>
+
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
   <h2 class="">Danh sách loại sản phẩm</h2>
@@ -52,8 +24,7 @@
                   <th></th>
                   <th scope="col">ID</th>
                   <th scope="col">Hình ảnh</th>
-                  <th scope="col">Tên sản phẩm</th>
-                 
+                  <th scope="col">Tên sản phẩm</th> 
                   <th scope="col">Trạng thái</th>
                   <th scope="col"></th>
               </tr>
@@ -68,7 +39,7 @@
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
                   <td>
                     <p style="font-size: 18px; font-weight:bold">{{$c->category_name}}</p>
-                    
+                    <p>{{$c->slug}}</p>
                   </td>
                  
                  <td>

@@ -1,37 +1,10 @@
 @extends('admin.appLayout.index')
 @section("css")
+<link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
+
 @endsection
 @section('content')
-<style>
-    td img{
-        width: 150px;
-        height: 120px;
-    }
-    .text {
-      display: flex;
-      margin: 0px 0 30px 0px;
-      width: 100%;
-      border-radius: 20px;
-      background: white;
-      padding:20px;
-      text-transform: uppercase;
-    }
-    .text a{
-      margin: 10px 20px;
-    }
-    .button{
-      font-size: 30px;  
-      font-weight:  normal;
-      line-height:  inherit;
-    }
-    .table {
-      background: #fff;
-      border-radius: 20px;
-    }
-   .table thead th {
-    padding-top:20px
-   }
-</style>
+
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
   <h2 class="">Danh sách sản phẩm</h2>

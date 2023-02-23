@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 
+
 class category extends Model
 {
     use HasFactory;
     protected $table="categories";
-    public function sluggable(): array
+    public function sluggable():array
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'category_name'
             ]
         ];
     }

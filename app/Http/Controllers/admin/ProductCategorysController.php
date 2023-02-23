@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers\admin;
-
+use Illuminate\Support\Facades\DB;
+use Nette\Utils\Json;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\brand;
 use App\Models\product;
+use App\Models\category_group;
 
 
 class ProductCategorysController extends Controller
 {
     //
     public function index(){
-        $categories=category::all();
+        $categories=category::orderBy('id','desc')->get();
         $data=[
             // "products"=>$products,
             "categories"=>$categories
@@ -21,20 +23,20 @@ class ProductCategorysController extends Controller
         return view('admin.product_category.index',$data);
     }
     public function create(){
-        
+       
         $categories=category::all();
         $data=[
             "categories"=>$categories,
         ];
         return view('admin.product_category.create',$data);
     }
+
     public function create_(Request $request){
-
-        $request->validate([
-            'name' => ['required','min:3','max:20'],
-            ]
-         );
-
+      
+        // $request->validate([
+        //     'category_name' => ['required','min:3','max:20'],
+        //     ]
+        //  );
         if($request->has('thumb')){
             $file = $request->thumb;
             $ext = $request->thumb->extension();
@@ -44,17 +46,10 @@ class ProductCategorysController extends Controller
         $request->merge(['thumb' => $file_name]);
         
         $p = new category;
-        $p->name=$_POST['name'];
+        $p->category_name=$_POST['category_name'];
         $p->thumb=$file_name;
-        $p->summary=$_POST['summary'];
-        $p->content=$_POST['content'];
-        $p->price=$_POST['price'];
-        $p->discount=$_POST['discount'];
         $p->is_active=$_POST['is_active'];
-        $p->price_current=$_POST['price_current'];
-        $p->brand=$_POST['brand'];
-        $p->unit=$_POST['unit'];
-        $p->category_id=$_POST['category_id'];
+        $p->stt=$_POST['stt'];
         $p->save();
         
         return redirect('/admin/product_category')->with('thongbao','Thêm thành công sản phẩm');
@@ -70,9 +65,10 @@ class ProductCategorysController extends Controller
     public function update($id){
         $p = category::find($id);
         if($p==null) return redirect('/thongbao');
-        return view('admin.product_category.update',['p'=>$p,'categories'=>$categories,'brands'=>$brands]);
+        return view('admin.product_category.update',['p'=>$p,]);
     }
     public function update_(Request $request,$id){
+        $file_name = null;
         if($request->has('thumb')){
             $file = $request->thumb;
             $ext = $request->thumb->extension();
@@ -82,17 +78,9 @@ class ProductCategorysController extends Controller
         $request->merge(['thumb' => $file_name]);
         $p = category::find($id);
         if($p==null) return redirect('/thongbao');
-        $p->name=$_POST['name'];
-        $p->thumb=$file_name;
-        $p->summary=$_POST['summary'];
-        $p->discount=$_POST['discount'];
-        $p->content=$_POST['content'];
-        $p->price=$_POST['price'];
-        $p->price_current=$_POST['price_current'];
-        $p->brand=$_POST['brand'];
-        $p->unit=$_POST['unit'];
+        $p->category_name=$_POST['category_name'];
+        $p->thumb=$file_name??$p->thumb;
         $p->is_active=$_POST['is_active'];
-        $p->category_id=$_POST['category_id'];
         $p->save();
         return redirect('/admin/product_category')->with('thongbao','Cập nhật thành công sản phẩm');;
     }
