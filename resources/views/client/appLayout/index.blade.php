@@ -44,6 +44,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
+<<<<<<< HEAD
 
 
 
@@ -67,6 +68,8 @@
 
 
 
+=======
+>>>>>>> 8371f1e765f4ee0813d890de9174b2d365c50a2c
 </body>
 
 @yield("js")

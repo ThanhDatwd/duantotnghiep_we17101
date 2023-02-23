@@ -4,6 +4,7 @@ use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\NewsController;
 use App\Http\Controllers\client\ProductsController;
 use App\Http\Controllers\admin\NewsController as AdminNewsController;
+use App\Http\Controllers\admin\AdminController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,26 @@ Route::prefix('/')->name('site')->group(function(){
     Route::prefix('/admin')->name('site')->group(function(){
         Route::get('/product', [ProductsController::class,'index'])->name('product');
         Route::get('/news', [AdminNewsController::class,'index'])->name('news');
+        Route::get('/news/them', [AdminNewsController::class,'them'])->name('news.them');
+        Route::post('/news/them', [AdminNewsController::class,'them1'])->name('news.them1');
+        Route::get('/news/capnhat/{id}', [AdminNewsController::class,'capnhat'])->name('news.capnhat');
+        Route::post('/news/capnhat/{id}', [AdminNewsController::class,'capnhat_'])->name('news.capnhat_');
+        Route::get('/news/xoa/{id}', [AdminNewsController::class,'xoa'])->name('news.xoa');
+    
+        Route::get('/news/phuc-hoi/{id}', [AdminNewsController::class,'restore'])->name('admin.news.restore');
+        Route::get('/news/phuc-hoi-tat-ca', [AdminNewsController::class,'restoreAll'])->name('admin.news.restoreAll');
+      
+        Route::get('/news/thung-rac', [AdminNewsController::class,'trash'])->name('admin.news.trash');
+
+        // xoá nhiều
+        Route::post('/news/xoa-nhieu', [
+            AdminNewsController::class,
+            'deleteMany'
+        ]
+        )->name('admin.news.deleteMany');
+
+        Route::get('/', [AdminController::class,'index']);
+
     });
 
     
