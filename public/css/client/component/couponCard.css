@@ -1,0 +1,62 @@
+
+.coupons{
+    position: relative;
+    border: 1px dashed #ff6307;
+    background: rgba(255,237,232,0.5);
+    border-radius: 10px;
+    padding: 20px;
+    /* border-style: dashed; */
+}
+.coupons legend{
+    width: auto;
+    color: #ff6307;
+    font-weight: 600;
+    background: #fff6f3;
+    border-radius: 20px;
+    border: 1px solid;
+    font-size: 18px;
+}
+.free-gifts legend img {
+    max-width: 23px;
+    mix-blend-mode: multiply;
+    vertical-align: -3px;
+}
+.free-gifts {
+    margin-top: 16px;
+    border: 1px dashed #ff6307;
+    background: rgba(255,237,232,0.5);
+}
+.free-gifts legend {
+    position:absolute;
+    top:0px;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 0px 16px;
+    color: #ff6307;
+    font-weight: 600;
+    background: #fff6f3;
+    border-radius: 20px;
+    border: 1px solid;
+    font-size: 16px;
+}
+.free-gifts legend img {
+    max-width: 23px;
+    mix-blend-mode: multiply;
+    vertical-align: -3px;
+}
+.free-gifts .item .m_copy {
+    background: #ff6409;
+    border-radius: 15px;
+    border: 1px solid;
+    font-size: 14px;
+    padding: 4px 8px;
+}
+.free-gifts .vmore_c {
+    left: 0;
+    bottom: 0px;
+    border-top: 1px dashed #ff6307;
+    background: #fff;
+    padding: 2px 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

@@ -3,10 +3,9 @@
 <link rel="stylesheet" href="{{asset('css/client/productDetail.css')}}">
 @endsection
 @section('main-content')
-<div class="half-circle"></div>
-<section class="product-detail grid ">
+<section class="product-detail grid container">
         <div class="">
-            <h1 class="product-name font-weight-bold text-uppercase mb-3">hành tây củ</h1>
+            <h1 class="product-name font-weight-bold text-uppercase mb-3">{{$product->name}}</h1>
             <div class="product-detail--infos">
                 <div class="product-detail--img">
                     <div class="swiper mySwiperProductDetailThumb">
@@ -56,6 +55,11 @@
                     </div>
                 </div>
             </div>
+            <div>
+              @if (strlen($coupons)>1)
+                <x-AppCouponCard :list="$coupons"/>
+              @endif
+            </div>
             <div class="product-detail--other mt-4">
                 <h3 class="title underline">Thông tin chi tiết</h3>
                 <p>đang cập nhật</p>
@@ -95,6 +99,9 @@
                 <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/219284243_343850734042591_481454821461992375_n.jpg?stp=dst-jpg_p843x403&_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=Vb6Lj4eKW_UAX-LO1Y0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfA9Wfgfk21Tv5KIwq09B_fa0r05CmM1OeLxpomr6zw9EQ&oe=63F885EA" alt="" class="banner">
             </div>
         </div>
+    </section>
+    <section class="container" style="margin-top: 20px" >
+      
     </section>
 @endsection
 @section('js')
