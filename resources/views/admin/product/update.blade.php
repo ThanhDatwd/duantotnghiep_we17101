@@ -9,7 +9,7 @@
     @csrf
     <div class="adproduct">
 
-        <h2>Cập nhật sản phẩm</h2>
+        <h2>CẬP NHẬT SẢN PHẨM</h2>
         
         <div class= "container-fluid">
             <div class= "row">

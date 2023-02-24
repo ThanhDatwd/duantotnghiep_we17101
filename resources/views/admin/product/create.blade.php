@@ -4,13 +4,13 @@
 @endsection
 @section('content')
 
-<a href="/admin/product"><button>danh sách</button></a>
+{{-- <a href="/admin/product"><button>danh sách</button></a> --}}
 
 <form action="/admin/product/create" enctype="multipart/form-data" method="post">
     @csrf
     <div class="adproduct">
 
-        <h2>Thêm sản phẩm</h2>
+        <h2>THÊM SẢN PHẨM</h2>
         
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -29,7 +29,7 @@
                        
                         <div class="adpro1">
                             <p>Tên sản phẩm <span>(*)</span></p>
-                            <input type="text" name="name" placeholder="Nhập tên sản phẩm">
+                            <input type="text" name="name" value="{{old('name')}}" placeholder="Nhập tên sản phẩm">
                         </div>
                      
                 
@@ -38,8 +38,6 @@
                         <div class="adpro1">
                             <p>Loại sản phẩm <span>(*)</span></p>
                             <select name="category_id">
-
-                 
                                     @foreach($categories as $c)
                                     <option value="{{$c->id}}">{{$c->category_name}}</option>
                                   

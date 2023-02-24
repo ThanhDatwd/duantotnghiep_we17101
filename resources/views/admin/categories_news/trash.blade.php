@@ -3,12 +3,12 @@
 <?php
 use Illuminate\Support\Facades\DB;
 ?>
-<form action="{{url('admin/news/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
+<form action="{{url('admin/categories_news/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
 @csrf
 <div class="container-fluid pt-4 px-4">
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Quản lý tin tức</h6>
+                            <h6 class="mb-4">Tin rác</h6>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\DB;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($news as $item)
+                                    @foreach ($categories_news as $item)
                                     <tr>
                                         <td><input type="checkbox" name="check[]" value="{{$item->id}}"></td>
                                         <td>{{$item->title}}</td>
@@ -68,19 +68,19 @@ use Illuminate\Support\Facades\DB;
                                         <td>
                                            
                                      <div class="pagination">
-    @if ($news->currentPage() > 0)
-        <a href="{{ $news->previousPageUrl() }}">Previous</a>
+    @if ($categories_news->currentPage() > 0)
+        <a href="{{ $categories_news->previousPageUrl() }}">Previous</a>
     @endif
 
-    @for ($i = 1; $i <= $news->lastPage(); $i++)
-        <a href="{{ $news->url($i) }}" 
-           class="{{ ($news->currentPage() == $i) ? ' active' : '' }}">
+    @for ($i = 1; $i <= $categories_news->lastPage(); $i++)
+        <a href="{{ $categories_news->url($i) }}" 
+           class="{{ ($categories_news->currentPage() == $i) ? ' active' : '' }}">
            {{ $i }}
         </a>
     @endfor
 
-    @if ($news->hasMorePages())
-        <a href="{{ $news->nextPageUrl() }}">Next</a>
+    @if ($categories_news->hasMorePages())
+        <a href="{{ $categories_news->nextPageUrl() }}">Next</a>
     @endif
 </div>
                                           
@@ -89,15 +89,17 @@ use Illuminate\Support\Facades\DB;
                                            
                                     
 
-                                            <a href="{{url('admin/news/them')}}" class="btn btn-primary">Thêm</a>
-                                                  
-                                            <a href="{{url('admin/news/thung-rac')}}" class="btn btn-primary">Thùng rác
-                                                <?php
-                                                $count = DB::table('news')->where('deleted_at','!=',null)->count();
-                                                ?>
-                                                ({{$count}})
-                                                
-                                            </a>
+                                            <a href="{{url('admin/categories_news/them')}}" class="btn btn-primary">Thêm</a>
+                                        <a href="{{url('admin/categories_news/phuc-hoi-tat-ca')}}" class="btn btn-primary">Phục hồi
+
+                                        <span>
+                                            (<?php
+                                            $count = DB::table('categories_news')->where('deleted_at','!=',null)->count();
+                                            echo $count;
+                                            ?>)
+                                            
+                                        </span>
+                                        </a>
                                                 <button type="submit" class="btn btn-danger">Xóa nhiều</button>
                                               
                                         </td>

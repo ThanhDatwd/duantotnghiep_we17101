@@ -10,6 +10,9 @@ use App\Models\brand;
 use App\Models\category_group;
 use Illuminate\Support\Facades\DB;
 use Nette\Utils\Json;
+use App\Http\Requests\ProductsRequest;
+use Illuminate\Pagination\Paginator;
+
 
 
 class ProductsController extends Controller
@@ -17,7 +20,7 @@ class ProductsController extends Controller
     public function index(){
         // $products = DB::table('products')
         // ->leftJoin('categories', 'categories.id', '=', 'products.category_id')->get();
-        $products=product::orderBy('id','desc')->paginate(50);
+        $products=product::orderBy('id','desc')->paginate(5);
         // $categories=category::all();
         $data=[
             "products"=>$products,
@@ -36,13 +39,7 @@ class ProductsController extends Controller
         ];
         return view('admin.product.create',$data);
     }
-    public function create_(Request $request){
-
-        $request->validate([
-            'name' => ['required','min:3','max:20'],
-            ]
-         );
-
+    public function create_(ProductsRequest $request){
         if($request->has('thumb')){
             $file = $request->thumb;
             $ext = $request->thumb->extension();
@@ -73,6 +70,23 @@ class ProductsController extends Controller
         $p->delete();
         
         return redirect('/admin/product');
+    }
+
+    public function trashed(){
+        $products = product::onlyTrashed()->get();
+        return view('admin.product.trashed',['products'=>$products]);
+    }
+    public function restore($id){
+        product::whereId($id)->restore();
+        return back()->with('thongbao','Phục hồi thành công');;
+    }
+    public function restoreAll(){
+        product::onlyTrashed()->restore();
+        return back()->with('thongbao','Phục hồi tất cả thành công');;
+    }
+    public function forceDelete($id){
+        product::find($id)->forceDelete();
+        return back();
     }
 
     public function update($id){
@@ -107,5 +121,7 @@ class ProductsController extends Controller
         $p->save();
         return redirect('/admin/product')->with('thongbao','Cập nhật thành công sản phẩm');;
     }
+
+  
 
 }

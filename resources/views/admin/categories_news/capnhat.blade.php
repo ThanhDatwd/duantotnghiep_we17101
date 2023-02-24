@@ -1,33 +1,44 @@
 @extends('admin.appLayout.index')
-@section('css')
-<link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
-@endsection
 @section('content')
-<form action="/admin/news/them" method="post" class="col-12 m-auto" enctype="multipart/form-data">
-<div class="adproduct">
-{{-- <div class="direct-header">
-        <div class="direct">
-        <a href="/admin">Trang chủ</a>
-        <span>></span>
-        <a href="/admin/news">Tin tức</a>
-        <span>></span>
-        <a href="/admin/news/them">Thêm tin tức</a>
-    </div> --}}
-<div class="head" style="text-align: left;">
-    <h2>THÊM TIN TỨC</h2>
-</div>
-{{-- <div class="span">
-   <input type="hidden">
-</div>
-<div class="span">
-   <input type="hidden">
-</div> --}}
+<?php
 
-<div class= "container-fluid" style="Width: 100%;">
+use Illuminate\Support\Facades\DB;
+
+?>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{asset('css/admin/product.css')}}">
+    @yield('css')
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script type="text/javascript" src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
+<style>
+
+</style>
+<div class="adproduct">
+
+
+<form action="/admin/news/capnhat/{{$t->id}}" method="post" class="col-7 m-auto">
+<div class= "container-fluid">
     <div class= "row">
         <div class ="col-md-9 ">
             <div id="exTab1" class="container">
-              
+                {{-- <ul  class="nav listnav">
+                    <li class="active">
+                        <a  href="#1a" data-toggle="tab">Chung</a>
+                    </li>
+                    <li><a href="#2a" data-toggle="tab">Thiết kế</a>
+                    </li>
+                    <li><a href="#3a" data-toggle="tab">Sản phẩm</a>
+                    </li>
+                    <li><a href="#4a" data-toggle="tab">Background color</a>
+                    </li>
+                </ul> --}}
                 
 
                 <div class="tab-content clearfix">
@@ -37,29 +48,27 @@
                                
                                 <div class="adpro1">
                                     <p>Tiêu đề <span>(*)</span></p>
-                                    <input type="text" placeholder="Nhập tên tiêu đề" name="title">
-                                    @error('title')
-                                   <p>{{$message}}</p>
-                                    @enderror
-                                    
+                                    <input type="text" placeholder="Nhập tên tiêu đề" name="title" value="{{$t->title}}">
                                 </div>
                              
                             </div>
                             <div class="addpro">
                                 <div class="adpro1">
                                     <p>Thể loại <span>(*)</span></p>
-                                   <?php
-                                    $category_news = DB::table('categories_news')->get();
-                                    ?>
-                                     @foreach($category_news as $category)
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="category_news_id" value="{{ $category->id }}">
-            <label class="form-check-label">{{ $category->name }}</label>
-        </div>
-    @endforeach
-                                    
-                                  
-                                    
+                                    <select name="category_news_id">
+                                        <option value="">Chọn thể loại</option>
+
+                                        <?php
+            $categories = DB::table('categories_news')->get();
+            foreach($categories as $cate){
+                if($cate->id == $t->category_news_id){
+                    echo "<option value='$cate->id' selected>$cate->name</option>";
+                }else{
+                    echo "<option value='$cate->id'>$cate->name</option>";
+                }
+            }
+            ?>
+                                    </select>
                                 </div>
                                 
                             
@@ -74,9 +83,6 @@
                                       <p>Tóm tắt <span>(*)</span></p>
                                     <textarea name="summary" id="" style="width:100%" cols="100" rows="5" name="summary">
                                 </textarea>
-                                   @error('summary')
-                                      <p>{{$message}}</p>
-                                        @enderror
 
                                 </div>
                             </div>
@@ -87,9 +93,6 @@
                                     <p>Nội dung bài viết  <span>(*)</span></p>
                                         <textarea id="editor1"  style="width:100%"  name="content">
                                     </textarea>
-                                    @error('content')
-                                    <p>{{$message}}</p>
-                                    @enderror
                                 </div>
                                </div>
 
@@ -130,9 +133,6 @@
                     <!--<input type="text" id="textinput"/>--
                     <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
                     <input type="file" name="thumb" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
-                    @error('thumb')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
             
                 </div>
             </div>
@@ -145,7 +145,6 @@
  
 </div>
 @csrf
-</div>
  </form>  
 </div>
 <script>
