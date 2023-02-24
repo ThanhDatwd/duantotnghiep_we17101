@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::component('AppHeader',AppHeader::class);
         Blade::component('ProductCard',ProductCard::class);
-        Blade::component('CouponCard',CouponCard::class);
+        Blade::component('AppCouponCard',CouponCard::class);
         Blade::component('NewsCard',NewsCard::class);
         Blade::component('AppNavbarMobile',AppNavbarMobile::class);
         //

@@ -11,10 +11,10 @@ class CouponCard extends Component
      *
      * @return void
      */
-    public $data;
-    public function __construct($data)
-    {
-        $this->data= $data;
+    public $list;
+    public function __construct($list)
+    {    
+        $this->list=json_decode($list);
     }
 
     /**
@@ -23,7 +23,7 @@ class CouponCard extends Component
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render()
-    {
+    { 
         return view('components.coupons-card');
     }
 }

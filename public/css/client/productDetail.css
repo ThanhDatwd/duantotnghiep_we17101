@@ -3,8 +3,6 @@
 } */
 
 .product-detail {
-  margin: 0 100px;
-  gap: 10px;
 }
 
 .product-detail .product-name{
@@ -17,6 +15,7 @@
 .related-products h2.title{
     display: flex;
     align-items: center;
+    /* justify-content: space-between; */
 }
 .related-products h2.title a{
     font-size: 18px !important; 
@@ -156,6 +155,7 @@
       display: grid;
   grid-template-columns: 75% 25%;
   /* grid-auto-columns: minmax(0, 1fr); */
+  gap: 20px;
 }
 
 .flex-item{
@@ -231,9 +231,7 @@
 
 @media only screen and (max-width: 600px){
 
-    .product-detail{
-        margin: 0px 25px;
-    }
+    
 
     .grid{
         display: flex;
