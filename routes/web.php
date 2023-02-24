@@ -3,6 +3,8 @@
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\NewsController;
 use App\Http\Controllers\client\ProductsController;
+use App\Http\Controllers\client\CartController;
+use App\Http\Controllers\client\AccountController;
 use App\Http\Controllers\admin\ProductsController as AdminProductController;
 use App\Http\Controllers\admin\NewsController as AdminNewsController;
 use App\Http\Controllers\admin\CategoriesNews;
@@ -29,9 +31,12 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/product', [ProductsController::class, 'index'])->name('product');
+    // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
+    Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+    Route::get('/account', [AccountController::class, 'account'])->name('account');
     Route::get('payment', function () {
         return view('client.payment.index');
     });

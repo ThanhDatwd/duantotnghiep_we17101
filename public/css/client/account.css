@@ -1,0 +1,77 @@
+
+.nav{
+    border: 1px solid #E8E8E8 !important;
+    border-radius: 8px !important; 
+    padding: 0px 16px;
+}
+
+.nav-link{
+    color: black !important;
+    text-align: left !important;
+    border-bottom: 1px solid #E8E8E8 !important;
+    padding: 16px 0px;
+    
+}
+.nav-link.active{
+    background-color: #fff !important; 
+    color: var(--mainColor) !important;
+    font-weight: 700 !important;
+}
+
+.account-tabs{
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.account-tab:first-child{
+    margin-right: 14px;
+    width: calc(50% - 14px)
+}
+
+.account-tab{
+    border: 1px solid #E8E8E8 !important;
+    border-radius: 8px !important; 
+    padding: 16px !important;
+    gap: 6px;
+}
+
+.account-tab h4{
+    color: var(--mainColor);
+    font-weight: 700 !important;
+    font-size: 1.25rem;
+}
+
+.tab-name{
+    color: var(--mainColor);
+}
+
+.tab-title{
+    font-weight: 700 !important;
+    opacity: 85%;
+}
+
+.tab-pane span{
+    font-weight: 700 !important;
+    opacity: 85%;
+}
+
+.account-tab img{
+    width: 25px;
+}
+
+.btn-main{
+    background-color:  var(--mainColor);
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.d-flex{
+
+}
+
+.info{
+    margin-bottom: 5px;
+}
