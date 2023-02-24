@@ -86,6 +86,9 @@ a:hover {
     --pc-width: 1024px;
 
 }
+/* ::-webkit-scrollbar{
+    display: none;
+} */
 
 .title{
     
@@ -112,25 +115,27 @@ a:hover {
     -webkit-align-items: center;
     align-items: center;
 } */
+.swiper-button-prev, .swiper-button-next {
+    /* right: auto; */
+    height: 60px;
+    width: 30px;
+    background: #f7f7f7;
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
+    color: #707070;
+    border-radius: 50%;
+
+}
 .swiper-button-prev {
-    left: -30px;
-    right: auto;
-    height: 60px;
-    width: 60px;
-    background: #f7f7f7;
-    box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
-    color: #707070;
-    border-radius: 50%;
+    left: 0px;
+    border-radius: 0 60px 60px 0;
+
 }
-.swiper-button-next, .swiper-rtl .swiper-button-prev {
-    right: -30px;
-    height: 60px;
-    width: 60px;
-    background: #f7f7f7;
-    box-shadow: 0 0 4px 0 rgb(0 0 0 / 20%);
-    color: #707070;
-    border-radius: 50%;
+.swiper-button-next {
+    right: 0px;
+    border-radius: 60px 0 0 60px;
+
 }
+
 .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
     content: 'prev';
 }
@@ -138,6 +143,13 @@ a:hover {
     content: 'next';
 }
 
+.half-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px 100px 0 0;
+  /* transform: rotate(-45deg); */
+  background-color: #f00;
+}
 .swiper-button-next:after, .swiper-button-prev:after {
     font-family: swiper-icons;
     font-size: 20px;
@@ -148,10 +160,10 @@ a:hover {
     position: absolute;
 }
 .swiper-button-prev:after{
-    left: 60%;
+    left: 20%;
 }
 .swiper-button-next:after{
-    right: 60% ;
+    right: 20% ;
 }
 .swiper-pagination-bullet{
     border-radius:8px !important;
@@ -171,7 +183,7 @@ a:hover {
   }
 
   .swiper-slide {
-    text-align: center;
+    /* text-align: center; */
     font-size: 18px;
     height: calc((100% - 30px) / 2) !important;
 

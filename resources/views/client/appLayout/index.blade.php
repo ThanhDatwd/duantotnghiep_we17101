@@ -45,11 +45,14 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> a9d1c9f898cd33b977554eccdcf039a24e9df1a4
     {{-- ---------------product---------- --}}
     
     <script
@@ -65,11 +68,14 @@
     src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
   ></script><script src="{{asset('./js/client/product.js')}}"></script>
 
+<<<<<<< HEAD
 
 
 
 =======
 >>>>>>> 8371f1e765f4ee0813d890de9174b2d365c50a2c
+=======
+>>>>>>> a9d1c9f898cd33b977554eccdcf039a24e9df1a4
 </body>
 
 @yield("js")

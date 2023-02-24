@@ -10,7 +10,7 @@
     height: 100% !important;
 }
 .products-card.isRow{
-    height: auto;
+    height: auto !important;
     flex-direction: row;
 }
 .products-card.isRow .thumb{

@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category_group', function (Blueprint $table) {
+        Schema::create('import_history', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('thumb');
-            $table->integer('stt');
-            $table->string('slug')->unique();
-            $table->boolean('is_active')->default(1);
-            $table->boolean('is_hot')->default(1);
+            $table->int('quantity_import');
+            $table->int('price_import');
+            $table->int('price_current');
+            $table->foreignId('product_id')->constrained('products');
             $table->timestamp('deleted_at')->nullable();
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
+            $table->foreignId('created_by')->constrained('administrators')->nullable();
+            $table->foreignId('updated_by')->constrained('administrators')->nullable();
             $table->timestamps();
-
         });
     }
 
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_group');
+        Schema::dropIfExists('history_product');
     }
 };

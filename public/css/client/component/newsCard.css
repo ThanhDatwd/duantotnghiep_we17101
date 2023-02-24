@@ -143,6 +143,8 @@
     line-height: 22px;
     cursor: pointer;
     margin-bottom: 8px;
+
+    text-align: left;
 }
 .news-card .content.isRow .title{
     margin-bottom: 0;

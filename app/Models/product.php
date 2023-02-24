@@ -27,5 +27,9 @@ class product extends Model
     {
         return $this->hasMany(product_images::class,"product_id","id");
     }
+    public function history()
+    {
+        return $this->hasMany(importHistory::class,"product_id","id");
+    }
 }
 

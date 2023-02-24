@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{asset('css/client/component/productCard.css')}}">
-<div class="products-card{{$isRow==true?'isRow':''}}">
+<a href="{{$link}}" class="products-card {{$isRow==true?'isRow':''}}">
     <div class="thumb">
         <img src={{$thumb??null}} alt="">
         <i class='bx bx-basket bx-tada'></i>
@@ -17,5 +17,4 @@
             <div class="price_old">{{$priceOld}}</div>
         </div>
     </div>
-    
-</div>
+</a>

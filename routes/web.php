@@ -4,6 +4,7 @@ use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\NewsController;
 use App\Http\Controllers\client\ProductsController;
 use App\Http\Controllers\admin\NewsController as AdminNewsController;
+use App\Http\Controllers\admin\CategoriesNews;
 use App\Http\Controllers\admin\AdminController;
 
 
@@ -22,34 +23,17 @@ use Symfony\Component\Routing\Router;
 |
 */
 
-Route::get('/exam', [HomeController::class,'exam'])->name('exam');
-// Route::get('/', function () {
-//     return view('client.appLayout.index');
-// });
-Route::get('/home', function () {
-    return view('client.home.index');
-});
-Route::get('/admin/pro', function () {
-    return view('admin.product.them');
-});
-
-
-
-
-Route::get('/product', [ProductsController::class,'index'])->name('product');
-Route::get('/ss', [ProductsController::class,'index'])->name('product');
- 
-
-
-Route::prefix('/')->name('site')->group(function(){
-    Route::get('/', [HomeController::class,'index'])->name('home');
-    Route::get('/home', [HomeController::class,'index'])->name('home');
-    Route::get('/product', [ProductsController::class,'index'])->name('product');
-    Route::get('/news', [NewsController::class,'index'])->name('news');
-    Route::get('payment',function(){
+Route::prefix('/')->name('client')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/product', [ProductsController::class, 'index'])->name('product');
+    Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
+    Route::get('/news', [NewsController::class, 'index'])->name('news');
+    Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
+    Route::get('payment', function () {
         return view('client.payment.index');
     });
-    Route::get('thanks',function(){
+    Route::get('thanks', function () {
         return view('client.thankyou.index');
     });
     //
@@ -75,6 +59,30 @@ Route::prefix('/')->name('site')->group(function(){
         )->name('admin.news.deleteMany');
 
         Route::get('/', [AdminController::class,'index']);
+
+    });
+        Route::prefix('/admin')->name('site')->group(function(){
+       
+        Route::get('/categories_news', [CategoriesNews::class,'index'])->name('categories_news');
+        Route::get('/categories_news/them', [CategoriesNews::class,'them'])->name('categories_news.them');
+        Route::post('/categories_news/them', [CategoriesNews::class,'them1'])->name('categories_news.them1');
+        Route::get('/categories_news/capnhat/{id}', [CategoriesNews::class,'capnhat'])->name('categories_news.capnhat');
+        Route::post('/categories_news/capnhat/{id}', [CategoriesNews::class,'capnhat_'])->name('categories_news.capnhat_');
+        Route::get('/categories_news/xoa/{id}', [CategoriesNews::class,'xoa'])->name('categories_news.xoa');
+    
+        Route::get('/categories_news/phuc-hoi/{id}', [CategoriesNews::class,'restore'])->name('admin.categories_news.restore');
+        Route::get('/categories_news/phuc-hoi-tat-ca', [CategoriesNews::class,'restoreAll'])->name('admin.categories_news.restoreAll');
+      
+        Route::get('/categories_news/thung-rac', [CategoriesNews::class,'trash'])->name('admin.categories_news.trash');
+
+        // xoá nhiều
+        Route::post('/categories_news/xoa-nhieu', [
+            CategoriesNews::class,
+            'deleteMany'
+        ]
+        )->name('admin.categories_news.deleteMany');
+
+        Route::get('/', [CategoriesNews::class,'index']);
 
     });
 
