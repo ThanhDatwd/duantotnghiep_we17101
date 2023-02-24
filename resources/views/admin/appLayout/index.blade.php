@@ -64,21 +64,19 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Quản lý tin tức</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Quản lý loại tin</a>
+                            <a href=" {{url('admin/categories_news')}}" class="dropdown-item">Quản lý loại tin</a>
                            <a href="{{url('admin/news')}}" class="dropdown-item">Quản lý tin tức</a>
                             <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
                         </div>
                     </div>
-                  
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Nguồn Hàng</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
+                            <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn hàng</a>
+                           <a href="{{url('admin/news')}}" class="dropdown-item">Quản lý tin tức</a>
+                            <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </nav>
         </div>

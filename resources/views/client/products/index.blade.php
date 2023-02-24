@@ -163,8 +163,7 @@
                     @foreach ($products as $item)
                     <x-ProductCard name="{{$item->name}}" 
                                    thumb="{{$item->thumb}}"
-                                   priceOld="{{$item->price_format}}"
-                                   priceCurrent="{{$item->price_current_format}}"
+                                   priceOld="{{$item->price}}"
                                    discount="{{$item->discount}}"
                                     {{-- cột dọc true - ngang : false --}}
                                    {{-- isRow="{{true}}" --}}

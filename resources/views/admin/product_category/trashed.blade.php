@@ -19,7 +19,7 @@
 
   <div class="table-responsive">
     
-    <a href="restore-all"><h3 ><i class="fa-solid fa-reply-all"></i></h3></a>
+    <a href="restore-all"  ><button type="button" class="btn btn-success m-2"><i class="fa fa-home me-2"></i>Khôi Phục Tất Cả</button>
       <table class="table">
           <thead>
               <tr>

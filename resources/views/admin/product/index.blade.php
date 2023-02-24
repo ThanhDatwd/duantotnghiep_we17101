@@ -77,6 +77,14 @@
               @endforeach
           </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+     
+            {{$products->appends(request()->all())->links()}}  
+         
+      
+        </ul>
+      </nav>
   </div>
 </div>
 @endsection

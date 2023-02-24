@@ -76,7 +76,7 @@ class ProductCategorysController extends Controller
     }
     public function forceDelete($id){
         category::find($id)->forceDelete();
-        return back();
+        return back()->with('thongbao','xóa thành công');
     }
     public function update($id){
         $p = category::find($id);
