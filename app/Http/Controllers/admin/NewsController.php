@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\news;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -38,6 +39,8 @@ class NewsController extends Controller
     
     $t->content= $_POST['content'];
     $t->category_news_id = $_POST['category_news_id'];
+    //slug
+     $t->slug = Str::slug($request->input('title'));
    
     
     
@@ -45,7 +48,7 @@ class NewsController extends Controller
 
     $t->save();
 
-    return redirect('/');
+    return redirect('/admin/news');
 
 
 }
@@ -65,6 +68,8 @@ function capnhat_($id){
     $t->thumb = $_POST['thumb'];
     
     $t->category_news_id = $_POST['category_news_id'];
+    $t->content= $_POST['content'];
+    
     //save
     $t->save();
     return redirect('/admin/news');
