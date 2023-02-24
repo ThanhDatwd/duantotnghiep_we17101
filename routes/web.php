@@ -28,8 +28,8 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/product', [ProductsController::class, 'index'])->name('product');
-    Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
-    // Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
+    // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
+    Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
