@@ -23,7 +23,8 @@ return new class extends Migration
             $table->integer('count_products');
             $table->string('fee_ship');
             $table->foreignId('user_id')->constrained('users');
-            $table->string('note');
+            $table->string('customer_note');
+            $table->string('shop_note');
             $table->timestamp('deleted_at');
             $table->timestamps();
         });

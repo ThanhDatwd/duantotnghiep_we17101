@@ -11,27 +11,22 @@
                     <div class="swiper mySwiperProductDetailThumb">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                            <img src="{{asset('upload/'.$product->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" />
                           </div>
+                          @foreach ($product->products_images as $product_images )
                           <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                            <img src="{{asset('upload/'.$product_images->url)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" />
                           </div>
+                          @endforeach
                         </div>
                       </div>
                       <div thumbsSlider="" class="swiper mySwiperProductDetailGallery">
                         <div class="swiper-wrapper">
+                          @foreach ($product->products_images as $product_images )
                           <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                            <img src="{{asset('upload/'.$product_images->url)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" />
                           </div>
-                          <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                          </div>
+                          @endforeach
                         </div>
                       </div>
                     {{-- <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="" class=""> --}}
@@ -40,8 +35,12 @@
                 <div class="product-detail--info">
                     <div class="product-detail--info__status">Tình trạng: <span>Còn hàng</span>  |  Thương hiệu: <span>Green Food</span></div>
                     <div class="product-detail--info__prices">
-                        <div class="product-detail--info__price-new">15.000<span>₫</span></div>
-                        <div class="product-detail--info__price-old">25.000<span>₫</span></div>
+                        @if ($product->discount>0)
+                        <div class="product-detail--info__price-new">{{($product->price_current-($product->price_current*$product->discount/100))}}<span>₫</span></div>
+                        <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
+                        @else
+                          
+                        @endif
                     </div>
                     <div class="product-detail--info__amount">
                         Số lượng <span>-</span><span>+</span><span>1</span>

@@ -146,6 +146,7 @@
     justify-content: center;
     background: #FFFFFF;
     border-radius: 40px;
+    margin-right: 10px;
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover i,
@@ -194,6 +195,9 @@
     justify-content: center;
     background: #FFFFFF;
     border-radius: 40px;
+    
+    font-size: 20px;
+
 }
 
 .content .navbar .dropdown-toggle::after {
