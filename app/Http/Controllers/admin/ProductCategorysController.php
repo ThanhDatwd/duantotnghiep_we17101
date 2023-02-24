@@ -62,6 +62,22 @@ class ProductCategorysController extends Controller
         return redirect('/admin/product_category');
     }
 
+    public function trashed(){
+        $categories = category::onlyTrashed()->get();
+        return view('admin.product_category.trashed',['categories'=>$categories]);
+    }
+    public function restore($id){
+        category::whereId($id)->restore();
+        return back()->with('thongbao','Phục hồi thành công');
+    }
+    public function restoreAll(){
+        category::onlyTrashed()->restore();
+        return back()->with('thongbao','Phục hồi tất cả thành công');;
+    }
+    public function forceDelete($id){
+        category::find($id)->forceDelete();
+        return back();
+    }
     public function update($id){
         $p = category::find($id);
         if($p==null) return redirect('/thongbao');

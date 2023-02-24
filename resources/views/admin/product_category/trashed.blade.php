@@ -7,7 +7,7 @@
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
   <h2 class="">Danh sách loại sản phẩm</h2>
-  <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus"></i> Thêm loại sản phẩm</a>
+  <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus"></i>  Thêm loại sản phẩm</a>
  </div>
 
   @if(Session::has('thongbao'))
@@ -18,6 +18,8 @@
 </a>
 
   <div class="table-responsive">
+    
+    <a href="restore-all"><h3 ><i class="fa-solid fa-reply-all"></i></h3></a>
       <table class="table">
           <thead>
               <tr>
@@ -53,10 +55,8 @@
                   </td>
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
-                    <a style="color: cadetblue" href="/admin/product_category/update/{{$c->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: yellow" href="/admin/product_category/delete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-solid fa-trash-can"></i> </a>
-                    <a style="color: red" href="/admin/product_category/forceDelete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
-                    {{-- <button onclick="myFunction()">XÓa</button> --}}
+                    <a style="color: cadetblue" href="/admin/product_category/restore/{{$c->id}}"><i class="fa-solid fa-trash-arrow-up"></i></a>
+                    {{-- <a style="color: red" href="/admin/product_category/forceDelete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a> --}}
                     <script>
                       function myFunction() {
                           if(!confirm("Bạn có chắc chắn muốn xóa không!!"))

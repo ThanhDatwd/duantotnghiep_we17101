@@ -7,7 +7,7 @@
 
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
-  <h2 class="">DANH SÁCH SẢN PHẨM </h2>
+  <h2 class="">Danh sách sản phẩm</h2>
   <a href="/admin/product/create"><i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm</a>
  </div>
   @if(Session::has('thongbao'))
@@ -17,6 +17,8 @@
   @endif
 </a>
   <div class="table-responsive">
+    <a href="restore-all"><h3 ><i class="fa-solid fa-reply-all"></i></h3></a>
+
       <table class="table">
           <thead>
               <tr>
@@ -60,10 +62,8 @@
                   </td>
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
-                    <a style="color: cadetblue" href="/admin/product/update/{{$p->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: orange" href="/admin/product/delete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
-                    <a style="color: red" href="/admin/product/forceDelete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
-
+                    <a style="color: cadetblue" href="/admin/product/restore/{{$p->id}}"><i class="fa-solid fa-trash-arrow-up"></i></a>
+                    <a style="color: red" href="/admin/product/trashed/forceDelete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
                     <script>
                       function myFunction() {

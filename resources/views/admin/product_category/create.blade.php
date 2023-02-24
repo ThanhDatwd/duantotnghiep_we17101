@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 
-<a href="/admin/product_category"><button>danh sách</button></a>
+{{-- <a href="/admin/product_category"><button>danh sách</button></a> --}}
 
 <form action="/admin/product_category/create" enctype="multipart/form-data" method="post">
     @csrf
@@ -29,7 +29,7 @@
                        
                         <div class="adpro1">
                             <p>Tên loại sản phẩm <span>(*)</span></p>
-                            <input type="text" name="category_name" placeholder="Nhập loại sản phẩm">
+                            <input type="text" name="category_name" value="{{old('category_name')}}" placeholder="Nhập loại sản phẩm">
                         </div>
                      
                 
@@ -90,7 +90,9 @@
         </div>
         
     </div>
-    <button type="submit" class="btnmoi">THÊM MỚi</button>
+    <div class="ci"><button type="submit" class="btnmoi">Thêm mới</button>
+        <a href="/admin/product_category">Hủy</a>
+    </div>
                </div>
             </div>
          </div>

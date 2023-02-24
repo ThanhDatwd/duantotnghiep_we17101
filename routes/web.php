@@ -46,13 +46,21 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/product/create', [AdminProductController::class,'create']);
         Route::post('/product/create', [AdminProductController::class,'create_']);
         Route::get('/product/delete/{id}', [AdminProductController::class,'delete']);
+        Route::get('/product/forceDelete/{id}', [AdminProductController::class,'forceDelete']);
+        Route::get('/product/trashed',[AdminProductController::class,'trashed']);
+        Route::get('/product/restore/{id}',[AdminProductController::class,'restore']);
+        Route::get('product/restore-all',[AdminProductController::class,'restoreAll']);
         Route::get('/product/update/{id}', [AdminProductController::class,'update']);
         Route::post('/product/update/{id}', [AdminProductController::class,'update_']);
         //------------ danh mục sản phẩm ---------------
-        Route::get('/product_category', [ProductCategorysController::class,'index']);
+        Route::get('/product_category', [ProductCategorysController::class,'index'])->name('admin-product_category');
         Route::get('/product_category/create', [ProductCategorysController::class,'create']);
         Route::post('/product_category/create', [ProductCategorysController::class,'create_']);
         Route::get('/product_category/delete/{id}', [ProductCategorysController::class,'delete']);
+        Route::get('/product_category/forceDelete/{id}', [ProductCategorysController::class,'forceDelete']);
+        Route::get('/product_category/trashed',[ProductCategorysController::class,'trashed']);
+        Route::get('/product_category/restore/{id}',[ProductCategorysController::class,'restore']);
+        Route::get('product_category/restore-all',[ProductCategorysController::class,'restoreAll']);
         Route::get('/product_category/update/{id}', [ProductCategorysController::class,'update']);
         Route::post('/product_category/update/{id}', [ProductCategorysController::class,'update_']);
         //---------------tin tức ----------------
