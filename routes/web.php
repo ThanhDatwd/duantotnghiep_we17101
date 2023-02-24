@@ -52,6 +52,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('product/restore-all',[AdminProductController::class,'restoreAll']);
         Route::get('/product/update/{id}', [AdminProductController::class,'update']);
         Route::post('/product/update/{id}', [AdminProductController::class,'update_']);
+        
         //------------ danh mục sản phẩm ---------------
         Route::get('/product_category', [ProductCategorysController::class,'index'])->name('admin-product_category');
         Route::get('/product_category/create', [ProductCategorysController::class,'create']);
@@ -63,8 +64,19 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('product_category/restore-all',[ProductCategorysController::class,'restoreAll']);
         Route::get('/product_category/update/{id}', [ProductCategorysController::class,'update']);
         Route::post('/product_category/update/{id}', [ProductCategorysController::class,'update_']);
+       
         //---------------tin tức ----------------
         Route::get('/news', [AdminNewsController::class,'index'])->name('news');
+        Route::get('/news/them', [AdminNewsController::class,'them'])->name('news.them');
+        Route::post('/news/them', [AdminNewsController::class,'them1'])->name('news.them1');
+        Route::get('/news/capnhat/{id}', [AdminNewsController::class,'capnhat'])->name('news.capnhat');
+        Route::post('/news/capnhat/{id}', [AdminNewsController::class,'capnhat_'])->name('news.capnhat_');
+        Route::get('/news/xoa/{id}', [AdminNewsController::class,'xoa'])->name('news.xoa');
+        Route::get('/news/phuc-hoi/{id}', [AdminNewsController::class,'restore'])->name('admin.news.restore');
+        Route::get('/news/phuc-hoi-tat-ca', [AdminNewsController::class,'restoreAll'])->name('admin.news.restoreAll');
+        Route::get('/news/thung-rac', [AdminNewsController::class,'trash'])->name('admin.news.trash');
+        // xoá nhiều
+        Route::post('/news/xoa-nhieu', [sAdminNewsController::class,'deleteMany'])->name('admin.news.deleteMany');
 
         Route::get('/', [AdminController::class,'index']);
 

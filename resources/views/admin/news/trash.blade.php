@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 <div class="container-fluid pt-4 px-4">
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Quản lý tin tức</h6>
+                            <h6 class="mb-4">Tin rác</h6>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -90,14 +90,16 @@ use Illuminate\Support\Facades\DB;
                                     
 
                                             <a href="{{url('admin/news/them')}}" class="btn btn-primary">Thêm</a>
-                                                  
-                                            <a href="{{url('admin/news/thung-rac')}}" class="btn btn-primary">Thùng rác
-                                                <?php
-                                                $count = DB::table('news')->where('deleted_at','!=',null)->count();
-                                                ?>
-                                                ({{$count}})
-                                                
-                                            </a>
+                                        <a href="{{url('admin/news/phuc-hoi-tat-ca')}}" class="btn btn-primary">Phục hồi
+
+                                        <span>
+                                            (<?php
+                                            $count = DB::table('news')->where('deleted_at','!=',null)->count();
+                                            echo $count;
+                                            ?>)
+                                            
+                                        </span>
+                                        </a>
                                                 <button type="submit" class="btn btn-danger">Xóa nhiều</button>
                                               
                                         </td>

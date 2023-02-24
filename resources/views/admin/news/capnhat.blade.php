@@ -21,52 +21,24 @@ use Illuminate\Support\Facades\DB;
 
 </style>
 <div class="adproduct">
-<div class="direct-header">
-        <div class="direct">
-        <a href="/admin">Trang chủ</a>
-        <span>></span>
-        <a href="/admin/news">Tin tức</a>
-        <span>></span>
-        <a href="/admin/news/them">Thêm tin tức</a>
-    </div>
-<div class="head" style="text-align: center;">
-    <h1>Thêm tin tức</h1>
-</div>
-<div class="span">
-   <input type="hidden">
-</div>
-<div class="span">
-   <input type="hidden">
-</div>
-<style>
-    .direct-header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .direct{
-        display: flex;
-        align-items: center;
-    }
-    .direct a{
-        color: #000;
-        text-decoration: none;
-    }
-    .direct span{
-        margin: 0 5px;
-    }
-    .head{
-        margin-top: 20px;
-    }
-</style>
-</div>
 
-<form action="/admin/news/them" method="post" class="col-7 m-auto" enctype="multipart/form-data">
-<div class= "container-fluid" style="Width: 100%;">
+
+<form action="/admin/news/capnhat/{{$t->id}}" method="post" class="col-7 m-auto">
+<div class= "container-fluid">
     <div class= "row">
         <div class ="col-md-9 ">
             <div id="exTab1" class="container">
-              
+                {{-- <ul  class="nav listnav">
+                    <li class="active">
+                        <a  href="#1a" data-toggle="tab">Chung</a>
+                    </li>
+                    <li><a href="#2a" data-toggle="tab">Thiết kế</a>
+                    </li>
+                    <li><a href="#3a" data-toggle="tab">Sản phẩm</a>
+                    </li>
+                    <li><a href="#4a" data-toggle="tab">Background color</a>
+                    </li>
+                </ul> --}}
                 
 
                 <div class="tab-content clearfix">
@@ -76,29 +48,27 @@ use Illuminate\Support\Facades\DB;
                                
                                 <div class="adpro1">
                                     <p>Tiêu đề <span>(*)</span></p>
-                                    <input type="text" placeholder="Nhập tên tiêu đề" name="title">
-                                    @error('title')
-                                   <p>{{$message}}</p>
-                                    @enderror
-                                    
+                                    <input type="text" placeholder="Nhập tên tiêu đề" name="title" value="{{$t->title}}">
                                 </div>
                              
                             </div>
                             <div class="addpro">
                                 <div class="adpro1">
                                     <p>Thể loại <span>(*)</span></p>
-                                   <?php
-                                    $category_news = DB::table('categories_news')->get();
-                                    ?>
-                                     @foreach($category_news as $category)
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="category_news_id" value="{{ $category->id }}">
-            <label class="form-check-label">{{ $category->name }}</label>
-        </div>
-    @endforeach
-                                    
-                                  
-                                    
+                                    <select name="category_news_id">
+                                        <option value="">Chọn thể loại</option>
+
+                                        <?php
+            $categories = DB::table('categories_news')->get();
+            foreach($categories as $cate){
+                if($cate->id == $t->category_news_id){
+                    echo "<option value='$cate->id' selected>$cate->name</option>";
+                }else{
+                    echo "<option value='$cate->id'>$cate->name</option>";
+                }
+            }
+            ?>
+                                    </select>
                                 </div>
                                 
                             
@@ -113,9 +83,6 @@ use Illuminate\Support\Facades\DB;
                                       <p>Tóm tắt <span>(*)</span></p>
                                     <textarea name="summary" id="" style="width:100%" cols="100" rows="5" name="summary">
                                 </textarea>
-                                   @error('summary')
-                                      <p>{{$message}}</p>
-                                        @enderror
 
                                 </div>
                             </div>
@@ -126,9 +93,6 @@ use Illuminate\Support\Facades\DB;
                                     <p>Nội dung bài viết  <span>(*)</span></p>
                                         <textarea id="editor1"  style="width:100%"  name="content">
                                     </textarea>
-                                    @error('content')
-                                    <p>{{$message}}</p>
-                                    @enderror
                                 </div>
                                </div>
 
@@ -169,9 +133,6 @@ use Illuminate\Support\Facades\DB;
                     <!--<input type="text" id="textinput"/>--
                     <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
                     <input type="file" name="thumb" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
-                    @error('thumb')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
             
                 </div>
             </div>
