@@ -162,7 +162,8 @@ $indexCategory++;
             @foreach ( $group->categories as $category )
                 @foreach ($category->products as $item)
                 <div class="swiper-slide">
-                  <x-ProductCard  name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
+                  <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}"
+                    name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
                     priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
                 </div>
                 @endforeach

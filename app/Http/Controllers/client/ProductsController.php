@@ -47,7 +47,7 @@ class ProductsController extends Controller
     public function productDetail($slug)
     {   
         $currentDate=getdate();
-        $product=product::where('slug',$slug)->first();
+        $product=product::where('slug',$slug)->firstOrFail();
         $coupons=coupon::where('user_used','<','limit_used')
                         ->whereDate('start_date','>',$currentDate)
                         ->whereDate('end_date','>',$currentDate)
