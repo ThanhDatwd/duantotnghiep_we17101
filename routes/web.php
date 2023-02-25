@@ -11,6 +11,8 @@ use App\Http\Controllers\admin\CategoriesNews;
 use App\Http\Controllers\admin\ProductCategorysController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\client\ContactController;
+use App\Http\Controllers\client\AddjobsController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -38,6 +40,9 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
     Route::get('/account', [AccountController::class, 'account'])->name('account');
+    Route::get('/contact', [ContactController::class,'Contacts'])->name('contact');
+    Route::get('/addjobs', [AddjobsController::class,'addjobs'])->name('addjobs');
+
     Route::get('payment', function () {
         return view('client.payment.index');
     });
