@@ -1,6 +1,3 @@
-<!-- @section("css")
-<link rel="stylesheet" href="{{asset('css/client/footer.css')}}">
-@endsection -->
 <style>
     .section-policy {
         padding-top: 20px;
@@ -17,7 +14,7 @@
     .owl-carousel .owl-stage-outer {
         position: relative;
         overflow: hidden;
-        -webkit-transform: translate3d(0,0,0);
+        /* -webkit-transform: translate3d(0,0,0); */
     }
     .owl-stage {
         display: flex;
