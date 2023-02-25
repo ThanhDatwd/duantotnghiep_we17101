@@ -15,11 +15,18 @@ class HomeController extends Controller
     public function index()
     {
         $productsFlashSale=product::all()->where('discount','>',0);
-        $categoriesGroup=category_group::all()->where('is_hot',1);
+        $categoriesGroup=category_group::with('categories.products')->where('is_hot',1)->limit(3)->get();
+        foreach ($categoriesGroup as $group) {
+            foreach ($group->categories as $category) {
+                $category->products = $category->products()->take(2)->get();
+            }
+        }
         // $categoriesGroup=category_group::with('categories')->with('products')->limit(2)->get();
         // dd($categoriesGroup);
+        // $a=category_group::with('categories.products')->get();
+        // dd($a);
 
-        $categories=category::all();
+        $categories=category::limit(3)->get();
         $data=[
             "productsFlashSale"=>$productsFlashSale,
             "categoriesGroup"=>$categoriesGroup,
@@ -30,7 +37,7 @@ class HomeController extends Controller
     public function exam()
     {
         $category=category::all();
-        $category_group=category_group::with('categories')->distinct()->get();
+        $category_group=category_group::limit(3)->get();
 
         dd($category->products);
         // $pro=$category->products;

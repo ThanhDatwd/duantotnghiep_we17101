@@ -199,9 +199,19 @@
     padding: 0px 16px;
 }
 
+.product-detail--other h3{
+    padding: 16px 0px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 700;
+}
+
 .product-detail--other p{
     padding: 20px 0px;
+}
 
+.product-detail--other p::first-letter{
+    text-transform: capitalize;
 }
 
 .underline{
@@ -227,6 +237,33 @@
 
 .relative-product > *{
     /* border: 1px solid #dee2e6 !important; */
+}
+
+.hotline-call{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding:  12px 6px;
+    background-color: #fff3cd;
+    margin: 14px 0px;
+    color: #856404;
+    font-weight: 700;
+}
+
+.hotline-call img{
+    width: 40px;
+}
+
+.hotline-call span{
+    font-size: 20px;
+    color: var(--mainColor);
+}
+
+.hotline-call span:hover{
+    text-decoration: none;
+    transition: 0.3s all ease;
+    color: #00b907;
 }
 
 @media only screen and (max-width: 600px){

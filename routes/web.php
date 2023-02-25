@@ -30,7 +30,8 @@ use Symfony\Component\Routing\Router;
 Route::prefix('/')->name('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/product', [ProductsController::class, 'index'])->name('product');
+    Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
+    Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
     // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
     Route::get('/news', [NewsController::class, 'index'])->name('news');

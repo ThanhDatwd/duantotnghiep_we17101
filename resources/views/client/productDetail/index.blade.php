@@ -36,10 +36,10 @@
                     <div class="product-detail--info__status">Tình trạng: <span>Còn hàng</span>  |  Thương hiệu: <span>Green Food</span></div>
                     <div class="product-detail--info__prices">
                         @if ($product->discount>0)
-                        <div class="product-detail--info__price-new">{{($product->price_current-($product->price_current*$product->discount/100))}}<span>₫</span></div>
-                        <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
+                          <div class="product-detail--info__price-new">{{($product->price_current-($product->price_current*$product->discount/100))}}<span>₫</span></div>
+                          <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
                         @else
-                          
+                          <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
                         @endif
                     </div>
                     <div class="product-detail--info__amount">
@@ -48,6 +48,10 @@
                     <div class="product-detail--info__cta">
                         <button class="btn btn-1">Thêm vào giỏ hàng</button>
                         <button class="btn btn-2">Mua ngay</button>
+                    </div>
+                    <div class="hotline-call">
+                      <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/customer-service.png?1676652183181" alt="">
+                      <div>Gọi ngay <span>1900 6090</span> để được tư vấn tốt nhất!</div>
                     </div>
                     <div class="btn-shopee">
                         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/shopee_buy.png?1676652183181" alt="">
