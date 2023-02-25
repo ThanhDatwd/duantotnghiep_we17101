@@ -142,6 +142,7 @@
     justify-content: center;
     background: #ffffff;
     border-radius: 40px;
+    margin-right: 10px;
 }
 
 .sidebar .navbar .navbar-nav .nav-link:hover i,
@@ -190,6 +191,9 @@
     justify-content: center;
     background: #ffffff;
     border-radius: 40px;
+    
+    font-size: 20px;
+
 }
 .sidebar-toggler {
     color: #0f9249 !important;

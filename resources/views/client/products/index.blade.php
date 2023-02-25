@@ -127,27 +127,12 @@
                 {{-- -----------------pro new--------------- --}}
                 <div class="pro-1">
                     <h2>MẸO ĂN NGON</h2>
-                    <x-NewsCard isRow="true" title="tiêu đề bài viết " 
+                    <div class="pro-new">
+                        <x-NewsCard isRow="true" title="tiêu đề bài viết" 
                         thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
                         summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi " />
-                    <div class="pro-new">
-                        <div class="img">
-                            <img src="https://images.foody.vn/res/g75/746974/s/foody-iron-steak-541-636656054845773740.jpg" alt="">
                         </div>
-                        <p>Hướng dẫn 5 cách làm món cá hồi sốt vừa ngon, vừa nhiều dinh dưỡng cho gia</p>
-                    </div>
-                    <div class="pro-new">
-                        <div class="img">
-                            <img src="https://images.foody.vn/res/g75/746974/s/foody-iron-steak-541-636656054845773740.jpg" alt="">
-                        </div>
-                        <p>Hướng dẫn 5 cách làm món cá hồi sốt vừa ngon, vừa nhiều dinh dưỡng cho gia</p>
-                    </div>
-                    <div class="pro-new">
-                        <div class="img">
-                            <img src="https://images.foody.vn/res/g75/746974/s/foody-iron-steak-541-636656054845773740.jpg" alt="">
-                        </div>
-                        <p>Hướng dẫn 5 cách làm món cá hồi sốt vừa ngon, vừa nhiều dinh dưỡng cho gia</p>
-                    </div>
+                    
                 </div>
             </div>
             {{-- ------------------------------- --}}
@@ -178,8 +163,7 @@
                     @foreach ($products as $item)
                     <x-ProductCard name="{{$item->name}}" 
                                    thumb="{{$item->thumb}}"
-                                   priceOld="{{$item->price_format}}"
-                                   priceCurrent="{{$item->price_current_format}}"
+                                   priceOld="{{$item->price}}"
                                    discount="{{$item->discount}}"
                                     {{-- cột dọc true - ngang : false --}}
                                    {{-- isRow="{{true}}" --}}

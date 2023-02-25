@@ -9,7 +9,7 @@ use App\View\Components\NewsCard;
 use App\View\Components\ProductCard;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Pagination\Paginator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -31,9 +31,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::component('AppHeader',AppHeader::class);
         Blade::component('ProductCard',ProductCard::class);
-        Blade::component('CouponCard',CouponCard::class);
+        Blade::component('AppCouponCard',CouponCard::class);
         Blade::component('NewsCard',NewsCard::class);
         Blade::component('AppNavbarMobile',AppNavbarMobile::class);
         //
+        Paginator::useBootstrap();
+
     }
 }

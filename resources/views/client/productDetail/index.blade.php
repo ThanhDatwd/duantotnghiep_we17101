@@ -3,36 +3,30 @@
 <link rel="stylesheet" href="{{asset('css/client/productDetail.css')}}">
 @endsection
 @section('main-content')
-<div class="half-circle"></div>
-<section class="product-detail grid ">
+<section class="product-detail grid container">
         <div class="">
-            <h1 class="product-name font-weight-bold text-uppercase mb-3">hành tây củ</h1>
+            <h1 class="product-name font-weight-bold text-uppercase mb-3">{{$product->name}}</h1>
             <div class="product-detail--infos">
                 <div class="product-detail--img">
                     <div class="swiper mySwiperProductDetailThumb">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                            <img src="{{asset('upload/'.$product->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" />
                           </div>
+                          @foreach ($product->products_images as $product_images )
                           <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                            <img src="{{asset('upload/'.$product_images->url)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" />
                           </div>
+                          @endforeach
                         </div>
                       </div>
                       <div thumbsSlider="" class="swiper mySwiperProductDetailGallery">
                         <div class="swiper-wrapper">
+                          @foreach ($product->products_images as $product_images )
                           <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                            <img src="{{asset('upload/'.$product_images->url)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" />
                           </div>
-                          <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                          </div>
+                          @endforeach
                         </div>
                       </div>
                     {{-- <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="" class=""> --}}
@@ -41,8 +35,12 @@
                 <div class="product-detail--info">
                     <div class="product-detail--info__status">Tình trạng: <span>Còn hàng</span>  |  Thương hiệu: <span>Green Food</span></div>
                     <div class="product-detail--info__prices">
-                        <div class="product-detail--info__price-new">15.000<span>₫</span></div>
-                        <div class="product-detail--info__price-old">25.000<span>₫</span></div>
+                        @if ($product->discount>0)
+                          <div class="product-detail--info__price-new">{{($product->price_current-($product->price_current*$product->discount/100))}}<span>₫</span></div>
+                          <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
+                        @else
+                          <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
+                        @endif
                     </div>
                     <div class="product-detail--info__amount">
                         Số lượng <span>-</span><span>+</span><span>1</span>
@@ -55,6 +53,11 @@
                         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/shopee_buy.png?1676652183181" alt="">
                     </div>
                 </div>
+            </div>
+            <div>
+              @if (strlen($coupons)>1)
+                <x-AppCouponCard :list="$coupons"/>
+              @endif
             </div>
             <div class="product-detail--other mt-4">
                 <h3 class="title underline">Thông tin chi tiết</h3>
@@ -95,6 +98,9 @@
                 <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-6/219284243_343850734042591_481454821461992375_n.jpg?stp=dst-jpg_p843x403&_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=Vb6Lj4eKW_UAX-LO1Y0&_nc_ht=scontent.fsgn2-7.fna&oh=00_AfA9Wfgfk21Tv5KIwq09B_fa0r05CmM1OeLxpomr6zw9EQ&oe=63F885EA" alt="" class="banner">
             </div>
         </div>
+    </section>
+    <section class="container" style="margin-top: 20px" >
+      
     </section>
 @endsection
 @section('js')

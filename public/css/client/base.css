@@ -192,3 +192,7 @@ a:hover {
     justify-content: center;
     align-items: center;
   }
+
+  button{
+    font-size: inherit;
+  }

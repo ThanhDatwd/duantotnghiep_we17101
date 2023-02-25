@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('import_history', function (Blueprint $table) {
             $table->id();
-            $table->int('quantity_import');
-            $table->int('price_import');
-            $table->int('price_current');
+            $table->integer('quantity_import');
+            $table->integer('price_import');
+            $table->integer('price_current');
             $table->foreignId('product_id')->constrained('products');
             $table->timestamp('deleted_at')->nullable();
             $table->foreignId('created_by')->constrained('administrators')->nullable();

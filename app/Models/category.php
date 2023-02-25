@@ -5,17 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 
 class category extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+    use Sluggable;
     protected $table="categories";
-    public function sluggable(): array
+    public function sluggable():array
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'category_name'
             ]
         ];
     }

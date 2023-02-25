@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trang danh cho admin</title>
-
-        
+    <title>Trang danh cho admin</title>     
     <!-- Icon Font Stylesheet -->
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/lib/owlcarousel/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}">
@@ -19,12 +15,12 @@
     <link rel="stylesheet" href="{{asset('css/admin/bootstrap.min.css')}}">
     <!-- Template Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/admin/pagination.css')}}">
-    
+    @yield("css")
+
 </head>
 <body>
-    <div class="position-relative bg-white d-flex p-0">
-    <div class="position-relative bg-white d-flex p-0" style="width: 100%">
+    
+    <div class=" position-relative bg-white d-flex p-0" style="width:100%">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -50,7 +46,21 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/admin" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sản Phẩm</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/admin/product" class="dropdown-item">Danh sách sản phẩm</a>
+                            <a href="/admin/product/trashed" class="dropdown-item">Thùng rác sản phẩm</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Loại Sản Phẩm</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/admin/product_category" class="dropdown-item">Danh sách  loại sản phẩm</a>
+                            <a href="/admin/product_category/trashed" class="dropdown-item">Thùng rác loại sản phẩm</a>
+                        </div>
+                    </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Quản lý tin tức</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -59,16 +69,14 @@
                             <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
                         </div>
                     </div>
-                  
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Nguồn Hàng</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
+                            <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn hàng</a>
+                           <a href="{{url('admin/news')}}" class="dropdown-item">Quản lý tin tức</a>
+                            <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
                         </div>
-                    </div>
+                    </div>  
                 </div>
             </nav>
         </div>
