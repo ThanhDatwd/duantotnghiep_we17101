@@ -36,10 +36,10 @@
                     <div class="product-detail--info__status">Tình trạng: <span>Còn hàng</span>  |  Thương hiệu: <span>Green Food</span></div>
                     <div class="product-detail--info__prices">
                         @if ($product->discount>0)
-                        <div class="product-detail--info__price-new">{{($product->price_current-($product->price_current*$product->discount/100))}}<span>₫</span></div>
-                        <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
+                          <div class="product-detail--info__price-new">{{($product->price_current-($product->price_current*$product->discount/100))}}<span>₫</span></div>
+                          <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
                         @else
-                          
+                          <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
                         @endif
                     </div>
                     <div class="product-detail--info__amount">
