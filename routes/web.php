@@ -84,7 +84,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/news/phuc-hoi/{id}', [AdminNewsController::class,'restore'])->name('admin.news.restore');
         Route::get('/news/phuc-hoi-tat-ca', [AdminNewsController::class,'restoreAll'])->name('admin.news.restoreAll');
         Route::get('/news/thung-rac', [AdminNewsController::class,'trash'])->name('admin.news.trash');
-        Route::post('/news/xoa-nhieu', [sAdminNewsController::class,'deleteMany'])->name('admin.news.deleteMany');
+        Route::post('/news/xoa-nhieu', [AdminNewsController::class,'deleteMany'])->name('admin.news.deleteMany');
 
         //-----------------Admin Category_news ------------------------
         Route::get('/categories_news', [CategoriesNews::class,'index'])->name('categories_news');
