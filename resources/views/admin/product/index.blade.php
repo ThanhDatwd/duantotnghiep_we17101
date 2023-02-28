@@ -61,8 +61,7 @@
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
                     <a style="color: cadetblue" href="/admin/product/update/{{$p->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: orange" href="/admin/product/delete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
-                    <a style="color: red" href="/admin/product/forceDelete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
+                    <a style="color: red" href="/admin/product/delete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
 
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
                     <script>

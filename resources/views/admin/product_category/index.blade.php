@@ -54,8 +54,7 @@
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
                     <a style="color: cadetblue" href="/admin/product_category/update/{{$c->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: yellow" href="/admin/product_category/delete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-solid fa-trash-can"></i> </a>
-                    <a style="color: red" href="/admin/product_category/forceDelete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
+                    <a style="color: red" href="/admin/product_category/delete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-solid fa-trash-can"></i> </a>
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
                     <script>
                       function myFunction() {
@@ -69,6 +68,14 @@
               @endforeach
           </tbody>
       </table>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+     
+            {{$categories->appends(request()->all())->links()}}  
+         
+      
+        </ul>
+      </nav>
   </div>
 </div>
 @endsection

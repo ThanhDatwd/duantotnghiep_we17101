@@ -48,7 +48,7 @@ float: left;
 font-weight: bold;
 margin-bottom: 10px; 
 }
-.adpro1 input[type=text],input[type=email],input[type=number], .adpro1 select {
+.adpro1 input[type=text],input[type=email],input[type=number],input[type=datetime-local], .adpro1 select {
 height: 45px;
 width: 100%;
 
@@ -169,4 +169,18 @@ padding-top:20px
 }
 .head{
   margin-top: 20px;
+}
+
+/* --------------pagination------------------- */
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: var(--primary);;
+  border-color: var(--primary);;
+}
+.page-item .page-link {
+  color: var(--primary);
+}
+.pagination {
+ justify-content: right;
 }

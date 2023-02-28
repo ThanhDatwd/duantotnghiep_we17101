@@ -18,9 +18,13 @@ use Illuminate\Pagination\Paginator;
 class ProductsController extends Controller
 {
     public function index(){
+       
         // $products = DB::table('products')
         // ->leftJoin('categories', 'categories.id', '=', 'products.category_id')->get();
         $products=product::orderBy('id','desc')->paginate(5);
+        if($key = request()->key){
+            $products=product::orderBy('id','desc')->where('name','like','%'.$key.'%')->paginate(5);
+        }
         // $categories=category::all();
         $data=[
             "products"=>$products,
@@ -85,8 +89,8 @@ class ProductsController extends Controller
         return back()->with('thongbao','Phục hồi tất cả thành công');;
     }
     public function forceDelete($id){
-        product::find($id)->forceDelete();
-        return back();
+        product::withTrashed()->find($id)->forceDelete();
+        return back()->with('thongbao','Xóa vĩnh viễn thành công sản phẩm');
     }
 
     public function update($id){

@@ -11,7 +11,8 @@ use App\Http\Controllers\admin\CategoriesNews;
 use App\Http\Controllers\admin\ProductCategorysController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\AdminController;
-
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\CoupouController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Symfony\Component\Routing\Router;
@@ -54,7 +55,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/product/create', [AdminProductController::class,'create']);
         Route::post('/product/create', [AdminProductController::class,'create_']);
         Route::get('/product/delete/{id}', [AdminProductController::class,'delete']);
-        Route::get('/product/forceDelete/{id}', [AdminProductController::class,'forceDelete']);
+        Route::get('/product/trashed/forceDelete/{id}', [AdminProductController::class,'forceDelete']);
         Route::get('/product/trashed',[AdminProductController::class,'trashed']);
         Route::get('/product/restore/{id}',[AdminProductController::class,'restore']);
         Route::get('product/restore-all',[AdminProductController::class,'restoreAll']);
@@ -66,7 +67,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/product_category/create', [ProductCategorysController::class,'create']);
         Route::post('/product_category/create', [ProductCategorysController::class,'create_']);
         Route::get('/product_category/delete/{id}', [ProductCategorysController::class,'delete']);
-        Route::get('/product_category/forceDelete/{id}', [ProductCategorysController::class,'forceDelete']);
+        Route::get('/product_category/trashed/forceDelete/{id}', [ProductCategorysController::class,'forceDelete']);
         Route::get('/product_category/trashed',[ProductCategorysController::class,'trashed']);
         Route::get('/product_category/restore/{id}',[ProductCategorysController::class,'restore']);
         Route::get('product_category/restore-all',[ProductCategorysController::class,'restoreAll']);
@@ -102,14 +103,37 @@ Route::prefix('/')->name('client')->group(function () {
        Route::get('/brand/create', [BrandController::class,'create'])->name('admin.brand.create');
        Route::post('/brand/create', [BrandController::class,'create_'])->name('admin.brand.create_');
        Route::get('/brand/delete/{id}', [BrandController::class,'delete'])->name('admin.brand.delete');
-       Route::get('/brand/forceDelete/{id}', [BrandController::class,'forceDelete'])->name('admin.brand.forceDelete');
+       Route::get('/brand/trashed/forceDelete/{id}', [BrandController::class,'forceDelete'])->name('admin.brand.forceDelete');
+    //    Route::get('/brand/forceDelete/{id}', [BrandController::class,'forceDelete'])->name('admin.brand.forceDelete');
        Route::get('/brand/trashed',[BrandController::class,'trashed'])->name('admin.brand.trashed');
        Route::get('/brand/restore/{id}',[BrandController::class,'restore'])->name('admin.brand.restore');
        Route::get('brand/restore-all',[BrandController::class,'restoreAll'])->name('admin.brand.retoreAll');
        Route::get('/brand/update/{id}', [BrandController::class,'update'])->name('admin.brand.update');
        Route::post('/brand/update/{id}', [BrandController::class,'update_'])->name('admin.brand.update_');
 
-
+        //------------------- Admin Oder-----------------------
+        Route::get('/order', [OrderController::class,'index'])->name('admin-order');
+        Route::get('/order/create', [OrderController::class,'create'])->name('admin.order.create');
+        Route::post('/order/create', [OrderController::class,'create_'])->name('admin.order.create_');
+        Route::get('/order/delete/{id}', [OrderController::class,'delete'])->name('admin.order.delete');
+        Route::get('/order/trashed/forceDelete/{id}', [OrderController::class,'forceDelete'])->name('admin.order.forceDelete');
+        Route::get('/order/trashed',[OrderController::class,'trashed'])->name('admin.order.trashed');
+        Route::get('/order/restore/{id}',[OrderController::class,'restore'])->name('admin.order.restore');
+        Route::get('order/restore-all',[OrderController::class,'restoreAll'])->name('admin.order.retoreAll');
+        Route::get('/order/update/{id}', [OrderController::class,'update'])->name('admin.order.update');
+        Route::post('/order/update/{id}', [OrderController::class,'update_'])->name('admin.order.update_');
+ 
+        //------------------ Admin Coupon-----------------------
+        Route::get('/coupon', [CoupouController::class,'index'])->name('admin-coupon');
+        Route::get('/coupon/create', [CoupouController::class,'create'])->name('admin.coupon.create');
+        Route::post('/coupon/create', [CoupouController::class,'create_'])->name('admin.coupon.create_');
+        Route::get('/coupon/delete/{id}', [CoupouController::class,'delete'])->name('admin.coupon.delete');
+        Route::get('/coupon/trashed/forceDelete/{id}', [CoupouController::class,'forceDelete'])->name('admin.coupon.forceDelete');
+        Route::get('/coupon/trashed',[CoupouController::class,'trashed'])->name('admin.coupon.trashed');
+        Route::get('/coupon/restore/{id}',[CoupouController::class,'restore'])->name('admin.coupon.restore');
+        Route::get('coupon/restore-all',[CoupouController::class,'restoreAll'])->name('admin.coupon.retoreAll');
+        Route::get('/coupon/update/{id}', [CoupouController::class,'update'])->name('admin.coupon.update');
+        Route::post('/coupon/update/{id}', [CoupouController::class,'update_'])->name('admin.coupon.update_');
 
     });
 

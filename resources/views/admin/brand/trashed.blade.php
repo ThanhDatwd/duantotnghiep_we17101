@@ -7,7 +7,7 @@
 
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
-  <h2 class="">DANH SÁCH NGUỒN HÀNG </h2>
+  <h2 class="">THÙNG RÁC NGUỒN HÀNG </h2>
 
   <a href="/admin/brand/create"><i class="fa-solid fa-circle-plus"></i> Thêm nguồn hàng</a>
  </div>
@@ -17,9 +17,10 @@
     </div>
   @endif
 </a>
-<a href="restore-all"  ><button type="button" class="btn btn-success m-2"><i class="fa fa-home me-2"></i>Khôi Phục Tất Cả</button>
 </a>
 <div class="table-responsive">
+  <a href="restore-all"  ><button type="button" class="btn btn-success m-2"><i class="fa fa-home me-2"></i>Khôi Phục Tất Cả</button>
+
       <table class="table">
           <thead>
               <tr>
@@ -42,7 +43,7 @@
                   <td>{{$b->brands}}</td>
                   <td class="button">
                     <a style="color: cadetblue" href="/admin/brand/restore/{{$b->id}}"><i class="fa-solid fa-trash-arrow-up"></i></a>
-
+                    <a style="color: red" href="/admin/brand/trashed/forceDelete/{{$b->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
                     <script>
                       function myFunction() {
