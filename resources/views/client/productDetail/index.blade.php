@@ -3,7 +3,13 @@
 <link rel="stylesheet" href="{{asset('css/client/productDetail.css')}}">
 @endsection
 @section('main-content')
+@if(session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div> 
+@endif
 <section class="product-detail grid container">
+  
         <div class="">
             <h1 class="product-name font-weight-bold text-uppercase mb-3">{{$product->name}}</h1>
             <div class="product-detail--infos">
@@ -46,8 +52,9 @@
                         Số lượng <span>-</span><span>+</span><span>1</span>
                     </div>
                     <div class="product-detail--info__cta">
-                        <button class="btn btn-1">Thêm vào giỏ hàng</button>
-                        <button class="btn btn-2">Mua ngay</button>
+                      <a href="{{url('/add-to-cart',$product->id)}}">    <button class="btn btn-1 ">Thêm vào giỏ hàng</button>
+                      </a>
+                      <button class="btn btn-2">Mua ngay</button>
                     </div>
                     <div class="btn-shopee">
                         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/shopee_buy.png?1676652183181" alt="">
