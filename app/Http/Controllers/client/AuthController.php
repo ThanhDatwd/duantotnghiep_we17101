@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\client;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
 use Session;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     //

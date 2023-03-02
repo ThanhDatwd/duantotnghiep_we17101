@@ -18,8 +18,8 @@ top: 13px;
           <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
             <div class="card-body p-4 p-md-5">
               <h1 class="mb-4 pb-2 pb-md-0 mb-md-5">ĐĂNG KÝ</h1>
-              <form>
-  
+              <form action="/admin/admin_users/them"method="post" class="col-12 m-auto" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                     <div class="col-md-12 mb-4">
                       <div class="form-outline">

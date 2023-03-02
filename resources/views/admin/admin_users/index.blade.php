@@ -3,25 +3,24 @@
 <?php
 use Illuminate\Support\Facades\DB;
 ?>
-<form action="{{url('admin/news/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
+<form action="{{url('admin/admin_users/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
 @csrf
 <div class="container-fluid pt-4 px-4">
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Tin rác</h6>
+                            <h6 class="mb-4">Quản lý Admin</h6>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th scope="col">Check</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Summary</th>
-                                            <th scope="col">Author</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Category</th>
-                             
-                                            
-                                            <th scope="col">Image</th>
+                                            <th scope="col">Avatar</th>
+                                            <th scope="col">Name</th>
+
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Level</th>
+                                           
                                             
                                             
                                             <th scope="col">Action</th>
@@ -29,21 +28,23 @@ use Illuminate\Support\Facades\DB;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($news as $item)
+                                    @foreach ($users as $item)
                                     <tr>
                                         <td><input type="checkbox" name="check[]" value="{{$item->id}}"></td>
-                                        <td>{{$item->title}}</td>
-                                        <td>{{$item->summary}}</td>
-                                        <td>author</td>
-                                        <td>{{$item->created_at}}</td>
+                                        <td><img src="{{asset('upload/'.$item->avatar)}}" alt="" width="100px" height="100px"></td>
+                                        <td>{{$item->username}}</td>
+                                        <td>{{$item->full_name}}</td>
+                                        <td>{{$item->email}}</td>
+                                    
+                                    
                                          <td>
-                                            {{$item->category_name}}
+                                            {{$item->role_id}}
                                          </td>
                                         
-                                        <td><img src="{{asset('upload/'.$item->thumb)}}" alt="" width="100px" height="100px"></td>
+                                       
                                          <td colspan="">
-                                            <a href="{{url('admin/news/capnhat/'.$item->id)}}" class="btn btn-primary">Sửa</a>
-                                            <a href="{{url('admin/news/xoa/'.$item->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-danger">Xóa</a>
+                                            <a href="{{url('admin/admin_users/capnhat/'.$item->id)}}" class="btn btn-primary">Sửa</a>
+                                            <a href="{{url('admin/admin_users/xoa/'.$item->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-danger">Xóa</a>
                                              
                                         </td>
                                         
@@ -58,16 +59,11 @@ use Illuminate\Support\Facades\DB;
 
                                  <tfoot>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                         
-                                        </td>
+                                       
                                      
                                         <td>
-                                      <style>
-                                          .pagination{
+                                           <style>
+                                                  .pagination{
                                                     display: flex;
                                                     justify-content: center;
                                                   }
@@ -79,24 +75,24 @@ use Illuminate\Support\Facades\DB;
                                                     color: #000;
                                                   }
                                                   .pagination a.active{
-                                                    background: green;
+                                                    background: #000;
                                                     color: #fff;
                                                   }
-                                      </style>     
+                                           </style>
                                      <div class="pagination">
-    @if ($news->currentPage() > 0)
-        <a href="{{ $news->previousPageUrl() }}">Previous</a>
+    @if ($users->currentPage() > 0)
+        <a href="{{ $users->previousPageUrl() }}">Previous</a>
     @endif
 
-    @for ($i = 1; $i <= $news->lastPage(); $i++)
-        <a href="{{ $news->url($i) }}" 
-           class="{{ ($news->currentPage() == $i) ? ' active' : '' }}">
+    @for ($i = 1; $i <= $users->lastPage(); $i++)
+        <a href="{{ $users->url($i) }}" 
+           class="{{ ($users->currentPage() == $i) ? ' active' : '' }}">
            {{ $i }}
         </a>
     @endfor
 
-    @if ($news->hasMorePages())
-        <a href="{{ $news->nextPageUrl() }}">Next</a>
+    @if ($users->hasMorePages())
+        <a href="{{ $users->nextPageUrl() }}">Next</a>
     @endif
 </div>
                                           
@@ -105,17 +101,15 @@ use Illuminate\Support\Facades\DB;
                                            
                                     
 
-                                            <a href="{{url('admin/news/them')}}" class="btn btn-primary">Thêm</a>
-                                        <a href="{{url('admin/news/phuc-hoi-tat-ca')}}" class="btn btn-primary">Phục hồi
-
-                                        <span>
-                                            (<?php
-                                            $count = DB::table('news')->where('deleted_at','!=',null)->count();
-                                            echo $count;
-                                            ?>)
-                                            
-                                        </span>
-                                        </a>
+                                            <a href="{{url('admin/admin_users/them')}}" class="btn btn-primary">Thêm</a>
+                                                  
+                                            <a href="{{url('admin/admin_users/thung-rac')}}" class="btn btn-primary">Thùng rác
+                                                <?php
+                                                $count = DB::table('administrators')->where('deleted_at','!=',null)->count();
+                                                ?>
+                                                ({{$count}})
+                                                
+                                            </a>
                                                 <button type="submit" class="btn btn-danger">Xóa nhiều</button>
                                               
                                         </td>

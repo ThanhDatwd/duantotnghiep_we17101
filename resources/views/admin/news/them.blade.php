@@ -3,6 +3,9 @@
 <link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
 @endsection
 @section('content')
+<?php
+use Illuminate\Support\Facades\DB;
+?>
 <form action="/admin/news/them" method="post" class="col-12 m-auto" enctype="multipart/form-data">
 <div class="adproduct">
 {{-- <div class="direct-header">
@@ -48,16 +51,14 @@
                             <div class="addpro">
                                 <div class="adpro1">
                                     <p>Thể loại <span>(*)</span></p>
+                                    <select name="category_news_id">
                                    <?php
                                     $category_news = DB::table('categories_news')->get();
                                     ?>
                                      @foreach($category_news as $category)
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="category_news_id" value="{{ $category->id }}">
-            <label class="form-check-label">{{ $category->name }}</label>
-        </div>
+     <option value="{{$category->id}}">{{$category->name}}</option>
     @endforeach
-                                    
+                                    </select>
                                   
                                     
                                 </div>
@@ -148,6 +149,7 @@
 </div>
  </form>  
 </div>
+ <script type="text/javascript" src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
 <script>
 window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
 var drawGray = null;

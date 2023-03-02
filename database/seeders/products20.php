@@ -21,6 +21,7 @@ class products20 extends Seeder
      */
     public function run()
     {
+        
         $group_category = ['Thịt Trưngs', 'Hải sản', 'Rau củ', 'Trái cây', 'Đồ khô', 'Gia vị'];
         $categories = [
             ['Thịt heo', 'Thịt Bò', 'Gà Vịt ...', 'Trứng các loại'],
@@ -71,7 +72,7 @@ class products20 extends Seeder
                 foreach ($categories[$indexC] as $category) {
                     category::create(
                         [
-                            "name" => $category,
+                            "category_name" => $category,
                             "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
                             "stt" => 1,
                             "type" => "combo",
@@ -93,7 +94,7 @@ class products20 extends Seeder
                                 "price_current" => 100000,
                                 "quantity_input" => 100,
                                 "quantity_output" => 10,
-                                "discount" => 5,
+                                "discount" => random_int(0, 100),
                                 "brand" => "Đà Lạt",
                                 "unit" => "kg",
                                 "color" => '',

@@ -50,126 +50,23 @@
                            <i class='bx bxs-down-arrow'></i>
                         </a>
                         <div class="categoryGroupList">
+                            @foreach ($category_group as $item )
                             <div class="categoryGroupItem">
-                                <div class="title">Thịt Trứng</div>
+                                <div class="title">{{$item->name}}</div>
                                 <div class="categoryList">
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
+                                    @foreach ($item->categories as $category )
+                                        <div>
+                                           <a href="">
+                                            {{$category->category_name}}
+                                           </a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="categoryGroupItem">
-                                <div class="title">Thịt Trứng</div>
-                                <div class="categoryList">
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                </div>
-                            </div>
-                            <div class="categoryGroupItem">
-                                <div class="title">Thịt Trứng</div>
-                                <div class="categoryList">
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                </div>
-                            </div>
-                            <div class="categoryGroupItem">
-                                <div class="title">Thịt Trứng</div>
-                                <div class="categoryList">
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                </div>
-                            </div>
-                            <div class="categoryGroupItem">
-                                <div class="title">Thịt Trứng</div>
-                                <div class="categoryList">
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                </div>
-                            </div>
-                            <div class="categoryGroupItem">
-                                <div class="title">Thịt Trứng</div>
-                                <div class="categoryList">
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                </div>
-                            </div>
-                            <div class="categoryGroupItem">
-                                <div class="title">Thịt Trứng</div>
-                                <div class="categoryList">
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                        <div><a href="">
-                                            Trang chủ
-                                        </a></div>
-                                </div>
-                            </div>
-                        </div></li>
+                            @endforeach
+                            
+                        </div>
+                    </li>
                     <li><a href="">
                         Tin tức 
                     </a></li>

@@ -13,6 +13,9 @@ use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
+use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\client\AuthController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Symfony\Component\Routing\Router;
@@ -27,11 +30,11 @@ use Symfony\Component\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::prefix('/')->name('client')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/product', [ProductsController::class, 'index'])->name('product');
+    Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
+    Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
     // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
 //    Route::get('/add-to-cart/{id}',[ProductsController::class,'addToCart'])->name('add_to_cart');
@@ -40,12 +43,11 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
     // Route::get('/Add-Cart/{id}',[CartController::class,'AddCart']);
     Route::get('/account', [AccountController::class, 'account'])->name('account');
-    Route::get('payment', function () {
-        return view('client.payment.index');
-    });
-    Route::get('thanks', function () {
-        return view('client.thankyou.index');
-    });
+    Route::get('payment', function () {return view('client.payment.index');});
+    Route::get('thanks', function () {return view('client.thankyou.index'); });
+    Route::get('/register',[AuthController::class,'register']);
+    Route::get('/login',[AuthController::class,'register']);
+});
     //
     // Route::resource('/admin/product', AdminProductController::class);
 
@@ -86,7 +88,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/news/phuc-hoi/{id}', [AdminNewsController::class,'restore'])->name('admin.news.restore');
         Route::get('/news/phuc-hoi-tat-ca', [AdminNewsController::class,'restoreAll'])->name('admin.news.restoreAll');
         Route::get('/news/thung-rac', [AdminNewsController::class,'trash'])->name('admin.news.trash');
-        Route::post('/news/xoa-nhieu', [sAdminNewsController::class,'deleteMany'])->name('admin.news.deleteMany');
+        Route::post('/news/xoa-nhieu', [AdminNewsController::class,'deleteMany'])->name('admin.news.deleteMany');
 
         //-----------------Admin Category_news ------------------------
         Route::get('/categories_news', [CategoriesNews::class,'index'])->name('categories_news');
@@ -136,8 +138,17 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('coupon/restore-all',[CoupouController::class,'restoreAll'])->name('admin.coupon.retoreAll');
         Route::get('/coupon/update/{id}', [CoupouController::class,'update'])->name('admin.coupon.update');
         Route::post('/coupon/update/{id}', [CoupouController::class,'update_'])->name('admin.coupon.update_');
+         //-------------------Admin User------------------------
+       Route::get('/admin_users', [AdminUserController::class,'index'])->name('admin-user');
+       Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
+       Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
+       Route::get('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat'])->name('admin.admin_users.update');
+         Route::post('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat_'])->name('admin.admin_users.update_');
+        Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');
+        Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
+
+
 
     });
 
     
-});

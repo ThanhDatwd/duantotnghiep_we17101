@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\news;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -38,6 +39,8 @@ class NewsController extends Controller
     
     $t->content= $_POST['content'];
     $t->category_news_id = $_POST['category_news_id'];
+    //slug
+     $t->slug = Str::slug($request->input('title'));
    
     
     
@@ -45,7 +48,7 @@ class NewsController extends Controller
 
     $t->save();
 
-    return redirect('/');
+    return redirect('/admin/news');
 
 
 }
@@ -54,17 +57,33 @@ function them(){
 }
 function capnhat($id){
 
-    $t = news::find($id);
-    return view('admin.news.capnhat',['news'=>$t]);
+    $news = news::find($id);
+    
+    return view('admin.news.capnhat',['t'=>$news]);
   
 }
-function capnhat_($id){
+function capnhat_(Request $request,$id){
+    
+    
     $t= news::find($id);
     $t->title = $_POST['title'];
     $t->summary = $_POST['summary'];
-    $t->thumb = $_POST['thumb'];
+   
     
     $t->category_news_id = $_POST['category_news_id'];
+   
+        $t->slug = Str::slug($request->input('title'));
+    //upload file
+    if($request->has('thumb')){
+        $file = $request->thumb;
+        $ext = $request->thumb->extension();
+        $file_name = time().'-'.'news'. '.' .$ext;
+        $file->move(public_path('upload'), $file_name);
+        $t->thumb = $file_name;
+    }
+    $t->content= $_POST['content'];
+
+    
     //save
     $t->save();
     return redirect('/admin/news');

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\category_group;
 use Illuminate\View\Component;
 
 class AppHeader extends Component{
@@ -10,9 +11,13 @@ class AppHeader extends Component{
      *
      * @return void
      */
+    public $category_group=[];
+
     public function __construct()
     {
         //
+        $this->category_group=category_group::with('categories')->distinct()->get();
+        
     }
 
     /**

@@ -140,14 +140,14 @@
 @php
 $indexCategory=0;
 @endphp
-@foreach ($categories as $category )
+@foreach ($categoriesGroup as $group )
 @php
 $indexCategory++;
 @endphp
 
 <section class="app-section">
   <div class="container">
-    <h2 class="title pt-3 pb-3 mb-0"><a href="">{{$category->name}}</a></h2>
+    <h2 class="title pt-3 pb-3 mb-0"><a href="">{{$group->name}}</a></h2>
     <div class="row align-items-center products-section {{($indexCategory%2==0)?" left":"right"}}">
       <div class="col-xl-3 col-lg-4 col-md-5 col-xs-12 mb-3 mb-md-0">
         <a href="">
@@ -159,19 +159,21 @@ $indexCategory++;
         <div class="products-row">
           <div class="swiper mySwiperTypeCategory">
             <div class="swiper-wrapper">
-              @foreach ($category->products as $item)
-              <div class="swiper-slide">
-                <x-ProductCard  name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
-                  priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
-              </div>
-              @endforeach
+            @foreach ( $group->categories as $category )
+                @foreach ($category->products as $item)
+                <div class="swiper-slide">
+                  <x-ProductCard  name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
+                    priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
+                </div>
+                @endforeach
+            @endforeach
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
           </div>
           <div class="view_more text-center mt-3 position-relative">
-            <a href="thit-bo" title="Xem thêm" class="position-relative text-light d-inline-block">
+            <a href="{{route('clientcategory-group',['slug'=>$group->slug])}}" title="Xem thêm" class="position-relative text-light d-inline-block">
               Xem thêm
             </a>
           </div>
