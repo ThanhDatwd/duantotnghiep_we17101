@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\CategoriesNews;
 use App\Http\Controllers\admin\ProductCategorysController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\AdminUserController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -109,6 +110,15 @@ Route::prefix('/')->name('client')->group(function () {
        Route::get('brand/restore-all',[BrandController::class,'restoreAll'])->name('admin.brand.retoreAll');
        Route::get('/brand/update/{id}', [BrandController::class,'update'])->name('admin.brand.update');
        Route::post('/brand/update/{id}', [BrandController::class,'update_'])->name('admin.brand.update_');
+
+         //-------------------Admin User------------------------
+       Route::get('/admin_users', [AdminUserController::class,'index'])->name('admin-user');
+       Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
+       Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
+         Route::get('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat'])->name('admin.admin_users.update');
+         Route::post('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat_'])->name('admin.admin_users.update_');
+            Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');
+            Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
 
 
 
