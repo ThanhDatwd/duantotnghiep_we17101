@@ -49,7 +49,7 @@ class AdminUserController extends Controller
     $t->is_active = $_POST['is_active'];
     $t->email = $_POST['email'];
     $t->avatar = $file_name;
-    
+
     $t->save();
    
  
@@ -59,5 +59,51 @@ class AdminUserController extends Controller
 }
 function them(){
     return view('admin.admin_users.them');
+}
+function capnhat($id){
+
+    $users = administrators::find($id);
+    
+    return view('admin.admin_users.capnhat',['t'=>$users]);
+  
+}
+function capnhat_(Request $request,$id){
+    $t= administrators::find($id);
+
+
+            $file_name = null;
+        if($request->has('avatar')){
+            $file = $request->avatar;
+            $ext = $request->avatar->extension();
+            $file_name = time().'-'.'admin_users'. '.' .$ext;
+            $file->move(public_path('upload'), $file_name);
+        }
+    $request->merge(['avatar' => $file_name]);
+    
+     $t->last_name = $_POST['last_name'];
+    $t->first_name = $_POST['first_name'];
+    $t->username = $_POST['username'];
+    $t->password = $_POST['password'];
+    $t->full_name = $_POST['first_name'].$_POST['last_name'];
+    $t->gender=  $_POST['gender'];
+    $t->phone = $_POST['phone'];
+    //role_id
+    $t->role_id = $_POST['role_id'];
+    $t->address = $_POST['address'];
+    //province
+    $t->province = $_POST['province'];
+    //district
+    $t->district = $_POST['district'];
+    //ward
+    $t->ward = $_POST['ward'];
+
+     $t->birthday = $_POST['birthday'];
+    $t->is_active = $_POST['is_active'];
+    $t->email = $_POST['email'];
+    $t->avatar = $file_name;
+
+    $t->save();
+    
+
 }
 }
