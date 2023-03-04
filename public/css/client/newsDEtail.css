@@ -1,0 +1,169 @@
+/* .blog-item img{
+    width: 100%;
+
+} */
+
+.text-color{
+    color: var(--textColor);
+}
+
+a, a:hover, button, button:hover{
+    transition: 0.3s all ease;
+}
+
+
+h2.title-head{
+    background: var(--mainColor);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.p-8{
+    padding: 8px;
+    padding-left: 0;
+}
+
+.blog-item img{
+    height: 65px;
+    border-radius: 5px;
+}
+
+.blog-item p{
+    line-height: 21px;
+    height: calc(21px * 3);
+    overflow: hidden;
+    word-break: break-word;
+    text-align: justify;
+    padding-left: 10px;
+}
+
+.article-name{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.entry-content h2{
+    border-left: 2px solid var(--mainColor);
+    padding-left: 10px;
+    color: var(--mainColor);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.entry-content h3{
+    font-weight: 700;
+}
+
+.tag-product{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tag-product label{
+    font-weight: 700;
+}
+
+.tag-product a{
+    padding: 4px 16px;
+    border: 1px solid var(--textColor);
+    border-radius: 20px;
+}
+
+.tag-product a:hover{
+    background-color: var(--mainColor);
+    color: #fff;
+}
+
+.author-info{
+    margin: 6px 0px;
+}
+
+.cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 10px 0px;
+}
+
+.cont p{
+    margin-top: 16px;
+}
+
+.cont button{
+    padding: 4px 16px;
+    background-color: transparent;
+    color: var(--mainColor);
+    border: 1px solid currentColor;
+    border-radius: 20px;
+    width: max-content;
+}
+
+.cont button:hover{
+    background-color: var(--mainColor);
+    color: #fff;
+}
+
+.name{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 5px;
+}
+
+.name a{
+    font-weight: bold;
+}
+
+.name p{
+    margin: 0;
+    font-size: 13px;
+}
+
+.author-info{
+   
+}
+
+.author-info img{
+    width: 100%;
+    vertical-align: auto;
+    border-style: none;
+}
+
+.avata{
+    min-width: 120px;
+    max-width: 120px;
+    min-height: 120px;
+    max-height: 120px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    outline: 1px solid var(--mainColor);
+    outline-offset: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+h3.title{
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    margin: 20px 0px 15px;
+}
+
+.comment-form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.book-submit{
+    background-color: var(--mainColor);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+}
