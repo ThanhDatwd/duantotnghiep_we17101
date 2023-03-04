@@ -126,26 +126,58 @@
         background-color: #f8f9fa;
     }
     .img-nen {
-    width: 100%;
-    height: 200px;
-    position: relative;
-    bottom: -1.5rem;
+        width: 100%;
+        height: 200px;
+        position: relative;
+        bottom: -1.5rem;
     }
 
     @media all and (max-width: 844px) {
     .align-items-stretch {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-.img-nen {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    bottom: -1.5rem;
-}
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+    .img-nen {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        bottom: -1.5rem;
+    }
+
+    .owl-stage {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .footer-widget img {
+        width: 15em;
+    }
+
+    footer .footer-left .footer-title {
+        font-size: 25px;
+    }
+    .onut {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .footer-column-1 {
+        margin: 20px;
+    }
+    .payment-accept {
+        display: flex;
+        justify-content: space-around;
+    }
+    footer .store img {
+        position: relative;
+    }
+    .ap {
+        padding-left: 25%;
+    }
     }
 </style>
+<link rel="stylesheet" href="{{asset('css/client/footer.css')}}">
 
 <!-- <link rel="stylesheet" href="{{asset('css/client/home.css')}}"> -->
 <img class="img-nen" src="{{asset('img/vien-removebg.png')}}" alt="">
@@ -408,7 +440,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 footer-left">
+                <div class="ap acol-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12 footer-left">
                     <a href="he-thong-cua-hang" class="store d-inline-block" title="Hệ thống cửa hàng">
 						<img alt="Hệ thống cửa hàng" class="lazy d-block m-auto loaded" src="//bizweb.dktcdn.net/100/434/011/themes/845632/assets/mew_store.png?1676652183181" data-src="//bizweb.dktcdn.net/100/434/011/themes/845632/assets/mew_store.png?1676652183181">
 						<span class="tit d-inline-block font-weight-bold mt-2">Hệ thống cửa hàng</span>
@@ -430,4 +462,4 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> 
