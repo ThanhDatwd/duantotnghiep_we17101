@@ -13,6 +13,8 @@ class NewsController extends Controller
     }
     public function newsDetail($slug)
     {
-        dd($slug);
+        // dd($slug);
+        return view('client.newsDetail.index');
+
     }
 }
