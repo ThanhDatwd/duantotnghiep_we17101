@@ -97,7 +97,7 @@ function capnhat_(Request $request,$id){
     //ward
     $t->ward = $_POST['ward'];
 
-     $t->birthday = $_POST['birthday'];
+    $t->birthday = $_POST['birthday'];
     $t->is_active = $_POST['is_active'];
     $t->email = $_POST['email'];
     $t->avatar = $file_name;
