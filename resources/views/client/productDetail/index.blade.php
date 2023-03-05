@@ -3,7 +3,13 @@
 <link rel="stylesheet" href="{{asset('css/client/productDetail.css')}}">
 @endsection
 @section('main-content')
+@if(session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div> 
+@endif
 <section class="product-detail grid container">
+  
         <div class="">
             <h1 class="product-name font-weight-bold text-uppercase mb-3">{{$product->name}}</h1>
             <div class="product-detail--infos">

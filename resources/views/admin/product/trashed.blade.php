@@ -7,7 +7,7 @@
 
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
-  <h2 class="">Danh sách sản phẩm</h2>
+  <h2 class="">THÙNG RÁC SẢN PHẨM</h2>
   <a href="/admin/product/create"><i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm</a>
  </div>
   @if(Session::has('thongbao'))

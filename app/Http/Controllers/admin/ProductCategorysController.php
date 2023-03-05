@@ -9,13 +9,18 @@ use App\Models\category;
 use App\Models\brand;
 use App\Models\product;
 use App\Models\category_group;
+use App\Http\Requests\ProductCategoryRequest;
+
 
 
 class ProductCategorysController extends Controller
 {
     //
     public function index(){
-        $categories=category::orderBy('id','desc')->get();
+        $categories=category::orderBy('id','desc')->paginate(5);
+        if($key = request()->key){
+            $categories=category::orderBy('id','desc')->where('category_name','like','%'.$key.'%')->paginate(5);
+        }
         $data=[
             // "products"=>$products,
             "categories"=>$categories
@@ -31,7 +36,7 @@ class ProductCategorysController extends Controller
         return view('admin.product_category.create',$data);
     }
 
-    public function create_(Request $request){
+    public function create_(ProductCategoryRequest $request){
       
         // $request->validate([
         //     'category_name' => ['required','min:3','max:20'],
@@ -75,8 +80,8 @@ class ProductCategorysController extends Controller
         return back()->with('thongbao','Phục hồi tất cả thành công');;
     }
     public function forceDelete($id){
-        category::find($id)->forceDelete();
-        return back()->with('thongbao','xóa thành công');
+        category::withTrashed()->find($id)->forceDelete();
+        return back()->with('thongbao','Xóa thành công');
     }
     public function update($id){
         $p = category::find($id);

@@ -13,15 +13,15 @@ use App\Models\product;
 
 class ProductsController extends Controller
 {
-    // public function index()
-    // {
-    //     $products = DB::table('products')->paginate(12);
-    //     $categoriesGroup=category_group::with('categories.products')->where('is_hot',1)->limit(3)->get();
-    //     $data=[
-    //         "products"=>$products
-    //     ];
-    //     return view('client.products.index',$data);
-    // }
+    public function index()
+    {
+        $products = DB::table('products')->paginate(12);
+        $categoriesGroup=category_group::with('categories.products')->where('is_hot',1)->limit(3)->get();
+        $data=[
+            "products"=>$products
+        ];
+        return view('client.products.index',$data);
+    }
     public function category($slug)
     {   
         $category = category::where('slug', $slug)->firstOrFail();

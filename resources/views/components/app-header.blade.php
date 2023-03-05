@@ -29,7 +29,7 @@
                  <div class="action-item cart position-relative">
                     <i class='bx bx-basket'></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ">
-                        99+
+                        {{count((array)session('cart'))}}
                       </span>
                  </div>
             </div>

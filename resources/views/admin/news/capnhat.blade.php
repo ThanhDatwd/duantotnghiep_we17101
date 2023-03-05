@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\DB;
 <div class="adproduct">
 
 
-<form action="/admin/news/capnhat/{{$t->id}}" method="post" class="col-7 m-auto">
-<div class= "container-fluid">
+<form action="/admin/news/capnhat/{{$t->id}}" method="post" enctype="multipart/form-data"><div class= "container-fluid">
+    @csrf
     <div class= "row">
         <div class ="col-md-9 ">
             <div id="exTab1" class="container">
@@ -127,12 +127,16 @@ use Illuminate\Support\Facades\DB;
 
             <div class="addpro">
                 <div class="adpro1">
+               
                     <p>Ảnh đại diện <span>(*)</span></p>
-                    <canvas id="cvas1"></canvas>
+                    
+                    <canvas id="cvas1">
+                      
+                    </canvas>
                     <br>
                     <!--<input type="text" id="textinput"/>--
                     <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
-                    <input type="file" name="thumb" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
+                    <input type="file" name="thumb" id="image" multiple="false" accept="image/*" onchange="uploadIm()" >
             
                 </div>
             </div>
@@ -152,9 +156,11 @@ window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
 var drawGray = null;
 function uploadIm(){
 var canvas = document.getElementById("cvas1");
+
 var image = document.getElementById("image");
 var draw = new SimpleImage(image);
 drawGray = new SimpleImage(image);
+
 draw.drawTo(canvas);
 }
 </script>
