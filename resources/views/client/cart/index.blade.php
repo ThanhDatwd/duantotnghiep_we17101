@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{asset('css/client/cart.css')}}">
 @endsection
 @section('main-content')
-    <div class="container cart-container">
+    <div class="container cart-container mt-5">
         <div class="cart-items">
             @foreach ($carts as  $item)
             <div class="cart-item">

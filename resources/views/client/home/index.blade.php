@@ -119,11 +119,20 @@
       <div class="swiper mySwiperTypeEvent">
         <div class="swiper-wrapper">
           @foreach ($productsFlashSale as $item)
+          @php
+            $price1="";
+            $price2=$item->price_current;
+            if($item->discount>0){
+              $price1=$item->price_current;
+              $price2=$item->price_current-($item->price_current*$item->discount/100);
+
+            }
+          @endphp
           <div class="swiper-slide">
             <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" 
               isProgress={{true}} progressTxt="hết hàng" progressValue=20
-              name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
-              priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
+              name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{number_format($price1)}}"
+              priceCurrent="{{number_format($price2,0)}}" discount="{{$item->discount}}" />
           </div>
           @endforeach
         </div>

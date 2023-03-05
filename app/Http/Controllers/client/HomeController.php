@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 use App\Models\product;
 use Illuminate\Support\Facades\DB;
 use Nette\Utils\Json;
+use NumberFormatter;
 
 class HomeController extends Controller
 {
     public function index()
-    {
+    {   
         $productsFlashSale=product::all()->where('discount','>',0);
         $categoriesGroup=category_group::with('categories.products')->where('is_hot',1)->limit(3)->get();
         foreach ($categoriesGroup as $group) {
@@ -28,7 +29,7 @@ class HomeController extends Controller
             "productsFlashSale"=>$productsFlashSale,
             "categoriesGroup"=>$categoriesGroup,
             "categories"=>$categories,
-            "news"=>$news
+            "news"=>$news,
         ];
         return view('client.home.index',$data);
     }

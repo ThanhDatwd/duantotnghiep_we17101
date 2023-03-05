@@ -27,9 +27,11 @@
                     </div>
                  </div>
                  <div class="action-item cart position-relative">
-                    <i class='bx bx-basket'></i>
+                    <a  href="{{route('clientcart')}}">
+                        <i class='bx bx-basket d-flex'></i>
+                    </a>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ">
-                        {{count((array)session('cart'))}}
+                        {{count((array)cookie('cart'))}}
                       </span>
                  </div>
             </div>
@@ -71,13 +73,13 @@
                             
                         </div>
                     </li>
-                    <li><a href="">
+                    <li><a href="{{route('clientnews')}}">
                         Tin tức 
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{route('clientaddjobs')}}">
                         Tuyển dụng 
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{route('clientcontact')}}">
                         Liên hệ
                     </a></li>
                     

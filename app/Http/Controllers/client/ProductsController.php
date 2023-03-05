@@ -66,13 +66,17 @@ class ProductsController extends Controller
 
         $currentDate = getdate();
         $product = product::where('slug', $slug)->firstOrFail();
-        $coupons = coupon::where('user_used', '<', 'limit_used')
-            ->whereDate('start_date', '>', $currentDate)
-            ->whereDate('end_date', '>', $currentDate)
-            ->orderBy('created_at');
+        $product_relate=product::where('category_id', $product->category_id)->get();
+        // $coupons = coupon::where('user_used', '<', 'limit_used')
+        //     // ->whereDate('start_date', '>=', $currentDate)
+        //     // ->whereDate('end_date', '>', $currentDate)
+        //     // ->orderBy('created_at')
+        //     ->get();
+        $coupons=coupon::all();
         $data = [
             "product" => $product,
-            "coupons" => json_encode($coupons)
+            "coupons" => json_encode($coupons),
+            "product_relate"=>$product_relate
 
         ];
         return view('client.productDetail.index', $data);

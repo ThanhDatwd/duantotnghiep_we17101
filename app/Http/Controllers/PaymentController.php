@@ -177,7 +177,7 @@ class PaymentController extends Controller
       }
       return view('client.thankyou.index');
     } else {
-      dd('không thể thanh toán');
+      dd('Chưa nhập thông tin ');
     }
   }
   public function return_payment_vnpay_e(Request $request)

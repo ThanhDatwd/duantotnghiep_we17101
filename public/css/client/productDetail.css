@@ -309,7 +309,13 @@
     transition: 0.3s all ease;
     color: #00b907;
 }
-
+.products-row{
+    width: 100%;
+    aspect-ratio: 10/8;
+}
+.products-row .swiper-slide{
+    align-items: flex-start;
+}
 @media only screen and (max-width: 600px){
 
     
