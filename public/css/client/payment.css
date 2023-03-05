@@ -237,6 +237,25 @@ textarea::-webkit-scrollbar{
 .form-orderNow i{
     font-size: 26px;
 }
+.payment-online .title{
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+    font-size: 18px;
+}
+.payment-online__item{
+    background:var(--lightLeftColBackground) ;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: var( --box-shadow);
+}
+.payment-online__item .thumb{
+    width: 100%;
+
+}
+.payment-online__item .thumb img{
+    width: 100%;
+}
 
 /* =====================PHẦN REPONSIVE CHO TRANG ORDER======================= */
 @media only screen and (max-width: 600px){

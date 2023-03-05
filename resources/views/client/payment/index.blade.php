@@ -105,7 +105,22 @@
 							<span>40000</span>
 						</div>
 					</div>
-					<button id="payment_vnpay">thanh toán vnpay</button>
+					<div class="payment-online">
+						<h3 class="title">Thanh Toán Online</h3>
+						<div class="payment-online__list">
+							<div class="row">
+								<div class="col-4">
+									<div id="payment_vnpay" class="payment-online__item ">
+										<div class="thumb">
+											<img src="https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd2w2SHc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--3c10eafdffd111f6ec8ef44d76353152683cf2b2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--492f60b9aac6e8159e50e72bb289c5feb47a79d4/logo%20VNPAY-02.png" alt="">
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					{{-- <button id="payment_vnpay">thanh toán vnpay</button> --}}
 					{{-- <form action="{{route('clientpayment_vnpay')}}" method="POST">
 						@csrf
 					</form>
