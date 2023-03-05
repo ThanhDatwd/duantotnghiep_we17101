@@ -40,15 +40,14 @@
 
 
 <div class="container">
-	<div class="row" style="flex-wrap:wrap-reverse">
+	<div class="row">
 		<div class="col-lg-8 col-xs-12">
 			<div class="col-12 pb-4 pt-4">
 				<img style="width:180px"
 					src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1676652183181" alt="">
 			</div>
 			<div class="input-infomation row">
-				<form id="form-order" method="POST" class="form-order col-lg-6 col-xs-12">
-					@csrf
+				<form class="form-order col-lg-6 col-xs-12">
 					<div class="order-title">
 						<h3>Thông tin nhận hàng</h3>
 						<a href="">
@@ -58,24 +57,23 @@
 					</div>
 					<div class="error-txt "></div>
 					<div class="form-group order">
-						<input type="email" name="email" placeholder="email" value="{{old('email')}}">
+						<input type="email" name="email" placeholder="email" value="<?php echo $user['email'] ?? "" ?>">
 					</div>
 					<div class="form-group order">
-						<input type="text"  name="user_name" placeholder="Họ tên"
-							value="{{old('user_name')}}">
+						<input type="text" name="name" placeholder="Họ tên"
+							value="<?php echo $user['user_name'] ?? "" ?>">
 					</div>
 					<div class="form-group order">
 						<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)"
-							value="{{old('phone')}}">
+							value="<?php echo $user['phone'] ?? "" ?>">
 					</div>
 					<div class="form-group order">
 						<input type="text" name="address" placeholder="địa chỉ(tùy chọn)"
-							value="{{old('email')}}">
+							value="<?php echo $user['address'] ?? "" ?>">
 					</div>
 					<div class="form-group order">
 						<select id="province" name="province">
 							<option value="">-- Chọn tỉnh/thành --</option>
-							
 						</select>
 					</div>
 					<div class="form-group order">
@@ -89,7 +87,7 @@
 						</select>
 					</div>
 					<div class="form-group order">
-						<textarea name="note_order" {{old('note_order')}}  placeholder="Ghi chú">Ghi chú</textarea>
+						<textarea name="noteOrder" placeholder="Ghi chú">Ghi chú</textarea>
 					</div>
 				</form>
 				<div class="transition col-lg-6 col-xs-12">
@@ -105,19 +103,15 @@
 							<span>40000</span>
 						</div>
 					</div>
-					<button id="payment_vnpay">thanh toán vnpay</button>
-					{{-- <form action="{{route('clientpayment_vnpay')}}" method="POST">
-						@csrf
-					</form>
-					<form action="{{route('clientpayment_momo_qr')}}" method="POST">
-						@csrf
-						<button type="submit">thanh toán momo QR code</button>
-					</form>
-					<form action="{{route('clientpayment_momo_atm')}}" method="POST">
-						@csrf
-						<button type="submit" name="payUrl">thanh toán momo ATM</button>
-					</form> --}}
-					
+					<div class="form-orderNow">
+						<a href="?page=cart">
+							<i class='bx bx-chevron-left'></i>
+							Quay về trang đặt hàng
+						</a>
+						<button class="btn btn-buyNow">Đặt mua</button>
+						<button hidden class="btn btn-showModalInputCode" data-toggle="modal"
+							data-target="#exampleModalCenter">Đặt mua</button>
+					</div>
 				</div>
 
 			</div>
@@ -130,24 +124,6 @@
 						<i class='bx bx-chevron-down'></i>
 					</span>
 				</div>
-				<ul class="order-list">
-					@foreach ($carts as $item )
-					<div class="order-item">
-						<div class="order-item_img">
-							<img src="{{$item->thumb}}" alt="">
-							<span>{{$item->amount}}</span>
-						</div>
-						<div class="order-item_txt">
-							<div>
-								<p class="name">{{$item->name}}</p>
-								<span class="weight">1kg</span>
-							</div>
-							<div class="price">{{$item->price_current-($item->price_current*$item->discount/100)}}</div>
-						</div>
-					</div>
-					@endforeach
-					
-				</ul>
 				{{-- --}}
 				<div class="discountCode">
 					<div class="form-group order">
@@ -171,15 +147,6 @@
 						<span class="price" id="order__total"></span>
 					</div>
 				</div>
-				<div class="form-orderNow">
-					<a href="{{route('clientcart')}}">
-						<i class='bx bx-chevron-left'></i>
-						Quay về trang đặt hàng
-					</a>
-					<button class="btn btn-buyNow">Đặt mua</button>
-					<button hidden class="btn btn-showModalInputCode" data-toggle="modal"
-						data-target="#exampleModalCenter">Đặt mua</button>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -189,12 +156,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-	const formOrder=document.getElementById('form-order')
-	const btnPaymentVnpay=document.getElementById("payment_vnpay")
-	btnPaymentVnpay.onclick=()=>{
-		formOrder.action="http://127.0.0.1:8000/payment_vnpay"
-		formOrder.submit()
-	}
 	// function inputCode(event, p, c, n) {
     //     let length = document.getElementById(c).value.length;
     //     let maxLength = document.getElementById(c).getAttribute('maxlength')
@@ -359,7 +320,7 @@
 
 				// Thêm các xã/phường vào trường chọn
 				for (var i = 0; i < wards.length; i++) {
-					$("#ward").append("<option value='" + wards[i].name + "'>" + wards[i].name + "</option>");
+					$("#ward").append("<option value='" + wards[i].code + "'>" + wards[i].name + "</option>");
 				}
 			});
 		}

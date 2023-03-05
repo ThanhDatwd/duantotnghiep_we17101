@@ -42,13 +42,22 @@
                           <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
                         @endif
                     </div>
-                    <div class="product-detail--info__amount">
-                        Số lượng <span>-</span><span>+</span><span>1</span>
-                    </div>
-                    <div class="product-detail--info__cta">
-                        <button class="btn btn-1">Thêm vào giỏ hàng</button>
-                        <button class="btn btn-2">Mua ngay</button>
-                    </div>
+                    <form id="form-add" method="post" action={{route('clientadd-to-cart')}}>
+                      <input type="text" hidden name="productId" value={{$product->id}}>
+                      <div class="form-group">
+                        <label for="">Số Lượng</label>
+                          <div class="form-amount">
+                            <div class="btn btn-amount desc"><i class='bx bx-minus'></i></div>
+                            <input class="input-amount" type="number" name="amount" value=1 >
+                            <div class="btn btn-amount add"><i class='bx bx-plus'></i></div>
+                          </div>
+                        </div>
+                        @csrf
+                      <div class="product-detail--info__cta">
+                          <button class="btn btn-1">Thêm vào giỏ hàng</button>
+                          <button class="btn btn-2">Mua ngay</button>
+                      </div>
+                  </form>
                     <div class="btn-shopee">
                         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/shopee_buy.png?1676652183181" alt="">
                     </div>
@@ -145,5 +154,22 @@
     //     },
     //   },
    });
+
+  //  PHẦN CSS CHO THÊM SỐ LƯỢNG SẢN PHẨM
+  const formAdd = document.querySelector('#form-add')
+    const productId = document.querySelector('[name=productId]').value
+    const amount = formAdd.querySelector('.input-amount')
+    const btnAdd = formAdd.querySelector('.btn-amount.add')
+    const btnDesc = formAdd.querySelector('.btn-amount.desc')
+
+    const btnOrderNow = formAdd.querySelector('.btnOrder-now')
+    btnAdd.onclick = () => {
+        amount.value++
+    }
+    btnDesc.onclick = () => {
+      if (amount.value > 1) {
+          amount.value--
+        }
+    }
   </script>
 @endsection

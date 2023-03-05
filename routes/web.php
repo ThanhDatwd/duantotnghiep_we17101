@@ -13,7 +13,7 @@ use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\client\ContactController;
 use App\Http\Controllers\client\AddjobsController;
-
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Symfony\Component\Routing\Router;
@@ -42,13 +42,17 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/account', [AccountController::class, 'account'])->name('account');
     Route::get('/contact', [ContactController::class,'Contacts'])->name('contact');
     Route::get('/addjobs', [AddjobsController::class,'addjobs'])->name('addjobs');
-
-    Route::get('payment', function () {
-        return view('client.payment.index');
-    });
+    Route::get('/payment', [PaymentController::class,'index'])->name('payment');
+    Route::post('/payment_vnpay', [PaymentController::class,'create_payment_vnpay_e'])->name('payment_vnpay');
+    Route::get('/return_payment_vnpay', [PaymentController::class,'return_payment_vnpay_e'])->name('return_payment_vnpay');
+    Route::post('/payment_momo_qr', [PaymentController::class,'create_payment_momo_qr'])->name('payment_momo_qr');
+    Route::get('/return_payment_momo_qr', [PaymentController::class,'return_payment_momo_qr'])->name('return_payment_momo_qr');
+    Route::post('/payment_momo_atm', [PaymentController::class,'create_payment_momo_atm'])->name('payment_momo_atm');
+    Route::get('/return_payment_momo_atm', [PaymentController::class,'return_payment_momo_atm'])->name('return_payment_momo_atm');
     Route::get('thanks', function () {
         return view('client.thankyou.index');
     });
+    Route::post('/add-to-cart', [ProductsController::class,'addToCart'])->name('add-to-cart');
     //
     // Route::resource('/admin/product', AdminProductController::class);
 

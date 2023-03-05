@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\category;
 use App\Models\category_group;
+use App\Models\news;
 use Illuminate\Http\Request;
 use App\Models\product;
 use Illuminate\Support\Facades\DB;
@@ -21,16 +22,13 @@ class HomeController extends Controller
                 $category->products = $category->products()->take(2)->get();
             }
         }
-        // $categoriesGroup=category_group::with('categories')->with('products')->limit(2)->get();
-        // dd($categoriesGroup);
-        // $a=category_group::with('categories.products')->get();
-        // dd($a);
-
-        $categories=category::limit(3)->get();
+        $news=news::limit(5)->get();
+       $categories=category::limit(3)->get();
         $data=[
             "productsFlashSale"=>$productsFlashSale,
             "categoriesGroup"=>$categoriesGroup,
-            "categories"=>$categories
+            "categories"=>$categories,
+            "news"=>$news
         ];
         return view('client.home.index',$data);
     }

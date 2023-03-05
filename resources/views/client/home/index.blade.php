@@ -83,16 +83,15 @@
     <h2 class="title pt-3 pb-3 mb-0"><a href="">Danh mục nổi bật</a></h2>
     <div class="swiper mySwiperCategoryGroup">
       <div class="swiper-wrapper">
-        @foreach ($productsFlashSale as $item)
+        @foreach ($categoriesGroup as $group)
         <div class="swiper-slide">
           <div class="category__group__card">
             <div class="content">
-              <a href="" class="name">hải sản</a>
+              <a href="" class="name">{{$group->name}}</a>
               <div class="categories">
-                <li> <a href="">Tôm hùm</a></li>
-                <li> <a href="">Cua hoàng đế</a></li>
-                <li> <a href="">Mực trứng</a></li>
-                <li> <a href="">Rau củ quả các loại</a></li>
+                @foreach ($group->categories as $item)
+                   <li> <a href="">{{$item->category_name}}</a></li>
+                @endforeach
               </div>
             </div>
             <div class="thumb">
@@ -152,7 +151,7 @@ $indexCategory++;
       <div class="col-xl-3 col-lg-4 col-md-5 col-xs-12 mb-3 mb-md-0">
         <a href="">
           <img style="width:100%;height:100%" class="category-thumb"
-            src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/bn_pr_3.png?1669280565026" alt="">
+            src="{{$group->poster}}" onerror="this.src='https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/bn_pr_3.png?1669280565026'" alt="">
         </a>
       </div>
       <div class="col-xl-9 col-lg-8 col-md-7 col-xs-12" style="height:100%">
@@ -220,11 +219,11 @@ $indexCategory++;
     <h2 class="title pt-3 pb-3 mb-0"><a href="">Bài viết nổi bật</a></h2>
     <div class="swiper mySwiperNews">
       <div class="swiper-wrapper">
-        @foreach ($productsFlashSale as $item)
+        @foreach ($news as $item)
         <div class="swiper-slide">
-          <x-NewsCard title="tiêu đề bài viết "
-            thumb="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif"
-            summary=" Lợi ích của cá hồi trong bữa cơm gia đình hàng ngày So với nhiều mặt hàng thực phẩm tươi " />
+          <x-NewsCard title="{{$item->title}}"
+            thumb="{{$item->thumb}}"
+            summary="{{$item->summary}} " />
         </div>
         @endforeach
       </div>

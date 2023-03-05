@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('thumb');
+            $table->string('poster')->nullable();
             $table->integer('stt');
             $table->string('slug')->unique();
             $table->boolean('is_active')->default(1);

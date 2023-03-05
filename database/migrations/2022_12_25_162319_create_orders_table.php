@@ -17,14 +17,18 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('status');
-            $table->string('total_price');
-            $table->string('total_price_format');
+            $table->string('total');
             $table->string('payment_type');
-            $table->integer('count_products');
             $table->string('fee_ship');
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('customer_note');
-            $table->string('shop_note');
+            $table->string('user_name');
+            $table->string('email');
+            $table->string('province');
+            $table->string('district');
+            $table->string('ward');
+            $table->string('address');
+            $table->string('phone');
+            $table->string('customer_note')->nullable();
+            $table->string('shop_note')->nullable();
             $table->timestamp('deleted_at');
             $table->timestamps();
         });
