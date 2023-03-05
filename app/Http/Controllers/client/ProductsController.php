@@ -23,7 +23,7 @@ class ProductsController extends Controller
     //     return view('client.products.index',$data);
     // }
     public function category($slug)
-    {
+    {   
         $category = category::where('slug', $slug)->firstOrFail();
         $products = $category->products()->paginate(8);
         $data = [
@@ -35,6 +35,21 @@ class ProductsController extends Controller
     {
         // $products = DB::table('products')->paginate(12);
         $categoriesGroup = category_group::with('categories.products')->where('slug', $slug)->first();
+        $products = Product::with('category.category_group')
+            ->whereHas('category.category_group', function ($query) use ($slug) {
+                $query->where('slug', $slug);
+            })
+            ->paginate(8);
+        $data = [
+            "products" => $products,
+            "categories_group" => $categoriesGroup
+        ];
+        return view('client.products.index', $data);
+    }
+    public function group_all($slug)
+    {
+        // $products = DB::table('products')->paginate(12);
+        $categoriesGroup = category_group::with('categories.products')->get();
         $products = Product::with('category.category_group')
             ->whereHas('category.category_group', function ($query) use ($slug) {
                 $query->where('slug', $slug);

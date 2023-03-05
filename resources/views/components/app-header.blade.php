@@ -38,25 +38,29 @@
         <div class="app__header__navigation">
             <div class="container">
                 <ul class="menu">
-                    <li><a href="">
+                    <li><a href="{{route('clienthome')}}">
                         Trang chủ
                     </a></li>
                     <li><a href="">
                         Về chúng tôi
                     </a></li>
                     <li>
-                        <a href="">
+                        <a href="{{route('clientcategory-group-all')}}">
                            Sản phẩm 
                            <i class='bx bxs-down-arrow'></i>
                         </a>
                         <div class="categoryGroupList">
                             @foreach ($category_group as $item )
                             <div class="categoryGroupItem">
-                                <div class="title">{{$item->name}}</div>
+                                <div class="title">
+                                    {{-- <a href="{{route('clientcategory-group',["slug"=>$item->slug])}}">
+                                    </a> --}}
+                                    {{$item->name}}
+                                </div>
                                 <div class="categoryList">
                                     @foreach ($item->categories as $category )
                                         <div>
-                                           <a href="">
+                                           <a href="{{route('clientcategory',["slug"=>$category->slug])}}">
                                             {{$category->category_name}}
                                            </a>
                                         </div>

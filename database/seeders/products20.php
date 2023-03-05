@@ -112,3 +112,4 @@ class products20 extends Seeder
         }
     }
 }
+}

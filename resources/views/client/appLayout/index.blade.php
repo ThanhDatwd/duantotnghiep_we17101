@@ -34,9 +34,7 @@
     <div class="container">
     </div>
     @yield('main-content')
-    <div class="container">
-      
-    </div>
+    <x-AppFooter/>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
