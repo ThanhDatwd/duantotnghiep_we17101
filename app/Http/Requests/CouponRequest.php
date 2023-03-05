@@ -32,8 +32,8 @@ class CouponRequest extends FormRequest
             'min_condition'=>'required|integer',
             'limit_used' => 'required|string',
             'start_date' => 'required',
-            'end_date' => 'required',
-            'thumb' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'end_date' => 'required|gte:start_date',
+            // 'thumb' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         
     }
@@ -43,13 +43,13 @@ class CouponRequest extends FormRequest
             'coupon_code.required' => 'Mã sản phẩm không được để trống',
             'coupon_type.required' => 'Loại sản phẩm không được để trống',
             'summary.required' => 'Tóm tắt không được để trống',
-            'content.required' => 'Nội dung không được để trống',
-            'thumb.required' => 'Ảnh đại diện không được để trống',
-            'thumb.image' => 'Ảnh đại diện phải là hình ảnh',
-            'thumb.mimes' => 'Ảnh đại diện phải là định dạng: jpeg, png, jpg, gif, svg',
-            'thumb.max' => 'Dung lượng ảnh đại diện không được vượt quá 2048 KB',
-            'price.required'=>'Giá không được để trống',       
-            'price_current.required'=>'Giá bán không được để trống',
+            'description.required' => 'Nội dung không được để trống',
+            'start_date' => "Ngày bắt đầu không được để trống",
+            'end_date.gte' => "ds",
+            'end_date' => "Ngày kết thúc không được để trống",
+            'limit_used'=> "Giới hạn người dùng không được để trống",
+            'discount' => "Số tiền cần giảm không được để trống",
+            'min_condition' => "Số lượng mã không được để trống"
         ];
     }
 }

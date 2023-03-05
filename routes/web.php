@@ -35,6 +35,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
     Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
+    Route::get('/product',[ProductsController::class,'index']);
     // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
 //    Route::get('/add-to-cart/{id}',[ProductsController::class,'addToCart'])->name('add_to_cart');
@@ -46,7 +47,8 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('payment', function () {return view('client.payment.index');});
     Route::get('thanks', function () {return view('client.thankyou.index'); });
     Route::get('/register',[AuthController::class,'register']);
-    Route::get('/login',[AuthController::class,'register']);
+    Route::get('/login',[AuthController::class,'login']);
+    Route::post('/login-user',[AuthController::class,'loginUser']);
 });
     //
     // Route::resource('/admin/product', AdminProductController::class);

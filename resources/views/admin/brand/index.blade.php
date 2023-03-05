@@ -23,7 +23,10 @@
                   <th></th>
                   <th scope="col">ID</th>
                   <th scope="col">Hình ảnh</th>
-                  <th scope="col">Nơi nhập hàng</th>
+                  <th scope="col">Nguồn nhập hàng</th>
+                  <th scope="col">Địa chỉ</th>
+                  <th scope="col">Thông tin liên lạc</th>
+
                   <th scope="col"></th>
               </tr>
           </thead>
@@ -35,8 +38,14 @@
                   <td><img src="{{asset('upload/'.$b->avatar)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" >
                   </td>
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
-
                   <td>{{$b->brands}}</td>
+
+                  <td>{{$b->address}}</td>
+                  <td>
+                    <p>Email: {{$b->email}}</p>
+                    <p>Số điện thoại: {{$b->phone}}</p>
+                  </td>
+
                   <td class="button">
                     <a style="color: cadetblue" href="/admin/brand/update/{{$b->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a style="color: orange" href="/admin/brand/delete/{{$b->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>

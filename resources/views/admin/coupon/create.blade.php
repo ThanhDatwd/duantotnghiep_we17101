@@ -35,6 +35,9 @@
                         <div class="adpro1">
                             <p>Mã giảm giá<span>(*)</span></p>
                             <input type="text" name="coupon_code" value="{{old('coupon_code')}}" placeholder="   Nhập mã giảm giá">
+                            @error('coupon_code')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                     </div>
                     <div class="addpro">    
@@ -51,6 +54,9 @@
                         <div class="adpro1">
                             <p>Nhập số % hoặc tiền giảm <span>(*)</span></p>
                             <input type="number" name="discount" value="{{old('discount')}}" placeholder="Nhập nguồn hàng">
+                            @error('discount')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         
                     </div>
@@ -58,6 +64,9 @@
                         <div class="adpro1">
                             <p>Số lượng mã <span>(*)</span></p>
                             <input type="number" name="min_condition" value="{{old('min_condition')}}" placeholder="Nhập số lượng mã">
+                            @error('min_condition')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         
                     </div>
@@ -65,6 +74,9 @@
                         <div class="adpro1">
                             <p>Giới hạn người sử dụng</p>
                             <input type="number" name="limit_used" value="{{old('limit_used')}}" placeholder="Nhập giới hạn người dùng">
+                            @error('limit_used')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         
                     </div>
@@ -81,11 +93,17 @@
                     <div class="addpro">    
                         <div class="adpro1">
                             <p>Ngày bắt đầu</p>
-                            <input type="datetime-local" name="start_date" >
+                            <input type="datetime-local" value="{{old('start_date')}}" name="start_date" >
+                            @error('start_date')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         <div class="adpro1">
                             <p>Ngày kết thúc</p>
-                            <input type="datetime-local" name="end_date" >
+                            <input type="datetime-local" value="{{old('end_date')}}" name="end_date" >
+                            @error('end_date')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         
                     </div>
@@ -94,6 +112,9 @@
                         <div class="adpro1">
                             <p>Miêu tả  <span>(*)</span></p>
                             <textarea name="description" id="" value="{{old('address')}}" cols="90" rows="5"></textarea>
+                            @error('description')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                     </div>
 

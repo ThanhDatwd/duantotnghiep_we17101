@@ -25,10 +25,10 @@ class BrandRequest extends FormRequest
     {
         return [
             //'title' => 'required|string|max:255',
-            'brands' => 'required|alpha',
+            'brands' => 'required|string',
             'address' => 'required|string|max:255',
             'phone' => 'required|integer',
-            'email'=>'required|email|not_regex:/^.+$/i',
+            'email'=>'required|email',
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         

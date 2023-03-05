@@ -25,6 +25,7 @@
                   <th scope="col">ID</th>
                   <th scope="col">Hình ảnh</th>
                   <th scope="col">Tên sản phẩm</th> 
+                  <th scope="col">Thứ tự hiện</th>
                   <th scope="col">Trạng thái</th>
                   <th scope="col"></th>
               </tr>
@@ -41,6 +42,7 @@
                     <p style="font-size: 18px; font-weight:bold">{{$c->category_name}}</p>
                     <p>{{$c->slug}}</p>
                   </td>
+                  <td>{{$c->stt}}</td>
                  
                  <td>
                     <span>

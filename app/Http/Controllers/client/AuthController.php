@@ -31,7 +31,6 @@ class AuthController extends Controller
             'password' => session('password'),
         ];
         if($user) {
-            // return redirect()->route('/');
             if($request->password == $user->password){
                 $request->session()->put('loginId'.$user->id);
                 // dd($request);

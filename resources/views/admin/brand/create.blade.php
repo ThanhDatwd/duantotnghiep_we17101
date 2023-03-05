@@ -48,16 +48,25 @@
                         <div class="adpro1">
                             <p>Tên nguồn nhập hàng <span>(*)</span></p>
                             <input type="text" name="brands" value="{{old('brands')}}" placeholder="Nhập nguồn hàng">
+                            @error('brands')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                     </div>
                     <div class="addpro">    
                         <div class="adpro1">
                             <p>Email<span>(*)</span></p>
                             <input type="email" name="email" value="{{old('email')}}" placeholder="   Nhập email nguồn hàng">
+                            @error('email')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         <div class="adpro1">
                             <p>Số điện thoại <span>(*)</span></p>
                             <input type="number" name="phone" value="{{old('phone')}}"  placeholder="Nhập sdt nguồn hàng">
+                            @error('phone')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                     </div>
             
@@ -65,6 +74,9 @@
                         <div class="adpro1">
                             <p>Địa chỉ<span>(*)</span></p>
                             <input type="text" name="address" value="{{old('address')}}" placeholder="Nhập địa chỉ">
+                            @error('address')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                     </div>
 
@@ -82,7 +94,9 @@
                 <!--<input type="text" id="textinput"/>--
                 <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
                 <input name="avatar" type="file" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
-        
+                @error('avatar')
+                <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
             </div>
         </div>
         

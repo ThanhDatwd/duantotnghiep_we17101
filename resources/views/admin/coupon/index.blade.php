@@ -22,10 +22,12 @@
                   <th></th>
                   <th scope="col">ID</th>
                   <th scope="col">Mã giảm giá</th>
-                  <th scope="col">loại giảm giá</th>
+                  <th scope="col">Loại giảm giá</th>
                   <th scope="col">Giảm giá</th>
-                  <th scope="col">Giới hạn người dùng </th>
-                  <th scope="col">Thời gian </th>
+                  <th scope="col">Giới hạn </th>
+                  <th scope="col">Số lượng mã</th>
+                  <th scope="col">Bắt đầu</th>
+                  <th scope="col">Kết thúc</th>
                   <th scope="col">Trạng thái</th>
                   <th scope="col"></th>
               </tr>
@@ -49,6 +51,7 @@
                     {{$c->discount}}
                   </td>
                   <td>{{$c->limit_used}}</td>
+                  <td>{{$c->min_condition}}</td>
                   <td>
                     
                     <p>Từ: {{ date(' H:i:s', strtotime($c->start_date)) }} <br>

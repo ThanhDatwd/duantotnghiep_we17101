@@ -26,15 +26,12 @@
                <div class ="col-md-8 col-sm-6 ">
                 <div class="boxlist1">
                     <div class="addpro">
-                       
                         <div class="adpro1">
                             <p>Tên sản phẩm <span>(*)</span></p>
                             <input type="text" name="name" value="{{old('name')}}" placeholder="Nhập tên sản phẩm">
                             @error('name')
                             <span class="badge badge-danger">{{ $message }}</span>                         @enderror
-                        </div>
-                     
-                
+                        </div>  
                     </div>
                     <div class="addpro">        
                         <div class="adpro1">
@@ -107,9 +104,10 @@
                             <p>Mô tả ngắn <span>(*)</span></p>
                             <textarea name="summary" id="" style="width:100%" cols="100" rows="5"></textarea>
                         </div>
+                        
                         @error('summary')
-                        <span class="badge badge-danger">{{ $message }}</span>                         @enderror
-
+                        <span class="badge badge-danger">{{ $message }}</span>                  
+                        @enderror
                     </div>
                     <div class="addpro">
                         <div class="adpro1">
@@ -124,7 +122,6 @@
                 
                     <div class="addpro">
                         <div class="adpro1">
-                         
                                 <script type="text/javascript" src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
                                 <p>Mô tả <span>(*)</span></p>
                                 <textarea id="editor1" name="content"></textarea>            
