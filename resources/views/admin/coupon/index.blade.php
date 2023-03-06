@@ -36,13 +36,19 @@
             @foreach ($coupons as $c)
               <tr>
                 <th></th>
-                  <th>{{$c->id}}</th>
+                  <th>
+                    {{$c->id}}
+                  </th>
                   <td> 
                     {{$c->coupon_code}}
                 </td>
 
                   <td>
-                    {{$c->coupon_type}}
+                    @if ($c->coupou_type == '1')
+                    <p>Giảm giá theo số tiền</p>
+                    @else
+                    <p>Giảm giá theo %</p>
+                  @endif
                    
                   </td>
 
