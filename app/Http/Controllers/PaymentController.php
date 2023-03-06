@@ -27,13 +27,14 @@ class PaymentController extends Controller
         $carts = product::whereIn('id', $idList)->get();
         for ($i = 0; $i < count($carts); $i++) {
           if ($cartFarmApp[$i]['productId'] == $carts[$i]->id)
-            $carts[$i]->amount = $cartFarmApp[$i]['amount'];
+            $carts[$i]->attributes = $cartFarmApp[$i]['amount'];
         }
       } else {
       }
     }
     $data = [
-      'carts' => $carts
+      'carts' => $carts,
+      'total' => 0
     ];
     return view('client.payment.index', $data);
   }
@@ -50,7 +51,7 @@ class PaymentController extends Controller
       && $request->ward != null
     ) {
       $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-      $vnp_Returnurl = route('clientreturn_payment_vnpay');
+      $vnp_Returnurl = route('clientreturn_payment_vnpay',["data"=>$request]);
       $vnp_TmnCode = "Q57HT4LD"; //Mã website tại VNPAY 
       $vnp_HashSecret = "ZNJZVKHJSPIOYDYRREQVECNZELACJGDZ"; //Chuỗi bí mật
 
@@ -132,50 +133,41 @@ class PaymentController extends Controller
       $returnData = array(
         'code' => '00', 'message' => 'success', 'data' => $vnp_Url
       );
-      // return Redirect::route('clientreturn_payment_vnpay')->with('data', $request->all());
-      // return redirect($vnp_Url,302,
-      // [
-      //   "user_name"=>$request->user_name,
-      //   "email"=>$request->email,
-      //   "address"=>$request->address,
-      //   "province"=>$request->province,
-      //   "district"=>$request->district,
-      //   "ward"=>$request->ward
-      // ]);
+      return redirect($vnp_Url);
 
       // 
-      $order=new order();
-        $order->user_name = $request->user_name;
-        $order->email = $request->email;
-        $order->phone = $request->phone;
-        $order->address = $request->address;
-        $order->province = $request->province;
-        $order->district = $request->district;
-        $order->ward = $request->ward;
-        $order->customer_note = $request->note_order;
-        $order->payment_type = 'ATM';
-        $order->status = 1;
-        $order->total = 10000;
-        $order->fee_ship = 0;
-        $order->save();
-      $cartFarmApp = [];
-      if (isset($_COOKIE["cartFarmApp"])) {
-        $json = $_COOKIE["cartFarmApp"];
-        $cartFarmApp = json_decode($json, true);
-      }
-      foreach ($cartFarmApp as $item) {
-        // Fetch the product information from the database
-        $product = Product::find($item['productId']);
-        $order_detail= new order_details();
-        $order_detail->order_id=$order->id;
-        $order_detail->product_id=$item['productId'];
-        $order_detail->product_name=$product->name;
-        $order_detail->product_thumb=$product->thumb;
-        $order_detail->price=$product->price_current-($product->price_current*$product->discount/100);
-        $order_detail->quantity=$item['amount'];
-        $order_detail->save();
-      }
-      return view('client.thankyou.index');
+      // $cartFarmApp = [];
+      // if (isset($_COOKIE["cartFarmApp"])) {
+      //   $json = $_COOKIE["cartFarmApp"];
+      //   $cartFarmApp = json_decode($json, true);
+      // }
+      // $order = new order();
+      // $order->user_name = $request->user_name;
+      // $order->email = $request->email;
+      // $order->phone = $request->phone;
+      // $order->address = $request->address;
+      // $order->province = $request->province;
+      // $order->district = $request->district;
+      // $order->ward = $request->ward;
+      // $order->customer_note = $request->note_order;
+      // $order->payment_type = 'ATM';
+      // $order->status = 1;
+      // $order->total = 10000;
+      // $order->fee_ship = 0;
+      // $order->save();
+      // foreach ($cartFarmApp as $item) {
+      //   // Fetch the product information from the database
+      //   $product = Product::find($item['productId']);
+      //   $order_detail = new order_details();
+      //   $order_detail->order_id = $order->id;
+      //   $order_detail->product_id = $item['productId'];
+      //   $order_detail->product_name = $product->name;
+      //   $order_detail->product_thumb = $product->thumb;
+      //   $order_detail->price = $product->price_current - ($product->price_current * $product->discount / 100);
+      //   $order_detail->quantity = $item['amount'];
+      //   $order_detail->save();
+      // }
+      // return redirect()->route('clientpage-thanks');
     } else {
       dd('Chưa nhập thông tin ');
     }
@@ -317,5 +309,58 @@ class PaymentController extends Controller
   public function return_payment_momo_atm(Request $request)
   {
     # code...
+  }
+
+  // ///////////////////////////////////////
+  // ///////////////////////////////////////
+  // ///////////////////////////////////////
+  // ///////////////////////////////////////
+  public function create_payment_cod(Request $request)
+  {
+    if (
+      $request->email != null
+      && $request->user_name != null
+      && $request->phone != null
+      && $request->address != null
+      && $request->province != null
+      && $request->district != null
+      && $request->ward != null
+    ) {
+      $cartFarmApp = [];
+      if (isset($_COOKIE["cartFarmApp"])) {
+        $json = $_COOKIE["cartFarmApp"];
+        $cartFarmApp = json_decode($json, true);
+      }
+      $order = new order();
+      $order->user_name = $request->user_name;
+      $order->email = $request->email;
+      $order->phone = $request->phone;
+      $order->address = $request->address;
+      $order->province = $request->province;
+      $order->district = $request->district;
+      $order->ward = $request->ward;
+      $order->customer_note = $request->note_order;
+      $order->payment_type = 'ATM';
+      $order->status = 1;
+      $order->total = 10000;
+      $order->fee_ship = 0;
+      $order->save();
+      foreach ($cartFarmApp as $item) {
+        // Fetch the product information from the database
+        $product = Product::find($item['productId']);
+        $order_detail = new order_details();
+        $order_detail->order_id = $order->id;
+        $order_detail->product_id = $item['productId'];
+        $order_detail->product_name = $product->name;
+        $order_detail->product_thumb = $product->thumb;
+        $order_detail->price = $product->price_current - ($product->price_current * $product->discount / 100);
+        $order_detail->quantity = $item['amount'];
+        $order_detail->save();
+      }
+      setcookie('cartFarmApp', json_encode([]), time() - 3 * 24 * 60 * 60, '/');
+      return redirect()->route('clientpage-thanks');
+    } else {
+      dd("Vui lòng nhập  thông tin");
+    }
   }
 }

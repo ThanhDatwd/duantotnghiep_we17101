@@ -50,6 +50,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/contact', [ContactController::class,'contact'])->name('contact');
     Route::get('/addjobs', [AddjobController::class,'index'])->name('addjobs');
     Route::get('/payment', [PaymentController::class,'index'])->name('payment');
+    Route::post('/payment_cod', [PaymentController::class,'create_payment_cod'])->name('payment_cod');
     Route::post('/payment_vnpay', [PaymentController::class,'create_payment_vnpay_e'])->name('payment_vnpay');
     Route::get('/return_payment_vnpay', [PaymentController::class,'return_payment_vnpay_e'])->name('return_payment_vnpay');
     Route::post('/payment_momo_qr', [PaymentController::class,'create_payment_momo_qr'])->name('payment_momo_qr');
@@ -58,7 +59,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/return_payment_momo_atm', [PaymentController::class,'return_payment_momo_atm'])->name('return_payment_momo_atm');
     Route::get('thanks', function () {
         return view('client.thankyou.index');
-    });
+    })->name('page-thanks');
     Route::post('/add-to-cart', [ProductsController::class,'addToCart'])->name('add-to-cart');
     Route::get('/register',[AuthController::class,'register']);
     Route::get('/login',[AuthController::class,'login']);

@@ -243,11 +243,52 @@ textarea::-webkit-scrollbar{
     font-weight: 600;
     font-size: 18px;
 }
+.payment{
+    width: 100%;
+    cursor: pointer;
+}
+.payment.cod_area .message{
+    padding:20px 12px;
+    font-size: 14px;
+    background:var(--lightLeftColBackground) ;
+    display: none;
+
+}
+.payment.cod_area.active .message{
+    display: block;
+}
+.payment.online_area .payment-online{
+    
+    height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+    /* display: none; */
+}
+.payment.online_area.active .payment-online{
+    padding: 20px 0;
+    height: auto;
+    transition: var(--transition);
+}
+
 .payment-online__item{
+    position: relative;
     background:var(--lightLeftColBackground) ;
     border-radius: 4px;
     cursor: pointer;
     box-shadow: var( --box-shadow);
+}
+.payment-online__item .check{
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    display: none;
+}
+.payment-online__item .check i{
+    color: var(--mainColor);
+    font-size: 26px;
+}
+.payment-online__item.active .check{
+    display: block;
 }
 .payment-online__item .thumb{
     width: 100%;
