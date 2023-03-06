@@ -58,15 +58,15 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/', [AdminController::class,'index']);
         //-----------Admin Product-------------
         Route::get('/product', [AdminProductController::class,'index'])->name('admin-product');
-        Route::get('/product/create', [AdminProductController::class,'create']);
-        Route::post('/product/create', [AdminProductController::class,'create_']);
-        Route::get('/product/delete/{id}', [AdminProductController::class,'delete']);
-        Route::get('/product/trashed/forceDelete/{id}', [AdminProductController::class,'forceDelete']);
-        Route::get('/product/trashed',[AdminProductController::class,'trashed']);
-        Route::get('/product/restore/{id}',[AdminProductController::class,'restore']);
-        Route::get('product/restore-all',[AdminProductController::class,'restoreAll']);
-        Route::get('/product/update/{id}', [AdminProductController::class,'update']);
-        Route::post('/product/update/{id}', [AdminProductController::class,'update_']);
+        Route::get('/product/create', [AdminProductController::class,'create'])->name('admin.product.create');
+        Route::post('/product/create', [AdminProductController::class,'create_'])->name('admin.product.create_');
+        Route::get('/product/delete/{id}', [AdminProductController::class,'delete'])->name('admin.product.delete');
+        Route::get('/product/trashed/forceDelete/{id}', [AdminProductController::class,'forceDelete'])->name('admin.product.force');;
+        Route::get('/product/trashed',[AdminProductController::class,'trashed'])->name('admin.product.trashed');
+        Route::get('/product/restore/{id}',[AdminProductController::class,'restore'])->name('admin.product.restore');
+        Route::get('product/restore-all',[AdminProductController::class,'restoreAll'])->name('admin.product.restoreAll');
+        Route::get('/product/update/{id}', [AdminProductController::class,'update'])->name('admin.product.update');
+        Route::post('/product/update/{id}', [AdminProductController::class,'update_'])->name('admin.product.update_');
         
         //------------ Admin category_product ---------------
         Route::get('/product_category', [ProductCategorysController::class,'index'])->name('admin-product_category');
