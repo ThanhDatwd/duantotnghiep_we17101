@@ -68,7 +68,7 @@ class products20 extends Seeder
                 "stt" => 1,
                 "slug" => Str::slug($grC)
             ]);
-            if($indexC<(count($categories[$indexC]))){
+            if ($indexC < (count($categories[$indexC]))) {
                 foreach ($categories[$indexC] as $category) {
                     category::create(
                         [
@@ -105,13 +105,12 @@ class products20 extends Seeder
                         );
                         $indexPC += 1;
                     }
-    
-                   }
-                  $indexP+=1;
+                    $indexP += 1;
                 }
             }
-            $indexP=0;
+            $indexP = 0;
             $indexC += 1;
         }
     }
+}
 }

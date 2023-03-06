@@ -27,9 +27,11 @@
                     </div>
                  </div>
                  <div class="action-item cart position-relative">
-                    <i class='bx bx-basket'></i>
+                    <a  href="{{route('clientcart')}}">
+                        <i class='bx bx-basket d-flex'></i>
+                    </a>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ">
-                        {{count((array)session('cart'))}}
+                        {{count((array)cookie('cart'))}}
                       </span>
                  </div>
             </div>
@@ -38,25 +40,29 @@
         <div class="app__header__navigation">
             <div class="container">
                 <ul class="menu">
-                    <li><a href="">
+                    <li><a href="{{route('clienthome')}}">
                         Trang chủ
                     </a></li>
                     <li><a href="">
                         Về chúng tôi
                     </a></li>
                     <li>
-                        <a href="">
+                        <a href="{{route('clientcategory-group-all')}}">
                            Sản phẩm 
                            <i class='bx bxs-down-arrow'></i>
                         </a>
                         <div class="categoryGroupList">
                             @foreach ($category_group as $item )
                             <div class="categoryGroupItem">
-                                <div class="title">{{$item->name}}</div>
+                                <div class="title">
+                                    {{-- <a href="{{route('clientcategory-group',["slug"=>$item->slug])}}">
+                                    </a> --}}
+                                    {{$item->name}}
+                                </div>
                                 <div class="categoryList">
                                     @foreach ($item->categories as $category )
                                         <div>
-                                           <a href="">
+                                           <a href="{{route('clientcategory',["slug"=>$category->slug])}}">
                                             {{$category->category_name}}
                                            </a>
                                         </div>
@@ -67,13 +73,13 @@
                             
                         </div>
                     </li>
-                    <li><a href="">
+                    <li><a href="{{route('clientnews')}}">
                         Tin tức 
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{route('clientaddjobs')}}">
                         Tuyển dụng 
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{route('clientcontact')}}">
                         Liên hệ
                     </a></li>
                     

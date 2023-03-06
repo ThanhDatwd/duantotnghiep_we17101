@@ -3,51 +3,34 @@
 <link rel="stylesheet" href="{{asset('css/client/cart.css')}}">
 @endsection
 @section('main-content')
-    <div class="container cart-container">
+    <div class="container cart-container mt-5">
         <div class="cart-items">
+            @foreach ($carts as  $item)
             <div class="cart-item">
-                <img class="item-img" src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="" >
+                <img class="item-img" src="{{$item->thumb}}" alt="" >
                 <div class="cart-info">
                     <div class="info">
-                        <div class="item-name">Nho không hạt</div>
-                        <div class="item-price">250.000 ₫</div>
+                        <div class="item-name">{{$item->name}}</div>
+                        <div class="item-price">{{$item->price_current}}</div>
                     </div>
                     <div class="info">
                         <div class="btn-quantity">
                             <button class="minus">-</button>
-                            <input type="number"  value="1" class="count" readonly>
+                            <input type="number"  value="{{$item->amount}}" class="count" readonly>
                             <button class="plus">+</button>
                         </div>
-                        
                         <button class="btn btn-delete">Xóa</button>
                     </div>
                 </div>
             </div>
-            <div class="cart-item">
-                <img class="item-img" src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="" >
-                <div class="cart-info">
-                    <div class="info">
-                        <div class="item-name">Nho không hạt</div>
-                        <div class="item-price">250.000 ₫</div>
-                    </div>
-                    <div class="info">
-                        <div class="btn-quantity">
-                            <button class="minus">-</button>
-                            <input type="number"  value="1" class="count" readonly>
-                            <button class="plus">+</button>
-                        </div>
-                        
-                        <button class="btn btn-delete">Xóa</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="checkout">
             <div class="btn checkout-info">
                 <div class="total-text">Tổng</div>
                 <div class="total-value">69.000 ₫</div>
             </div>
-            <button class="btn btn-ok">Thanh toán</button>
+            <a href="{{route('clientpayment')}}" class="btn btn-ok">Thanh toán</a>
             <button class="btn btn-delete-all">Xóa tất cả</button>
         </div>
     </div>

@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('product_name');
             $table->string('product_thumb');
             $table->integer('price');
-            $table->string('price_format');
-            $table->integer('discount');
             $table->integer('quantity');
             $table->timestamps();
         });

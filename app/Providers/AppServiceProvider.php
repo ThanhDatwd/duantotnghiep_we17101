@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\View\Components\AppFooter;
 use App\View\Components\AppHeader;
 use App\View\Components\AppNavbarMobile;
 use App\View\Components\CouponCard;
@@ -34,7 +35,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('AppCouponCard',CouponCard::class);
         Blade::component('NewsCard',NewsCard::class);
         Blade::component('AppNavbarMobile',AppNavbarMobile::class);
-        //
+        Blade::component('AppFooter',AppFooter::class);
+        
         Paginator::useBootstrap();
 
     }
