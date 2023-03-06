@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers\client;
 
+use App\Models\news;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         return view('client.news.index');
     }
-    public function newsDetail($slug)
+    public function newsDetail($id)
     {
-        // dd($slug);
-        return view('client.newsDetail.index');
-
+        $news = news::first();
+       
+        $data = [
+            'news' => $news
+        ];
+        return view('client.newsDetail.index', $data);
     }
 }

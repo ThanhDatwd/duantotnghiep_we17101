@@ -35,7 +35,7 @@ Route::prefix('/')->name('client')->group(function () {
     // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
-    Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
+    Route::get('/news/{id}', [NewsController::class, 'newsDetail'])->name('news-detail');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
     Route::get('/account', [AccountController::class, 'account'])->name('account');
     Route::get('payment', function () {

@@ -53,7 +53,7 @@
                 </div>
             </div>
             <article class="col-9">
-                <h1 class="article-name font-weight-bold">Hướng dẫn 5 cách làm món cá hồi sốt vừa ngon, vừa nhiều dinh dưỡng cho gia đình</h1>
+                <h1 class="article-name font-weight-bold">{{$news->title}}</h1>
                 <div class="entry-date">
                     <p>Đăng bởi: <b>Admin - 06/09/2023</b></p>
                 </div>
