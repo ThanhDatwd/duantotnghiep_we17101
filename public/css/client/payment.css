@@ -103,6 +103,7 @@ textarea::-webkit-scrollbar{
      border: 1px solid #ccc;
      border-radius: 6px;
      display: flex;
+     align-items: center;
      justify-content: space-between;
  }
 .info-product.order{
@@ -257,6 +258,9 @@ textarea::-webkit-scrollbar{
 .payment.cod_area.active .message{
     display: block;
 }
+.payment.cod_area.active .bxs-circle{
+    color: var(--mainColor);
+}
 .payment.online_area .payment-online{
     
     height: 0;
@@ -268,6 +272,9 @@ textarea::-webkit-scrollbar{
     padding: 20px 0;
     height: auto;
     transition: var(--transition);
+}
+.payment.online_area.active .bxs-circle{
+    color: var(--mainColor);
 }
 
 .payment-online__item{

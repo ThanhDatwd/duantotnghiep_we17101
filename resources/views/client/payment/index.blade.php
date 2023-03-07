@@ -2,39 +2,45 @@
 <link rel="stylesheet" href="{{asset('css/client/payment.css')}}">
 <link rel="stylesheet" href="{{asset('css/client/base.css')}}">
 @section('main-content')
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	Launch demo modal
+</button>
+
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
 	aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Xác nhận đơn hàng</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Nhập mã OTP xác nhận</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-			<form class="modal-body orderCode_area">
-				<div class="orderCode">
-					<input type="number" id="code1" maxlength="1" onkeyup="inputCode(event,'','code1','code2',)">
-				</div>
-				<div class="orderCode">
-					<input type="number" id="code2" maxlength="1" onkeyup="inputCode(event,'code1','code2','code3',)">
-				</div>
-				<div class="orderCode">
-					<input type="number" id="code3" maxlength="1" onkeyup="inputCode(event,'code2','code3','code4',)">
-				</div>
-				<div class="orderCode">
-					<input type="number" id="code4" maxlength="1" onkeyup="inputCode(event,'code3','code4','',)">
-				</div>
-
-			</form>
+			<div class="modal-body">
+				<form class="modal-body orderCode_area">
+					<div class="orderCode">
+						<input type="number" id="code1" maxlength="1" onkeyup="inputCode(event,'','code1','code2',)">
+					</div>
+					<div class="orderCode">
+						<input type="number" id="code2" maxlength="1" onkeyup="inputCode(event,'code1','code2','code3',)">
+					</div>
+					<div class="orderCode">
+						<input type="number" id="code3" maxlength="1" onkeyup="inputCode(event,'code2','code3','code4',)">
+					</div>
+					<div class="orderCode">
+						<input type="number" id="code4" maxlength="1" onkeyup="inputCode(event,'code3','code4','',)">
+					</div>
+	
+				</form>
+			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary verify-order-code">Verify</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+				<button type="button" class="btn btn-primary">Xác nhận</button>
 			</div>
 		</div>
 	</div>
 </div>
-
+<!-- Modal -->
 <!-- =================================== -->
 
 
@@ -47,7 +53,8 @@
 					src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1676652183181" alt="">
 			</div>
 			<div class="input-infomation row">
-				<form id="form-order" action="{{route('clientpayment_cod')}}" method="POST" class="form-order col-lg-6 col-xs-12">
+				<form id="form-order" action="{{route('clientpayment_cod')}}" method="POST"
+					class="form-order col-lg-6 col-xs-12">
 					@csrf
 					<div class="order-title">
 						<h3>Thông tin nhận hàng</h3>
@@ -88,6 +95,8 @@
 					<div class="form-group order">
 						<textarea name="note_order" {{old('note_order')}} placeholder="Ghi chú">Ghi chú</textarea>
 					</div>
+					<input type="number" name="total"  value="{{$total}}">
+					<input type="number" name="fee_ship"  value="0">
 				</form>
 				<div class="transition col-lg-6 col-xs-12">
 					<div class="order-title">
@@ -106,13 +115,13 @@
 						<h3>Thanh Toán</h3>
 					</div>
 					<div class="form-group order">
-						<div class="payment cod_area">
+						<div class="payment cod_area active">
 							<div class="fee-ship ">
-								<span>
-									<i class='bx bxs-truck'></i>
-									Thanh toán khi giao hàng
-								</span>
-								<span>40000</span>
+								<div class="d-flex align-items-center gap-2 ">
+									<i class='bx bxs-circle'></i>
+									<span>Thanh toán khi nhận hàng</span>
+								</div>
+								<i class='bx bx-money-withdraw'></i>
 							</div>
 							<div class="message">
 								bạn chỉ phải thanh toán khi nhân được hàng
@@ -122,11 +131,11 @@
 					<div class="form-group order ">
 						<div class="payment online_area">
 							<div class="fee-ship">
-								<span>
-									<i class='bx bxs-truck'></i>
-									Thanh toán online
-								</span>
-								<span>40000</span>
+								<div class="d-flex align-items-center gap-2 ">
+									<i class='bx bxs-circle'></i>
+									<span>Thanh toán online</span>
+								</div>
+								<i class='bx bx-credit-card-front'></i>
 							</div>
 							<div class="payment-online">
 								<div class="payment-online__list">
@@ -174,7 +183,7 @@
 				<ul class="order-list">
 					@foreach ($carts as $item )
 					@php
-					$total+=$item->price_current-($item->price_current*$item->discount/100)
+					
 					@endphp
 					<div class="order-item">
 						<div class="order-item_img">
@@ -262,124 +271,21 @@
 	btnOrderNow.onclick=()=>{
 		formOrder.submit()
 	}
+  
 
-	// function inputCode(event, p, c, n) {
-    //     let length = document.getElementById(c).value.length;
-    //     let maxLength = document.getElementById(c).getAttribute('maxlength')
-    //     if (length == maxLength) {
-    //         n != "" ? document.getElementById(n).focus() : ""
-    //     }
-    //     if (length == 0) {
-    //         p != "" ? document.getElementById(p).focus() : ""
-    //     }
+	// PHẦN NHẬP CODE
+	function inputCode(event, p, c, n) {
+        let length = document.getElementById(c).value.length;
+        let maxLength = document.getElementById(c).getAttribute('maxlength')
+        if (length == maxLength) {
+            n != "" ? document.getElementById(n).focus() : ""
+        }
+        if (length == 0) {
+            p != "" ? document.getElementById(p).focus() : ""
+        }
 
-    // }
-    // const formOrder = document.querySelector('.form-order');
-    // const email = formOrder.querySelector('[name=email]')
-    // const name = formOrder.querySelector('[name=name]')
-    // const address = formOrder.querySelector('[name=address]')
-    // const phone = formOrder.querySelector('[name=phone]')
-    // const note = formOrder.querySelector('[name=noteOrder]')
-    // const total = document.querySelector('#order__total').innerHTML;
-    // console.log(total)
-    // const btnSubmit = document.querySelector('.btn-buyNow')
-    // const btnShowModalInputCode = document.querySelector('.btn-showModalInputCode')
-    // const mesageElement = formOrder.querySelector('.error-txt')
-    // const verifyOrderCode = document.querySelector('.verify-order-code')
-    // const mesage = (text = '') => {
-    //     mesageElement.innerHTML = text
-    //     mesageElement.classList.add('active')
-    // }
-
-    // function authentication() {
-    //     let code1 = document.getElementById('code1').value
-    //     let code2 = document.getElementById('code2').value
-    //     let code3 = document.getElementById('code3').value
-    //     let code4 = document.getElementById('code4').value
-    //     let orderCode = code1 + code2 + code3 + code4
-    //     $.post('./controller/order/authentication.php', {
-    //             orderCode,
-    //             email: email.value,
-    //             name: name.value,
-    //             phone: phone.value,
-    //             address: address.value,
-    //             note: note.value,
-    //             total,
-
-    //         },
-    //         (data) => {
-    //             if (data == 202) {
-    //                 location.href='?page=success&order='+orderCode
-    //             } else {
-    //                 mesage(data)
-    //             }
-
-    //         })
-    // }
-
-    // function reciveOrderCode() {
-    //     console.log(email.value)
-    //     if (email.value == "" || name.value == "" || address.value == "" || phone.value == "") {
-    //         mesage('Vui lòng nhập đầy đủ thông tin')
-    //     } else {
-    //         $.post('./controller/order/sentOrderCode.php', {
-    //                 phone: phone.value
-    //             },
-    //             (data) => {
-    //                 mesage(data)
-    //                 btnShowModalInputCode.click()
-
-    //             })
-    //     }
-    // }
-    // btnSubmit.onclick = (e) => {
-    //     reciveOrderCode()
-
-    // }
-    // verifyOrderCode.onclick = (e) => {
-    //     authentication()
-    // }
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    // // async function postData(url = '', data = {}) {
-
-    // //     const response = await fetch(url, {
-    // //         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    // //         mode: 'cors', // no-cors, *cors, same-origin
-    // //         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    // //         credentials: 'same-origin', // include, *same-origin, omit
-    // //         headers: {
-    // //             'Content-Type': 'application/json',
-    // //             'token':'5eda5b83-b553-11ec-9bff-1e4c555e56e3'
-    // //             // 'Content-Type': 'application/x-www-form-urlencoded',
-    // //         },
-    // //         redirect: 'follow', // manual, *follow, error
-    // //         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    // //         body: JSON.stringify(data) // body data type must match "Content-Type" header
-    // //     });
-    // //     return response.json(); // parses JSON response into native JavaScript objects
-    // // }
-
-    // // postData('https://online-gateway.ghn.vn/shiip/public-api/master-data/province')
-    // //     .then(data => {
-    // //         console.log(data); // JSON data parsed by `data.json()` call
-    // //     })
-
-
+    }
+  
 
 	// //  Chọn quận huyện thành phố 
 	// Lấy danh sách tỉnh/thành từ API

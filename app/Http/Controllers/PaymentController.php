@@ -20,6 +20,7 @@ class PaymentController extends Controller
       $cartFarmApp = json_decode($json, true);
 
       $idList = [];
+      $total=0;
       foreach ($cartFarmApp as $item) {
         $idList[] = $item['productId'];
       }
@@ -27,20 +28,22 @@ class PaymentController extends Controller
         $carts = product::whereIn('id', $idList)->get();
         for ($i = 0; $i < count($carts); $i++) {
           if ($cartFarmApp[$i]['productId'] == $carts[$i]->id)
-            $carts[$i]->attributes = $cartFarmApp[$i]['amount'];
+            $carts[$i]->amount = $cartFarmApp[$i]['amount'];
+            $total+=$carts[$i]->price_current-($carts[$i]->price_current*$carts[$i]->discount/100);
         }
       } else {
       }
     }
     $data = [
       'carts' => $carts,
-      'total' => 0
+      'total' => $total
     ];
     return view('client.payment.index', $data);
   }
   //  CHỨC NĂNG THANH TOÁN VỚI VNPAY
   public function create_payment_vnpay_e(Request $request)
   {
+  
     if (
       $request->email != null
       && $request->user_name != null
@@ -51,14 +54,26 @@ class PaymentController extends Controller
       && $request->ward != null
     ) {
       $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-      $vnp_Returnurl = route('clientreturn_payment_vnpay',["data"=>$request]);
+      $vnp_Returnurl = route('clientreturn_payment_vnpay',["data"=>[
+        "user_name"=>$request->user_name,
+        "email"=>$request->email,
+        "phone"=>$request->phone,
+        "address"=>$request->address,
+        "province"=>$request->province,
+        "district"=>$request->district,
+        "ward"=>$request->ward,
+        "order_note"=>$request->order_note,
+        "total"=>$request->total,
+        "fee_ship"=>$request->fee_ship,
+
+      ]]);
       $vnp_TmnCode = "Q57HT4LD"; //Mã website tại VNPAY 
       $vnp_HashSecret = "ZNJZVKHJSPIOYDYRREQVECNZELACJGDZ"; //Chuỗi bí mật
 
       $vnp_TxnRef = rand(0000, 9999); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
       $vnp_OrderInfo = "Thanh toán vnpay";
       $vnp_OrderType = 'billpayment';
-      $vnp_Amount = 10000 * 100;
+      $vnp_Amount = $request->total * 100;
       $vnp_Locale = "vn";
       $vnp_BankCode = "";
       $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
@@ -80,6 +95,7 @@ class PaymentController extends Controller
       $vnp_Bill_City = $request->district;
       $vnp_Bill_Country = $request->province;
       $vnp_Bill_State = $request->ward;
+      $vnp_Inv_Phone="00342042049204";
 
       $inputData = array(
         "vnp_Version" => "2.1.0",
@@ -94,11 +110,13 @@ class PaymentController extends Controller
         "vnp_OrderType" => $vnp_OrderType,
         "vnp_ReturnUrl" => $vnp_Returnurl,
         "vnp_TxnRef" => $vnp_TxnRef,
-        "vnp_Bill_FirstName" => $request->user_name,
-        "vnp_Bill_Email" => $request->email,
-        "vnp_Bill_Address" => $request->address,
-        "vnp_Bill_City" => $request->province,
-        "vnp_Bill_Country" => "hahaa",
+        "vnp_Bill_FirstName" => $vnp_Bill_FirstName,
+        "vnp_Bill_Email" => $vnp_Bill_Email,
+        "vnp_Bill_Address" => $vnp_Bill_Address,
+        "vnp_Bill_City" => $vnp_Bill_City,
+        "vnp_Bill_Country" => $vnp_Bill_Country,
+        "vnp_Inv_Phone"=>$vnp_Inv_Phone,
+
         // "vnp_Bill_Ward" => $request->ward,
         // "vnp_Bill_note" => $request->note_order,
       );
@@ -124,7 +142,7 @@ class PaymentController extends Controller
         }
         $query .= urlencode($key) . "=" . urlencode($value) . '&';
       }
-
+      // $data="user_name"."=".$request->user_name. '&'."email"."=".$request->email. '&'."phone"."=".$request->phone. '&'."address"."=".$request->address. '&'."province"."=".$request->province. '&'."district"."=".$request->district. '&'."ward"."=".$request->ward. '&'."order_note"."=".$request->order_note;
       $vnp_Url = $vnp_Url . "?" . $query;
       if (isset($vnp_HashSecret)) {
         $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret); //  
@@ -134,47 +152,45 @@ class PaymentController extends Controller
         'code' => '00', 'message' => 'success', 'data' => $vnp_Url
       );
       return redirect($vnp_Url);
-
-      // 
-      // $cartFarmApp = [];
-      // if (isset($_COOKIE["cartFarmApp"])) {
-      //   $json = $_COOKIE["cartFarmApp"];
-      //   $cartFarmApp = json_decode($json, true);
-      // }
-      // $order = new order();
-      // $order->user_name = $request->user_name;
-      // $order->email = $request->email;
-      // $order->phone = $request->phone;
-      // $order->address = $request->address;
-      // $order->province = $request->province;
-      // $order->district = $request->district;
-      // $order->ward = $request->ward;
-      // $order->customer_note = $request->note_order;
-      // $order->payment_type = 'ATM';
-      // $order->status = 1;
-      // $order->total = 10000;
-      // $order->fee_ship = 0;
-      // $order->save();
-      // foreach ($cartFarmApp as $item) {
-      //   // Fetch the product information from the database
-      //   $product = Product::find($item['productId']);
-      //   $order_detail = new order_details();
-      //   $order_detail->order_id = $order->id;
-      //   $order_detail->product_id = $item['productId'];
-      //   $order_detail->product_name = $product->name;
-      //   $order_detail->product_thumb = $product->thumb;
-      //   $order_detail->price = $product->price_current - ($product->price_current * $product->discount / 100);
-      //   $order_detail->quantity = $item['amount'];
-      //   $order_detail->save();
-      // }
-      // return redirect()->route('clientpage-thanks');
     } else {
       dd('Chưa nhập thông tin ');
     }
   }
   public function return_payment_vnpay_e(Request $request)
   {
-    dd($request);
+      $data=$request->data;
+      $cartFarmApp = [];
+      if (isset($_COOKIE["cartFarmApp"])) {
+        $json = $_COOKIE["cartFarmApp"];
+        $cartFarmApp = json_decode($json, true);
+      }
+      $order = new order();
+      $order->user_name = $data["user_name"];
+      $order->email = $data["email"];
+      $order->phone = $data["phone"];
+      $order->address = $data["address"];
+      $order->province = $data["province"];
+      $order->district = $data["district"];
+      $order->ward = $data["ward"];
+      $order->customer_note = $data["order_note"];
+      $order->payment_type = 'ATM';
+      $order->status = 1;
+      $order->total = $data["total"];
+      $order->fee_ship = $data["fee_ship"];
+      $order->save();
+      foreach ($cartFarmApp as $item) {
+        // Fetch the product information from the database
+        $product = Product::find($item['productId']);
+        $order_detail = new order_details();
+        $order_detail->order_id = $order->id;
+        $order_detail->product_id = $item['productId'];
+        $order_detail->product_name = $product->name;
+        $order_detail->product_thumb = $product->thumb;
+        $order_detail->price = $product->price_current - ($product->price_current * $product->discount / 100);
+        $order_detail->quantity = $item['amount'];
+        $order_detail->save();
+      }
+      return redirect()->route('clientpage-thanks',["data"=>$data]);
   }
   public function create_payment_momo_qr(Request $request)
   {
