@@ -133,15 +133,7 @@ Route::prefix('/')->name('client')->group(function () {
 
         //------------------- Admin Oder-----------------------
         Route::get('/order', [OrderController::class,'index'])->name('admin-order');
-        Route::get('/order/create', [OrderController::class,'create'])->name('admin.order.create');
-        Route::post('/order/create', [OrderController::class,'create_'])->name('admin.order.create_');
-        Route::get('/order/delete/{id}', [OrderController::class,'delete'])->name('admin.order.delete');
-        Route::get('/order/trashed/forceDelete/{id}', [OrderController::class,'forceDelete'])->name('admin.order.forceDelete');
-        Route::get('/order/trashed',[OrderController::class,'trashed'])->name('admin.order.trashed');
-        Route::get('/order/restore/{id}',[OrderController::class,'restore'])->name('admin.order.restore');
-        Route::get('order/restore-all',[OrderController::class,'restoreAll'])->name('admin.order.retoreAll');
-        Route::get('/order/update/{id}', [OrderController::class,'update'])->name('admin.order.update');
-        Route::post('/order/update/{id}', [OrderController::class,'update_'])->name('admin.order.update_');
+        Route::get('/order/detail/{id}', [OrderController::class,'detail'])->name('admin.order.detail');
  
         //------------------ Admin Coupon-----------------------
         Route::get('/coupon', [CoupouController::class,'index'])->name('admin-coupon');

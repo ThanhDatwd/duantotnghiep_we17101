@@ -44,10 +44,12 @@
                 </td>
 
                   <td>
-                    @if ($c->coupou_type == '1')
+                    @if ($c->coupon_type == '1')
                     <p>Giảm giá theo số tiền</p>
-                    @else
+                    @elseif ($c->coupon_type == '2')
                     <p>Giảm giá theo %</p>
+                    @else
+                    <p>Giảm giá theo đơn hàng</p>
                   @endif
                    
                   </td>

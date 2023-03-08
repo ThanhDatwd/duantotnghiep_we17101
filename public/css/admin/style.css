@@ -5,7 +5,19 @@
     --light: #f3f6f9;
     --dark: #191c24;
 }
+/* body{
+    overflow-x: hidden;
 
+} */
+
+.note{
+    width: 150px;
+    height: 30px;
+    white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis; 
+
+}
 .back-to-top {
     position: fixed;
     display: none;

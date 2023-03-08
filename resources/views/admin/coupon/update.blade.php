@@ -10,7 +10,7 @@
     }
 </style>
 
-<form action="/admin/coupon/update/{id}" enctype="multipart/form-data" method="post">
+<form action="/admin/coupon/update/{{$c->id}}" enctype="multipart/form-data" method="post">
     @csrf
     <div class="adproduct">
 <div class="text">
