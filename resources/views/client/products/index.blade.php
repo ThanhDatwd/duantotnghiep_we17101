@@ -53,48 +53,24 @@
                     <div class="customsselects">
                         <div class="s1">
                                     <h2>DANH MỤC</h2>
+                                    @foreach ($categoryGroup as $group )
                                     <div class="select">
-                                        <input type="checkbox" id="toggle" class="toggle"> <label for="toggle">Thịt trứng</label>
-                                        <ul>
-                                            <li class="select-option"><input type="radio" name="choice" id="c1" value="c1"><label for="c1">Choice 1</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c2" value="c2"><label for="c2">Choice 2</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c3" value="c3"><label for="c3">Choice 3</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c4" value="c4"><label for="c4">Choice 4</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c5" value="c5"><label for="c5">Choice 5</label></li>
-                                        </ul>	
+                                            {{-- <input type="checkbox" id="toggle" class="toggle"> <label for="toggle">{{$group->name}}</label> --}}
+                                            <div class="select-title">
+                                                <a href="">{{$group->name}}</a>
+                                                <i class='bx bxs-down-arrow'></i>
+                                            </div>
+                                            <ul>
+                                                @foreach ($group->categories as $item)
+                                                <li class="select-option"><a href="{{route('clientcategory',["slug"=>$item->slug])}}">{{$item->category_name}}</a></li>
+                                                    
+                                                @endforeach
+                                            </ul>	
+                                            
+                                        </div>
+                                        @endforeach
                                         
-                                    </div>
-                                    <div class="select">
-                                        <input type="checkbox" id="toggle4" class="toggle"> <label for="toggle4">Choose something</label>
-                                        <ul>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c21" value="c1"><label for="c21">Choice 1</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c22" value="c2"><label for="c22">Choice 2</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c23" value="c3"><label for="c23">Choice 3</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c24" value="c4"><label for="c24">Choice 4</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c25" value="c5"><label for="c25">Choice 5</label></li>
-                                        </ul>	
-                                    </div>	
-                                    <div class="select">
-                                        <input type="checkbox" id="toggle2" class="toggle"> <label for="toggle2">Thịt trứng</label>
-                                        <ul>
-                                            <li class="select-option"><input type="radio" name="choice" id="c1" value="c1"><label for="c1">Choice 1</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c2" value="c2"><label for="c2">Choice 2</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c3" value="c3"><label for="c3">Choice 3</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c4" value="c4"><label for="c4">Choice 4</label></li>
-                                            <li class="select-option"><input type="radio" name="choice" id="c5" value="c5"><label for="c5">Choice 5</label></li>
-                                        </ul>	
-                                        
-                                    </div>
-                                    <div class="select">
-                                        <input type="checkbox" id="toggle0" class="toggle"> <label for="toggle0">Choose something</label>
-                                        <ul>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c21" value="c1"><label for="c21">Choice 1</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c22" value="c2"><label for="c22">Choice 2</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c23" value="c3"><label for="c23">Choice 3</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c24" value="c4"><label for="c24">Choice 4</label></li>
-                                            <li class="select-option"><input type="checkbox" name="choice2" id="c25" value="c5"><label for="c25">Choice 5</label></li>
-                                        </ul>	
-                                    </div>	
+                                   
                         
                                
                         
@@ -178,8 +154,8 @@
 
 
             </div>
-            {{$products->appends(request()->all())->links()}}
-
+            
+             <div class="d-flex justify-content-center mt-3">{{$products->appends(request()->all())->links()}}</div>
                 
             </div>
             

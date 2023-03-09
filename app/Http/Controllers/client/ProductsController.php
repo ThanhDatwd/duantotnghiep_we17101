@@ -25,8 +25,11 @@ class ProductsController extends Controller
     public function category($slug)
     {   
         $category = category::where('slug', $slug)->firstOrFail();
+        $categoryGroup = category_group::all();
         $products = $category->products()->paginate(8);
         $data = [
+            "category"=>$category,
+            "categoryGroup"=>$categoryGroup,
             "products" => $products
         ];
         return view('client.products.index', $data);
