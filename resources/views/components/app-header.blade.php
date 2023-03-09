@@ -31,7 +31,7 @@
                         <i class='bx bx-basket d-flex'></i>
                     </a>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ">
-                        {{count((array)cookie('cart'))}}
+                        {{count($cartFarmApp)}}
                       </span>
                  </div>
             </div>

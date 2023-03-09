@@ -16,11 +16,25 @@
                 </div>
                 <div class="info">
                     <div class="btn-quantity">
-                        <button class="minus">-</button>
-                        <input type="text" value={{$item->amount}} class="count" readonly>
-                        <button class="plus">+</button>
+                        <form action="{{route('clientminus-to-cart')}}" method="POST">
+                            @csrf
+                           <input type="text" name="productId" value="{{$item->id}}" hidden>
+                           <input type="number" name="amount" value="1" hidden>
+                            <button class="minus">-</button>
+                        </form>
+                        <span class="count">{{$item->amount}}</span>
+                        <form action="{{route('clientadd-to-cart')}}" method="POST">
+                            @csrf
+                           <input type="text" name="productId" value="{{$item->id}}" hidden>
+                           <input type="number" name="amount" value="1" hidden>
+                            <button class="plus">+</button>
+                        </form>
                     </div>
-                    <button class="btn btn-delete">Xóa</button>
+                    <form action="{{route('clientremove-to-cart')}}" method="POST">
+                        @csrf
+                        <input type="text" name="productId" value="{{$item->id}}" hidden>
+                        <button class="btn btn-delete">Xóa</button>
+                    </form>
                 </div>
             </div>
         </div>

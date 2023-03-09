@@ -12,9 +12,17 @@ use Illuminate\Http\Request;
 use App\Models\product;
 
 class ProductsController extends Controller
-{
-    public function index()
+{  
+    protected $cartFarmApp=[];
+    public function __construct()
     {
+        if (isset($_COOKIE["cartFarmApp"])) {
+            $json = $_COOKIE["cartFarmApp"];
+            $this->cartFarmApp = json_decode($json, true);
+        }
+    }
+    public function index()
+    {  
         $products = DB::table('products')->paginate(12);
         $categoriesGroup=category_group::with('categories.products')->where('is_hot',1)->limit(3)->get();
         $data=[
@@ -66,7 +74,6 @@ class ProductsController extends Controller
     }
     public function productDetail($slug)
     {
-
         $currentDate = getdate();
         $product = product::where('slug', $slug)->firstOrFail();
         $product_relate=product::where('category_id', $product->category_id)->get();
@@ -86,27 +93,23 @@ class ProductsController extends Controller
     }
     public function addToCart(Request $request)
     {
-        $cartFarmApp = [];
-        if (isset($_COOKIE["cartFarmApp"])) {
-            $json = $_COOKIE["cartFarmApp"];
-            $cartFarmApp = json_decode($json, true);
-        }
+        
         $isFind = false;
-        for ($i = 0; $i < count($cartFarmApp); $i++) {
-            if ($cartFarmApp[$i]['productId'] == $request->productId) {
-                $cartFarmApp[$i]['amount'] += $request->amount;
+        for ($i = 0; $i < count($this->cartFarmApp); $i++) {
+            if ($this->cartFarmApp[$i]['productId'] == $request->productId) {
+                $this->cartFarmApp[$i]['amount'] += $request->amount;
                 $isFind = true;
                 break;
             }
         }
         if ($isFind == false) {
-            $cartFarmApp[] = [
+            $this->cartFarmApp[] = [
                 'productId'  => $request->productId,
                 'amount' => $request->amount,
             ];
         }
         $cart = [];
-        foreach ($cartFarmApp as $item) {
+        foreach ($this->cartFarmApp as $item) {
             if ($item['amount'] > 0) {
                 $cart[] = [
                     'productId' => $item['productId'],
@@ -119,38 +122,33 @@ class ProductsController extends Controller
 
         return redirect()->back();
     }
-    public function removeToCart(Request $request)
+    public function minusToCart(Request $request)
     {
-        $cartFarmApp = [];
-        if (isset($_COOKIE["cartFarmApp"])) {
-            $json = $_COOKIE["cartFarmApp"];
-            $cartFarmApp = json_decode($json, true);
-        }
+        
         $isFind = false;
-        for ($i = 0; $i < count($cartFarmApp); $i++) {
-            if ($cartFarmApp[$i]['productId'] == $request->productId) {
-                $cartFarmApp[$i]['amount'] += $request->amount;
-                $isFind = true;
+        for ($i = 0; $i < count($this->cartFarmApp); $i++) {
+            if ($this->cartFarmApp[$i]['productId'] == $request->productId) {
+                if( $this->cartFarmApp[$i]['amount']<=1){
+                    unset($this->cartFarmApp[$i]);
+                    break;
+                }
+                $this->cartFarmApp[$i]['amount'] -= $request->amount;
                 break;
             }
         }
-        if ($isFind == false) {
-            $cartFarmApp[] = [
-                'productId'  => $request->productId,
-                'amount' => $request->amount,
-            ];
-        }
-        $cart = [];
-        foreach ($cartFarmApp as $item) {
-            if ($item['amount'] > 0) {
-                $cart[] = [
-                    'productId' => $item['productId'],
-                    'amount'       => $item['amount']
-                ];
+        setcookie('cartFarmApp', json_encode($this->cartFarmApp), time() + 3 * 24 * 60 * 60, '/');
+
+        return redirect()->back();
+    }
+    public function removeToCart(Request $request)
+    {
+        for ($i = 0; $i < count($this->cartFarmApp); $i++) {
+            if ($this->cartFarmApp[$i]['productId'] == $request->productId) {
+                unset($this->cartFarmApp[$i]);
+                break;
             }
         }
-
-        setcookie('cartFarmApp', json_encode($cart), time() + 3 * 24 * 60 * 60, '/');
+        setcookie('cartFarmApp', json_encode($this->cartFarmApp), time() + 3 * 24 * 60 * 60, '/');
 
         return redirect()->back();
     }

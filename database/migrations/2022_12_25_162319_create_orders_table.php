@@ -29,7 +29,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('customer_note')->nullable();
             $table->string('shop_note')->nullable();
-            $table->timestamp('deleted_at');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

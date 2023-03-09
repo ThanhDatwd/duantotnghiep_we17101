@@ -137,15 +137,21 @@
                    
                 <div  style="display: grid;grid-template-columns:repeat(4,1fr);gap :10px;">
                     @foreach ($products as $item)
-                    <x-ProductCard name="{{$item->name}}" 
+                    @php
+                        $price1="";
+                  $price2=number_format($item->price_current);
+                  if($item->discount>0){
+                    $price1=number_format($item->price_current)."đ";
+                    $price2=number_format($item->price_current-($item->price_current*$item->discount/100));
+                  }
+                    @endphp
+                    <x-ProductCard 
+                                   link="{{route('clientproduct-detail',['slug'=>$item->slug])}}"
+                                   name="{{$item->name}}" 
                                    thumb="{{$item->thumb}}"
-                                   priceOld="{{$item->price}}"
+                                   priceOld="{{$price1}}"
+                                   priceCurrent="{{$price2}}đ"
                                    discount="{{$item->discount}}"
-                                    {{-- cột dọc true - ngang : false --}}
-                                   {{-- isRow="{{true}}" --}}
-                                   {{-- isProgress={{true}}
-                                   progressValue={{40}} --}}
-                                   {{-- progressTxt="Sắp cháy hàng" --}}
                                    />
                      
                               

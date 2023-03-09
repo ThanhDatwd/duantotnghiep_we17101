@@ -62,6 +62,8 @@ Route::prefix('/')->name('client')->group(function () {
         return view('client.thankyou.index');
     })->name('page-thanks');
     Route::post('/add-to-cart', [ProductsController::class,'addToCart'])->name('add-to-cart');
+    Route::post('/minus-to-cart', [ProductsController::class,'minusToCart'])->name('minus-to-cart');
+    Route::post('/remove-to-cart', [ProductsController::class,'removeToCart'])->name('remove-to-cart');
     Route::post('/remove-all-cart', [ProductsController::class,'removeAllCart'])->name('remove-all-cart');
     Route::get('/register',[AuthController::class,'register']);
     Route::get('/login',[AuthController::class,'login']);

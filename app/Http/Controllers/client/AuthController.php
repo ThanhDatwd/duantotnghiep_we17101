@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Hash;
 use Session;
 // use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ class AuthController extends Controller
 {
     //
     public function login(){
-        return view('auth.login');
+        return view('client.login.index');
     }
    
     public function loginUser(Request $request){
@@ -46,7 +47,7 @@ class AuthController extends Controller
         return view('auth.register');
 
     }
-    public function regiterUser(){
+    public function regiterUser(Request $request){
         $username = $request['username'];
         $email = $request['email'];
         $password = bcrypt($request['password']);
