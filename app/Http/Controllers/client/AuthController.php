@@ -14,10 +14,7 @@ class AuthController extends Controller
     public function login(){
         return view('auth.login');
     }
-    public function register(){
-        return view('auth.register');
-
-    }
+   
     public function loginUser(Request $request){
       
         $request->validate([
@@ -44,6 +41,10 @@ class AuthController extends Controller
         }
         
         return back()->with('fail','Không có tài khoản này'); 
+    }
+    public function register(){
+        return view('auth.register');
+
     }
     public function regiterUser(){
         $username = $request['username'];

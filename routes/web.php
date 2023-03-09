@@ -40,6 +40,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
     Route::get('/category-group', [ProductsController::class, 'group'])->name('category-group-all');
     // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
+    Route::get('/product',[ProductsController::class,'index']);
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
 //    Route::get('/add-to-cart/{id}',[ProductsController::class,'addToCart'])->name('add_to_cart');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
@@ -74,15 +75,15 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/', [AdminController::class,'index']);
         //-----------Admin Product-------------
         Route::get('/product', [AdminProductController::class,'index'])->name('admin-product');
-        Route::get('/product/create', [AdminProductController::class,'create']);
-        Route::post('/product/create', [AdminProductController::class,'create_']);
-        Route::get('/product/delete/{id}', [AdminProductController::class,'delete']);
-        Route::get('/product/trashed/forceDelete/{id}', [AdminProductController::class,'forceDelete']);
-        Route::get('/product/trashed',[AdminProductController::class,'trashed']);
-        Route::get('/product/restore/{id}',[AdminProductController::class,'restore']);
-        Route::get('product/restore-all',[AdminProductController::class,'restoreAll']);
-        Route::get('/product/update/{id}', [AdminProductController::class,'update']);
-        Route::post('/product/update/{id}', [AdminProductController::class,'update_']);
+        Route::get('/product/create', [AdminProductController::class,'create'])->name('admin.product.create');
+        Route::post('/product/create', [AdminProductController::class,'create_'])->name('admin.product.create_');
+        Route::get('/product/delete/{id}', [AdminProductController::class,'delete'])->name('admin.product.delete');
+        Route::get('/product/trashed/forceDelete/{id}', [AdminProductController::class,'forceDelete'])->name('admin.product.force');;
+        Route::get('/product/trashed',[AdminProductController::class,'trashed'])->name('admin.product.trashed');
+        Route::get('/product/restore/{id}',[AdminProductController::class,'restore'])->name('admin.product.restore');
+        Route::get('product/restore-all',[AdminProductController::class,'restoreAll'])->name('admin.product.restoreAll');
+        Route::get('/product/update/{id}', [AdminProductController::class,'update'])->name('admin.product.update');
+        Route::post('/product/update/{id}', [AdminProductController::class,'update_'])->name('admin.product.update_');
         
         //------------ Admin category_product ---------------
         Route::get('/product_category', [ProductCategorysController::class,'index'])->name('admin-product_category');
@@ -135,15 +136,7 @@ Route::prefix('/')->name('client')->group(function () {
 
         //------------------- Admin Oder-----------------------
         Route::get('/order', [OrderController::class,'index'])->name('admin-order');
-        Route::get('/order/create', [OrderController::class,'create'])->name('admin.order.create');
-        Route::post('/order/create', [OrderController::class,'create_'])->name('admin.order.create_');
-        Route::get('/order/delete/{id}', [OrderController::class,'delete'])->name('admin.order.delete');
-        Route::get('/order/trashed/forceDelete/{id}', [OrderController::class,'forceDelete'])->name('admin.order.forceDelete');
-        Route::get('/order/trashed',[OrderController::class,'trashed'])->name('admin.order.trashed');
-        Route::get('/order/restore/{id}',[OrderController::class,'restore'])->name('admin.order.restore');
-        Route::get('order/restore-all',[OrderController::class,'restoreAll'])->name('admin.order.retoreAll');
-        Route::get('/order/update/{id}', [OrderController::class,'update'])->name('admin.order.update');
-        Route::post('/order/update/{id}', [OrderController::class,'update_'])->name('admin.order.update_');
+        Route::get('/order/detail/{id}', [OrderController::class,'detail'])->name('admin.order.detail');
  
         //------------------ Admin Coupon-----------------------
         Route::get('/coupon', [CoupouController::class,'index'])->name('admin-coupon');

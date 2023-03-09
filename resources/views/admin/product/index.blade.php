@@ -40,7 +40,7 @@
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
                   <td>
                     <p style="font-size: 18px; font-weight:bold">{{$p->name}}</p>
-                    <span>Loại: {{$p->category->category_name}}</span><br>
+                    <span>Loại: {{$p->category->category_name ?? 'Chưa phân loại'}}</span><br>
                     <span>Xuất sứ: {{$p->brand}}</span>
                   </td>
 

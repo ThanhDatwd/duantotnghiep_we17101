@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class category_news extends Model
 {
     use HasFactory;
-    
     protected $table="categories_news";
     use SoftDeletes;
     public function news()
