@@ -143,12 +143,16 @@
                 const input = document.querySelector("input[type=file]");
    
                     input.value = img;</script>
-                <button type="submit" class="btnmoi">Cập nhật</button>
 
             </div>
         </div>
             
         </div>
+               </div>
+               <div class="ci">
+                   <button type="submit" class="btnmoi">Cập nhật</button>
+                  <a href="/admin/product">Hủy</a>
+                  </div>
                </div>
             </div>
          </div>

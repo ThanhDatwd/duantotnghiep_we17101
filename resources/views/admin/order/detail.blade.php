@@ -80,13 +80,13 @@ label.box {
 #one:checked~label.first,
 #two:checked~label.second,
 #three:checked~label.third {
-    border-color: #7700ff;
+    /* border-color: #7700ff; */
 }
 
 #one:checked~label.first .circle,
 #two:checked~label.second .circle,
 #three:checked~label.third .circle {
-    border-color: #7a34ca;
+    /* border-color: #7a34ca; */
     background-color: #fff;
 }
 
@@ -152,11 +152,11 @@ input[type="radio"] {
 .form-select:focus {
     box-shadow: none;
     outline: none;
-    border: 1px solid #7700ff;
+    /* border: 1px solid #7700ff; */
 }
 
 .border:focus-within {
-    border: 1px solid #7700ff !important;
+    /* border: 1px solid #7700ff !important; */
 }
 
 .box-2 .card-atm .form-control {
@@ -198,7 +198,7 @@ input[type="radio"] {
 }
 
 .box-2 .box-inner-2 .btn.btn-primary {
-    background-color: #7700ff;
+    /* background-color: #7700ff; */
     color: whitesmoke;
     font-size: 14px;
     display: flex;
@@ -210,7 +210,7 @@ input[type="radio"] {
 }
 
 .box-2 .box-inner-2 .btn.btn-primary:hover {
-    background-color: #7a34ca;
+    /* background-color: #7a34ca; */
 }
 
 .box-2 .box-inner-2 .btn.btn-primary .fas {
@@ -312,21 +312,21 @@ input[type="radio"] {
 <div class="container d-lg-flex">
         <div class="box-1 bg-light user">
             <div class="d-flex align-items-center mb-3">
-                <img src="https://images.pexels.com/photos/4925916/pexels-photo-4925916.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                    class="pic rounded-circle" alt="">
-                <p class="ps-2 name">fsđs</p>
+                {{-- <img src="{{asset('upload/'.$order_detail->thumb)}}" onerror="this.src='{{asset('upload/error.jpg')}}'"
+                    class="pic rounded-circle" alt=""> --}}
+                <h3 style="font-size: 20px" class="ps-2 name">Thông tin sản phẩm</h3>
             </div>
             <div class="box-inner-1 pb-3 mb-3 ">
                 <div class="d-flex justify-content-between mb-3 userdetails">
-                    <p class="fw-bold">{{$order_detail->product_name}}</p>
+                    <p class="fw-bold">Tên sản phẩm: {{$order_detail->product_name}}</p>
                     <p class="fw-lighter">{{number_format($order_detail->price)}} VNĐ</p>
                 </div>
                 <div id="my" class="carousel slide carousel-fade img-details" data-bs-ride="carousel"
                     data-bs-interval="2000">
-                    <div class="carousel-inner" style="height: 100%">
+                    <div class="carousel-inner" style="height: 0%">
                         <div class="carousel-item active">
                             <img src="{{asset('upload/'.$order_detail->thumb)}}" onerror="this.src='{{asset('upload/error.jpg')}}'"
-                                class="d-block w-100 h-auto" >
+                                class="d-block w-100" >
                         </div>
                        
                     </div>
@@ -344,11 +344,11 @@ input[type="radio"] {
                             <div class="course">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="fw-bold">
-                                        {{$order_detail->id}}
+                                        Chú thích của khách hàng
                                     </span>
-                                    <span class="fas fa-dollar-sign">29</span>
+                                        {{-- <span class="fas fa-dollar-sign">29</span> --}}
                                 </div>
-                                <span>10 x Presets. Released in 2018</span>
+                                <span>{{$order_detail->order->customer_note}}</span>
                             </div>
                         </div>
                     </label>
@@ -372,11 +372,11 @@ input[type="radio"] {
                             <div class="course">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="fw-bold">
-                                        Collection 01
+                                        Chú thích của shop
                                     </span>
-                                    <span class="fas fa-dollar-sign">29</span>
+                                    {{-- <span class="fas fa-dollar-sign">29</span> --}}
                                 </div>
-                                <span>10 x Presets. Released in 2018</span>
+                                <span>{{$order_detail->order->shop_note}}</span>
                             </div>
                         </div>
                     </label>
@@ -390,57 +390,49 @@ input[type="radio"] {
                 </div>
                 <form action="">
                     <div class="mb-3">
-                        <p class="dis fw-bold mb-2">Email address</p>
-                        <input class="form-control" type="email" value="luke@skywalker.com">
+                        <p class="dis fw-bold mb-2">Tên người đặt hàng</p>
+                        <input class="form-control" type="text" disabled value="{{$order->user->full_name}}">
                     </div>
                     <div>
-                        <p class="dis fw-bold mb-2">Card details</p>
+                        <p class="dis fw-bold mb-2">Email </p>
                         <div class="d-flex align-items-center justify-content-between card-atm border rounded">
-                            <div class="fab fa-cc-visa ps-3"></div>
-                            <input type="text" class="form-control" placeholder="Card Details">
-                            <div class="d-flex w-50">
+                            {{-- <div class="fab fa-cc-visa ps-3"></div> --}}
+                            <input type="text" class="form-control" disabled placeholder="{{$order->user->email}}">
+                            {{-- <div class="d-flex w-50">
                                 <input type="text" class="form-control px-0" placeholder="MM/YY">
                                 <input type="password" maxlength=3 class="form-control px-0" placeholder="CVV">
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="my-3 cardname">
-                            <p class="dis fw-bold mb-2">Cardholder name</p>
-                            <input class="form-control" type="text">
+                        <div class="my-3">
+                            <p class="dis fw-bold mb-2">Số điện thoại </p>
+                            <input class="form-control" type="text" disabled value="{{$order->user->phone}}">
                         </div>
-                        <div class="address">
-                            <p class="dis fw-bold mb-3">Billing address</p>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected hidden>United States</option>
-                                <option value="1">India</option>
-                                <option value="2">Australia</option>
-                                <option value="3">Canada</option>
-                            </select>
-                            <div class="d-flex">
-                                <input class="form-control zip" type="text" placeholder="ZIP">
-                                <input class="form-control state" type="text" placeholder="State">
-                            </div>
-                            <div class=" my-3">
-                                <p class="dis fw-bold mb-2">VAT Number</p>
-                                <div class="inputWithcheck">
-                                    <input class="form-control" type="text" value="GB012345B9">
-                                    <span class="fas fa-check"></span>
-
-                                </div>
-                            </div>
+                        <div class="mb-3">
+                            <p class="dis fw-bold mb-2">Địa chỉ</p>
+                            <input class="form-control" type="text" disabled value="{{$order->user->address}}">
+                        </div>
+                        
+                        
+                    <br>
                             <div class="d-flex flex-column dis">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <p>Subtotal</p>
-                                    <p><span class="fas fa-dollar-sign"></span>33.00</p>
+                                    <p>Số lượng</p>
+                                    <p>{{$order_detail->order->count_products}}</p>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <p>VAT<span>(20%)</span></p>
-                                    <p><span class="fas fa-dollar-sign"></span>2.80</p>
+                                    <p>Giảm giá</p>
+                                    <p>{{$order_detail->discount}}</p>
+                                </div>
+                               
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <p>Phí giao hàng<span></span></p>
+                                    <p>{{number_format($order_detail->order->fee_ship)}} VNĐ</p>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <p class="fw-bold">Total</p>
-                                    <p class="fw-bold"><span class="fas fa-dollar-sign"></span>35.80</p>
+                                    <p class="fw-bold">Tổng</p>
+                                    <p class="fw-bold">{{number_format($order_detail->order->total_price)}} VNĐ</p>
                                 </div>
-                                <div class="btn btn-primary mt-2">Pay<span class="fas fa-dollar-sign px-1"></span>35.80
+                                <div class="btn btn-primary mt-2"> Hủy
                                 </div>
                             </div>
                         </div>

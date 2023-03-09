@@ -40,6 +40,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
     Route::get('/category-group', [ProductsController::class, 'group'])->name('category-group-all');
     // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
+    Route::get('/product',[ProductsController::class,'index']);
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
 //    Route::get('/add-to-cart/{id}',[ProductsController::class,'addToCart'])->name('add_to_cart');
     Route::get('/news', [NewsController::class, 'index'])->name('news');

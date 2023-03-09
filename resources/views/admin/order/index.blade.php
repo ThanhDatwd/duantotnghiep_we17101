@@ -7,7 +7,6 @@
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
   <h2 class="">Danh sách đơn hàng</h2>
-  {{-- <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus"></i> Thêm loại sản phẩm</a> --}}
  </div>
 
   @if(Session::has('thongbao'))
@@ -34,7 +33,6 @@
               </tr>
           </thead>
           <tbody>
-           
            @foreach ($order as $o)
                 <tr>
                     <th></th>
@@ -42,6 +40,7 @@
                     <td>{{$o->user->full_name}}</td>
 
                     <td>
+
                         @if ($o->payment_type==1)
                         Online
                         @elseif ($o->payment_type==2)
@@ -49,7 +48,7 @@
                         @elseif ($o->payment_type==3)
                         ATM
                         @else
-                        Không có loại thanh toán
+                        Chưa phân loại
                         @endif
                     </td>
                     <td>{{$o->count_products}}</td>
@@ -67,7 +66,6 @@
                     </td>
                     
                     <td><p class="note">{{$o->customer_note}}</p></td>
-                    
                     <td><p class="note"> {{$o->shop_note}}</p></td>
                     <td>{{$o->total_price}}</td>
                     <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <i class="fa-solid fa-circle-info"></i> </a>
@@ -79,7 +77,7 @@
       <nav aria-label="Page navigation example">
         <ul class="pagination">
      
-            {{-- {{$order->appends(request()->all())->links()}}   --}}
+            {{$order->appends(request()->all())->links()}}  
          
       
         </ul>
