@@ -14,10 +14,13 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/bootstrap.min.css')}}">
     <!-- Template Stylesheet -->
-    <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
     @yield("css")
+    <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
 
 </head>
+
+
+
 
 <body>
     

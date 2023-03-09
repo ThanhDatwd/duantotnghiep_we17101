@@ -226,6 +226,7 @@ text-overflow: ellipsis;
 }
 
 @media (max-width: 575.98px) {
+    
     .content .navbar .navbar-nav .nav-link {
         margin-left: 15px;
     }
@@ -287,3 +288,21 @@ text-overflow: ellipsis;
     background: var(--dark);
     border-color: var(--primary);
 }
+@media (max-width:426px) {
+    .text{
+        display: block;
+    }
+    #cvas1{
+        width: 240px
+    }
+    .ci{
+        margin:auto;
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+    
+    .pagination {
+        justify-content: center;
+    }
+    }
