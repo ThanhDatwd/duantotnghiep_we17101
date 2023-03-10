@@ -89,10 +89,10 @@ class BrandController extends Controller
             $file->move(public_path('upload'), $file_name);
         }
         $request->merge(['avatar' => $file_name]);
-        $p = brand::find($id);
-        if($p==null) return redirect('/thongbao');
+        $b = brand::find($id);
+        if($b==null) return redirect('/thongbao');
         $b->brands=$_POST['brands'];
-        $b->avatar=$file_name;
+        $b->avatar=$file_name??$b->avatar   ;
         $b->address=$_POST['address'];
         // $b->importer=$_POST['importer'];
         $b->email=$_POST['email'];

@@ -5,7 +5,24 @@
     --light: #f3f6f9;
     --dark: #191c24;
 }
+/* body{
+    overflow-x: hidden;
 
+} */
+.texlo{
+    width: 100%;
+}
+.coupou{
+    width: 80%;
+}
+.note{
+    width: 150px;
+    height: 30px;
+    white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis; 
+
+}
 .back-to-top {
     position: fixed;
     display: none;
@@ -214,6 +231,7 @@
 }
 
 @media (max-width: 575.98px) {
+    
     .content .navbar .navbar-nav .nav-link {
         margin-left: 15px;
     }
@@ -275,3 +293,38 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+@media (max-width:426px) {
+    .text{
+        display: block;
+    }
+    .addpro{
+        display: block;
+    }
+    #cvas1{
+        width: 240px
+    }
+    .ci{
+        width: 100%;
+        margin:auto;
+
+        display: block;
+        
+    }
+    
+    .pagination {
+        justify-content: center;
+    }
+    .btnmoi {
+        width: 100%;
+    }
+    .ci a{
+        width: 100%;
+        padding: 10px 130px
+    }
+    .texlo{
+        border:1px solid black
+    }
+    .coupou {
+        width: 100%;
+    }
+    }

@@ -14,10 +14,14 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/bootstrap.min.css')}}">
     <!-- Template Stylesheet -->
-    <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
     @yield("css")
+    <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
 
 </head>
+
+
+
+
 <body>
     
     <div class=" position-relative bg-white d-flex p-0" style="width:100%">
@@ -28,7 +32,8 @@
             </div>
         </div>
          <!-- Sidebar Start -->
-         <div class="sidebar pe-4 pb-3">
+    
+         <div class="sidebar pe-4 pb-3 scroll">
             <nav class="navbar bg-light navbar-light">
               <a href="/admin" class="navbar-brand" style="margin:0 auto">
                    
@@ -46,9 +51,9 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/admin" class="nav-item nav-link active"><i class="fa-brands fa-shopify"></i>Trang chủ</a>
+                    <a href="/admin" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Trang chủ</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sản Phẩm</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-shopify"></i></i>Sản Phẩm</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="/admin/product" class="dropdown-item">Danh sách sản phẩm</a>
                             <a href="/admin/product/trashed" class="dropdown-item">Thùng rác sản phẩm</a>
@@ -69,6 +74,7 @@
                             <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
                         </div>
                     </div>
+
                        <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-regular fa-user"></i>Tài Khoản</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -80,6 +86,14 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-bandcamp"></i>Nguồn Hàng</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn hàng</a>
+                            <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
+                        </div>
+
+                    </div>  
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-bandcamp"></i>Nhập Hàng</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn nhập</a>
                             <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
 
                         </div>

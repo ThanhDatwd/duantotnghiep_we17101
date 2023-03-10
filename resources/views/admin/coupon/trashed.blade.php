@@ -27,7 +27,8 @@
                   <th scope="col">loại giảm giá</th>
                   <th scope="col">Giảm giá</th>
                   <th scope="col">Giới hạn người dùng </th>
-                  <th scope="col">Thời gian </th>
+                  <th scope="col">Bắt đầu </th>
+                  <th scope="col">Kết thúc</th>
                   <th scope="col">Trạng thái</th>
                   <th scope="col"></th>
               </tr>
@@ -75,7 +76,7 @@
                   </td>
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
-                    <a style="color: cadetblue" href="/admin/coupon/update/{{$c->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a style="color: cadetblue" href="/admin/coupon/restore/{{$c->id}}"><i class="fa-solid fa-trash-arrow-up"></i></a>
                     <a style="color: red" href="/admin/coupon/trashed/forceDelete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
 
                     {{-- <button onclick="myFunction()">XÓa</button> --}}

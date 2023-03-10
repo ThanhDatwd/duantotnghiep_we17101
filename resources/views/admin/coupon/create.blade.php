@@ -27,7 +27,7 @@
             </ul>
         </div>
         @endif
-        <div class= "container-fluid col-8 m-auto">
+        <div class= "container-fluid col-12 m-auto coupou">
             <div class= "row">
                <div class ="col-md-12 col-sm-6 ">
                 <div class="boxlist1">
@@ -111,7 +111,7 @@
                     <div class="addpro">    
                         <div class="adpro1">
                             <p>Miêu tả  <span>(*)</span></p>
-                            <textarea name="description" id="" value="{{old('address')}}" cols="90" rows="5"></textarea>
+                            <textarea name="description" id="" value="{{old('address')}}" cols="100" class="texlo" rows="5"></textarea>
                             @error('description')
                             <span class="badge badge-danger">{{ $message }}</span>                         @enderror
 
