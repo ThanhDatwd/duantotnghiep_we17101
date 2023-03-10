@@ -23,9 +23,9 @@
                   <th scope="col">ID</th>
                   <th scope="col">Tên người đặt</th>
                   <th scope="col">Loại thanh toán</th>
-                  <th scope="col">Số lượng</th>
+                  <th scope="col">Số điện thoại</th>
                   <th scope="col">Phí giao hàng</th>
-                  <th scope="col">Trạng thái</th>
+                  <th scope="col">Số điện thoại</th>
                   <th scope="col" style="50px">Chú thích của khách hàng</th>
                   <th scope="col">Chú thích của shop</th>
                   <th scope="col">Tổng tiền</th> 
@@ -37,7 +37,7 @@
                 <tr>
                     <th></th>
                     <th>{{$o->id}}</th>
-                    <td>{{$o->user->full_name}}</td>
+                    <td>{{$o->user_name}}</td>
 
                     <td>
 
@@ -51,7 +51,7 @@
                         Chưa phân loại
                         @endif
                     </td>
-                    <td>{{$o->count_products}}</td>
+                    <td>{{$o->phone}}</td>
                     <td>{{$o->fee_ship}}</td>
                     <td>
                         @if ($o->status==1)
@@ -67,7 +67,7 @@
                     
                     <td><p class="note">{{$o->customer_note}}</p></td>
                     <td><p class="note"> {{$o->shop_note}}</p></td>
-                    <td>{{$o->total_price}}</td>
+                    <td>{{$o->total}}</td>
                     <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <i class="fa-solid fa-circle-info"></i> </a>
                     </td>
                 </tr>
@@ -76,10 +76,7 @@
       </table>
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-     
             {{$order->appends(request()->all())->links()}}  
-         
-      
         </ul>
       </nav>
   </div>
