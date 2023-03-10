@@ -66,7 +66,23 @@ use Illuminate\Support\Facades\DB;
                                         </td>
                                      
                                         <td>
-                                           
+                                      <style>
+                                          .pagination{
+                                                    display: flex;
+                                                    justify-content: center;
+                                                  }
+                                                  .pagination a{
+                                                    padding: 10px;
+                                                    border: 1px solid #ccc;
+                                                    margin: 0 5px;
+                                                    text-decoration: none;
+                                                    color: #000;
+                                                  }
+                                                  .pagination a.active{
+                                                    background: green;
+                                                    color: #fff;
+                                                  }
+                                      </style>     
                                      <div class="pagination">
     @if ($news->currentPage() > 0)
         <a href="{{ $news->previousPageUrl() }}">Previous</a>

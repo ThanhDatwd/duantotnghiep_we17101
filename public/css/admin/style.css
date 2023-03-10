@@ -1,5 +1,6 @@
 /********** Template CSS **********/
 :root {
+    --button:#00CC99;
     --primary: #0f9249;
     --light: #f3f6f9;
     --dark: #191c24;
@@ -166,7 +167,7 @@
 }
 
 .sidebar .navbar .dropdown-item {
-    padding-left: 25px;
+    padding-left: 35px;
     border-radius: 0 30px 30px 0;
 }
 

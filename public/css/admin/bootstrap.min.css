@@ -203,7 +203,7 @@ sup {
     top: -0.5em;
 }
 a {
-    color: #009cff;
+    color: var(--primary);
     text-decoration: none;
 }
 a:hover {

@@ -56,7 +56,7 @@
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
                     <a style="color: cadetblue" href="/admin/product_category/restore/{{$c->id}}"><i class="fa-solid fa-trash-arrow-up"></i></a>
-                    {{-- <a style="color: red" href="/admin/product_category/forceDelete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a> --}}
+                    <a style="color: red" href="/admin/product_category/trashed/forceDelete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
                     <script>
                       function myFunction() {
                           if(!confirm("Bạn có chắc chắn muốn xóa không!!"))

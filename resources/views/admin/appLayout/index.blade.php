@@ -30,23 +30,23 @@
          <!-- Sidebar Start -->
          <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-              <a href="index.html" class="navbar-brand" style="margin:0 auto">
+              <a href="/admin" class="navbar-brand" style="margin:0 auto">
                    
                         <img src="{{asset("img/logo.png")}}" style="width:150px;margin:0 auto;border-radius:50%;padding-bottom:20px ;" alt="">
                    
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="https://haycafe.vn/wp-content/uploads/2022/02/Avatar-trang-cho-nu.jpg" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0">Nguyễn Văn Tèo</h6>
                         <span>Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/admin" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/admin" class="nav-item nav-link active"><i class="fa-brands fa-shopify"></i>Trang chủ</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Sản Phẩm</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -55,26 +55,48 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Loại Sản Phẩm</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-list"></i>Loại Sản Phẩm</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="/admin/product_category" class="dropdown-item">Danh sách  loại sản phẩm</a>
                             <a href="/admin/product_category/trashed" class="dropdown-item">Thùng rác loại sản phẩm</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Quản lý tin tức</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-regular fa-newspaper"></i>Tin Tức</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href=" {{url('admin/categories_news')}}" class="dropdown-item">Quản lý loại tin</a>
                            <a href="{{url('admin/news')}}" class="dropdown-item">Quản lý tin tức</a>
                             <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
                         </div>
                     </div>
+                       <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-regular fa-user"></i>Tài Khoản</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href=" {{url('admin/admin_users')}}" class="dropdown-item">Quản lý admin</a>
+                          
+                        </div>
+                    </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Nguồn Hàng</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-bandcamp"></i>Nguồn Hàng</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn hàng</a>
-                           <a href="{{url('admin/news')}}" class="dropdown-item">Quản lý tin tức</a>
-                            <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
+                            <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
+
+                        </div>
+
+                    </div>  
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-cart-shopping"></i>Đơn Hàng</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{url('admin/order')}}" class="dropdown-item">Quản lý đơn hàng</a>
+                        </div>
+                    </div>  
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-discord"></i>Mã Giảm Giá</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{url('admin/coupon')}}" class="dropdown-item">Quản lý mã giảm giá</a>
+                            <a href="{{url('admin/coupon/trashed')}}" class="dropdown-item">Thùng rác mã giảm giá</a>
+
                         </div>
                     </div>  
                 </div>
@@ -95,21 +117,32 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
+                    <input class="form-control border-0" name="key" type="search" placeholder="Tìm kiếm">
+                    {{-- <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button> --}}
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
+                            <span class="d-none d-lg-inline-flex">Tin nhắn</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg"  onerror="this.src='{{asset('upload/error.jpg')}}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Bạn nhận được một tin nhắn </h6>
+<small>15 phút trước</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
                                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-<small>15 minutes ago</small>
+                                        <h6 class="fw-normal mb-0">Bạn nhận được một tin nhắn nữa</h6>
+                                        <small>35 phút trước</small>
                                     </div>
                                 </div>
                             </a>
@@ -124,23 +157,13 @@
                                 </div>
                             </a>
                             <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
+                            <a href="#" class="dropdown-item text-center">Xem tất cả tin nhắn</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                            <span class="d-none d-lg-inline-flex">Thông báo</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
@@ -163,13 +186,13 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <img class="rounded-circle me-lg-2" src="https://haycafe.vn/wp-content/uploads/2022/02/Avatar-trang-cho-nu.jpg" alt=""  style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">Nguyễn Văn Tèo</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="#" class="dropdown-item">Hồ sơ của tôi</a>
+                            <a href="#" class="dropdown-item">Cài đặt</a>
+                            <a href="logout" class="dropdown-item">Đăng suất</a>
                         </div>
                     </div>
                 </div>

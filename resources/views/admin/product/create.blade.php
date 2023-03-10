@@ -26,13 +26,12 @@
                <div class ="col-md-8 col-sm-6 ">
                 <div class="boxlist1">
                     <div class="addpro">
-                       
                         <div class="adpro1">
                             <p>Tên sản phẩm <span>(*)</span></p>
                             <input type="text" name="name" value="{{old('name')}}" placeholder="Nhập tên sản phẩm">
-                        </div>
-                     
-                
+                            @error('name')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+                        </div>  
                     </div>
                     <div class="addpro">        
                         <div class="adpro1">
@@ -42,10 +41,12 @@
                                     <option value="{{$c->id}}">{{$c->category_name}}</option>
                                   
                                     @endforeach
-                              
-                              
-                                
+                                 
                             </select>
+                            @error('category_id')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
+
                         </div>
                      
                 
@@ -54,17 +55,24 @@
                         <div class="adpro1">
                             <p>Giá<span>(*)</span></p>
                             <input type="number" name="price" value="{{old('price')}}" placeholder="Nhập giá ">
+                            @error('price')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         
                         <div class="adpro1">
                             <p>Giá bán <span>(*)</span></p>
                             <input type="number" name="price_current" value="{{old('price_current')}}" placeholder="Nhập giá bán">
+                            @error('price_current')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
                         </div>
                         <div class="adpro1">
                             <p>Giảm giá</p>
                             <input type="number" style="width:100%" name="discount" value="{{old('discount')}}"  min="0" max="100" placeholder="Nhập giảm giá">
+                            @error('discount')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
                         </div>
-                    
                     </div>
                 <div class="addpro">
                    <div class="adpro1" style="width:200px">
@@ -96,6 +104,10 @@
                             <p>Mô tả ngắn <span>(*)</span></p>
                             <textarea name="summary" id="" style="width:100%" cols="100" rows="5"></textarea>
                         </div>
+                        
+                        @error('summary')
+                        <span class="badge badge-danger">{{ $message }}</span>                  
+                        @enderror
                     </div>
                     <div class="addpro">
                         <div class="adpro1">
@@ -110,7 +122,6 @@
                 
                     <div class="addpro">
                         <div class="adpro1">
-                         
                                 <script type="text/javascript" src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
                                 <p>Mô tả <span>(*)</span></p>
                                 <textarea id="editor1" name="content"></textarea>            
@@ -129,15 +140,29 @@
                 <p>Ảnh<span>(*)</span></p>
                 <canvas  id="cvas1"></canvas>
                 <br>
-                <!--<input type="text" id="textinput"/>--
-                <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
-                <input name="thumb" type="file" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
-        
-                <button type="submit" class="btnmoi">THÊM MỚi</button>
+                <input  class="thumbs"  name="thumb" type="file" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
+            {{-- <div id="thumb" class="thumb">sd</div> --}}
+            @error('thumb')
+            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+
+            <script>
+                const anhs=document.getElementById('image');
+                const anh=document.getElementById('thumb');
+                anh.onclick=function(e){
+                    // e.preventDefault();
+                    anhs.click();
+                }
+
+
+            </script>
             </div>
         </div>
             
         </div>
+               </div>
+               <div class="ci">
+                <button type="submit" class="btnmoi">Thêm mới</button>
+               <a href="/admin/product">Hủy</a>
                </div>
             </div>
          </div>
@@ -147,6 +172,7 @@
         
     
     </div>
+
 </form>
 <script>
 window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;

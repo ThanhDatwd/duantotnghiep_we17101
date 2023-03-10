@@ -21,6 +21,7 @@ class products20 extends Seeder
      */
     public function run()
     {
+        
         $group_category = ['Thịt Trưngs', 'Hải sản', 'Rau củ', 'Trái cây', 'Đồ khô', 'Gia vị'];
         $categories = [
             ['Thịt heo', 'Thịt Bò', 'Gà Vịt ...', 'Trứng các loại'],
@@ -111,4 +112,5 @@ class products20 extends Seeder
             $indexC += 1;
         }
     }
+}
 }

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 // str_slug
 
-
+    
 
 
 class CategoriesNews extends Controller

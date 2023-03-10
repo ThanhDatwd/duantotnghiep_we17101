@@ -239,6 +239,50 @@
     /* border: 1px solid #dee2e6 !important; */
 }
 
+
+.form-group {
+    display: flex;
+    gap: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.form-group label{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 200%;
+
+}
+.form-amount {
+    /* height: 40px; */
+    /* border: 1px solid #ccc; */
+    border-radius: 20px;
+    margin-right: 20px;
+    /* overflow: hidden; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-amount input {
+    width: 60px;
+    border: #dee2e6 1px solid;
+    text-align: center;
+    border-radius: 5px;
+    padding: 4px 8px;
+    padding-left: 16px;
+    color: #07a044;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.form-amount .btn-amount {
+    border: #dee2e6 1px solid;
+    border-radius: 5px;
+    padding: 4px 8px;
+    color: #07a044;
+    font-weight: normal;
+}
 .hotline-call{
     display: flex;
     align-items: center;
@@ -265,7 +309,13 @@
     transition: 0.3s all ease;
     color: #00b907;
 }
-
+.products-row{
+    width: 100%;
+    aspect-ratio: 10/8;
+}
+.products-row .swiper-slide{
+    align-items: flex-start;
+}
 @media only screen and (max-width: 600px){
 
     
