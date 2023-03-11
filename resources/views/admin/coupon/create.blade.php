@@ -62,7 +62,7 @@
                     </div>
                     <div class="addpro">    
                         <div class="adpro1">
-                            <p>Số lượng mã <span>(*)</span></p>
+                            <p>Điều kiện sử dụng<span>(*)</span></p>
                             <input type="number" name="min_condition" value="{{old('min_condition')}}" placeholder="Nhập số lượng mã">
                             @error('min_condition')
                             <span class="badge badge-danger">{{ $message }}</span>                         @enderror

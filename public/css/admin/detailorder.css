@@ -158,9 +158,10 @@ input[type="radio"] {
 }
 
 .form-select {
-    border-radius: 0;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+    
 
 }
 

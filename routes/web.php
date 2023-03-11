@@ -135,6 +135,7 @@ Route::prefix('/admin')->name('site')->group(function(){
     //------------------- Admin Oder-----------------------
     Route::get('/order', [OrderController::class,'index'])->name('admin-order');
     Route::get('/order/detail/{id}', [OrderController::class,'detail'])->name('admin.order.detail');
+    Route::post('/order/detail/{id}', [OrderController::class,'update'])->name('admin.order.update');
 
     //------------------ Admin Coupon-----------------------
     Route::get('/coupon', [CoupouController::class,'index'])->name('admin-coupon');

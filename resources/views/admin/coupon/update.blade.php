@@ -93,6 +93,7 @@
                     <div class="addpro">    
                         <div class="adpro1">
                             <p>Ngày bắt đầu</p>
+                            {{-- <input type="text" value="{{$c->start_date}}"> --}}
                             <input type="datetime-local" value="{{$c->start_date}}" name="start_date" >
                             @error('start_date')
                             <span class="badge badge-danger">{{ $message }}</span>                         @enderror
@@ -100,7 +101,7 @@
                         </div>
                         <div class="adpro1">
                             <p>Ngày kết thúc</p>
-                            <input type="datetime-local" value="{{$c->end_date}}" name="end_date" >
+                            <input type="datetime-local"  value="{{$c->end_date}}" name="end_date" >
                             @error('end_date')
                             <span class="badge badge-danger">{{ $message }}</span>                         @enderror
 

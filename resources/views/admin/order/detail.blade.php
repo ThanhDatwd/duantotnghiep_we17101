@@ -83,7 +83,7 @@
                 <div>
                     <p class="fw-bold" style="font-size: 25px">Thông tin người đặt hàng</p>
                 </div>
-                <form action="">
+                <form action="/admin/order/detail/{{$order->id}}"  enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <p class="dis fw-bold mb-2">Tên người đặt hàng</p>
                         <input class="form-control" type="text" disabled value="{{$order->user_name}}">
@@ -106,6 +106,34 @@
                             <p class="dis fw-bold mb-2">Địa chỉ</p>
                             <input class="form-control" type="text" disabled value="{{$order->address}}">
                         </div>
+                        <div class="mb-3">
+                            <p class="dis fw-bold mb-2">Trạng thái</p>
+                            <select name="status" class="form-select">
+                                @if ($order->status == 1)
+                                <option value="1" selected>Đang chờ xác nhận</option>
+                                <option value="2">Xác nhận</option>
+                                <option value="3">Đang giao</option>
+                                <option value="4">Hoàn thành</option>  
+                                @elseif ($order->status == 2)
+                                <option value="1">Đang chờ xác nhận</option>
+                                <option value="2" selected>Xác nhận</option>
+                                <option value="3">Đang giao</option>
+                                <option value="4">Hoàn thành</option>
+                                @elseif ($order->status == 3)
+                                <option value="1">Đang chờ xác nhận</option>
+                                <option value="2">Xác nhận</option>
+                                <option value="3" selected>Đang giao</option>
+                                <option value="4" >Hoàn thành</option>
+                                @else
+                                <option value="1">Đang chờ xác nhận</option>
+                                <option value="2">Xác nhận</option>
+                                <option value="3">Đang giao</option>
+                                <option value="4" selected>Hoàn thành</option>
+                                @endif
+    
+                            </select>
+                        </div>
+                        
                         
                         
                     <br>
@@ -127,11 +155,12 @@
                                     <p class="fw-bold">Tổng</p>
                                     <p class="fw-bold">{{number_format($order->total)}} VNĐ</p>
                                 </div>
-                                <div class="btn btn-primary mt-2"> Hủy
+                                <div class="btn btn-primary mt-2" ><button type="submit" style="background: none; border:none;color:aliceblue">Cập nhật</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @csrf
                 </form>
             </div>
         </div>

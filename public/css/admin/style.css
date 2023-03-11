@@ -9,6 +9,14 @@
     overflow-x: hidden;
 
 } */
+::-webkit-scrollbar{
+   width: 1px;
+
+   color: red;
+}
+::-webkit-scrollbar-thumb{
+   background: red;
+}
 .texlo{
     width: 100%;
 }
