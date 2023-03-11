@@ -122,6 +122,10 @@ Route::prefix('/')->name('client')->group(function () {
 
 
 
+             Route::get('/admin_chart', [AdminChartController::class,'order'])->name('admin-chart');
+
+
+
     });
 
     
