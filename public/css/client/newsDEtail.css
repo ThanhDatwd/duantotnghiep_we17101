@@ -167,3 +167,41 @@ h3.title{
     border: none;
     font-weight: bold;
 }
+
+#toc-display>.ol>h2,
+#toc-display>.li>h3{
+    display: list-item;
+    color: #007bff;
+    padding: 0;
+    font-weight: 400;
+}
+
+#toc-display>.ol>h2 {
+    font-size: 18px;
+}
+
+#toc-display>.li>h3{
+    list-style: none;
+    font-size: 14px;
+}
+
+#toc-display{
+    margin-left: 16px;
+}
+
+.table-of-contents{
+    border: 1px solid #ffe79f;
+    background: #fffefa;
+    padding: 12px 16px;
+}
+
+.table-of-contents > .title{
+    font-size: 20px;
+    color: var(--mainColor);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.border-top{
+    background-color: #fff !important;
+}
