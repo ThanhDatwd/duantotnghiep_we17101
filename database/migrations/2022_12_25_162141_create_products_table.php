@@ -21,7 +21,6 @@ return new class extends Migration
             $table->longText('content');
             $table->integer('price');
             $table->integer('price_current');
-            // $table->string('price_format');
             $table->integer('quantity_input')->default(0);
             $table->integer('quantity_output')->default(0);
             $table->integer('discount')->default(0);

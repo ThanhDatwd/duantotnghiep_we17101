@@ -199,9 +199,19 @@
     padding: 0px 16px;
 }
 
+.product-detail--other h3{
+    padding: 16px 0px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 700;
+}
+
 .product-detail--other p{
     padding: 20px 0px;
+}
 
+.product-detail--other p::first-letter{
+    text-transform: capitalize;
 }
 
 .underline{
@@ -229,6 +239,83 @@
     /* border: 1px solid #dee2e6 !important; */
 }
 
+
+.form-group {
+    display: flex;
+    gap: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.form-group label{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 200%;
+
+}
+.form-amount {
+    /* height: 40px; */
+    /* border: 1px solid #ccc; */
+    border-radius: 20px;
+    margin-right: 20px;
+    /* overflow: hidden; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-amount input {
+    width: 60px;
+    border: #dee2e6 1px solid;
+    text-align: center;
+    border-radius: 5px;
+    padding: 4px 8px;
+    padding-left: 16px;
+    color: #07a044;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.form-amount .btn-amount {
+    border: #dee2e6 1px solid;
+    border-radius: 5px;
+    padding: 4px 8px;
+    color: #07a044;
+    font-weight: normal;
+}
+.hotline-call{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding:  12px 6px;
+    background-color: #fff3cd;
+    margin: 14px 0px;
+    color: #856404;
+    font-weight: 700;
+}
+
+.hotline-call img{
+    width: 40px;
+}
+
+.hotline-call span{
+    font-size: 20px;
+    color: var(--mainColor);
+}
+
+.hotline-call span:hover{
+    text-decoration: none;
+    transition: 0.3s all ease;
+    color: #00b907;
+}
+.products-row{
+    width: 100%;
+    aspect-ratio: 10/8;
+}
+.products-row .swiper-slide{
+    align-items: flex-start;
+}
 @media only screen and (max-width: 600px){
 
     

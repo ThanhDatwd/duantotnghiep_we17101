@@ -17,7 +17,7 @@ class brand extends Model
         'brands',
         'avatar',
         'phone',
-        'importer',
+        // 'importer',
         'address',
         'email',
         

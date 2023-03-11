@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\brand;
 use Illuminate\Support\Facades\DB;
 use Nette\Utils\Json;
+use App\Http\Requests\BrandRequest;
+
 
 
 class BrandController extends Controller
 {
     public function index(){
-        $brands=brand::orderBy('id','desc')->paginate(50);
+        $brands=brand::orderBy('id','desc')->paginate(5);
+        if($key = request()->key){
+            $brands=brand::orderBy('id','desc')->where('brands','like','%'.$key.'%')->paginate(5);
+        }
         $data=[
             "brands"=>$brands,
         ];
@@ -25,7 +30,7 @@ class BrandController extends Controller
         ];
         return view('admin.brand.create',$data);
     }
-    public function create_(Request $request){
+    public function create_(BrandRequest $request){
         if($request->has('avatar')){
             $file = $request->avatar;
             $ext = $request->avatar->extension();
@@ -38,7 +43,7 @@ class BrandController extends Controller
         $b->brands=$_POST['brands'];
         $b->avatar=$file_name;
         $b->address=$_POST['address'];
-        $b->importer=$_POST['importer'];
+        // $b->importer=$_POST['importer'];
         $b->email=$_POST['email'];
         $b->phone=$_POST['phone'];
    
@@ -66,7 +71,7 @@ class BrandController extends Controller
         return back()->with('thongbao','Phục hồi tất cả thành công');;
     }
     public function forceDelete($id){
-        brand::find($id)->forceDelete();
+        brand::withTrashed()->find($id)->forceDelete();
         return back();
     }
 
@@ -89,14 +94,12 @@ class BrandController extends Controller
         $b->brands=$_POST['brands'];
         $b->avatar=$file_name;
         $b->address=$_POST['address'];
-        $b->importer=$_POST['importer'];
+        // $b->importer=$_POST['importer'];
         $b->email=$_POST['email'];
         $b->phone=$_POST['phone'];
         $b->save();
         return redirect('/admin/brand')->with('thongbao','Cập nhật thành công nguồn nhập hàng');;
     }
 
-    public function boot(){
-        Paginator::useBoostrap();
-    }
+    
 }
