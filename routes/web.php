@@ -33,20 +33,25 @@ use Symfony\Component\Routing\Router;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::prefix('/')->name('client')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/login',[AuthController::class,'show_login_user'])->name('show-login');
+    Route::post('/login',[AuthController::class,'login_user'])->name('login');
+    Route::get('/register',[AuthController::class,'show_register_user'])->name('show-register');
+    Route::post('/register',[AuthController::class,'register_user'])->name('register');
+    Route::get('/email/verify/{token}',[AuthController::class,'verify_email'])->name('verify-email');
+});
+Route::prefix('/')->name('client')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
     Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
     Route::get('/category-group', [ProductsController::class, 'group'])->name('category-group-all');
-    // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
-    Route::get('/product',[ProductsController::class,'index']);
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
-//    Route::get('/add-to-cart/{id}',[ProductsController::class,'addToCart'])->name('add_to_cart');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-    // Route::get('/Add-Cart/{id}',[CartController::class,'AddCart']);
     Route::get('/account', [AccountController::class, 'account'])->name('account');
     Route::get('/contact', [ContactController::class,'contact'])->name('contact');
     Route::get('/addjobs', [AddjobController::class,'index'])->name('addjobs');
@@ -65,14 +70,16 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/minus-to-cart', [ProductsController::class,'minusToCart'])->name('minus-to-cart');
     Route::post('/remove-to-cart', [ProductsController::class,'removeToCart'])->name('remove-to-cart');
     Route::post('/remove-all-cart', [ProductsController::class,'removeAllCart'])->name('remove-all-cart');
-    Route::get('/register',[AuthController::class,'register']);
-    Route::get('/login',[AuthController::class,'login']);
-    Route::post('/login-user',[AuthController::class,'loginUser']);
+    Route::get('/search', [ProductsController::class,'search'])->name('search');
+   
 });
     //
     // Route::resource('/admin/product', AdminProductController::class);
-
     Route::prefix('/admin')->name('site')->group(function(){
+        Route::get('/login',[AuthController::class,'show_login_admin'])->name('show-login');
+        Route::post('/login',[AuthController::class,'login_admin'])->name('login');
+    });
+    Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function(){
         //-----------------Admin Home-----------------
         Route::get('/', [AdminController::class,'index']);
         //-----------Admin Product-------------

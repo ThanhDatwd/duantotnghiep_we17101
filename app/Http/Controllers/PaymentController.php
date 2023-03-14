@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\send_email;
+use App\Mail\SendVerifyCodeMail;
 use App\Models\order;
 use App\Models\order_details;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use PhpParser\Node\Stmt\TryCatch;
 
 class PaymentController extends Controller
 {
@@ -15,12 +19,12 @@ class PaymentController extends Controller
   {
     $cartFarmApp = [];
     $carts = [];
+    $total=0;
     if (isset($_COOKIE["cartFarmApp"])) {
       $json = $_COOKIE["cartFarmApp"];
       $cartFarmApp = json_decode($json, true);
 
       $idList = [];
-      $total=0;
       foreach ($cartFarmApp as $item) {
         $idList[] = $item['productId'];
       }
@@ -331,9 +335,39 @@ class PaymentController extends Controller
   // ///////////////////////////////////////
   // ///////////////////////////////////////
   // ///////////////////////////////////////
-  public function create_payment_cod(Request $request)
+  public function get_order_otp(Request $request)
+  { 
+    $email=$request->email??"";
+    $otp=rand(0000,9999);
+    $mail=new SendVerifyCodeMail($otp);
+    Mail:: to("nguyenthanhdatntd02@gmail.com")->queue($mail);
+    // send_email::dispatch($otp,"nguyenthanhdatntd01@gmail.com");
+    setcookie('otp_order_gm', json_encode($otp), time() + 60, '/');
+    
+    return response()->json([
+      "message"=>"success",
+      "otp"=>$otp
+    ]);
+   
+  }
+  public function confirm_order_otp(Request $request)
   {
-    if (
+      if($request->otp!=null){
+        if($request->otp==$_COOKIE["otp_order_gm"]){
+             return response()->json(["message"=>"success"],200);
+        }
+        else{
+              return response()->json(["message"=>"Mã xác nhận không hợp lệ"],403);
+        }
+      }
+      else{
+        return response()->json(["Không thể xác định mã xác nhận"],405);
+      }
+  }
+  public function create_payment_cod(Request $request)
+  { 
+
+ if (
       $request->email != null
       && $request->user_name != null
       && $request->phone != null

@@ -1,4 +1,4 @@
-{{-- <link rel="stylesheet" href="{{asset('css/client/component/navbarMobile.css')}}">
+<link rel="stylesheet" href="{{asset('css/client/component/navbarMobile.css')}}">
 <div class="navbar__mobile">
     <a href="" class="item">
         <i class='bx bx-home'></i>
@@ -190,4 +190,4 @@
         </div>
     </div>
 </div>
-<script src="{{asset('js/client/component/navbarMobile.js')}}"></script> --}}
+<script src="{{asset('js/client/component/navbarMobile.js')}}"></script>

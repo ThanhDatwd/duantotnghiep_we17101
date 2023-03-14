@@ -13,7 +13,7 @@
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
   
-                  <form action="/login-user" method="post">
+                  <form action="{{route('sitelogin')}}" method="post">
 
                     @if (Session::has('success'))
                     <div class="alert alert-success">{{Session::get('success')}}</div>
@@ -31,8 +31,8 @@
   
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example17">Tài khoản </label>
-                      <input type="text" name="username" id="form2Example17" class="form-control form-control-lg" value="" />
-                        <span class="text-danger">@error('username')
+                      <input type="text" name="email" value="{{old('email')}}" id="form2Example17" class="form-control form-control-lg" value="" />
+                        <span class="text-danger">@error('email')
                             {{$message}}
                         @enderror</span>
                     </div>

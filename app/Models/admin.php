@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class administrators extends Model
+class Admin extends Model
 {
     use HasFactory;
+    protected $table= "administrators";
     public function historyCreateProduct()
     {
         return $this->hasMany(importHistory::class,"created_by","id");

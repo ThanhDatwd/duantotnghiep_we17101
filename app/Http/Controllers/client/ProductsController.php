@@ -4,12 +4,14 @@ namespace App\Http\Controllers\client;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Mail\SendVerifyCodeMail;
 use App\Models\category;
 use App\Models\category_group;
 use App\Models\coupon;
 use App\Models\news;
 use Illuminate\Http\Request;
 use App\Models\product;
+use Illuminate\Support\Facades\Mail;
 
 class ProductsController extends Controller
 {  
@@ -158,6 +160,24 @@ class ProductsController extends Controller
         setcookie('cartFarmApp', json_encode([]), time() + 3 * 24 * 60 * 60, '/');
 
         return redirect()->back();
+    }
+    public function search(Request $request)
+    {
+        // $products=product::where('name','like',$request->query('q'))->get();
+        // $data=[
+        //     "products"=>$products,
+        //     "q"=>$request->query('q')
+        // ];
+        $mail=new SendVerifyCodeMail("daylacodethunghiem");
+        Mail:: to('nguyenthanhdatntd01@gmail.com')->send($mail);
+        // dd($mail);
+        $user = product::findOrFail(3);
+        Mail::send('client.contact.index', ['user' => $user], function ($m) use ($user) {
+            $m->from('nguyenthanhdatntd01@gmail.com', 'Your Application');
+ 
+            $m->to("nguyenthanhdatntd007@gmail.com", "thanhdat")->subject('Your Reminder!');
+        });
+        // return view('client.search.index',$data);
     }
 }
 

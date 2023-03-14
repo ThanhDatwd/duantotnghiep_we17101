@@ -178,7 +178,7 @@ $indexCategory++;
             @foreach ( $group->categories as $category )
                 @foreach ($category->products as $item)
                 @php
-                   $price1="";
+                  $price1="";
                   $price2=number_format($item->price_current);
                   if($item->discount>0){
                     $price1=number_format($item->price_current)."đ";

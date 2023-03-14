@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('summary');
+            $table->string('summary',2000);
             $table->longText('content');
             $table->string('thumb');
             $table->string('slug')->unique();

@@ -7,14 +7,14 @@
     <div class="auth-form__container">
         <div class="auth-form">
             <div class="auth-form__head">
-                <a href="?page=login">
+                <a href="{{route('clientshow-login')}}">
                     <li class="auth-form__heading">Đăng nhập</li>
                 </a>
-                <a href="?page=register">
+                <a href="">
                     <li class="auth-form__heading active">Đăng kí</li>
                 </a>
             </div>
-            <form action="" class="auth-form__register">
+            <form action="{{route('clientregister')}}" method="POST" class="auth-form__register">
                 <div class="auth-form__group">
                     <div class="mesage"></div>
                 </div>
@@ -76,43 +76,6 @@
     </div>
 </main>
 <script>
-    const formRegister = document.querySelector('.auth-form__register');
-    const name = formRegister.querySelector('[name=name]')
-    const password = formRegister.querySelector('[name=password]')
-    const phone = formRegister.querySelector('[name=phone]')
-    const email = formRegister.querySelector('[name=email]')
-    const address = formRegister.querySelector('[name=address]')
-    const mesageElement = formRegister.querySelector('.mesage')
-    const mesage = (text = '') => {
-        mesageElement.innerHTML = text
-        mesageElement.classList.add('active')
-    }
-
-    function register(shop_id) {
-        if (name.value == "" || password.value == "" || email.value == ""|| phone.value == ""|| address.value == "" ) {
-            mesage('Vui lòng nhập đầy đủ thông tin')
-        } else {
-            $.post('./controller/user/register.php', {
-                    email: email.value,
-                    password: password.value,
-                    name: name.value,
-                    address: address.value,
-                    phone: phone.value,
-
-                },
-                (data) => {
-                    if (data == 202) {
-                        location.href = '?page=home'
-                    } else {
-                        mesage(data)
-                    }
-
-                })
-        }
-    }
-    formRegister.onsubmit = (e) => {
-        e.preventDefault();
-        register()
-    }
+  
 </script>
 @endsection
