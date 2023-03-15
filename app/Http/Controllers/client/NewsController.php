@@ -18,10 +18,10 @@ class NewsController extends Controller
     }
     public function newsDetail($slug)
     {
-        $post = news::where('slug', $slug)->firstOrFail();
-        $data=[
-            "post"=>$post
-        ];
+        // $post = news::where('slug', $slug)->firstOrFail();
+        // $data=[
+        //     "post"=>$post
+        // ];
         return view('client.newsDetail.index');
 
     }
