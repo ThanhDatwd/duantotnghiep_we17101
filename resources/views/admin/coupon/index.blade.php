@@ -76,9 +76,9 @@
                   <td>
                     <span>
                       @if(($c->is_active)==1)
-                      <button type="button" class="btn btn-success">Hoạt động</button>
+                      <button type="button" class="btn btn-success">Hoạt Động</button>
                       @else
-                      <button type="button" class="btn btn-danger"></button>                  
+                      <button type="button" class="btn btn-danger">Hết Mã</button>                  
                     @endif
                     </span>
                   </td>
