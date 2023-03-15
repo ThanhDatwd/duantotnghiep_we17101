@@ -15,8 +15,16 @@
                 </a>
             </div>
             <form action="{{route('clientregister')}}" method="POST" class="auth-form__register">
+                @csrf
                 <div class="auth-form__group">
-                    <div class="mesage"></div>
+                    @if (Session::has('success'))
+                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                    @endif
+                    @if (Session::has('fail'))
+                    <div class="mesage">{{Session::get('fail')}}</div>
+                    <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                    @endif
+
                 </div>
                 <!-- Đây là chỗ đăng nhập -->
                 <div class="auth-form__group">
@@ -24,28 +32,33 @@
                         <label class="group-label">họ tên</label>
                         <span class="group-obli">*</span>
                     </div>
-                    <input type="text" name="name" placeholder="Nhập Họ" />
+                    <input type="text" name="username" value="{{old("username")}}" placeholder="Nhập Họ" />
+                    <span class="text-danger">@error('username')
+                        {{$message}}
+                        @enderror
+                    </span>
                 </div>
                 <div class="auth-form__group">
                     <div class="auth-form__group-data">
                         <label class="group-label">số điện thoại</label>
                         <span class="group-obli">*</span>
                     </div>
-                    <input type="number" name="phone" placeholder="Nhập Số Điện Thoại" />
+                    <input type="number" name="phone" value="{{old("phone")}}" placeholder="Nhập Số Điện Thoại" />
+                    <span class="text-danger">@error('phone')
+                        {{$message}}
+                        @enderror
+                    </span>
                 </div>
                 <div class="auth-form__group">
                     <div class="auth-form__group-data">
                         <label class="group-label">email</label>
                         <span class="group-obli">*</span>
                     </div>
-                    <input type="email" name="email" placeholder="Nhập Địa Chỉ Email" require />
-                </div>
-                <div class="auth-form__group">
-                    <div class="auth-form__group-data">
-                        <label class="group-label">Địa chỉ </label>
-                        <span class="group-obli">*</span>
-                    </div>
-                    <input type="text" name="address" placeholder="nhập địa chỉ của bạn" />
+                    <input type="email" name="email" value="{{old("email")}}" placeholder="Nhập Địa Chỉ Email" require />
+                    <span class="text-danger">@error('email')
+                        {{$message}}
+                        @enderror
+                    </span>
                 </div>
                 <div class="auth-form__group">
                     <div class="auth-form__group-data">
@@ -53,6 +66,10 @@
                         <span class="group-obli">*</span>
                     </div>
                     <input type="password" name="password" placeholder="Nhập Mật Khẩu" />
+                    <span class="text-danger">@error('password')
+                        {{$message}}
+                        @enderror
+                    </span>
                 </div>
                 <button class="auth-form__btn" type="submit">
                     TẠO TÀI KHOẢN
@@ -76,6 +93,6 @@
     </div>
 </main>
 <script>
-  
+
 </script>
 @endsection

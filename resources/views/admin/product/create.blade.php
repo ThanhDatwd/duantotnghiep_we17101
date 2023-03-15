@@ -162,7 +162,7 @@
                </div>
                <div class="ci">
                 <button type="submit" class="btnmoi">Thêm mới</button>
-               <a href="/admin/product">Hủy</a>
+              <a href="/admin/product">Hủy</a>
                </div>
             </div>
          </div>

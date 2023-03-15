@@ -87,6 +87,14 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn hàng</a>
                             <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
+                        </div>
+
+                    </div>  
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-bandcamp"></i>Nhập Hàng</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn nhập</a>
+                            <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
 
                         </div>
 

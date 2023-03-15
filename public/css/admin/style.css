@@ -9,7 +9,20 @@
     overflow-x: hidden;
 
 } */
+::-webkit-scrollbar{
+   width: 1px;
 
+   color: red;
+}
+::-webkit-scrollbar-thumb{
+   background: red;
+}
+.texlo{
+    width: 100%;
+}
+.coupou{
+    width: 80%;
+}
 .note{
     width: 150px;
     height: 30px;
@@ -292,17 +305,34 @@ text-overflow: ellipsis;
     .text{
         display: block;
     }
+    .addpro{
+        display: block;
+    }
     #cvas1{
         width: 240px
     }
     .ci{
+        width: 100%;
         margin:auto;
-        display: flex;
-        justify-content: center;
-        align-items: center
+
+        display: block;
+        
     }
     
     .pagination {
         justify-content: center;
+    }
+    .btnmoi {
+        width: 100%;
+    }
+    .ci a{
+        width: 100%;
+        padding: 10px 130px
+    }
+    .texlo{
+        border:1px solid black
+    }
+    .coupou {
+        width: 100%;
     }
     }
