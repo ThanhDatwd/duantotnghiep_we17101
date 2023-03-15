@@ -29,7 +29,7 @@ class AuthRequest extends FormRequest
             'phone' => 'required|integer|max:11',
             'email'=>'required|email',
             'username' => 'required|min:10',
-            'password'=>'required|min:8',
+            'password'=>['required'],
             'first_name'=>'required',
             'last_name'=>'required',
             'full_name'=>'required',
@@ -46,7 +46,7 @@ class AuthRequest extends FormRequest
         return [
             'user.required' => 'Họ tên không được để trống',
             'password.required' => 'Mật khẩu không được để trống',
-            'password.min' => 'Mật khẩu phải có ít nhất 8 kí tự',
+            // 'password.min' => 'Mật khẩu phải có ít nhất 8 kí tự',
             'address.required' => 'Địa chỉ không được để trống',
             'avatar.required' => 'Ảnh đại diện không được để trống',
             'avatar.image' => 'Ảnh phải là định dạng: jpeg, png, jpg, gif, svg',

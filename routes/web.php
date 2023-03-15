@@ -78,10 +78,12 @@ Route::prefix('/')->name('client')->group(function () {
     Route::prefix('/admin')->name('site')->group(function(){
         Route::get('/login',[AuthController::class,'show_login_admin'])->name('show-login');
         Route::post('/login',[AuthController::class,'login_admin'])->name('login');
+        Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
+    Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
     });
     Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function(){
         //-----------------Admin Home-----------------
-        Route::get('/', [AdminController::class,'index']);
+        Route::get('/', [AdminController::class,'index'])->name('dashboard');
         //-----------Admin Product-------------
         Route::get('/product', [AdminProductController::class,'index'])->name('admin-product');
         Route::get('/product/create', [AdminProductController::class,'create'])->name('admin.product.create');
@@ -161,8 +163,8 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/coupon/update/{id}', [CoupouController::class,'update_'])->name('admin.coupon.update_');
         //-------------------Admin User------------------------
     Route::get('/admin_users', [AdminUserController::class,'index'])->name('admin-user');
-    Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
-    Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
+    // Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
+    // Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
     Route::get('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat'])->name('admin.admin_users.update');
     Route::post('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat_'])->name('admin.admin_users.update_');
     Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');

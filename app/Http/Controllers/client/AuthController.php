@@ -115,8 +115,7 @@ class AuthController extends Controller
 
     /////////////////////////////////////////
     ////////////////////////////////////////////
-    public function login_admin(AuthRequest $request){
-      
+    public function login_admin(Request $request){
         $request->validate([
             'email'=>'required',
             'password'=>'required'
@@ -129,11 +128,10 @@ class AuthController extends Controller
         
         if (Auth::guard('admin')->attempt($arr)) {
 
-            return redirect()->route('site');
+            return redirect()->route('sitedashboard');
             //..code tùy chọn
             //đăng nhập thành công thì hiển thị thông báo đăng nhập thành công
         } else {
-
             return back()->with('fail','Tài khoản hoặc mật khẩu không đúng'); 
             //...code tùy chọn
             //đăng nhập thất bại hiển thị đăng nhập thất bại
