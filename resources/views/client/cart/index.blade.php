@@ -3,59 +3,65 @@
 <link rel="stylesheet" href="{{asset('css/client/cart.css')}}">
 @endsection
 @section('main-content')
-    <div class="container cart-container">
-        <div class="cart-items">
-            <div class="cart-item">
-                <img class="item-img" src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="" >
-                <div class="cart-info">
-                    <div class="info">
-                        <div class="item-name">Nho không hạt</div>
-                        <div class="item-price">250.000 ₫</div>
-                    </div>
-                    <div class="info">
-                        <div class="btn-quantity">
-                            <button class="minus">-</button>
-                            <input type="number"  value="1" class="count" readonly>
-                            <button class="plus">+</button>
-                        </div>
-                        
-                        <button class="btn btn-delete">Xóa</button>
-                    </div>
+<div class="container cart-container mt-5">
+    <div class="cart-items">
+        @foreach ($carts as $item)
+        <div class="cart-item">
+            <img class="item-img" src="{{$item->thumb}}" alt="">
+            <div class="cart-info">
+                <div class="info">
+                    <div class="item-name">{{$item->name}}</div>
+                    <div class="item-price">
+                        {{number_format($item->price_current-($item->price_current*$item->discount/100))}}</div>
                 </div>
-            </div>
-            <div class="cart-item">
-                <img class="item-img" src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="" >
-                <div class="cart-info">
-                    <div class="info">
-                        <div class="item-name">Nho không hạt</div>
-                        <div class="item-price">250.000 ₫</div>
-                    </div>
-                    <div class="info">
-                        <div class="btn-quantity">
+                <div class="info">
+                    <div class="btn-quantity">
+                        <form action="{{route('clientminus-to-cart')}}" method="POST">
+                            @csrf
+                           <input type="text" name="productId" value="{{$item->id}}" hidden>
+                           <input type="number" name="amount" value="1" hidden>
                             <button class="minus">-</button>
-                            <input type="number"  value="1" class="count" readonly>
+                        </form>
+                        <span class="count">{{$item->amount}}</span>
+                        <form action="{{route('clientadd-to-cart')}}" method="POST">
+                            @csrf
+                           <input type="text" name="productId" value="{{$item->id}}" hidden>
+                           <input type="number" name="amount" value="1" hidden>
                             <button class="plus">+</button>
-                        </div>
-                        
-                        <button class="btn btn-delete">Xóa</button>
+                        </form>
                     </div>
+                    <form action="{{route('clientremove-to-cart')}}" method="POST">
+                        @csrf
+                        <input type="text" name="productId" value="{{$item->id}}" hidden>
+                        <button class="btn btn-delete">Xóa</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="checkout">
-            <div class="btn checkout-info">
-                <div class="total-text">Tổng</div>
-                <div class="total-value">69.000 ₫</div>
-            </div>
-            <button class="btn btn-ok">Thanh toán</button>
-            <button class="btn btn-delete-all">Xóa tất cả</button>
-        </div>
+        @endforeach
     </div>
+    <div class="checkout">
+        <div class="btn checkout-info">
+            <div class="total-text">Tổng</div>
+            <div class="total-value">{{number_format($total)}} ₫</div>
+        </div>
+        <a href="{{route('clientpayment')}}" class="btn btn-ok">Thanh toán</a>
+        <form action="{{route('clientremove-all-cart')}}" method="POST">
+            @csrf
+            <button style="width:100%" class="btn btn-delete-all">Xóa tất cả</button>
+        </form>
+    </div>
+</div>
+<div class="container">
+    @if (strlen($coupons)>1)
+<x-AppCouponCard :list="$coupons" />
+@endif
+</div>
 @endsection
 
 @section("js")
-    <script>
-        let minusBtn = document.querySelector(".minus");
+<script>
+    let minusBtn = document.querySelector(".minus");
         let count = document.querySelector(".count");
         let plusBtn = document.querySelector(".plus");
 
@@ -71,5 +77,5 @@
             countNum += 1;
             count.value = countNum;
         });
-    </script>
+</script>
 @endsection

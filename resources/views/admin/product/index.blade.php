@@ -40,7 +40,7 @@
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
                   <td>
                     <p style="font-size: 18px; font-weight:bold">{{$p->name}}</p>
-                    <span>Loại: {{$p->category->category_name}}</span><br>
+                    <span>Loại: {{$p->category->category_name ?? 'Chưa phân loại'}}</span><br>
                     <span>Xuất sứ: {{$p->brand}}</span>
                   </td>
 
@@ -61,8 +61,7 @@
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
                     <a style="color: cadetblue" href="/admin/product/update/{{$p->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: orange" href="/admin/product/delete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
-                    <a style="color: red" href="/admin/product/forceDelete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
+                    <a style="color: red" href="/admin/product/delete/{{$p->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
 
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
                     <script>
@@ -87,4 +86,5 @@
       </nav>
   </div>
 </div>
+
 @endsection

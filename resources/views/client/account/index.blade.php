@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{asset('css/client/account.css')}}">
 @endsection
 @section('main-content')
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-8">
                 <div class="d-flex account-tabs">
@@ -19,8 +19,9 @@
                 <div class="col tab-content account-tab" id="v-pills-tabContentnt">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <h4>Thông tin cá nhân</h4>
-                        <div class="info"><span>Họ và tên: </span>Nguyễn Văn Tèo</div>
-                        <div class="info"><span>Email: </span>teonguyen@gmail.com</div>
+                        <div class="info"><span>Họ và tên: </span>Nguyễn Thành Đạt</div>
+                        <div class="info"><span>Email: </span>dat@gmail.com</div>
+                        <div class="info"><span>Số điên thoại: </span>0988989899</div>
                         <div class="info"><span>Giới tính: </span>Nam</div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">

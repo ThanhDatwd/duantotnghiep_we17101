@@ -11,7 +11,13 @@ use App\Http\Controllers\admin\CategoriesNews;
 use App\Http\Controllers\admin\ProductCategorysController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\client\AddjobController;
+use App\Http\Controllers\client\ContactController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\client\AuthController;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -28,47 +34,72 @@ use Symfony\Component\Routing\Router;
 |
 */
 
+
 Route::prefix('/')->name('client')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/login',[AuthController::class,'show_login_user'])->name('show-login');
+    Route::post('/login',[AuthController::class,'login_user'])->name('login');
+    Route::get('/register',[AuthController::class,'show_register_user'])->name('show-register');
+    Route::post('/register',[AuthController::class,'register_user'])->name('register');
+    Route::get('/email/verify/{token}',[AuthController::class,'verify_email'])->name('verify-email');
+});
+Route::prefix('/')->name('client')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
     Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
-    // Route::get('/product/{slug}', [ProductDetailController::class, 'productDetail'])->name('product-detail');
+    Route::get('/category-group', [ProductsController::class, 'group'])->name('category-group-all');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
     Route::get('/account', [AccountController::class, 'account'])->name('account');
-    Route::get('payment', function () {
-        return view('client.payment.index');
-    });
+    Route::get('/contact', [ContactController::class,'contact'])->name('contact');
+    Route::get('/addjobs', [AddjobController::class,'index'])->name('addjobs');
+    Route::get('/payment', [PaymentController::class,'index'])->name('payment');
+    Route::post('/payment_cod', [PaymentController::class,'create_payment_cod'])->name('payment_cod');
+    Route::post('/payment_vnpay', [PaymentController::class,'create_payment_vnpay_e'])->name('payment_vnpay');
+    Route::get('/return_payment_vnpay', [PaymentController::class,'return_payment_vnpay_e'])->name('return_payment_vnpay');
+    Route::post('/payment_momo_qr', [PaymentController::class,'create_payment_momo_qr'])->name('payment_momo_qr');
+    Route::get('/return_payment_momo_qr', [PaymentController::class,'return_payment_momo_qr'])->name('return_payment_momo_qr');
+    Route::post('/payment_momo_atm', [PaymentController::class,'create_payment_momo_atm'])->name('payment_momo_atm');
+    Route::get('/return_payment_momo_atm', [PaymentController::class,'return_payment_momo_atm'])->name('return_payment_momo_atm');
     Route::get('thanks', function () {
         return view('client.thankyou.index');
-    });
+    })->name('page-thanks');
+    Route::post('/add-to-cart', [ProductsController::class,'addToCart'])->name('add-to-cart');
+    Route::post('/minus-to-cart', [ProductsController::class,'minusToCart'])->name('minus-to-cart');
+    Route::post('/remove-to-cart', [ProductsController::class,'removeToCart'])->name('remove-to-cart');
+    Route::post('/remove-all-cart', [ProductsController::class,'removeAllCart'])->name('remove-all-cart');
+    Route::get('/search', [ProductsController::class,'search'])->name('search');
+   
+});
     //
     // Route::resource('/admin/product', AdminProductController::class);
-
     Route::prefix('/admin')->name('site')->group(function(){
+        Route::get('/login',[AuthController::class,'show_login_admin'])->name('show-login');
+        Route::post('/login',[AuthController::class,'login_admin'])->name('login');
+    });
+    Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function(){
         //-----------------Admin Home-----------------
         Route::get('/', [AdminController::class,'index']);
         //-----------Admin Product-------------
         Route::get('/product', [AdminProductController::class,'index'])->name('admin-product');
-        Route::get('/product/create', [AdminProductController::class,'create']);
-        Route::post('/product/create', [AdminProductController::class,'create_']);
-        Route::get('/product/delete/{id}', [AdminProductController::class,'delete']);
-        Route::get('/product/forceDelete/{id}', [AdminProductController::class,'forceDelete']);
-        Route::get('/product/trashed',[AdminProductController::class,'trashed']);
-        Route::get('/product/restore/{id}',[AdminProductController::class,'restore']);
-        Route::get('product/restore-all',[AdminProductController::class,'restoreAll']);
-        Route::get('/product/update/{id}', [AdminProductController::class,'update']);
-        Route::post('/product/update/{id}', [AdminProductController::class,'update_']);
+        Route::get('/product/create', [AdminProductController::class,'create'])->name('admin.product.create');
+        Route::post('/product/create', [AdminProductController::class,'create_'])->name('admin.product.create_');
+        Route::get('/product/delete/{id}', [AdminProductController::class,'delete'])->name('admin.product.delete');
+        Route::get('/product/trashed/forceDelete/{id}', [AdminProductController::class,'forceDelete'])->name('admin.product.force');;
+        Route::get('/product/trashed',[AdminProductController::class,'trashed'])->name('admin.product.trashed');
+        Route::get('/product/restore/{id}',[AdminProductController::class,'restore'])->name('admin.product.restore');
+        Route::get('product/restore-all',[AdminProductController::class,'restoreAll'])->name('admin.product.restoreAll');
+        Route::get('/product/update/{id}', [AdminProductController::class,'update'])->name('admin.product.update');
+        Route::post('/product/update/{id}', [AdminProductController::class,'update_'])->name('admin.product.update_');
         
         //------------ Admin category_product ---------------
         Route::get('/product_category', [ProductCategorysController::class,'index'])->name('admin-product_category');
         Route::get('/product_category/create', [ProductCategorysController::class,'create']);
         Route::post('/product_category/create', [ProductCategorysController::class,'create_']);
         Route::get('/product_category/delete/{id}', [ProductCategorysController::class,'delete']);
-        Route::get('/product_category/forceDelete/{id}', [ProductCategorysController::class,'forceDelete']);
+        Route::get('/product_category/trashed/forceDelete/{id}', [ProductCategorysController::class,'forceDelete']);
         Route::get('/product_category/trashed',[ProductCategorysController::class,'trashed']);
         Route::get('/product_category/restore/{id}',[ProductCategorysController::class,'restore']);
         Route::get('product_category/restore-all',[ProductCategorysController::class,'restoreAll']);
@@ -104,21 +135,37 @@ Route::prefix('/')->name('client')->group(function () {
        Route::get('/brand/create', [BrandController::class,'create'])->name('admin.brand.create');
        Route::post('/brand/create', [BrandController::class,'create_'])->name('admin.brand.create_');
        Route::get('/brand/delete/{id}', [BrandController::class,'delete'])->name('admin.brand.delete');
-       Route::get('/brand/forceDelete/{id}', [BrandController::class,'forceDelete'])->name('admin.brand.forceDelete');
+       Route::get('/brand/trashed/forceDelete/{id}', [BrandController::class,'forceDelete'])->name('admin.brand.forceDelete');
+    //    Route::get('/brand/forceDelete/{id}', [BrandController::class,'forceDelete'])->name('admin.brand.forceDelete');
        Route::get('/brand/trashed',[BrandController::class,'trashed'])->name('admin.brand.trashed');
        Route::get('/brand/restore/{id}',[BrandController::class,'restore'])->name('admin.brand.restore');
        Route::get('brand/restore-all',[BrandController::class,'restoreAll'])->name('admin.brand.retoreAll');
        Route::get('/brand/update/{id}', [BrandController::class,'update'])->name('admin.brand.update');
        Route::post('/brand/update/{id}', [BrandController::class,'update_'])->name('admin.brand.update_');
 
+        //------------------- Admin Oder-----------------------
+        Route::get('/order', [OrderController::class,'index'])->name('admin-order');
+        Route::get('/order/detail/{id}', [OrderController::class,'detail'])->name('admin.order.detail');
+ 
+        //------------------ Admin Coupon-----------------------
+        Route::get('/coupon', [CoupouController::class,'index'])->name('admin-coupon');
+        Route::get('/coupon/create', [CoupouController::class,'create'])->name('admin.coupon.create');
+        Route::post('/coupon/create', [CoupouController::class,'create_'])->name('admin.coupon.create_');
+        Route::get('/coupon/delete/{id}', [CoupouController::class,'delete'])->name('admin.coupon.delete');
+        Route::get('/coupon/trashed/forceDelete/{id}', [CoupouController::class,'forceDelete'])->name('admin.coupon.forceDelete');
+        Route::get('/coupon/trashed',[CoupouController::class,'trashed'])->name('admin.coupon.trashed');
+        Route::get('/coupon/restore/{id}',[CoupouController::class,'restore'])->name('admin.coupon.restore');
+        Route::get('coupon/restore-all',[CoupouController::class,'restoreAll'])->name('admin.coupon.retoreAll');
+        Route::get('/coupon/update/{id}', [CoupouController::class,'update'])->name('admin.coupon.update');
+        Route::post('/coupon/update/{id}', [CoupouController::class,'update_'])->name('admin.coupon.update_');
          //-------------------Admin User------------------------
        Route::get('/admin_users', [AdminUserController::class,'index'])->name('admin-user');
        Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
        Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
-         Route::get('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat'])->name('admin.admin_users.update');
+       Route::get('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat'])->name('admin.admin_users.update');
          Route::post('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat_'])->name('admin.admin_users.update_');
-            Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');
-            Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
+        Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');
+        Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
 
 
 
@@ -129,4 +176,3 @@ Route::prefix('/')->name('client')->group(function () {
     });
 
     
-});

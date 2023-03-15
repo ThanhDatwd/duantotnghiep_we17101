@@ -1,3 +1,10 @@
+.button a i {
+  font-size: 25px;
+}
+.btn-success{
+  background-color: var(--button);;
+  border: 1px solid var(--button);
+}
 .adproduct {
     padding:50px;
     color: black
@@ -48,7 +55,7 @@ float: left;
 font-weight: bold;
 margin-bottom: 10px; 
 }
-.adpro1 input[type=text],input[type=email],input[type=number], .adpro1 select {
+.adpro1 input[type=text],input[type=email],input[type=number],input[type=datetime-local], .adpro1 select {
 height: 45px;
 width: 100%;
 
@@ -112,8 +119,8 @@ border-radius: 10px
 
 }
 td img{
-    width: 150px;
-    height: 120px;
+    width: 110px;
+    height: 80px;
 }
 .text {
   display: flex;
@@ -169,4 +176,18 @@ padding-top:20px
 }
 .head{
   margin-top: 20px;
+}
+
+/* --------------pagination------------------- */
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: var(--primary);;
+  border-color: var(--primary);;
+}
+.page-item .page-link {
+  color: var(--primary);
+}
+.pagination {
+ justify-content: right;
 }

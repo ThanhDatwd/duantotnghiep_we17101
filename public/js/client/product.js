@@ -11,7 +11,10 @@ $(document).ready(function(){
     });
   
   });
-
-
-
+ const selectTitles=document.querySelectorAll(".select-title")
+ selectTitles.forEach(element => {
+  element.onclick=()=>{
+    element.classList.toggle("active")
+  }
+ });
 //   --------------product2-----------

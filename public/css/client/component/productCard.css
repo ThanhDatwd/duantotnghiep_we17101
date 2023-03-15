@@ -74,7 +74,7 @@
 }
 .products-card .content .price {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap:10px
 }
 .price .price_new{

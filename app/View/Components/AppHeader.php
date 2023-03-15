@@ -12,11 +12,17 @@ class AppHeader extends Component{
      * @return void
      */
     public $category_group=[];
+    public $cartFarmApp=[];
 
     public function __construct()
     {
-        //
+        
         $this->category_group=category_group::with('categories')->distinct()->get();
+        if (isset($_COOKIE["cartFarmApp"])) {
+            $json = $_COOKIE["cartFarmApp"];
+            $this->cartFarmApp = json_decode($json, true);
+        }
+
         
     }
 

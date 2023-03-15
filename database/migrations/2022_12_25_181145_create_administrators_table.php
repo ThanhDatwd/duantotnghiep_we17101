@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('administrators', function (Blueprint $table) {
             $table->id();
             $table->string('username');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->string('password');
@@ -23,16 +23,15 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('full_name');
             $table->boolean('gender');
-            $table->timestamp('birthday');
+            $table->timestamp('birthday')->nullable();
             $table->string('address');
-            $table->string('province');
-            $table->string('district');
-            $table->string('ward');
-            $table->foreignId('role_id')->constrained('roles');
+            $table->string('province')->nullable();
+            $table->string('district')->nullable();
+            $table->string('ward')->nullable();
             $table->boolean('is_active');
             $table->timestamp('deleted_at')->nullable();
-            $table->string('created_by')->default(null);
-            $table->string('updated_by')->default(null);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

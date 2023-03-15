@@ -30,9 +30,6 @@ use Illuminate\Support\Facades\DB;
     <div class= "row">
         <div class ="col-md-9 ">
             <div id="exTab1" class="container">
-              
-                
-
                 <div class="tab-content clearfix">
                     <div class="tab-pane boxlist active" id="1a">
                         <div class="boxlist1">
@@ -53,13 +50,8 @@ use Illuminate\Support\Facades\DB;
                                     
                                 </div>
                 
-                          </div>
-
-     
-
-                          
-                            <div class="addpro">
-                               
+                          </div>  
+                            <div class="addpro">                         
                                 <div class="adpro1">
                                     <p>Mật khẩu <span>(*)</span></p>
                                     <input type="password" placeholder="Nhập mật khẩu" name="password">
@@ -86,7 +78,7 @@ use Illuminate\Support\Facades\DB;
                           <div class="addpro">
                             <div class="adpro1">
                                     <p>Ngày sinh <span>(*)</span></p>
-                                    <input type="date" placeholder="Nhập ngày sinh" name="birthday">
+                                    <input type="date"  placeholder="Nhập ngày sinh" name="birthday">
                             </div>
                           </div>
                               <div class="addpro">

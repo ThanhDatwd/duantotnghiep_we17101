@@ -1,10 +1,4 @@
-body{
-    background: rgb(220, 218, 218);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 header{
     display: none;
 }
@@ -21,14 +15,15 @@ footer{
     height: 100%;
     margin: 20px 0;
 }
-.container{
+.flex-area{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items:flex-start;
+    /* gap: 20px; */
+}
+.confirm-info,.confirm-orderList,.thankyou-area{
+    width: 50%;
 }
 .thankyou-area{
-    width: 50%;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -59,8 +54,7 @@ footer{
 }
 
 .confirm-orderList{
-    
-    width: 45%;
+    width: 50%;
     background:#fff;
 }
 .confirm-orderList h4{
@@ -69,7 +63,6 @@ footer{
 }
 .confirm-info{
     padding: 10px;
-    width: 50%;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid #ccc;

@@ -23,7 +23,7 @@ class AdminUserController extends Controller
         if($request->has('avatar')){
             $file = $request->avatar;
             $ext = $request->avatar->extension();
-            $file_name = time().'-'.'admin_users'. '.' .$ext;
+            $file_name = time().'-'.'admin_users'. '.' .$ext;   
             $file->move(public_path('upload'), $file_name);
         }
     $request->merge(['avatar' => $file_name]);
@@ -101,6 +101,9 @@ function capnhat_(Request $request,$id){
     $t->is_active = $_POST['is_active'];
     $t->email = $_POST['email'];
     $t->avatar = $file_name;
+    //created_at
+    // 
+    
 
     $t->save();
     

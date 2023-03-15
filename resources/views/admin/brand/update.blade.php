@@ -6,7 +6,7 @@
 
 {{-- <a href="/admin/product_category"><button>danh sách</button></a> --}}
 
-<form action="/admin/brand/create" enctype="multipart/form-data" method="post">
+<form action="/admin/brand/update/{{$b->id}}" enctype="multipart/form-data" method="post">
     @csrf
     <div class="adproduct">
 
@@ -26,13 +26,14 @@
                <div class ="col-md-8 col-sm-6 ">
                 <div class="boxlist1">
                     
-                    <div class="addpro">    
+                    {{-- <div class="addpro">    
                         <div class="adpro1">
+                            
                             <p>Tên người nhập hàng <span>(*)</span></p>
                             <input type="text" name="importer" value="{{$b->importer}}" placeholder="Nhập người nhập hàng">
                         </div>
-                    </div>
-                    <div class="addpro">    
+                    </div> --}}
+                    {{-- <div class="addpro">    
                         <div class="adpro1">
                             <p>Email<span>(*)</span></p>
                             <input type="email" name="" value="" placeholder="Nhập email người nhận">
@@ -41,7 +42,7 @@
                             <p>Số điện thoại <span>(*)</span></p>
                             <input type="number" name="" value=""  placeholder="Nhập số điện thoại người nhận">
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="addpro">    
                         <div class="adpro1">

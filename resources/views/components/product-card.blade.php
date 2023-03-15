@@ -13,8 +13,8 @@
         </div>
         <h3 class="title">{{$name??null}}</h3>
         <div class="price">
-            <div class="price_new">{{$priceCurrent}}</div>
-            <div class="price_old">{{$priceOld}}</div>
+            <span class="price_new">{{$priceCurrent}}</span>
+            <del class="price_old">{{$priceOld}}</del>
         </div>
     </div>
 </a>

@@ -3,9 +3,6 @@
 <link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
 @endsection
 @section('content')
-
-{{-- <a href="/admin/product_category"><button>danh sách</button></a> --}}
-
 <form action="/admin/product_category/create" enctype="multipart/form-data" method="post">
     @csrf
     <div class="adproduct">
@@ -34,20 +31,7 @@
                      
                 
                     </div>
-                    {{-- <div class="addpro">        
-                        <div class="adpro1">
-                            <p>Nhóm loại sản phẩm <span>(*)</span></p>
-                            <select name="category_group_id">
-                                    @foreach($category_group as $cg)
-                                    <option value="{{$cg->id}}">{{$cg->name}}</option>
-                                  
-                                    @endforeach
-                             
-                            </select>
-                        </div>
-                     
-                
-                    </div> --}}
+               
                     
               
                 </div>
@@ -58,8 +42,8 @@
                         <div class="adpro1">
                             <p>Trạng thái</p>
                            <select name="is_active">
-                            <option value="1">Còn hàng</option>
-                            <option value="0">Hết hàng</option>
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Ẩn</option>
                            </select>
                 
                         </div>
