@@ -67,7 +67,6 @@
             </div>
             <!-- Sales Chart End -->
         <!-- Content End -->
-<<<<<<< HEAD
     <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -249,6 +248,4 @@
     <script src="js/main.js"></script>
             <!-- Footer End -->
 
-=======
->>>>>>> 20193b9a12ac777b2bdef5d97fae5846dacc5152
 @endsection
