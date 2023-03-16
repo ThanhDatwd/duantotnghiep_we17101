@@ -24,9 +24,9 @@ class AuthRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|min:10',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'phone' => 'required|max:11',
+            // 'username' => 'required|min:10',
+            // 'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'phone' => 'required|max:11',
             'email'=>'required|email',
             'password'=>'required',
             // 'address' => 'required|string|max:255',
