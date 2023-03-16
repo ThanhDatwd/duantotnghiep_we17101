@@ -22,8 +22,13 @@
                  <div class="action-item auth">
                     <i class='bx bx-user'></i>
                     <div class="link">
-                        <div><a href="">Đăng ký </a></div>
-                        <div><a href="">Đăng nhập</a></div>
+                        @if (auth()->user())
+                        <div><a href="{{route('clientaccount')}}">{{auth()->user()->username}}</a></div>
+                        @else
+                        <div><a href="{{route('clientshow-register')}}">Đăng ký </a></div>
+                        <div><a href="{{route('clientshow-login')}}">Đăng nhập</a></div>
+                        @endif
+                        
                     </div>
                  </div>
                  <div class="action-item cart position-relative">

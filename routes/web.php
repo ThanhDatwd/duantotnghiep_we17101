@@ -35,14 +35,14 @@ use Symfony\Component\Routing\Router;
 */
 
 
+
 Route::prefix('/')->name('client')->group(function () {
     Route::get('/login',[AuthController::class,'show_login_user'])->name('show-login');
     Route::post('/login',[AuthController::class,'login_user'])->name('login');
     Route::get('/register',[AuthController::class,'show_register_user'])->name('show-register');
     Route::post('/register',[AuthController::class,'register_user'])->name('register');
     Route::get('/email/verify/{token}',[AuthController::class,'verify_email'])->name('verify-email');
-});
-Route::prefix('/')->name('client')->group(function () {
+
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');

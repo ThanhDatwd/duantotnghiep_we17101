@@ -32,7 +32,7 @@ class SendVerifyEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Send Verify Email',
+            subject: 'Email xác nhận',
         );
     }
 
@@ -44,7 +44,7 @@ class SendVerifyEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'client.mail.index',
+            view: 'client.mail.verify_email.index',
         );
     }
 

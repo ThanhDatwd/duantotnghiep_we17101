@@ -13,21 +13,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Session;
 use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\TryCatch;
 use Twilio\Rest\Client;
 // use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     //
-    public function login_user(AuthRequest $request){
+    public function login_user(Request $request){
         $request->validate([
             'email'=>'required',
             'password'=>'required'
         ]);
-
+       
+        // hash()
         $arr = [
             'email' => $request->email,
-            'password' =>  $request->password,
+            'password' =>$request->password,
         ];
+
         //kiểm tra trường remember có được chọn hay không
         
         if (Auth::guard('web')->attempt($arr)) {
@@ -50,43 +53,56 @@ class AuthController extends Controller
     public function verify_email($token)
      {
         // dd($token);
-        $user_v=user_verify::where('verify_email_code',$token)->first();
-        if($user_v){
-            $user=new User();
-            $user->username=$user_v->username;
-            $user->email=$user_v->email;
-            $user->password=bcrypt($user->password) ;
-            $user->phone=$user_v->phone;
-            $user->gender=true;
-            $user->save();
-           
-            //ĐĂNG NHẬP  VÀ CHUYỂN HƯỚNG
-            user_verify::where('verify_email_code',$token)->delete();
-            Auth::guard('web')->attempt(["email"=>$user_v->email,"password"=>$user_v->password]);
-            return redirect()->route('client'); 
+        try {
+            $user_v=user_verify::where('verify_email_code',$token)->first();
+            if($user_v){
+                $user=new User();
+                $user->username=$user_v->username;
+                $user->email=$user_v->email;
+                $user->password=bcrypt($user->password);
+                $user->phone=$user_v->phone;
+                $user->save();
+               
+                //ĐĂNG NHẬP  VÀ CHUYỂN HƯỚNG
+                Auth::guard('web')->attempt(["email"=>$user_v->email,"password"=>$user_v->password],true);
+                user_verify::where('verify_email_code',$token)->delete();
+                return redirect()->route('client'); 
+            }
+            else{
+                dd('không có nha');
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            // return view('')
+            dd($th);
         }
-        else{
-            dd('không có nha');
-        }
+       
      }
     
-    public function register_user(AuthRequest $request){
+    public function register_user(Request $request){
         $request->validate([
-            'phone' => 'required|integer|max:11',
+            'phone' => 'required',
             'email'=>'required|email',
             'username' => 'required',
-            'password'=>'required|min',
+            'password'=>'required',
         ]);
-        $token = hash_hmac('sha256', Str::random(40), config('app.key'));
-        $user=new user_verify();
-         $user->username='thanhdat';
-         $user->email='nguyenthanhdatntd02@gmail.com';
-         $user->password=bcrypt('123456') ;
-         $user->phone='0123456089';
-         $user->verify_email_code=$token;
-         $user->save();
-         $mail=new SendVerifyEmail($token);
-         Mail:: to("nguyenthanhdatntd02@gmail.com")->queue($mail);
+        try {
+            // $user_check=User::where('email',$request->email)->where('phone',$request->phone)->first();
+            $token = hash_hmac('sha256', Str::random(40), config('app.key'));
+            $user=new User();
+             $user->username=$request->username;
+             $user->email=$request->email;
+             $user->password=bcrypt($request->password) ;
+             $user->phone=$request->phone;
+             $user->verify_email_code=$token;
+             $user->save();
+             $mail=new SendVerifyEmail($token);
+             Mail:: to($request->email)->queue($mail);
+             return back()->with('success','Một tin nhắn xác nhận đã được gửi vào email của bạn'); 
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+        
         // TwilioClient
         // $account_sid = 'AC78a670b0a71308abafb49b9748256141';
         // $auth_token = '8b17951a69e83688b3a975a3a534a6c8';

@@ -177,10 +177,11 @@
                                 ">
                             <h1 style="
                                         margin: 0;
-                                        font-size: 32px;
+                                        font-size: 30px;
                                         font-weight: 700;
                                         letter-spacing: -1px;
                                         line-height: 48px;
+                                        text-align:center
                                     ">
                                 Hãy xác nhận địa chỉ email của bạn
                             </h1>
@@ -215,11 +216,8 @@
                                     line-height: 24px;
                                 ">
                             <p style="margin: 0">
-                                Tap the button below to confirm your email
-                                address. If you didn't create an account
-                                with
-                                <a href="https://blogdesire.com">Paste</a>,
-                                you can safely delete this email.
+                                Nhấn vào nút bên dưới để xác nhận địa chỉ email của bạn. Nếu bạn không muốn tạo tài
+                                khoản bằng email này vui lòng bỏ qua email xác nhận này từ chúng tôi
                             </p>
                         </td>
                     </tr>
@@ -236,7 +234,7 @@
                                                 <td align="center" bgcolor="#5ea700" style="
                                                             border-radius: 6px;
                                                         ">
-                                                    <a href="https://www.blogdesire.com" target="_blank" style="
+                                                    <a href="{{route('clientverify-email',["token"=>$token])}}" target="_blank" style="
                                                                 display: inline-block;
                                                                 padding: 16px
                                                                     36px;
@@ -270,11 +268,11 @@
                                     line-height: 24px;
                                 ">
                             <p style="margin: 0">
-                                If that doesn't work, copy and paste the
-                                following link in your browser:
+                                Nếu không được, hãy sao chép và dán liên kết sau vào trình duyệt của bạn:
                             </p>
                             <p style="margin: 0">
-                                <a href="https://blogdesire.com" target="_blank">https://blogdesire.com/xxx-xxx-xxxx</a>
+                                <a href="{{route('clientverify-email',["token"=>$token])}}"
+                                    target="_blank">Tại đây</a>
                             </p>
                         </td>
                     </tr>
@@ -298,23 +296,12 @@
                     </tr>
                     <!-- end copy -->
                 </table>
-                <!--[if (gte mso 9)|(IE)]>
-        </td>
-        </tr>
-        </table>
-        <![endif]-->
             </td>
         </tr>
-        <!-- end copy block -->
-
-        <!-- start footer -->
+  
         <tr>
             <td align="center" bgcolor="#e9ecef" style="padding: 24px">
-                <!--[if (gte mso 9)|(IE)]>
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-        <tr>
-        <td align="center" valign="top" width="600">
-        <![endif]-->
+    
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px">
                     <!-- start permission -->
                     <tr>

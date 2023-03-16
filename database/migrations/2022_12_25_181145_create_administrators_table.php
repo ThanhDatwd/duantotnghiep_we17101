@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('province')->nullable();
             $table->string('district')->nullable();
             $table->string('ward')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(1);
             $table->timestamp('deleted_at')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
