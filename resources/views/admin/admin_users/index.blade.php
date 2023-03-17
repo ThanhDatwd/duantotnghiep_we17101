@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\DB;
 
                                             <th scope="col">Username</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col">Level</th>
                                            
                                             
                                             
@@ -37,9 +36,6 @@ use Illuminate\Support\Facades\DB;
                                         <td>{{$item->email}}</td>
                                     
                                     
-                                         <td>
-                                            {{$item->role_id}}
-                                         </td>
                                         
                                        
                                          <td colspan="">

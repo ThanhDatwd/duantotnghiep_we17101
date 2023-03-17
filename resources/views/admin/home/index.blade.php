@@ -2,6 +2,9 @@
 @section("css")
 @endsection
 @section('content')
+<?php 
+use Symfony\Component\Routing\Router;
+?>
             <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -38,6 +41,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Số lượng khách hàng</p>
+                                <h6 class="mb-0">
+                                    {{$totalOrders}}
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
                   
                 </div>
             </div>
@@ -45,24 +59,27 @@
             <!-- Sales Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6" >
+                        <div class="bg-light text-center rounded p-4" >
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Thống kê 5 sản phẩm bán nhiều nhất</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="container-chart" style="height: 367px;width: 500px; margin: 0 auto;">
+                            <canvas id="thongke2" style=""></canvas>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Thống kê đơn hàng</h6>
                                 <a href="">Show All</a>
                             </div>
-                            <canvas id="worldwide-sales"></canvas>
+                            <canvas id="thongke"></canvas>
                         </div>
                     </div>
-<div class="col-sm-12 col-xl-6">
-                        <div class="bg-light text-center rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Thống kê chi tiết tin tức</h6>
-                                <a href="">Show All</a>
-                            </div>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
+                
                 </div>
             </div>
             <!-- Sales Chart End -->
@@ -217,6 +234,8 @@
             <!-- Widgets End -->
 
 
+</canvas>
+
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
@@ -233,9 +252,122 @@
                     </div>
                 </div>
             </div>
+
+<script>
+     $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $(".back-to-top").fadeIn("slow");
+        } else {
+            $(".back-to-top").fadeOut("slow");
+        }
+    });
+    $(".back-to-top").click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+        return false;
+    });
+
+    // Sidebar Toggler
+    $(".sidebar-toggler").click(function () {
+        $(".sidebar, .content").toggleClass("open");
+        return false;
+    });
+
+    // Progress Bar
+    $(".pg-bar").waypoint(
+        function () {
+            $(".progress .progress-bar").each(function () {
+                $(this).css("width", $(this).attr("aria-valuenow") + "%");
+            });
+        },
+        { offset: "80%" }
+    );
+
+    // Calender
+    $("#calender").datetimepicker({
+        inline: true,
+        format: "L",
+    });
+
+    // Testimonials carousel
+    $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        items: 1,
+        dots: true,
+        loop: true,
+        nav: false,
+    });
+
+   
+
+    
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('thongke');
+  var datas=<?php echo json_encode($datas); ?>;
+  //// chào bạn lúc 
+    var time = new Date();
+   
+  
+    var month = time.getMonth() + 1;
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+     
+      datasets: [{
+        label: 'Thống kê'+ ' 7 ngày qua trong' + ' tháng ' + month,
+        data: datas,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+<script>
+    const ctx2 = document.getElementById('thongke2');
+  var data2=<?php echo json_encode($data2); ?>;
+  var label2=<?php echo json_encode($label2); ?>;
+  //// chào bạn lúc 
+    var time = new Date();
+   
+  
+    var month = time.getMonth() + 1;
+
+  new Chart(ctx2, {
+    type: 'doughnut',
+   
+
+    data: {
+      labels: label2,
+      datasets: [{
+        label: "Số lượng bán",
+        data: data2,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+</script>
               <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="lib/chart/chart.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
@@ -243,8 +375,9 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Template Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/main.js"></script>
             <!-- Footer End -->
 
