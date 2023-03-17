@@ -28,6 +28,10 @@ public function index(){
 
     return view('admin.home.index', compact('news', 'products', 'totalProducts', 'totalNews', 'orders', 'totalOrders', 'newproducts', 'neworders'));
 }
-    // thống kê order
+    // tài khoản đang đăng nhập
    
-}
+        
+    }
+   
+
+
