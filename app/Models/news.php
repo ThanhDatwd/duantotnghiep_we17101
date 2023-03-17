@@ -17,4 +17,8 @@ class news extends Model
     {
         return $this->belongsTo(news::class,"category_new_id","id");
     }
+    public function comments()
+    {
+        return $this->hasMany(comment::class,"news_id","id");
+    }
 }

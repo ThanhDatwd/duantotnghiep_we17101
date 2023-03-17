@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="{{asset('css/client/newsDetail.css')}}">
 @endsection
 @section('main-content')
-    <div class="container text-color">
+    <div class="container mt-4 text-color">
         <div class="row border-bottom">
-            <div class="col-3">
+            <div class="col-lg-3 col-xs-12">
                 <div class="aside-content">
                     <h2 class="title-head">
                         Danh mục tin
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <article class="col-9">
+            <article class="col-lg-9 col-xs-12">
                 <h1 class="article-name font-weight-bold">Hướng dẫn 5 cách làm món cá hồi sốt vừa ngon, vừa nhiều dinh dưỡng cho gia đình</h1>
                 <div class="entry-date">
                     <p>Đăng bởi: <b>Admin - 06/09/2023</b></p>
@@ -143,16 +143,16 @@
             <div class="col-6 ">
                 <h3 class="title">Viết bình luận</h3>
                 <form method="post" id="article_comments" accept-charset="UTF-8" class="comment-form">
-					<div class="row comment-form">
+					{{-- <div class="row comment-form">
 						<div class="col-12 form-group">
-							<input type="text" class="form-control" placeholder="Tên *" title="Tên" name="Author" value="">
+							<input type="text" class="form-control" placeholder="Tên *" title="Tên" name="name" value="">
 						</div>
 						<div class="col-12 form-group">
-							<input class="form-control" title="E-mail" type="email" placeholder="E-mail *" name="Email" value="">
+							<input class="form-control" title="E-mail" type="email" placeholder="E-mail *" name="email" value="">
 						</div>
-					</div>
+					</div> --}}
 					<div class="field aw-blog-comment-area form-group">
-						<textarea rows="6" cols="50" class="form-control" title="Nội dung *" placeholder="Nội dung*" name="Body"></textarea>
+						<textarea rows="6" cols="50" class="form-control" title="Nội dung *" placeholder="Nội dung*" name="content"></textarea>
 					</div>
 					<div style="width:96%" class="button-set">
 						<button type="submit" class="book-submit btn btn-primary text-center d-flex align-items-center font-weight-boldt font-weight-bold">Gửi bình luận</button>

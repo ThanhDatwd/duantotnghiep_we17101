@@ -34,10 +34,13 @@ use Symfony\Component\Routing\Router;
 |
 */
 
-
+Route::prefix('/')->name('client')->middleware('auth.client')->group(function () {
+   Route::get('/account', [AccountController::class, 'account'])->name('account');
+});
 
 Route::prefix('/')->name('client')->group(function () {
     Route::get('/login',[AuthController::class,'show_login_user'])->name('show-login');
+    Route::get('/logout',[AuthController::class,'logout_user'])->name('logout-user');
     Route::post('/login',[AuthController::class,'login_user'])->name('login');
     Route::get('/register',[AuthController::class,'show_register_user'])->name('show-register');
     Route::post('/register',[AuthController::class,'register_user'])->name('register');
@@ -45,14 +48,13 @@ Route::prefix('/')->name('client')->group(function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
+    Route::get('/category-group', [ProductsController::class, 'group_all'])->name('category-group-all');
     Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
-    Route::get('/category-group', [ProductsController::class, 'group'])->name('category-group-all');
+    Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-    Route::get('/account', [AccountController::class, 'account'])->name('account');
     Route::get('/contact', [ContactController::class,'contact'])->name('contact');
     Route::get('/addjobs', [AddjobController::class,'index'])->name('addjobs');
     Route::get('/payment', [PaymentController::class,'index'])->name('payment');

@@ -128,7 +128,11 @@ class AuthController extends Controller
 
     // dd($message); // In ra kết quả gửi tin nhắn
      }
-
+     public function logout_user()
+     {
+       Auth::guard('web')->logout();
+       return redirect()->route('client');
+     }
 
 
     /////////////////////////////////////////
