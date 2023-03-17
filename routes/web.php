@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\client\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -83,7 +84,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
     Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
     });
-    Route::prefix('/admin')->name('site')->group(function(){
+    Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function(){
         //-----------------Admin Home-----------------
         Route::get('/', [AdminController::class,'index'])->name('dashboard');
        
@@ -174,9 +175,9 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
     // thống kê
     Route::get('/thong-ke', [AdminUserController::class,'thongke5sp'])->name('thongke');
-
-
-
+    //logout
+    Route::get('/logout', [AdminController::class,'logout'])->name('admin-logout');
 });
+
 
     

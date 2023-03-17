@@ -212,7 +212,9 @@
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">Hồ sơ của tôi</a>
                             <a href="#" class="dropdown-item">Cài đặt</a>
-                            <a href="logout" class="dropdown-item">Đăng suất</a>
+                          
+                         
+                            <a href="{{ route('siteadmin-logout') }}" class="dropdown-item">Đăng xuất</a>
                         </div>
                     </div>
                 </div>
