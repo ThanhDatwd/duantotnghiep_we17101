@@ -35,11 +35,11 @@ class ProductsController extends Controller
     public function category($slug)
     {   
         $category = category::where('slug', $slug)->firstOrFail();
-        $categoryGroup = category_group::all();
+        $categoryGroups = category_group::all();
         $products = $category->products()->paginate(8);
         $data = [
             "category"=>$category,
-            "categoryGroup"=>$categoryGroup,
+            "categoryGroups"=>$categoryGroups,
             "products" => $products
         ];
         return view('client.products.index', $data);
@@ -47,30 +47,31 @@ class ProductsController extends Controller
     public function group($slug)
     {
         // $products = DB::table('products')->paginate(12);
-        $categoriesGroup = category_group::with('categories.products')->where('slug', $slug)->first();
-        $products = Product::with('category.category_group')
-            ->whereHas('category.category_group', function ($query) use ($slug) {
+        $categoryGroups = category_group::all();
+        $categoryGroup = category_group::with('categories.products')->where('slug', $slug)->first();
+        $products = product::whereHas('category', function ($query) use ($slug) {
+            $query->whereHas('category_group', function ($query) use ($slug) {
                 $query->where('slug', $slug);
-            })
-            ->paginate(8);
+            });
+        })->get();;
+        
         $data = [
             "products" => $products,
-            "categories_group" => $categoriesGroup
+            "categoryGroups"=>$categoryGroups,
         ];
         return view('client.products.index', $data);
     }
-    public function group_all($slug)
+    public function group_all()
     {
+        
         // $products = DB::table('products')->paginate(12);
-        $categoriesGroup = category_group::with('categories.products')->get();
+        $categoryGroups = category_group::with('categories.products')->get();
         $products = Product::with('category.category_group')
-            ->whereHas('category.category_group', function ($query) use ($slug) {
-                $query->where('slug', $slug);
-            })
+            ->whereHas('category.category_group')
             ->paginate(8);
         $data = [
             "products" => $products,
-            "categories_group" => $categoriesGroup
+            "categoryGroups"=>$categoryGroups,
         ];
         return view('client.products.index', $data);
     }

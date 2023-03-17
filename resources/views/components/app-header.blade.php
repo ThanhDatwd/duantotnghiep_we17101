@@ -23,7 +23,7 @@
                     <i class='bx bx-user'></i>
                     <div class="link">
                         @if (auth()->user())
-                        <div><a href="{{route('clientaccount')}}">{{auth()->user()->username}}</a></div>
+                        <div><a href="{{route('clientaccount')}}">{{Auth::guard('web')->user()->username}}</a></div>
                         @else
                         <div><a href="{{route('clientshow-register')}}">Đăng ký </a></div>
                         <div><a href="{{route('clientshow-login')}}">Đăng nhập</a></div>

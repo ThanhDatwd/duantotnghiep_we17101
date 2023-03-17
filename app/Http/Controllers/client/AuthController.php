@@ -19,13 +19,14 @@ use Twilio\Rest\Client;
 class AuthController extends Controller
 {
     //
-    public function login_user(Request $request){
-        $request->validate([
-            'email'=>'required',
-            'password'=>'required'
-        ]);
+    public function login_user(AuthRequest $request){
+        // $request->validate([
+        //     'email'=>'required',
+        //     'password'=>'required'
+        // ]);
        
         // hash()
+        // dd("cin chào bạn");
         $arr = [
             'email' => $request->email,
             'password' =>$request->password,
@@ -49,17 +50,18 @@ class AuthController extends Controller
     public function show_register_user()
      {
          return view('client.register.index');
-     }
+     }  
     public function verify_email($token)
      {
         // dd($token);
         try {
             $user_v=user_verify::where('verify_email_code',$token)->first();
             if($user_v){
+                // dd($user_v);
                 $user=new User();
                 $user->username=$user_v->username;
                 $user->email=$user_v->email;
-                $user->password=bcrypt($user->password);
+                $user->password=$user_v->password;
                 $user->phone=$user_v->phone;
                 $user->save();
                
@@ -89,10 +91,10 @@ class AuthController extends Controller
         try {
             // $user_check=User::where('email',$request->email)->where('phone',$request->phone)->first();
             $token = hash_hmac('sha256', Str::random(40), config('app.key'));
-            $user=new User();
+            $user=new user_verify();
              $user->username=$request->username;
              $user->email=$request->email;
-             $user->password=bcrypt($request->password) ;
+             $user->password=bcrypt($request->password);
              $user->phone=$request->phone;
              $user->verify_email_code=$token;
              $user->save();
@@ -126,7 +128,11 @@ class AuthController extends Controller
 
     // dd($message); // In ra kết quả gửi tin nhắn
      }
-
+     public function logout_user()
+     {
+       Auth::guard('web')->logout();
+       return redirect()->route('client');
+     }
 
 
     /////////////////////////////////////////
