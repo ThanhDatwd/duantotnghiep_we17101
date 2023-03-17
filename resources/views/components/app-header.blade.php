@@ -6,10 +6,10 @@
                 <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1669280565026" alt="">
             </div>
             <div class="action">
-                 <div class="action-item search">
-                    <input type="text" placeholder="Từ khóa ...">
-                    <button><i class='bx bx-search'></i></button>
-                 </div>
+                 <form action="{{route('clientsearch')}}"  class="action-item search">
+                    <input type="text" name="q" placeholder="Từ khóa ...">
+                    <button type="submit"><i class='bx bx-search'></i></button>
+                 </form>
                  <div class="action-item hotline">
                     <i class='bx bx-phone-call bx-tada' ></i>
                     <div class="link">

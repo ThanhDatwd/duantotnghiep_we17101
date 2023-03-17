@@ -164,21 +164,12 @@ class ProductsController extends Controller
     }
     public function search(Request $request)
     {
-        // $products=product::where('name','like',$request->query('q'))->get();
-        // $data=[
-        //     "products"=>$products,
-        //     "q"=>$request->query('q')
-        // ];
-        $mail=new SendVerifyCodeMail("daylacodethunghiem");
-        Mail:: to('nguyenthanhdatntd01@gmail.com')->send($mail);
-        // dd($mail);
-        $user = product::findOrFail(3);
-        Mail::send('client.contact.index', ['user' => $user], function ($m) use ($user) {
-            $m->from('nguyenthanhdatntd01@gmail.com', 'Your Application');
- 
-            $m->to("nguyenthanhdatntd007@gmail.com", "thanhdat")->subject('Your Reminder!');
-        });
-        // return view('client.search.index',$data);
+        $products=product::where('name','like',$request->query('q'))->get();
+        $data=[
+            "products"=>$products,
+            "q"=>$request->query('q')
+        ];
+        return view('client.search.index',$data);
     }
 }
 
