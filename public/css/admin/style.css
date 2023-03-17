@@ -13,10 +13,10 @@
 ::-webkit-scrollbar{
    width: 1px;
 
-   color: red;
+   /* color: red; */
 }
 ::-webkit-scrollbar-thumb{
-   background: red;
+   /* background: red; */
 }
 .texlo{
     width: 100%;
