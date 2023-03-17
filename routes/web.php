@@ -48,9 +48,9 @@ Route::prefix('/')->name('client')->group(function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
     Route::get('/category-group', [ProductsController::class, 'group_all'])->name('category-group-all');
     Route::get('/category-group/{slug}', [ProductsController::class, 'group'])->name('category-group');
-    Route::get('/category/{slug}', [ProductsController::class, 'category'])->name('category');
     Route::get('/product/{slug}', [ProductsController::class, 'productDetail'])->name('product-detail');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
@@ -83,7 +83,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
     Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
     });
-    Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function(){
+    Route::prefix('/admin')->name('site')->group(function(){
         //-----------------Admin Home-----------------
         Route::get('/', [AdminController::class,'index'])->name('dashboard');
         //-----------Admin Product-------------
