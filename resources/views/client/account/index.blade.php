@@ -13,15 +13,15 @@
                     </div>
                     <div class="col-6 d-flex align-items-center flex-column account-tab">
                         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/account.png?1676652183181" alt="">
-                        <div class="tab-title">Xin chào, <span class="tab-name">User name</span>!</div>
+                        <div class="tab-title">Xin chào, <span class="tab-name">{{Auth::guard('web')->user()->username}}</span>!</div>
                     </div>
                 </div>
                 <div class="col tab-content account-tab" id="v-pills-tabContentnt">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <h4>Thông tin cá nhân</h4>
-                        <div class="info"><span>Họ và tên: </span>Nguyễn Thành Đạt</div>
-                        <div class="info"><span>Email: </span>dat@gmail.com</div>
-                        <div class="info"><span>Số điên thoại: </span>0988989899</div>
+                        <div class="info"><span>Họ và tên: </span>{{Auth::guard('web')->user()->username}}</div>
+                        <div class="info"><span>Email: </span>{{Auth::guard('web')->user()->email}}</div>
+                        <div class="info"><span>Số điên thoại: </span>{{Auth::guard('web')->user()->phone}}</div>
                         <div class="info"><span>Giới tính: </span>Nam</div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -51,7 +51,7 @@
                     <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Thông tin tài khoản</button>
                     <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Quản lý địa chỉ <span>(0)</span></button>
                     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Đổi mật khẩu</button>
-                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Đăng xuất</button>
+                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><a href="{{route('clientlogout-user')}}">Đăng xuất</a></button>
                 </div>
             </div>
         </div>

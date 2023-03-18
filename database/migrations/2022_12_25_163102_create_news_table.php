@@ -11,7 +11,7 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->foreignId('category_news_id')->constrained('categories_news');
             $table->timestamp('deleted_at')->nullable();
-            $table->string('created_by')->default(null);
-            $table->string('updated_by')->default(null);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

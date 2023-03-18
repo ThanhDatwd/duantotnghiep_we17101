@@ -137,7 +137,7 @@ body {
       </thead>
       <tbody>
         @foreach ($order as $o)
-        @if ($o->status == 2)
+        @if ($o->status == 1)
             <tr>
                 <th></th>
                 <th>{{$o->id}}</th>
@@ -157,7 +157,7 @@ body {
                 <td>{{$o->fee_ship}}</td>
                 <td>{{$o->total}}</td>
             
-                <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <i class="fa-solid fa-circle-info"></i> </a>
+                <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
                 </td>
             </tr>
             @endif
@@ -173,17 +173,162 @@ body {
 
     </section>
     <section id="tab2" class="tab-panel">
-      <tbody>
-        
-      </tbody>
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên người đặt</th>
+                    <th scope="col">Loại thanh toán</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Phí giao hàng</th>
+                  
+                    <th scope="col">Tổng tiền</th> 
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach ($order as $o)
+              @if ($o->status == 2)
+                  <tr>
+                      <th></th>
+                      <th>{{$o->id}}</th>
+                      <td>{{$o->user_name}}</td>
+                      <td>
+                          @if ($o->payment_type==1)
+                          Online
+                          @elseif ($o->payment_type==2)
+                          Cod
+                          @elseif ($o->payment_type==3)
+                          ATM
+                          @else
+                          Chưa phân loại
+                          @endif
+                      </td>
+                      <td>{{$o->phone}}</td>
+                      <td>{{$o->fee_ship}}</td>
+                      <td>{{$o->total}}</td>
+                  
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
+                      </td>
+                  </tr>
+                  @endif
+      @endforeach
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              {{-- {{$order->appends(request()->all())->links()}}   --}}
+          </ul>
+        </nav>
+      </div>
     </section>
     <section id="tab3" class="tab-panel">
-      <h2>6C. Dunkles Bock</h2>
-      <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes the malty-rich and somewhat toasty qualities of continental malts without being sweet in the finish.</p>
-      <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a brewing center and popular exporter in the days of the Hanseatic League (14th to 17th century). Recreated in Munich starting in the 17th century. The name “bock” is based on a corruption of the name “Einbeck” in the Bavarian dialect, and was thus only used after the beer came to Munich. “Bock” also means “Ram” in German, and is often used in logos and advertisements.</p>
-    </section>
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên người đặt</th>
+                    <th scope="col">Loại thanh toán</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Phí giao hàng</th>
+                  
+                    <th scope="col">Tổng tiền</th> 
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach ($order as $o)
+              @if ($o->status == 3)
+                  <tr>
+                      <th></th>
+                      <th>{{$o->id}}</th>
+                      <td>{{$o->user_name}}</td>
+                      <td>
+                          @if ($o->payment_type==1)
+                          Online
+                          @elseif ($o->payment_type==2)
+                          Cod
+                          @elseif ($o->payment_type==3)
+                          ATM
+                          @else
+                          Chưa phân loại
+                          @endif
+                      </td>
+                      <td>{{$o->phone}}</td>
+                      <td>{{$o->fee_ship}}</td>
+                      <td>{{$o->total}}</td>
+                  
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
+                      </td>
+                  </tr>
+                  @endif
+      @endforeach
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              {{-- {{$order->appends(request()->all())->links()}}   --}}
+          </ul>
+        </nav>
+      </div>    </section>
     <section id="tab4" class="tab-panel">
-
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên người đặt</th>
+                    <th scope="col">Loại thanh toán</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Phí giao hàng</th>
+                  
+                    <th scope="col">Tổng tiền</th> 
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach ($order as $o)
+              @if ($o->status == 4)
+                  <tr>
+                      <th></th>
+                      <th>{{$o->id}}</th>
+                      <td>{{$o->user_name}}</td>
+                      <td>
+                          @if ($o->payment_type==1)
+                          Online
+                          @elseif ($o->payment_type==2)
+                          Cod
+                          @elseif ($o->payment_type==3)
+                          ATM
+                          @else
+                          Chưa phân loại
+                          @endif
+                      </td>
+                      <td>{{$o->phone}}</td>
+                      <td>{{$o->fee_ship}}</td>
+                      <td>{{$o->total}}</td>
+                  
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
+                      </td>
+                  </tr>
+                  @endif
+      @endforeach
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              {{-- {{$order->appends(request()->all())->links()}}   --}}
+          </ul>
+        </nav>
+      </div>
     </section>
   </div>
   

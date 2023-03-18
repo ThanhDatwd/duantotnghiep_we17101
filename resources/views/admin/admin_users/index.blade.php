@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\DB;
                                     
                                     
                                          <td>
-                                            {{$item->role_id}}
+                                            {{-- {{$item->role_id}} --}}
                                          </td>
                                         
                                        

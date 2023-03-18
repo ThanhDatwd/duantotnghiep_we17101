@@ -24,4 +24,8 @@ class category_group extends Model
     {
         return $this->hasMany(category::class,"category_group_id","id");
     }
+    public function products()
+    {
+        return $this->hasManyThrough(product::class, category::class);
+    }
 }

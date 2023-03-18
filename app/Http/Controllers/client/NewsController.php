@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
+use App\Models\comment;
 use App\Models\news;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -24,5 +27,13 @@ class NewsController extends Controller
         // ];
         return view('client.newsDetail.index');
 
+    }
+    public function comment(CommentRequest $request)
+    {
+       $comment=new comment();
+       $comment->content=$request->content;
+       $comment->news_id=$request->news_id;
+       $comment->user_id=Auth::guard('web')->user()->id??1;
+       return redirect()->back();
     }
 }
