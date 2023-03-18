@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\DB;
                             <h6 class="mb-4">Quản lý tin tức</h6>
                             <div class="table-responsive">
                        <table class="table">
-          <thead>
-              <tr>
+                     <thead>
+                     <tr>
                   <th></th>
                   <th scope="col">Check</th>
                   <th scope="col">Hình ảnh</th>
@@ -85,7 +85,7 @@ use Illuminate\Support\Facades\DB;
                                                 
                                             </a>
                                                 <button type="submit" class="btn btn-danger">Xóa nhiều</button>
-           </li>
+                  </li>
          
       
         </ul>
