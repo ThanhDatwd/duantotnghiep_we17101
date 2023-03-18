@@ -74,7 +74,7 @@
 
                  
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Quản lý tin tức</h6>
+                            <h6 class="mb-4">Danh sách tin tức bạn viết</h6>
                             <div class="table-responsive">
                        <table class="table">
                      <thead>
