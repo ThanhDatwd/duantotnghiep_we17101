@@ -184,7 +184,7 @@
                                         line-height: 48px;
                                         text-align:center
                                     ">
-                                Hãy xác nhận địa chỉ email của bạn
+                                Mã xác nhận đơn hàng
                             </h1>
                         </td>
                     </tr>
@@ -217,8 +217,7 @@
                                     line-height: 24px;
                                 ">
                             <p style="margin: 0">
-                                Nhấn vào nút bên dưới để xác nhận địa chỉ email của bạn. Nếu bạn không muốn tạo tài
-                                khoản bằng email này vui lòng bỏ qua email xác nhận này từ chúng tôi
+                                Đây là mã xác nhận đơn hàng của bạn vui lòng nhập đoạn mã này để tiếp tục mua hàng
                             </p>
                         </td>
                     </tr>
@@ -235,7 +234,7 @@
                                                 <td align="center" bgcolor="#5ea700" style="
                                                             border-radius: 6px;
                                                         ">
-                                                    <a href="{{route('clientverify-email',["token"=>$token])}}" target="_blank" style="
+                                                    <div style="
                                                                 display: inline-block;
                                                                 padding: 16px
                                                                     36px;
@@ -247,8 +246,7 @@
                                                                 color: #ffffff;
                                                                 text-decoration: none;
                                                                 border-radius: 6px;
-                                                            ">Xác nhận thành
-                                                        công</a>
+                                                            ">{{$opt}}</div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -258,28 +256,6 @@
                         </td>
                     </tr>
                     <!-- end button -->
-
-                    <!-- start copy -->
-                    <tr>
-                        <td align="left" bgcolor="#ffffff" style="
-                                    padding: 24px;
-                                    font-family: 'Source Sans Pro', Helvetica,
-                                        Arial, sans-serif;
-                                    font-size: 16px;
-                                    line-height: 24px;
-                                ">
-                            <p style="margin: 0">
-                                Nếu không được, hãy sao chép và dán liên kết sau vào trình duyệt của bạn:
-                            </p>
-                            <p style="margin: 0">
-                                <a href="{{route('clientverify-email',["token"=>$token])}}"
-                                    target="_blank">Tại đây</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <!-- end copy -->
-
-                    <!-- start copy -->
                     <tr>
                         <td align="left" bgcolor="#ffffff" style="
                                     padding: 24px;

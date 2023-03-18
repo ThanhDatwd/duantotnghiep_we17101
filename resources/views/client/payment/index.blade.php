@@ -65,39 +65,73 @@
 						</a>
 					</div>
 					<div class="error-txt "></div>
-					<div class="form-group order">
-						<input type="email" name="email" placeholder="email" value="{{old('email')}}">
+					<div>
+						<div class="form-group order">
+							<input type="email" name="email" placeholder="email" value="{{old('email')}}">
+						</div>
+						<span class="text-danger">@error('email')
+							{{$message}}
+						@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="user_name" placeholder="Họ tên" value="{{old('user_name')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="username" placeholder="Họ tên" value="{{old('username')}}">
+						</div>
+						<span class="text-danger">@error('username')
+							{{$message}}
+						@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)" value="{{old('phone')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)" value="{{old('phone')}}">
+						</div>
+						<span class="text-danger">@error('phone')
+							{{$message}}
+						@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('email')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('address')}}">
+						</div>
+						<span class="text-danger">@error('address')
+							{{$message}}
+						@enderror</span>
 					</div>
 					<input type="text" id="input_province" name="province"  value="{{old('province')}}" hidden>
 					<input type="text" id="input_district"  name="district"  value="{{old('district')}}" hidden>
 
-					<div class="form-group order">
-						<select id="province" >
-							<option value="">-- Chọn tỉnh/thành --</option>
-
-						</select>
+					<div>
+						<div class="form-group order">
+							<select id="province" >
+								<option value="">-- Chọn tỉnh/thành --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('province')
+							{{$message}}
+						@enderror</span>
+					</div>
+					<div>
+						<div class="form-group order">
+							<select id="district" >
+								<option value="">-- Chọn quận/huyện --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('district')
+							{{$message}}
+						@enderror</span>
+					</div>
+					<div>
+						<div class="form-group order">
+							<select id="ward" name="ward" >
+								<option value="">-- Chọn xã/phường --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('ward')
+							{{$message}}
+						@enderror</span>
 					</div>
 					<div class="form-group order">
-						<select id="district" >
-							<option value="">-- Chọn quận/huyện --</option>
-						</select>
-					</div>
-					<div class="form-group order">
-						<select id="ward" name="ward" >
-							<option value="">-- Chọn xã/phường --</option>
-						</select>
-					</div>
-					<div class="form-group order">
-						<textarea name="note_order" {{old('note_order')}} placeholder="Ghi chú">Ghi chú</textarea>
+						<textarea name="order_note" {{old('order_note')}} placeholder="Ghi chú">Ghi chú</textarea>
 					</div>
 					<input type="number" name="total" value="{{$total}}" hidden>
 					<input type="number" name="fee_ship" value="0" hidden>
@@ -312,6 +346,9 @@
 		$.ajax({
                     type: 'post',
                     url: 'http://127.0.0.1:8000/api/get_order_otp',
+					data:{
+						email:'nguyenthanhdatntd02@gmail.com'
+					},
                     success:function(data){
 						console.log(data)
                         // alert('vui lòng nhập mã xác nhận')

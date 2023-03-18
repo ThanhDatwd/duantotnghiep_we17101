@@ -10,14 +10,11 @@ return new class extends Migration
      * Run the migrations.
      *
      * @return void
-     *  id int 
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('order_temp', function (Blueprint $table) {
             $table->id();
-            $table->integer('status');
-            $table->string('code');
             $table->integer('total');
             $table->string('payment_type');
             $table->integer('fee_ship');
@@ -41,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_temp');
     }
 };

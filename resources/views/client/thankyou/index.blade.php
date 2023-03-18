@@ -3,8 +3,7 @@
 
 @section('main-content')
 
-<div class="thankyou-page">
-  <div class="grid_columns">
+<div class="">
     <div class="logo">
       <img src="https://bizweb.dktcdn.net/100/431/449/themes/834425/assets/logo.png?1642042407923" alt="">
     </div>
@@ -67,5 +66,4 @@
       <i class='bx bx-printer'></i>
     </div>
   </div>
-</div>
 @endsection

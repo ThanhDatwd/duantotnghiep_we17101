@@ -62,6 +62,7 @@
               />
               @endforeach
           </div>
+          <div class="d-flex justify-content-center mt-4">{{$news->appends(request()->all())->links()}}</div>
         </div>
         <div class="col-3 mt-3" >
           <div class="popular_news" style=" height: 100%;width: 90%;">
