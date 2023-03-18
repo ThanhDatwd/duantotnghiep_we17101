@@ -66,6 +66,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/return_payment_momo_qr', [PaymentController::class,'return_payment_momo_qr'])->name('return_payment_momo_qr');
     Route::post('/payment_momo_atm', [PaymentController::class,'create_payment_momo_atm'])->name('payment_momo_atm');
     Route::get('/return_payment_momo_atm', [PaymentController::class,'return_payment_momo_atm'])->name('return_payment_momo_atm');
+    Route::get('/search', [ProductsController::class,'search'])->name('search');
     Route::get('thanks', function () {
         return view('client.thankyou.index');
     })->name('page-thanks');
@@ -73,7 +74,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/minus-to-cart', [ProductsController::class,'minusToCart'])->name('minus-to-cart');
     Route::post('/remove-to-cart', [ProductsController::class,'removeToCart'])->name('remove-to-cart');
     Route::post('/remove-all-cart', [ProductsController::class,'removeAllCart'])->name('remove-all-cart');
-    Route::get('/search', [ProductsController::class,'search'])->name('search');
+    Route::post('/comment', [NewsController::class,'comment'])->name('comment');
    
 });
     //

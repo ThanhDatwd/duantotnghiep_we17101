@@ -46,9 +46,11 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">{{
-                                    Auth::guard('admin')->user()->full_name
-                                }}</h6>
+                        <h6 class="mb-0">
+                            {{-- {{
+                                    Auth::guard('admin')->user()->full_name??""
+                                }} --}}
+                                </h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -204,9 +206,9 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="https://haycafe.vn/wp-content/uploads/2022/02/Avatar-trang-cho-nu.jpg" alt=""  style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex">
-                                {{
+                                {{-- {{
                                     Auth::guard('admin')->user()->full_name
-                                }}
+                                }} --}}
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">

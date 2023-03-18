@@ -24,7 +24,7 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'content'=>'required|min:50',
+            'content'=>'required',
             
         ];
         
@@ -33,7 +33,7 @@ class CommentRequest extends FormRequest
     {
         return [
             'content.required' => 'Nội dung không được để trống',
-            'content.min' => 'Nội dung phải ít nhất 50 kí tự',
+            // 'content.min' => 'Nội dung phải ít nhất 50 kí tự',
           
         ];
     }
