@@ -50,7 +50,7 @@ class PaymentController extends Controller
 
   
 
-  public function create_payment_vnpay_e(Request $request)
+  public function create_payment_vnpay_e(PaymentRequest $request)
   {   
       $order_code=rand(0000, 9999);
       $order_temp = new order_temp();
@@ -142,7 +142,7 @@ class PaymentController extends Controller
       );
       return redirect($vnp_Url);
   }
-  public function return_payment_vnpay_e(PaymentRequest $request)
+  public function return_payment_vnpay_e(Request $request)
   { 
 
       try {
