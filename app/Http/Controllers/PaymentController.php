@@ -142,7 +142,7 @@ class PaymentController extends Controller
       );
       return redirect($vnp_Url);
   }
-  public function return_payment_vnpay_e(Request $request)
+  public function return_payment_vnpay_e(PaymentRequest $request)
   { 
 
       try {
@@ -325,10 +325,10 @@ class PaymentController extends Controller
   // ///////////////////////////////////////
   public function get_order_otp(Request $request)
   { 
-    $email=$request->email??"";
+    $email=$request->email??"nguyenthanhdatntd02@gmail.com";
     $otp=rand(0000,9999);
     $mail=new SendVerifyCodeMail($otp);
-    Mail:: to("nguyenthanhdatntd02@gmail.com")->queue($mail);
+    Mail:: to($email)->queue($mail);
     setcookie('otp_order_gm', json_encode($otp), time() + 60, '/');
     
     return response()->json([
