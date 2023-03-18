@@ -114,7 +114,7 @@
 {{-- --}}
 <section class="app-section pt-3 pb-3">
   <div class="container">
-    <h2 class="title pt-3 pb-3 mb-0"><a href="">Flash Sale</a></h2>
+    <h2 class="title pt-3 pb-3 mb-0"><a href="">Ưu đãi trong tuần</a></h2>
     <div class="products-row">
       <div class="swiper mySwiperTypeEvent">
         <div class="swiper-wrapper">
