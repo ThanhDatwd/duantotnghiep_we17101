@@ -49,16 +49,12 @@ function them(){
 function capnhat($id){
 
     $t = category_news::find($id);
-    return view('admin.categories_news.capnhat',['categories_news'=>$t]);
+    return view('admin.categories_news.capnhat', compact('t'));
   
 }
 function capnhat_($id){
     $t= category_news::find($id);
-    $t->title = $_POST['title'];
-    $t->summary = $_POST['summary'];
-    $t->thumb = $_POST['thumb'];
-    
-    $t->category_news_id = $_POST['category_news_id'];
+    $t->name = $_POST['name'];
     //save
     $t->save();
     return redirect('/admin/categories_news');

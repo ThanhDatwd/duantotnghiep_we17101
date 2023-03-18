@@ -72,6 +72,16 @@ public function index(){
     return redirect()->route('siteshow-login')->with('message', 'Đăng xuất thành công');
  }
         
+public function profile(){
+  $users = Auth::guard('admin')->user();
+     $username = Auth::guard('admin')->user()->username;
+     $news = DB::select('SELECT * FROM news WHERE created_by = :created_by', ['created_by' => $username]);
+    
+$count_news = DB::table('news')
+                ->where('created_by', $username)
+                ->count();     
+return view('admin.profile.index', compact('users', 'news', 'count_news'));
+}
 
 }
 
