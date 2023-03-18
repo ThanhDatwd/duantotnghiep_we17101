@@ -25,7 +25,7 @@ class NewsController extends Controller
     {
        try {
         $post = news::where('slug', $slug)->firstOrFail();
-        $newsRelate=news::where('category_news_id','=',$post->category_news_id)->where('id','<>',$post->id)->get();
+        $newsRelate=news::where('category_news_id','=',$post->category_news_id)->where('id','<>',$post->id)->paginate(4);
         $category_news=category_news::all();
         $comments=comment::where('news_id',$post->id)->get();
         $data=[

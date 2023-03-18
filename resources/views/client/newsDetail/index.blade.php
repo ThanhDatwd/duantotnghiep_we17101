@@ -108,8 +108,8 @@
     </div>
     <div class="row">
         <h3 class="title">Bài viết liên quan</h3>
-        <div class="col-9">
-            <div style="display: grid;grid-template-columns:repeat(3,1fr);gap :10px;margin-top: 20px;">
+        <div class="col-12">
+            <div style="display: grid;grid-template-columns:repeat(4,1fr);gap :10px;margin-top: 20px;">
   
               @foreach ($newsRelate as $item )
               <x-NewsCard isRow={{false}} link="{{route('clientnews-detail',['slug'=>$item->slug])}}"
