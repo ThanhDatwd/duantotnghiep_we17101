@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --button:#00CC99;
+    --button: #00cc99;
     --primary: #0f9249;
     --light: #f3f6f9;
     --dark: #191c24;
@@ -9,28 +9,28 @@
     overflow-x: hidden;
 
 } */
-.l{}
-::-webkit-scrollbar{
-   width: 1px;
+.l {
+}
+::-webkit-scrollbar {
+    width: 1px;
 
-   color: red;
+    color: red;
 }
-::-webkit-scrollbar-thumb{
-   background: red;
+::-webkit-scrollbar-thumb {
+    background: red;
 }
-.texlo{
+.texlo {
     width: 100%;
 }
-.coupou{
+.coupou {
     width: 80%;
 }
-.note{
+.note {
     width: 150px;
     height: 30px;
     white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis; 
-
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .back-to-top {
     position: fixed;
@@ -218,9 +218,8 @@ text-overflow: ellipsis;
     justify-content: center;
     background: #ffffff;
     border-radius: 40px;
-    
-    font-size: 20px;
 
+    font-size: 20px;
 }
 .sidebar-toggler {
     color: #0f9249 !important;
@@ -240,7 +239,6 @@ text-overflow: ellipsis;
 }
 
 @media (max-width: 575.98px) {
-    
     .content .navbar .navbar-nav .nav-link {
         margin-left: 15px;
     }
@@ -302,38 +300,41 @@ text-overflow: ellipsis;
     background: var(--dark);
     border-color: var(--primary);
 }
-@media (max-width:426px) {
-    .text{
+@media (max-width: 426px) {
+    .text {
         display: block;
     }
-    .addpro{
+    .addpro {
         display: block;
     }
-    #cvas1{
-        width: 240px
+    #cvas1 {
+        width: 240px;
     }
-    .ci{
+    .ci {
         width: 100%;
-        margin:auto;
+        margin: auto;
 
         display: block;
-        
     }
-    
+
     .pagination {
         justify-content: center;
     }
     .btnmoi {
         width: 100%;
     }
-    .ci a{
+    .ci a {
         width: 100%;
-        padding: 10px 130px
+        padding: 10px 130px;
     }
-    .texlo{
-        border:1px solid black
+    .texlo {
+        border: 1px solid black;
     }
     .coupou {
         width: 100%;
     }
-    }
+}
+* {
+    font-family: "Nunito", sans-serif;
+    font-family: "Poppins", sans-serif;
+}

@@ -174,9 +174,13 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');
     Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
     // thống kê
+    // profile
+    Route::get('/profile', [AdminController::class,'profile'])->name('admin.profile');
     Route::get('/thong-ke', [AdminUserController::class,'thongke5sp'])->name('thongke');
     //logout
     Route::get('/logout', [AdminController::class,'logout'])->name('admin-logout');
+    //
+    Route::get('/thong-ke-baiviet', [AdminController::class,'thongkebaiviet'])->name('thongkebaiviet');
 });
 
 

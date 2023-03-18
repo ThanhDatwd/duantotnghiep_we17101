@@ -1,14 +1,76 @@
 @extends('admin.appLayout.index')
 @section("css")
 <link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
+<link rel="stylesheet" href="{{asset('css/admin/profile/profile.css')}}">
 
 @endsection
 @section('content')
-<?php
-use Illuminate\Support\Facades\DB;
-?>
-<form action="{{url('admin/news/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
-@csrf
+<div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6" style="width: 40%">
+                        <div class="bg-light rounded h-100 p-4">
+                           
+                            <div class="character">
+  <div class="avatar">
+  
+  </div>
+  <div class="stats">
+    <ul>
+    
+      <li><i class="fa fa-fw fa-shield"></i>Chức vụ: <span id="con">Admin</span></li>
+      <li><i class="fa fa-fw fa-book"></i>Tình trạng làm việc: <span id="int">Hoạt động</span></li>
+      <li><i class="fa fa-fw fa-eye"></i>Số lượng bài viết: <span id="per">
+  {{$count_news}}   
+    </span></li>
+    </ul>
+  </div>
+  <hr />
+  <h1>Admin<span>
+{{Auth::guard('admin')->user()->username}}    
+</span></h1>
+</div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6" style="width: 60%">
+                        <div class="bg-light rounded h-100 p-4">
+                            
+                            <form>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Họ và Tên</label>
+                                   
+                                   
+                                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::guard('admin')->user()->full_name}}" disabled>
+ 
+                                    
+                                   
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                   
+                                   
+                                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::guard('admin')->user()->email}}" disabled>
+ 
+                                    
+                                   
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Số điện thoại</label>
+                                     <input type="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::guard('admin')->user()->phone}}" disabled>
+                                </div>
+                              
+                                <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
+                            </form>
+                        </div>
+                        
+                        
+                    </div>
+               
+                </div>
+                
+           <div class="row g-4" style="margin-top: 30px">
+            <form action="{{url('admin/news/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
+                         @csrf
 
                  
                         <div class="bg-light rounded h-100 p-4">
@@ -72,7 +134,7 @@ use Illuminate\Support\Facades\DB;
                                   <nav aria-label="Page navigation example">
         <ul class="pagination" style="display: flex;justify-content:space-between;">
      
-           <li> {{$news->appends(request()->all())->links()}}  </li>
+       
           
            <li>
               <a href="{{url('admin/news/them')}}" class="btn btn-primary">Thêm</a>
@@ -99,10 +161,12 @@ use Illuminate\Support\Facades\DB;
 
 
 </form>
+            </div> 
+</div>
+<div class="container-fluid pt-4 px-4">
+   
+
+</div>
+
+
 @endsection
-
-
-  
-
-
- 
