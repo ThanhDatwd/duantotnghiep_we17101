@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\DB;
           <thead>
               <tr>
                   <th></th>
-                  <th scope="col">ID</th>
+                  <th scope="col">Check</th>
                   <th scope="col">Hình ảnh</th>
-                  <th scope="col">Tên sản phẩm</th>
-                  <th scope="col">Giảm giá</th>
-                  <th scope="col">Đơn giá</th>
-                  <th scope="col">Trạng thái</th>
+                  <th scope="col">Tiêu đề</th>
+                  <th scope="col">Nội dung</th>
+                  <th scope="col">Tác giả</th>
+                  <th scope="col">Chỉnh sửa</th>
                   <th scope="col"></th>
               </tr>
           </thead>
@@ -37,7 +37,9 @@ use Illuminate\Support\Facades\DB;
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
               <td>{{$item->title}}</td>
                                         <td>{{$item->summary}}</td>
-                                        <td>author</td>
+                                        <td>
+                                            {{$item->created_by}}
+                                        </td>
 
                 
                 
