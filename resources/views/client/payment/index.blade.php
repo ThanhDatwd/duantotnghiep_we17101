@@ -67,7 +67,7 @@
 					<div class="error-txt "></div>
 					<div>
 						<div class="form-group order">
-							<input type="email" name="email" placeholder="email" id="email" value="{{old('email')}}">
+							<input type="email" name="email" placeholder="email" id="user_email" value="{{old('email')}}">
 						</div>
 						<span class="text-danger">@error('email')
 							{{$message}}
@@ -341,8 +341,8 @@
 			formOrder.submit()
 		}
 	}
-    let email=document.getElementById('#email')
 	const sendNotificationGetOtp=()=>{
+		let email=$('#user_email').val()
 		$.ajax({
                     type: 'post',
                     url: 'http://127.0.0.1:8000/api/get_order_otp',
