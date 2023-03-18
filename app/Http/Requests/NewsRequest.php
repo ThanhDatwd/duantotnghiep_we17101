@@ -24,7 +24,7 @@ class NewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:555',
             'category_news_id' => 'required|integer',
             'summary' => 'required|string|max:255',
             'content' => 'required|string',
