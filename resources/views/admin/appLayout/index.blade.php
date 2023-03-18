@@ -213,7 +213,7 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">Hồ sơ của tôi</a>
+                            <a href="{{ route('siteadmin-profile') }}" class="dropdown-item">Hồ sơ của tôi</a>
                             <a href="#" class="dropdown-item">Cài đặt</a>
                           
                          

@@ -175,7 +175,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
     // thống kê
     // profile
-    Route::get('/profile', [AdminController::class,'profile'])->name('admin.profile');
+    Route::get('/profile', [AdminController::class,'profile'])->name('admin-profile');
     Route::get('/thong-ke', [AdminUserController::class,'thongke5sp'])->name('thongke');
     //logout
     Route::get('/logout', [AdminController::class,'logout'])->name('admin-logout');
