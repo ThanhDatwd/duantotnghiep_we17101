@@ -15,14 +15,16 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-         for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $news = new News();
             $news->title = "Tin tức số $i";
             $news->summary = "Nội dung tóm tắt tin tức số $i";
-            $news->content = "Nội dung chi tiết tin tức số $i";
+            $news->content = "<h2>05 c&aacute;ch chế biến c&aacute; b&ograve; ngon nhất</h2>
+
+            <p>Trước khi&nbsp;<strong>chế biến c&aacute; b&ograve;</strong>, bạn cần sơ chế c&aacute;. C&aacute; b&ograve; da nguy&ecirc;n con, l&agrave;m sạch (lột bỏ da, bỏ ruột) khi cần ăn c&oacute; thể lấy ra r&atilde; đ&ocirc;ng d&ugrave;ng ngay. T&ugrave;y sở th&iacute;ch v&agrave; khẩu vị m&agrave;&nbsp; mỗi gia đ&igrave;nh c&oacute; c&aacute;ch chế biến kh&aacute;c nhau nhưng ngon v&agrave; thơm nhất vẫn l&agrave; m&oacute;n nướng. C&aacute; b&ograve; nướng c&oacute; vị ngọt đậm đ&agrave;, hấp dẫn.</p>";
             $news->thumb = "thumb-$i.png";
             $news->category_news_id = 1;
             $news->save();
+        }
     }
-}
 }
