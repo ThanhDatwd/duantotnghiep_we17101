@@ -17,10 +17,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    
+    protected $table="users";
     protected $fillable = [
         'id',
-        'name',
+        'username',
         'email',
         'password',
     ];
@@ -34,7 +34,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    public function comments()
+    {
+        return $this->hasMany(comment::class,"user_id","id");
+    }
     /**
      * The attributes that should be cast.
      *

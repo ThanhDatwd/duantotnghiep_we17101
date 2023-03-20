@@ -3,13 +3,12 @@
 <link rel="stylesheet" href="{{asset('css/client/base.css')}}">
 @section('main-content')
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" id="btn_verify_code_otp" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden>
 	Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-	aria-hidden="true">
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -22,20 +21,22 @@
 						<input type="number" id="code1" maxlength="1" onkeyup="inputCode(event,'','code1','code2',)">
 					</div>
 					<div class="orderCode">
-						<input type="number" id="code2" maxlength="1" onkeyup="inputCode(event,'code1','code2','code3',)">
+						<input type="number" id="code2" maxlength="1"
+							onkeyup="inputCode(event,'code1','code2','code3',)">
 					</div>
 					<div class="orderCode">
-						<input type="number" id="code3" maxlength="1" onkeyup="inputCode(event,'code2','code3','code4',)">
+						<input type="number" id="code3" maxlength="1"
+							onkeyup="inputCode(event,'code2','code3','code4',)">
 					</div>
 					<div class="orderCode">
 						<input type="number" id="code4" maxlength="1" onkeyup="inputCode(event,'code3','code4','',)">
 					</div>
-	
+
 				</form>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-				<button type="button" class="btn btn-primary">Xác nhận</button>
+				<button type="button" onclick="handleVerifyOtp()" class="btn btn-primary">Xác nhận</button>
 			</div>
 		</div>
 	</div>
@@ -52,7 +53,7 @@
 				<img style="width:180px"
 					src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1676652183181" alt="">
 			</div>
-			<div class="input-infomation row">
+			<div class="input-infomation row ">
 				<form id="form-order" action="{{route('clientpayment_cod')}}" method="POST"
 					class="form-order col-lg-6 col-xs-12">
 					@csrf
@@ -64,39 +65,76 @@
 						</a>
 					</div>
 					<div class="error-txt "></div>
-					<div class="form-group order">
-						<input type="email" name="email" placeholder="email" value="{{old('email')}}">
+					<div>
+						<div class="form-group order">
+							<input type="email" name="email" placeholder="email" id="user_email" value="{{old('email')}}">
+						</div>
+						<span class="text-danger">@error('email')
+							{{$message}}
+						@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="user_name" placeholder="Họ tên" value="{{old('user_name')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="username" placeholder="Họ tên" value="{{old('username')}}">
+						</div>
+						<span class="text-danger">@error('username')
+							{{$message}}
+						@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)" value="{{old('phone')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)" value="{{old('phone')}}">
+						</div>
+						<span class="text-danger">@error('phone')
+							{{$message}}
+						@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('email')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('address')}}">
+						</div>
+						<span class="text-danger">@error('address')
+							{{$message}}
+						@enderror</span>
 					</div>
-					<div class="form-group order">
-						<select id="province" name="province">
-							<option value="">-- Chọn tỉnh/thành --</option>
+					<input type="text" id="input_province" name="province"  value="{{old('province')}}" hidden>
+					<input type="text" id="input_district"  name="district"  value="{{old('district')}}" hidden>
 
-						</select>
+					<div>
+						<div class="form-group order">
+							<select id="province" >
+								<option value="">-- Chọn tỉnh/thành --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('province')
+							{{$message}}
+						@enderror</span>
+					</div>
+					<div>
+						<div class="form-group order">
+							<select id="district" >
+								<option value="">-- Chọn quận/huyện --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('district')
+							{{$message}}
+						@enderror</span>
+					</div>
+					<div>
+						<div class="form-group order">
+							<select id="ward" name="ward" >
+								<option value="">-- Chọn xã/phường --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('ward')
+							{{$message}}
+						@enderror</span>
 					</div>
 					<div class="form-group order">
-						<select id="district" name="district">
-							<option value="">-- Chọn quận/huyện --</option>
-						</select>
+						<textarea name="order_note" {{old('order_note')}} placeholder="Ghi chú">Ghi chú</textarea>
 					</div>
-					<div class="form-group order">
-						<select id="ward" name="ward">
-							<option value="">-- Chọn xã/phường --</option>
-						</select>
-					</div>
-					<div class="form-group order">
-						<textarea name="note_order" {{old('note_order')}} placeholder="Ghi chú">Ghi chú</textarea>
-					</div>
-					<input type="number" name="total"  value="{{$total}}">
-					<input type="number" name="fee_ship"  value="0">
+					<input type="number" name="total" value="{{$total}}" hidden>
+					<input type="number" name="fee_ship" value="0" hidden>
 				</form>
 				<div class="transition col-lg-6 col-xs-12">
 					<div class="order-title">
@@ -149,27 +187,34 @@
 												<div class="check"><i class='bx bxs-check-circle'></i></div>
 											</div>
 										</div>
+										<div class="col-4">
+											<div class="payment_momo payment-online__item ">
+												<div class="thumb">
+													<img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png"
+														alt="">
+												</div>
+												<div class="check"><i class='bx bxs-check-circle'></i></div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					{{-- <button id="payment_vnpay">thanh toán vnpay</button> --}}
-					{{-- <form action="{{route('clientpayment_vnpay')}}" method="POST">
-						@csrf
-					</form>
-					<form action="{{route('clientpayment_momo_qr')}}" method="POST">
-						@csrf
-						<button type="submit">thanh toán momo QR code</button>
-					</form>
-					<form action="{{route('clientpayment_momo_atm')}}" method="POST">
-						@csrf
-						<button type="submit" name="payUrl">thanh toán momo ATM</button>
-					</form> --}}
-
 				</div>
-
+				<div class="d-sm-none d-block">
+					<div class="d-flex justify-content-center ">
+						<button class="btn btn-buyNow p-10 " id="btn-order-now">Đặt mua</button>
+					</div>
+					<div class="d-flex justify-content-center mt-2">
+						<a href="{{route('clientcart')}}">
+							<i class='bx bx-chevron-left'></i>
+							Quay về trang đặt hàng
+						</a>
+					</div>
+				</div>
+                
 			</div>
 		</div>
 		<div class="col-lg-4 col-xs-12">
@@ -183,7 +228,7 @@
 				<ul class="order-list">
 					@foreach ($carts as $item )
 					@php
-					
+
 					@endphp
 					<div class="order-item">
 						<div class="order-item_img">
@@ -206,7 +251,7 @@
 				<div class="discountCode">
 					<div class="form-group order">
 						<input type="text" name="" id="">
-						<button class="btn btn-buyNow">Áp Dụng</button>
+						<button  class="btn btn-buyNow">Áp Dụng</button>
 					</div>
 				</div>
 
@@ -230,7 +275,7 @@
 						<i class='bx bx-chevron-left'></i>
 						Quay về trang đặt hàng
 					</a>
-					<button class="btn btn-buyNow" id="btn-order-now">Đặt mua</button>
+					<button class="btn btn-buyNow d-none d-sm-block" id="btn-order-now">Đặt mua</button>
 					{{-- <button hidden class="btn btn-showModalInputCode" data-toggle="modal"
 						data-target="#exampleModalCenter">Đặt mua</button> --}}
 				</div>
@@ -247,31 +292,69 @@
 	const paymentCodArea=document.querySelector(".payment.cod_area")
 	const paymentCodMessage=document.querySelector(".payment.cod_area .message")
 	const paymentOnlineList=document.querySelector(".payment.online_area .payment-online")
-	const btnOrderNow=document.getElementById("btn-order-now")
+	const btnOrderNow=document.querySelectorAll(".btn.btn-buyNow")
 	const formOrder=document.getElementById('form-order')
 	const btnPaymentVnpay=document.querySelector(".payment_vnpay")
+	const btnPaymentMomo=document.querySelector(".payment_momo")
 	const btnPaymentItems=document.querySelectorAll(".payment-online__item")
+	const btn_verify_code_otp=document.querySelector("#btn_verify_code_otp")
+	
+	
 
+    let getOtp=true
 	paymentCodArea.onclick=()=>{
 		formOrder.action="http://127.0.0.1:8000/payment_cod"
 		paymentOnlineArea.classList.remove('active')
         paymentCodArea.classList.add('active')
 	}
     paymentOnlineArea.onclick=()=>{
+		getOtp=false
 		paymentOnlineArea.classList.add('active')
         paymentCodArea.classList.remove('active')
 	}
 	btnPaymentVnpay.onclick=()=>{
+		getOtp=false
 		formOrder.action="http://127.0.0.1:8000/payment_vnpay"
 		btnPaymentItems.forEach(item => {
 		item.classList.remove('active')
 		});
 		btnPaymentVnpay.classList.add('active')
 	}
-	btnOrderNow.onclick=()=>{
-		formOrder.submit()
+	btnPaymentMomo.onclick=()=>{
+		getOtp=false
+		formOrder.action="http://127.0.0.1:8000/search"
+		btnPaymentItems.forEach(item => {
+		item.classList.remove('active')
+		});
+		btnPaymentMomo.classList.add('active')
 	}
-  
+	btnOrderNow.forEach(e=>{
+		e.onclick=()=>{
+			if(getOtp==true){
+			btn_verify_code_otp.click()
+			sendNotificationGetOtp()
+            
+		}
+		else{
+			formOrder.submit()
+		}
+		}
+	})
+	const sendNotificationGetOtp=()=>{
+		let email=$('#user_email').val()
+		$.ajax({
+                    type: 'post',
+                    url: 'http://127.0.0.1:8000/api/get_order_otp',
+					data:{
+						email:email.value
+					},
+                    success:function(data){
+						console.log(data)
+                        // alert('vui lòng nhập mã xác nhận')
+                    }
+            });
+			$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+	}
 
 	// PHẦN NHẬP CODE
 	function inputCode(event, p, c, n) {
@@ -285,16 +368,48 @@
         }
 
     }
+	function handleVerifyOtp() {
+        let code1 = document.getElementById('code1').value
+        let code2 = document.getElementById('code2').value
+        let code3 = document.getElementById('code3').value
+        let code4 = document.getElementById('code4').value
+        let otp = code1 + code2 + code3 + code4
+		console.log(typeof otp)
+		$.ajax({
+            type: 'post',
+            url: 'http://127.0.0.1:8000/api/confirm_order_otp',
+			data:{
+				otp
+			},
+            success:function(data){
+				formOrder.action="http://127.0.0.1:8000/payment_cod"
+				formOrder.submit()
+                        // alert('vui lòng nhập mã xác nhận')
+            },
+			error: function(error) {
+            alert("có lỗi xảy ra vui lòng nhập lại mã")
+         
+        }
+        });
+		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+    }
   
 
 	// //  Chọn quận huyện thành phố 
 	// Lấy danh sách tỉnh/thành từ API
+	let input_province=document.querySelector('#input_province')
+	let input_district=document.querySelector('#input_district')
+	let input_ward=document.querySelector('#input_ward')
+	const getDataa=()=>{
+       console.log("xin chào bạn")
+	   
+	}
 	$.get("https://provinces.open-api.vn/api/p/", function(data) {
 			var provinces = data;
 
 			// Thêm các tỉnh/thành vào trường chọn
 			for (var i = 0; i < provinces.length; i++) {
-				$("#province").append("<option value='" + provinces[i].code + "'>" + provinces[i].name + "</option>");
+				$("#province").append(`<option value="${provinces[i].code}">${provinces[i].name}</option>`);
 			}
 		});
 
@@ -306,6 +421,7 @@
 
 			// Lấy tỉnh/thành được chọn từ trường chọn
 			var selectedProvince = $("#province").val();
+			input_province.value=$("#province option:selected").text()
 			if (selectedProvince) {
 				// Lấy thông tin địa lý của các quận/huyện từ API
 				$.get("https://provinces.open-api.vn/api/p/" + selectedProvince + "?depth=2", function(data) {
@@ -323,6 +439,8 @@
 		$("#district").change(function() {
 			// Xóa các xã/phường cũ
 			$("#ward").empty();
+			input_district.value=$("#district option:selected").text()
+
 
 			// Lấy quận/huyện được chọn từ trường chọn
 			var selectedDistrict = $("#district").val();

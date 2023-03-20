@@ -20,133 +20,48 @@ use Illuminate\Support\Facades\DB;
 <style>
 
 </style>
+
+
+<form action="/admin/categories_news/capnhat/{{$t->id}}" method="post" class="col-7 m-auto">
 <div class="adproduct">
 
-
-<form action="/admin/news/capnhat/{{$t->id}}" method="post" class="col-7 m-auto">
+<div class="head" style="text-align: left;">
+    <h2>CẬP NHẬT LOẠI TIN TỨC</h2>
+</div>
 <div class= "container-fluid">
     <div class= "row">
-        <div class ="col-md-9 ">
-            <div id="exTab1" class="container">
-                {{-- <ul  class="nav listnav">
-                    <li class="active">
-                        <a  href="#1a" data-toggle="tab">Chung</a>
-                    </li>
-                    <li><a href="#2a" data-toggle="tab">Thiết kế</a>
-                    </li>
-                    <li><a href="#3a" data-toggle="tab">Sản phẩm</a>
-                    </li>
-                    <li><a href="#4a" data-toggle="tab">Background color</a>
-                    </li>
-                </ul> --}}
-                
-
-                <div class="tab-content clearfix">
-                    <div class="tab-pane boxlist active" id="1a">
+        <div class ="col-md-12 ">
+            
                         <div class="boxlist1">
                             <div class="addpro">
                                
                                 <div class="adpro1">
-                                    <p>Tiêu đề <span>(*)</span></p>
-                                    <input type="text" placeholder="Nhập tên tiêu đề" name="title" value="{{$t->title}}">
+                                    <p>Tên loại tin <span>(*)</span></p>
+                                    <input type="text" placeholder="Nhập tên loại tin" name="name" value="{{old('name') ?? $t->name}}"/>
+                                  
+                                    
                                 </div>
                              
                             </div>
-                            <div class="addpro">
-                                <div class="adpro1">
-                                    <p>Thể loại <span>(*)</span></p>
-                                    <select name="category_news_id">
-                                        <option value="">Chọn thể loại</option>
-
-                                        <?php
-            $categories = DB::table('categories_news')->get();
-            foreach($categories as $cate){
-                if($cate->id == $t->category_news_id){
-                    echo "<option value='$cate->id' selected>$cate->name</option>";
-                }else{
-                    echo "<option value='$cate->id'>$cate->name</option>";
-                }
-            }
-            ?>
-                                    </select>
-                                </div>
-                                
-                            
-                              
-                             
-                            </div>
-                      
-                       
-
-                            <div class="addpro">
-                                <div class="adpro1">
-                                      <p>Tóm tắt <span>(*)</span></p>
-                                    <textarea name="summary" id="" style="width:100%" cols="100" rows="5" name="summary">
-                                </textarea>
-
-                                </div>
-                            </div>
-                          
-
-                            <div class="addpro">
-                                <div class="adpro1">
-                                    <p>Nội dung bài viết  <span>(*)</span></p>
-                                        <textarea id="editor1"  style="width:100%"  name="content">
-                                    </textarea>
-                                </div>
-                               </div>
-
-                        </div>
-                        
-
-                        <div class="boxlist2">
-                            <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
-
-                           
-                        </div>
-                        
-
-                    </div>
-                    <div class="tab-pane" id="2a">
-                        <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
-                    </div>
-                    <div class="tab-pane" id="3a">
-                        <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
-                    </div>
-                    <div class="tab-pane" id="4a">
-                        <h3>We use css to change the background color of the content to be equal to the tab</h3>
-                    </div>
-                </div>
-            </div>
+                         
+                            </div>                     
+            
 
         </div>
-
-        <div class ="col-md-3">
-  
-            <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
-
-            <div class="addpro">
-                <div class="adpro1">
-                    <p>Ảnh đại diện <span>(*)</span></p>
-                    <canvas id="cvas1"></canvas>
-                    <br>
-                    <!--<input type="text" id="textinput"/>--
-                    <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
-                    <input type="file" name="thumb" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
-            
-                </div>
-            </div>
+        <div class ="col-md-3"> 
             <button class="btnmoi" type="submit">
-                THÊM MỚI</button>
+                Sửa lại</button>
                 
-            </div>
+            
         </div>
     </div>
  
 </div>
+</div>
+
 @csrf
  </form>  
-</div>
+
 <script>
 window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
 var drawGray = null;

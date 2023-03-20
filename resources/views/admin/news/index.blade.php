@@ -1,111 +1,84 @@
 @extends('admin.appLayout.index')
+@section("css")
+<link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
+
+@endsection
 @section('content')
 <?php
 use Illuminate\Support\Facades\DB;
 ?>
 <form action="{{url('admin/news/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
 @csrf
-<div class="container-fluid pt-4 px-4">
-                    <div class="col-12">
+
+                 
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Quản lý tin tức</h6>
                             <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Check</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Summary</th>
-                                            <th scope="col">Author</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Category</th>
-                             
-                                            
-                                            <th scope="col">Image</th>
-                                            
-                                            
-                                            <th scope="col">Action</th>
-                                           
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($news as $item)
-                                    <tr>
-                                        <td><input type="checkbox" name="check[]" value="{{$item->id}}"></td>
-                                        <td>{{$item->title}}</td>
-                                        <td>{{$item->summary}}</td>
-                                        <td>author</td>
-                                        <td>{{$item->created_at}}</td>
-                                         <td>
-                                            {{$item->category_name}}
-                                         </td>
-                                        
-                                        <td><img src="{{asset('upload/'.$item->thumb)}}" alt="" width="100px" height="100px"></td>
-                                         <td colspan="">
-                                            <a href="{{url('admin/news/capnhat/'.$item->id)}}" class="btn btn-primary">Sửa</a>
-                                            <a href="{{url('admin/news/xoa/'.$item->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-danger">Xóa</a>
-                                             
-                                        </td>
-                                        
-                                      
-                                    </tr>
-                                    <tr>
-                                       
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                     
-
-                                 <tfoot>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                       <table class="table">
+                     <thead>
+                     <tr>
+                  <th></th>
+                  <th scope="col">Check</th>
+                  <th scope="col">Hình ảnh</th>
+                  <th scope="col">Tiêu đề</th>
+                  <th scope="col">Nội dung</th>
+                  <th scope="col">Tác giả</th>
+                  <th scope="col">Chỉnh sửa</th>
+                  <th scope="col"></th>
+              </tr>
+          </thead>
+          <tbody>
+            @foreach ($news as $item)
+              <tr>
+                <th></th>
+                  <td><input type="checkbox" name="check[]" value="{{$item->id}}"></td>
+                  <td><img src="{{asset('upload/'.$item->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" >
+                  </td>
+                  {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
+              <td>{{$item->title}}</td>
                                         <td>
-                                         
-                                        </td>
-                                     
-                                        <td>
-                                           <style>
-                                                  .pagination{
-                                                    display: flex;
-                                                    justify-content: center;
-                                                  }
-                                                  .pagination a{
-                                                    padding: 10px;
-                                                    border: 1px solid #ccc;
-                                                    margin: 0 5px;
-                                                    text-decoration: none;
-                                                    color: #000;
-                                                  }
-                                                  .pagination a.active{
-                                                    background: #000;
-                                                    color: #fff;
-                                                  }
-                                           </style>
-                                     <div class="pagination">
-    @if ($news->currentPage() > 0)
-        <a href="{{ $news->previousPageUrl() }}">Previous</a>
-    @endif
-
-    @for ($i = 1; $i <= $news->lastPage(); $i++)
-        <a href="{{ $news->url($i) }}" 
-           class="{{ ($news->currentPage() == $i) ? ' active' : '' }}">
-           {{ $i }}
-        </a>
-    @endfor
-
-    @if ($news->hasMorePages())
-        <a href="{{ $news->nextPageUrl() }}">Next</a>
-    @endif
-</div>
                                           
+                                           {{ substr($item->summary, 0, 100) }}...
                                         </td>
                                         <td>
-                                           
-                                    
+                                            {{$item->created_by}}
+                                        </td>
 
-                                            <a href="{{url('admin/news/them')}}" class="btn btn-primary">Thêm</a>
+                
+                
+                  
+                  {{-- <td>{{$categories->$p->name}}</td> --}}
+                  <td class="button">
+                    <a style="color: cadetblue" href="{{url('admin/news/capnhat/'.$item->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a style="color: red" href="{{url('admin/news/xoa/'.$item->id)}}" onclick="return myFunction();"> <i  class="fa-sharp fa-solid fa-trash"></i> </a>
+                   
+                
+
+                    {{-- <button onclick="myFunction()">XÓa</button> --}}
+                    <script>
+                      function myFunction() {
+                          if(!confirm("Bạn có chắc chắn muốn xóa không!!"))
+                          event.preventDefault();
+                      }
+                     </script>
+                  </td>
+
+              </tr>
+              @endforeach
+          </tbody>
+        
+          
+      </table>
+
+
+                                
+                                  <nav aria-label="Page navigation example">
+        <ul class="pagination" style="display: flex;justify-content:space-between;">
+     
+           <li> {{$news->appends(request()->all())->links()}}  </li>
+          
+           <li>
+              <a href="{{url('admin/news/them')}}" class="btn btn-primary">Thêm</a>
                                                   
                                             <a href="{{url('admin/news/thung-rac')}}" class="btn btn-primary">Thùng rác
                                                 <?php
@@ -115,21 +88,24 @@ use Illuminate\Support\Facades\DB;
                                                 
                                             </a>
                                                 <button type="submit" class="btn btn-danger">Xóa nhiều</button>
-                                              
-                                        </td>
-                                    </tr>
-                                 </tfoot>
-                                </table>
-                                
+                  </li>
+         
+      
+        </ul>
+      </nav>
                             </div>
                         </div>
-                    </div>
+                    
             
-                </div>
+            
+
 
 
 </form>
-
 @endsection
 
-</form>
+
+  
+
+
+ 

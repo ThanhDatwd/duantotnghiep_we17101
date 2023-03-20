@@ -1,4 +1,4 @@
-{{-- <link rel="stylesheet" href="{{asset('css/client/component/navbarMobile.css')}}">
+<link rel="stylesheet" href="{{asset('css/client/component/navbarMobile.css')}}">
 <div class="navbar__mobile">
     <a href="" class="item">
         <i class='bx bx-home'></i>
@@ -60,7 +60,7 @@
     <div class="layer" onclick="handelDisplayNoneDashboardMobile()"></div>
     <div class="dashboard-menu">
         <div class="dashboard-navbar">
-            <a href="">
+            <a href="{{route('client')}}">
                 <div class="dashboard-navbar__item">
                     <div class="img"> <img
                             src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_1.png?1669280565026"
@@ -78,7 +78,7 @@
                     <span>Giới thiệu</span>
                 </div>
             </a>
-            <a href="">
+            <a href="{{route('clientcategory-group-all')}}">
                 <div class="dashboard-navbar__item active">
                     <div class="img"> <img
                             src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_3.png?1669280565026"
@@ -118,76 +118,23 @@
         </div>
         <div class="list-categories">
            <ul class="level1">
-              <li>
-                <a href="" class="d-flex">Thịt trứng</a>
+            @foreach ($category_group as $group )
+            <li>
+                <a href="" class="d-flex">{{$group->name}}</a>
                 <ul class="level2">
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
-                    </li>
+                    @foreach ($group->categories as $item)
+                        <li>
+                            <div class="dot"></div>
+                            <a href="{{route('clientcategory',["slug"=>$item->slug])}}" class="d-flex" >{{$item->category_name}} </a>
+                        </li>
+                        
+                    @endforeach
                 </ul>
               </li>
-              <li>
-                <a href="" class="d-flex">Thịt trứng</a>
-                <ul class="level2">
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
-                    </li>
-                </ul>
-              </li>
-              <li>
-                <a href="" class="d-flex">Thịt trứng</a>
-                <ul class="level2">
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
-                    </li>
-                </ul>
-              </li>
-              <li>
-                <a href="" class="d-flex">Thịt trứng</a>
-                <ul class="level2">
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit heo" class="d-flex" >Thịt heo </a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit bò"  class="d-flex">Thịt gà</a>
-                    </li>
-                    <li>
-                        <div class="dot"></div>
-                        <a href="Thit gà"  class="d-flex">Thịt bò</a>
-                    </li>
-                </ul>
-              </li>
+            @endforeach
+              
            </ul>
         </div>
     </div>
 </div>
-<script src="{{asset('js/client/component/navbarMobile.js')}}"></script> --}}
+<script src="{{asset('js/client/component/navbarMobile.js')}}"></script>

@@ -15,7 +15,7 @@
         <a href="/admin/news/them">Thêm tin tức</a>
     </div> --}}
 <div class="head" style="text-align: left;">
-    <h2>THÊM TIN TỨC</h2>
+    <h2>THÊM LOẠI TIN TỨC</h2>
 </div>
 <div class= "container-fluid">
     <div class= "row">

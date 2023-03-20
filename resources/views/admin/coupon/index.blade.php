@@ -36,13 +36,21 @@
             @foreach ($coupons as $c)
               <tr>
                 <th></th>
-                  <th>{{$c->id}}</th>
+                  <th>
+                    {{$c->id}}
+                  </th>
                   <td> 
                     {{$c->coupon_code}}
                 </td>
 
                   <td>
-                    {{$c->coupon_type}}
+                    @if ($c->coupon_type == '1')
+                    <p>Giảm giá theo số tiền</p>
+                    @elseif ($c->coupon_type == '2')
+                    <p>Giảm giá theo %</p>
+                    @else
+                    <p>Giảm giá theo đơn hàng</p>
+                  @endif
                    
                   </td>
 
@@ -68,9 +76,9 @@
                   <td>
                     <span>
                       @if(($c->is_active)==1)
-                      <button type="button" class="btn btn-success">Hoạt động</button>
+                      <button type="button" class="btn btn-success">Hoạt Động</button>
                       @else
-                      <button type="button" class="btn btn-danger"></button>                  
+                      <button type="button" class="btn btn-danger">Hết Mã</button>                  
                     @endif
                     </span>
                   </td>

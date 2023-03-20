@@ -36,35 +36,18 @@ use Illuminate\Support\Facades\DB;
                             <div class="addpro">
                                
                                 <div class="adpro1">
-                                    <p>Tiêu đề <span>(*)</span></p>
+                                    <p>Tên Username <span>(*)</span></p>
                                     <input type="text" placeholder="Nhập tên tiêu đề" name="username">
                                     @error('title')
                                    <p>{{$message}}</p>
                                     @enderror
                                     
                                 </div>
-                                      <div class="adpro1">
-                                    <p>Email <span>(*)</span></p>
-                                    <input type="text" placeholder="Nhập tên tiêu đề" name="email">
-                                  
-                                    
-                                </div>
-                
-                          </div>  
-                            <div class="addpro">                         
-                                <div class="adpro1">
-                                    <p>Mật khẩu <span>(*)</span></p>
-                                    <input type="password" placeholder="Nhập mật khẩu" name="password">
-                                   
-                                    
-                                </div>
-                             </div>
-                                                  <div class="addpro">
-                                                    
-                            <div class="adpro1">
+
+                                       <div class="adpro1">
                                     <p>Giới tính <span>(*)</span></p>
   <label>
-    <input type="radio" name="gender" value="1" selected>
+    <input type="radio" name="gender" value="1"  checked>
     Nam
   </label>
   <label>
@@ -72,13 +55,38 @@ use Illuminate\Support\Facades\DB;
     Nữ
   </label>
 </div>
+                                     
+                
+                          </div>  
+                            <div class="addpro">                         
+                                <div class="adpro1">
+                                    <p>Mật khẩu <span>(*)</span></p>
+                                    <input type="password" placeholder="Nhập mật khẩu" name="password" style="height:45px; width: 100%; border-radius: 5px; border: 1px solid darkgrey;">
+                                   
+                                    
+                                   </div>
+                                      <div class="adpro1">
+                                        <p>Nhập lại mật khẩu <span>(*)</span></p>
+                                        <input type="password" placeholder="Nhập lại mật khẩu" name="password_confirmation" style="height:45px; width: 100%; border-radius: 5px; border: 1px solid darkgrey;">
+                                      </div>
+                                   
+                             </div>
+                                                  <div class="addpro">
+                                                    
+      
 
 
                           </div>
                           <div class="addpro">
+                             <div class="adpro1">
+                                    <p>Email <span>(*)</span></p>
+                                    <input type="text" placeholder="Nhập tên tiêu đề" name="email">
+                                  
+                                    
+                                </div>
                             <div class="adpro1">
                                     <p>Ngày sinh <span>(*)</span></p>
-                                    <input type="date"  placeholder="Nhập ngày sinh" name="birthday">
+                                    <input type="date"  placeholder="Nhập ngày sinh" name="birthday" style="height:45px; width: 100%; border-radius: 5px; border: 1px solid darkgrey;">
                             </div>
                           </div>
                               <div class="addpro">
@@ -240,6 +248,9 @@ use Illuminate\Support\Facades\DB;
                     
             
                 </div>
+            </div>
+            <div class="addpro">
+               
             </div>
             <button class="btnmoi" type="submit">
                 THÊM MỚI</button>

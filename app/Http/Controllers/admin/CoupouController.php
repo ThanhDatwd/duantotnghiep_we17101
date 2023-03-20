@@ -46,12 +46,12 @@ class CoupouController extends Controller
         $c->start_date=$_POST['start_date'];
         $c->end_date=$_POST['end_date'];
         // using gte()
-        dd($c->start_date);
-if ($c->start_date->gte($c->end_date)) { 
-    dd( ' is greater than or equal to ' );
-} else {
-    dd(  ' is not greater than or equal to ' );
-}
+//         dd($c->start_date);
+// if ($c->start_date->gte($c->end_date)) { 
+//     dd( ' is greater than or equal to ' );
+// } else {
+//     dd(  ' is not greater than or equal to ' );
+// }
 
         $c->save();
         

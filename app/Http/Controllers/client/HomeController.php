@@ -17,10 +17,10 @@ class HomeController extends Controller
     public function index()
     {   
         $productsFlashSale=product::all()->where('discount','>',0);
-        $categoriesGroup=category_group::with('categories.products')->where('is_hot',1)->limit(3)->get();
+        $categoriesGroup=category_group::with('categories.products')->where('is_hot',true)->limit(3)->get();
         foreach ($categoriesGroup as $group) {
             foreach ($group->categories as $category) {
-                $category->products = $category->products()->take(2)->get();
+                $category->products = $category->products()->get();
             }
         }
         $news=news::limit(5)->get();

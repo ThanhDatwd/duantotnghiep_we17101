@@ -8,6 +8,7 @@
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
   <h2 class="">DANH SÁCH SẢN PHẨM </h2>
+  
   <a href="/admin/product/create"><i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm</a>
  </div>
   @if(Session::has('thongbao'))
@@ -40,7 +41,7 @@
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
                   <td>
                     <p style="font-size: 18px; font-weight:bold">{{$p->name}}</p>
-                    <span>Loại: {{$p->category->category_name}}</span><br>
+                    <span>Loại: {{$p->category->category_name ?? 'Chưa phân loại'}}</span><br>
                     <span>Xuất sứ: {{$p->brand}}</span>
                   </td>
 
@@ -86,5 +87,6 @@
       </nav>
   </div>
 </div>
+
 
 @endsection

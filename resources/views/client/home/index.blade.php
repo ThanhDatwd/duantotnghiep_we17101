@@ -90,7 +90,7 @@
               <a href="" class="name">{{$group->name}}</a>
               <div class="categories">
                 @foreach ($group->categories as $item)
-                   <li> <a href="">{{$item->category_name}}</a></li>
+                   <li> <a href="{{route('clientcategory',["slug"=>$item->slug])}}">{{$item->category_name}}</a></li>
                 @endforeach
               </div>
             </div>
@@ -104,8 +104,6 @@
         </div>
         @endforeach
       </div>
-      <div class="swiper-button-next categoryGroup"></div>
-      <div class="swiper-button-prev categoryGroup"></div>
       <div class="swiper-pagination categoryGroup "></div>
     </div>
   </div>
@@ -114,25 +112,33 @@
 {{-- --}}
 <section class="app-section pt-3 pb-3">
   <div class="container">
-    <h2 class="title pt-3 pb-3 mb-0"><a href="">Flash Sale</a></h2>
+    <h2 class="title pt-3 pb-3 mb-0"><a href="">Ưu đãi trong tuần</a></h2>
     <div class="products-row">
       <div class="swiper mySwiperTypeEvent">
         <div class="swiper-wrapper">
           @foreach ($productsFlashSale as $item)
           @php
             $price1="";
-            $price2=$item->price_current;
-            if($item->discount>0){
-              $price1=$item->price_current;
-              $price2=$item->price_current-($item->price_current*$item->discount/100);
-
+                  $price2=number_format($item->price_current);
+                  if($item->discount>0){
+                    $price1=number_format($item->price_current);
+                    $price2=number_format($item->price_current-($item->price_current*$item->discount/100));
+                  }
+            $progressValue=($item->quantity_output/$item->quantity_input)*100;
+            $progressTxt="Đã hết hàng";
+            if($progressValue<100&&$progressValue>90){
+              $progressTxt="Sắp cháy hàng";
             }
+            elseif ($progressValue<90) {
+              $progressTxt="Đã bán: ".$item->quantity_output;
+            };
+
           @endphp
           <div class="swiper-slide">
             <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" 
-              isProgress={{true}} progressTxt="hết hàng" progressValue=20
-              name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{number_format($price1)}}"
-              priceCurrent="{{number_format($price2,0)}}" discount="{{$item->discount}}" />
+              isProgress={{true}} progressTxt="{{$progressTxt}}" progressValue="{{$progressValue}}"
+              name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$price1}}"
+              priceCurrent="{{$price2}}" discount="{{$item->discount}}" />
           </div>
           @endforeach
         </div>
@@ -169,10 +175,18 @@ $indexCategory++;
             <div class="swiper-wrapper">
             @foreach ( $group->categories as $category )
                 @foreach ($category->products as $item)
+                @php
+                  $price1="";
+                  $price2=number_format($item->price_current);
+                  if($item->discount>0){
+                    $price1=number_format($item->price_current)."đ";
+                    $price2=number_format($item->price_current-($item->price_current*$item->discount/100));
+                  }
+                @endphp
                 <div class="swiper-slide">
-                  <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}"
-                    name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$item->price_format}}"
-                    priceCurrent="{{$item->price_current_format}}" discount="{{$item->discount}}" />
+                  <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" 
+                    name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$price1}}"
+                    priceCurrent="{{$price2}}đ" discount="{{$item->discount}}" />
                 </div>
                 @endforeach
             @endforeach
@@ -316,10 +330,10 @@ $indexCategory++;
           slidesPerView: 1,
           spaceBetween: 20,
           pagination: {
-              el: ".swiper-pagination",
+              el: ".swiper-pagination.categoryGroup",
               dynamicBullets: true,
 
-            },
+            }
         },
         640: {
           slidesPerView: 3,

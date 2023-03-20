@@ -11,18 +11,19 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('summary');
+            $table->string('summary',2000);
             $table->longText('content');
             $table->string('thumb');
             $table->string('slug')->unique();
+            $table->boolean('is_hot')->default(true);
             $table->foreignId('category_news_id')->constrained('categories_news');
             $table->timestamp('deleted_at')->nullable();
-            $table->string('created_by')->default(null);
-            $table->string('updated_by')->default(null);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }
