@@ -75,16 +75,16 @@
 .products-card .content .price {
   display: flex;
   align-items: flex-end;
-  gap:10px
+  gap:5px
 }
 .price .price_new{
     color: var(--accentColor2);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
 }
 .price .price_old{
     color: var(--accentColor1);
-    font-size: 13px;
+    font-size: 12px;
 }
 .products-card .discount{
     position: absolute;

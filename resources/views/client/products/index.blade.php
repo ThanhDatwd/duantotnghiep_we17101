@@ -11,9 +11,17 @@
 
 @endsection
 @section('main-content')
+<section  class="container">
+    <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
+      <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
+        <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
+      </ol>
+    </nav>
+  </section>
 <div class="container">
     <div class="products">
-        <h1>Tất cả sản phẩm</h1>
+        <h1>{{$title}}</h1>
         <div class="image-slider">
             <div class="image-item">
                 <div class="image">
@@ -50,9 +58,8 @@
 
 
         {{-- ----------------------------- --}}
-        <div class="product">
-            <div class="pro">
-
+        <div class="row">
+            <div class="col-12 col-lg-3 d-sm-block d-none"  >
                 <div class="pro-1">
                     <div class="customsselects">
                         <div class="s1">
@@ -117,7 +124,7 @@
                 </div>
             </div>
             {{-- ------------------------------- --}}
-            <div class="pro">
+            <div class="col-12 col-lg-9">
 
                 <div class="pro-xep">
                     <div class="pro-x">
@@ -141,7 +148,7 @@
                 </div>
 
                 @if (count($products)>0)
-                <div style="display: grid;grid-template-columns:repeat(4,1fr);gap :20px;">
+                <div class="row">
                     @foreach ($products as $item)
                     @php
                     $price1="";
@@ -151,10 +158,12 @@
                     $price2=number_format($item->price_current-($item->price_current*$item->discount/100));
                     }
                     @endphp
-                    <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" name="{{$item->name}}"
-                        thumb="{{$item->thumb}}" priceOld="{{$price1}}" priceCurrent="{{$price2}}đ"
-                        discount="{{$item->discount}}" />
-
+                    <div class="col-6  col-lg-3 mb-2 mt-2">
+                        <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" name="{{$item->name}}"
+                            thumb="{{$item->thumb}}" priceOld="{{$price1}}" priceCurrent="{{$price2}}đ"
+                            discount="{{$item->discount}}" />
+    
+                    </div>
                         @endforeach
                 </div>
                 @else

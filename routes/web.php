@@ -67,10 +67,9 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/payment_momo_atm', [PaymentController::class,'create_payment_momo_atm'])->name('payment_momo_atm');
     Route::get('/return_payment_momo_atm', [PaymentController::class,'return_payment_momo_atm'])->name('return_payment_momo_atm');
     Route::get('/search', [ProductsController::class,'search'])->name('search');
-    Route::get('thanks', function () {
-        return view('client.thankyou.index');
-    })->name('page-thanks');
+    Route::get('thanks/{code}', [PaymentController::class,'thanks'])->name('page-thanks');
     Route::post('/add-to-cart', [ProductsController::class,'addToCart'])->name('add-to-cart');
+    Route::post('/buy-now', [ProductsController::class,'buyNow'])->name('buy-now');
     Route::post('/minus-to-cart', [ProductsController::class,'minusToCart'])->name('minus-to-cart');
     Route::post('/remove-to-cart', [ProductsController::class,'removeToCart'])->name('remove-to-cart');
     Route::post('/remove-all-cart', [ProductsController::class,'removeAllCart'])->name('remove-all-cart');
@@ -85,7 +84,7 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
     Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
     });
-    Route::prefix('/admin')->name('site')->group(function(){
+    Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function(){
         //-----------------Admin Home-----------------
         Route::get('/', [AdminController::class,'index'])->name('dashboard');
        
@@ -175,13 +174,9 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');
     Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
     // thống kê
-    // profile
-    Route::get('/profile', [AdminController::class,'profile'])->name('admin-profile');
     Route::get('/thong-ke', [AdminUserController::class,'thongke5sp'])->name('thongke');
     //logout
     Route::get('/logout', [AdminController::class,'logout'])->name('admin-logout');
-    //
-    Route::get('/thong-ke-baiviet', [AdminController::class,'thongkebaiviet'])->name('thongkebaiviet');
 });
 
 

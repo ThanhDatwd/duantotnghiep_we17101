@@ -104,8 +104,6 @@
         </div>
         @endforeach
       </div>
-      <div class="swiper-button-next categoryGroup"></div>
-      <div class="swiper-button-prev categoryGroup"></div>
       <div class="swiper-pagination categoryGroup "></div>
     </div>
   </div>
@@ -123,7 +121,7 @@
             $price1="";
                   $price2=number_format($item->price_current);
                   if($item->discount>0){
-                    $price1=number_format($item->price_current)."đ";
+                    $price1=number_format($item->price_current);
                     $price2=number_format($item->price_current-($item->price_current*$item->discount/100));
                   }
             $progressValue=($item->quantity_output/$item->quantity_input)*100;
@@ -140,7 +138,7 @@
             <x-ProductCard link="{{route('clientproduct-detail',['slug'=>$item->slug])}}" 
               isProgress={{true}} progressTxt="{{$progressTxt}}" progressValue="{{$progressValue}}"
               name="{{$item->name}}" thumb="{{$item->thumb}}" priceOld="{{$price1}}"
-              priceCurrent="{{$price2}}đ" discount="{{$item->discount}}" />
+              priceCurrent="{{$price2}}" discount="{{$item->discount}}" />
           </div>
           @endforeach
         </div>
@@ -332,10 +330,10 @@ $indexCategory++;
           slidesPerView: 1,
           spaceBetween: 20,
           pagination: {
-              el: ".swiper-pagination",
+              el: ".swiper-pagination.categoryGroup",
               dynamicBullets: true,
 
-            },
+            }
         },
         640: {
           slidesPerView: 3,

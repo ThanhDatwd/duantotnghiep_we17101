@@ -40,24 +40,26 @@ class ProductsController extends Controller
         $data = [
             "category"=>$category,
             "categoryGroups"=>$categoryGroups,
-            "products" => $products
+            "products" => $products,
+            "title"=> $category->category_name
         ];
         return view('client.products.index', $data);
     }
     public function group($slug)
     {
-        // $products = DB::table('products')->paginate(12);
-        $categoryGroups = category_group::all();
+        $categoryGroups = category_group::with('categories.products')->get();
         $categoryGroup = category_group::with('categories.products')->where('slug', $slug)->first();
         $products = product::whereHas('category', function ($query) use ($slug) {
             $query->whereHas('category_group', function ($query) use ($slug) {
                 $query->where('slug', $slug);
             });
-        })->get();;
+        })->paginate(8);
+        // dd($products);
         
         $data = [
             "products" => $products,
             "categoryGroups"=>$categoryGroups,
+            "title"=>$categoryGroup->name
         ];
         return view('client.products.index', $data);
     }
@@ -72,6 +74,7 @@ class ProductsController extends Controller
         $data = [
             "products" => $products,
             "categoryGroups"=>$categoryGroups,
+            "title"=>"Tất cả sản phẩm"
         ];
         return view('client.products.index', $data);
     }
@@ -94,6 +97,7 @@ class ProductsController extends Controller
         ];
         return view('client.productDetail.index', $data);
     }
+    
     public function addToCart(Request $request)
     {
         
@@ -124,6 +128,37 @@ class ProductsController extends Controller
         setcookie('cartFarmApp', json_encode($cart), time() + 3 * 24 * 60 * 60, '/');
 
         return redirect()->back();
+    }
+    public function buyNow(Request $request)
+    {
+        
+        $isFind = false;
+        for ($i = 0; $i < count($this->cartFarmApp); $i++) {
+            if ($this->cartFarmApp[$i]['productId'] == $request->productId) {
+                $this->cartFarmApp[$i]['amount'] += $request->amount;
+                $isFind = true;
+                break;
+            }
+        }
+        if ($isFind == false) {
+            $this->cartFarmApp[] = [
+                'productId'  => $request->productId,
+                'amount' => $request->amount,
+            ];
+        }
+        $cart = [];
+        foreach ($this->cartFarmApp as $item) {
+            if ($item['amount'] > 0) {
+                $cart[] = [
+                    'productId' => $item['productId'],
+                    'amount'       => $item['amount']
+                ];
+            }
+        }
+
+        setcookie('cartFarmApp', json_encode($cart), time() + 3 * 24 * 60 * 60, '/');
+
+        return redirect()->route('clientpayment');
     }
     public function minusToCart(Request $request)
     {

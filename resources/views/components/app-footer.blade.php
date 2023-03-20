@@ -180,7 +180,6 @@
 <link rel="stylesheet" href="{{asset('css/client/footer.css')}}">
 
 <!-- <link rel="stylesheet" href="{{asset('css/client/home.css')}}"> -->
-<img class="img-nen" src="{{asset('img/vien-removebg.png')}}" alt="">
 
 <footer class="mt-4">
 
