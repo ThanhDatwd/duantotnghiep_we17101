@@ -241,6 +241,9 @@ use Illuminate\Support\Facades\DB;
             
                 </div>
             </div>
+            <div class="addpro">
+               
+            </div>
             <button class="btnmoi" type="submit">
                 THÊM MỚI</button>
                 

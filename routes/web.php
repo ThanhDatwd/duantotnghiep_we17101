@@ -17,8 +17,10 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\admin\ImportHistoryController;
 use App\Http\Controllers\client\AuthController;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Symfony\Component\Routing\Router;
@@ -65,6 +67,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/return_payment_momo_qr', [PaymentController::class,'return_payment_momo_qr'])->name('return_payment_momo_qr');
     Route::post('/payment_momo_atm', [PaymentController::class,'create_payment_momo_atm'])->name('payment_momo_atm');
     Route::get('/return_payment_momo_atm', [PaymentController::class,'return_payment_momo_atm'])->name('return_payment_momo_atm');
+    Route::get('/search', [ProductsController::class,'search'])->name('search');
     Route::get('thanks', function () {
         return view('client.thankyou.index');
     })->name('page-thanks');
@@ -72,7 +75,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/minus-to-cart', [ProductsController::class,'minusToCart'])->name('minus-to-cart');
     Route::post('/remove-to-cart', [ProductsController::class,'removeToCart'])->name('remove-to-cart');
     Route::post('/remove-all-cart', [ProductsController::class,'removeAllCart'])->name('remove-all-cart');
-    Route::get('/search', [ProductsController::class,'search'])->name('search');
+    Route::post('/comment', [NewsController::class,'comment'])->name('comment');
    
 });
     //
@@ -83,11 +86,10 @@ Route::prefix('/')->name('client')->group(function () {
         Route::get('/admin_users/them', [AdminUserController::class,'them'])->name('admin.admin_users.create');
     Route::post('/admin_users/them', [AdminUserController::class,'them1'])->name('admin.admin_users.create_');
     });
-    // Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function(){
     Route::prefix('/admin')->name('site')->group(function(){
-
         //-----------------Admin Home-----------------
         Route::get('/', [AdminController::class,'index'])->name('dashboard');
+       
         //-----------Admin Product-------------
         Route::get('/product', [AdminProductController::class,'index'])->name('admin-product');
         Route::get('/product/create', [AdminProductController::class,'create'])->name('admin.product.create');
@@ -173,9 +175,14 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/admin_users/capnhat/{id}', [AdminUserController::class,'capnhat_'])->name('admin.admin_users.update_');
     Route::get('/admin_users/xoa/{id}', [AdminUserController::class,'xoa'])->name('admin.admin_users.delete');
     Route::get('/admin_users/phuc-hoi/{id}', [AdminUserController::class,'restore'])->name('admin.admin_users.restore');
+    // thống kê
+    Route::get('/thong-ke', [AdminUserController::class,'thongke5sp'])->name('thongke');
+    //logout
+    Route::get('/logout', [AdminController::class,'logout'])->name('admin-logout');
 
-
-
+    // ------------------------Admin Import-History-----------------
+    Route::get('/import',[ImportHistoryController::class,'index']);
 });
+
 
     

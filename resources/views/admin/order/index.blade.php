@@ -25,6 +25,7 @@
 
 .tabset .tab-panel {
   display: none;
+  
 }
 
 .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
@@ -39,20 +40,19 @@
 /*
  Styling
 */
-body {
-  font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
-  color: #333;
-  font-weight: 300;
-}
 
 .tabset > label {
   position: relative;
   display: inline-block;
-  padding: 15px 15px 25px;
+  padding: 15px 15px 20px ;
   border: 1px solid transparent;
   border-bottom: 0;
   cursor: pointer;
   font-weight: 600;
+  background: var(--primary);
+  color:#fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .tabset > label::after {
@@ -62,28 +62,30 @@ body {
   bottom: 10px;
   width: 22px;
   height: 4px;
-  background: #8d8d8d;
+  background: #fff;
 }
 
 .tabset > label:hover,
 .tabset > input:focus + label {
-  color: #06c;
+  color:var(--primary);
 }
 
 .tabset > label:hover::after,
 .tabset > input:focus + label::after,
 .tabset > input:checked + label::after {
-  background: #06c;
+  background: var(--primary);
 }
 
 .tabset > input:checked + label {
   border-color: #ccc;
   border-bottom: 1px solid #fff;
   margin-bottom: -1px;
+  background: #fff;
+  color: var(--primary);
 }
 
 .tab-panel {
-  padding: 30px 0;
+  padding: 10px 10px 0 10px;
   border-top: 1px solid #ccc;
 }
 
@@ -99,7 +101,9 @@ body {
 
 
 .tabset {
-  max-width: 65em;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 20px
 }
   </style>
 
@@ -157,7 +161,8 @@ body {
                 <td>{{$o->fee_ship}}</td>
                 <td>{{$o->total}}</td>
             
-                <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
+                <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                </a>
                 </td>
             </tr>
             @endif
@@ -211,7 +216,8 @@ body {
                       <td>{{$o->fee_ship}}</td>
                       <td>{{$o->total}}</td>
                   
-                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                      </a>
                       </td>
                   </tr>
                   @endif
@@ -264,7 +270,8 @@ body {
                       <td>{{$o->fee_ship}}</td>
                       <td>{{$o->total}}</td>
                   
-                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                      </a>
                       </td>
                   </tr>
                   @endif
@@ -316,7 +323,8 @@ body {
                       <td>{{$o->fee_ship}}</td>
                       <td>{{$o->total}}</td>
                   
-                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button>Chi tiết</button> </a>
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                      </a>
                       </td>
                   </tr>
                   @endif

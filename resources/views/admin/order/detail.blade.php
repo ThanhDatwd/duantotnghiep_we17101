@@ -24,6 +24,8 @@
                                     display: flex;
                                     background: #fff;
                                     margin: 10px 0;
+                                    border-radius: 20px;
+                                    padding:10px 20px 0 20px;
                                 }
                                 .sanpham .box {
                                     margin: 8px 10px;
@@ -33,8 +35,9 @@
                                     width: 100%;
                                 }
                                 .sanpham .box img {
-                                    max-width:  200px;
-                                    max-height: 150px
+                                    max-width:  150px;
+                                    height: 100%;
+                                    max-height: 100px;
                                 }
                                 .boxx{
                                     display: flex;
