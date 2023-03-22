@@ -53,7 +53,7 @@
 				<img style="width:180px"
 					src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1676652183181" alt="">
 			</div>
-			<div class="input-infomation row">
+			<div class="input-infomation row ">
 				<form id="form-order" action="{{route('clientpayment_cod')}}" method="POST"
 					class="form-order col-lg-6 col-xs-12">
 					@csrf
@@ -67,7 +67,7 @@
 					<div class="error-txt "></div>
 					<div>
 						<div class="form-group order">
-							<input type="email" name="email" placeholder="email" id="email" value="{{old('email')}}">
+							<input type="email" name="email" placeholder="email" id="user_email" value="{{old('email')}}">
 						</div>
 						<span class="text-danger">@error('email')
 							{{$message}}
@@ -202,21 +202,19 @@
 						</div>
 					</div>
 
-					{{-- <button id="payment_vnpay">thanh toán vnpay</button> --}}
-					{{-- <form action="{{route('clientpayment_vnpay')}}" method="POST">
-						@csrf
-					</form>
-					<form action="{{route('clientpayment_momo_qr')}}" method="POST">
-						@csrf
-						<button type="submit">thanh toán momo QR code</button>
-					</form>
-					<form action="{{route('clientpayment_momo_atm')}}" method="POST">
-						@csrf
-						<button type="submit" name="payUrl">thanh toán momo ATM</button>
-					</form> --}}
-
 				</div>
-
+				<div class="d-sm-none d-block">
+					<div class="d-flex justify-content-center ">
+						<button class="btn btn-buyNow p-10 " id="btn-order-now">Đặt mua</button>
+					</div>
+					<div class="d-flex justify-content-center mt-2">
+						<a href="{{route('clientcart')}}">
+							<i class='bx bx-chevron-left'></i>
+							Quay về trang đặt hàng
+						</a>
+					</div>
+				</div>
+                
 			</div>
 		</div>
 		<div class="col-lg-4 col-xs-12">
@@ -277,7 +275,7 @@
 						<i class='bx bx-chevron-left'></i>
 						Quay về trang đặt hàng
 					</a>
-					<button class="btn btn-buyNow" id="btn-order-now">Đặt mua</button>
+					<button class="btn btn-buyNow d-none d-sm-block" id="btn-order-now">Đặt mua</button>
 					{{-- <button hidden class="btn btn-showModalInputCode" data-toggle="modal"
 						data-target="#exampleModalCenter">Đặt mua</button> --}}
 				</div>
@@ -294,7 +292,7 @@
 	const paymentCodArea=document.querySelector(".payment.cod_area")
 	const paymentCodMessage=document.querySelector(".payment.cod_area .message")
 	const paymentOnlineList=document.querySelector(".payment.online_area .payment-online")
-	const btnOrderNow=document.getElementById("btn-order-now")
+	const btnOrderNow=document.querySelectorAll(".btn.btn-buyNow")
 	const formOrder=document.getElementById('form-order')
 	const btnPaymentVnpay=document.querySelector(".payment_vnpay")
 	const btnPaymentMomo=document.querySelector(".payment_momo")
@@ -330,9 +328,9 @@
 		});
 		btnPaymentMomo.classList.add('active')
 	}
-	btnOrderNow.onclick=()=>{
-		// formOrder.submit()
-		if(getOtp==true){
+	btnOrderNow.forEach(e=>{
+		e.onclick=()=>{
+			if(getOtp==true){
 			btn_verify_code_otp.click()
 			sendNotificationGetOtp()
             
@@ -340,9 +338,15 @@
 		else{
 			formOrder.submit()
 		}
+<<<<<<< HEAD
 	}
     let email=document.getElementById('#email')
+=======
+		}
+	})
+>>>>>>> origin/develop
 	const sendNotificationGetOtp=()=>{
+		let email=$('#user_email').val()
 		$.ajax({
                     type: 'post',
                     url: 'http://127.0.0.1:8000/api/get_order_otp',

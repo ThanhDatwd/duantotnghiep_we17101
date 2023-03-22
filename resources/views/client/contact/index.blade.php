@@ -5,29 +5,16 @@
 <!-- LINK CSS -->
 @endsection
 @section('main-content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ</title>
-</head>
-<body>
-    <div class="content">
-        <div class="breadcrumbs">
-            <div class="container">
-                <ul class="breadcrumbs breadcrumb align-items-center m-0 pl-0 pr-0 border-bottom">
-                    <li class="home">
-                        <a href="/" title="trang chủ">Trang Chủ</a>
-                        <span class="slash-divider ml-2 mr-2">/</span>
-                    </li>
-                    <li>Liên Hệ</li>
-                </ul>
-            </div>
-        </div>
+
+    <div class="content container ">
+        <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
+            <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
+              <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+            </ol>
+          </nav>
         <div class="com-info">
-            <div class="container mt-3">
+            <div class="mt-2">
 
                 <div class="col-main page-title">
                     <h1>Liên Hệ</h1>
@@ -74,8 +61,7 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
 
 
 @endsection

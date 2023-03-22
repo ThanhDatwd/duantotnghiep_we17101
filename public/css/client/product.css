@@ -67,7 +67,7 @@
 .pro .pro-1{
     width: 100%;
 }
-.pro h2 {
+.pro-1 h2 {
     color: #fff;
     background:  var(--mainColor);
     font-size: 20px;
@@ -229,3 +229,9 @@
     margin: 10px;
     border: 1px solid black;
 }
+
+@media only screen and (max-width: 576px){
+   .product-dashboard{
+    display: none;
+   }
+  }

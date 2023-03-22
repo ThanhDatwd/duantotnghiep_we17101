@@ -181,6 +181,7 @@ class PaymentController extends Controller
         $order_detail->save();
       }
       $order_temp=order_temp::where("id",$data["id"])->first();
+      setcookie('cartFarmApp', json_encode([]), time() + 3 * 24 * 60 * 60, '/');
       return redirect()->route('clientpage-thanks');
       } catch (\Throwable $th) {
         throw $th;
@@ -326,7 +327,7 @@ class PaymentController extends Controller
   public function get_order_otp(Request $request)
   { 
     $email=$request->email??"nguyenthanhdatntd02@gmail.com";
-    $otp=rand(0000,9999);
+    $otp=mt_rand(1000,9999);
     $mail=new SendVerifyCodeMail($otp);
     Mail:: to($email)->queue($mail);
     setcookie('otp_order_gm', json_encode($otp), time() + 60, '/');
@@ -380,6 +381,7 @@ class PaymentController extends Controller
       $order->payment_type = 'cod';
       $order->status = 1;
       $order->total = 10000;
+      $order->code=mt_rand(1000,9999);
       $order->fee_ship = 0;
       $order->save();
       foreach ($cartFarmApp as $item) {
@@ -399,5 +401,14 @@ class PaymentController extends Controller
     } else {
       dd("Vui lòng nhập  thông tin");
     }
+  }
+  public function thanks($code)
+  {
+    
+    $order=order::where('code',$code)->first();
+    $data=[
+      "order"=>$order
+    ];
+    return view('client.thankyou.index',$data);
   }
 }

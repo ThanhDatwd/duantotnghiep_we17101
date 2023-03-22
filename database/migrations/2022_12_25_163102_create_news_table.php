@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('content');
             $table->string('thumb');
             $table->string('slug')->unique();
+            $table->boolean('is_hot')->default(true);
             $table->foreignId('category_news_id')->constrained('categories_news');
             $table->timestamp('deleted_at')->nullable();
             $table->string('created_by')->nullable();

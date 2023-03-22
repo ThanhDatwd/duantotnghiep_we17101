@@ -8,8 +8,16 @@
   {{ session('success') }}
 </div> 
 @endif
-<section class="product-detail grid container mt-5">
-  
+
+<section  class="container">
+  <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
+    <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
+      <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
+    </ol>
+  </nav>
+</section>
+<section class="product-detail grid container mt-4">
         <div class="">
             <h1 class="product-name font-weight-bold text-uppercase mb-3">{{$product->name}}</h1>
             <div class="product-detail--infos">
@@ -39,13 +47,13 @@
                     {{-- <img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="" class="product-detail--img swiper-slide"> --}}
                 </div>
                 <div class="product-detail--info">
-                    <div class="product-detail--info__status">Tình trạng: <span>Còn hàng</span>  |  Thương hiệu: <span>Green Food</span></div>
+                    <div class="product-detail--info__status">Tình trạng: <span>{{$product->quantity_output>=$product->quantity_input?"Hết hàng":"Còn hàng"}}</span>  |  Thương hiệu: <span>Green Food</span></div>
                     <div class="product-detail--info__prices">
                         @if ($product->discount>0)
-                          <div class="product-detail--info__price-new">{{number_format(($product->price_current-($product->price_current*$product->discount/100)))}}<span>₫</span></div>
-                          <div class="product-detail--info__price-old">{{number_format($product->price_current)}}<span>₫</span></div>
+                          <div class="product-detail--info__price-new">{{number_format(($product->price_current-($product->price_current*$product->discount/100)))}}<span> vnđ</span></div>
+                          <div class="product-detail--info__price-old">{{number_format($product->price_current)}}<span> vnđ</span></div>
                         @else
-                          <div class="product-detail--info__price-old">{{$product->price_current}}<span>₫</span></div>
+                          <div class="product-detail--info__price-old">{{$product->price_current}}<span> vnđ</span></div>
                         @endif
                     </div>
                     <form id="form-add" method="post" action={{route('clientadd-to-cart')}}>
@@ -60,8 +68,8 @@
                         </div>
                         @csrf
                       <div class="product-detail--info__cta">
-                          <button class="btn btn-1">Thêm vào giỏ hàng</button>
-                          <button class="btn btn-2">Mua ngay</button>
+                          <button class="btn btn-1" id="btn_add_to_card">Thêm vào giỏ hàng</button>
+                          <button class="btn btn-2" id="btn_buy_now">Mua ngay</button>
                       </div>
                   </form>
                     <div class="btn-shopee">
@@ -69,8 +77,8 @@
                     </div>
                 </div>
             </div>
-            <div>
-              @if (strlen($coupons)>1)
+            <div class="mt-4">
+              @if (count(json_decode($coupons))>=1)
                 <x-AppCouponCard :list="$coupons"/>
               @endif
             </div>
@@ -79,7 +87,7 @@
                 <p>{{$product->content!=""?$product->content:'Đang cập nhật'}}</p>
             </div>
         </div>
-        <div class="related-products">
+        <div class="related-products d-sm-block d-none">
             <h2 class="title mb-3 text-uppercase font-weight-bold position-relative ">
                 <a href="" >Sản phẩm liên quan</a>
                 <div class="position-relative">
@@ -172,7 +180,21 @@
     const amount = formAdd.querySelector('.input-amount')
     const btnAdd = formAdd.querySelector('.btn-amount.add')
     const btnDesc = formAdd.querySelector('.btn-amount.desc')
+    const btn_add_to_card=$('#btn_add_to_card')
+    const btn_buy_now=$('#btn_buy_now')
 
+    btn_buy_now.click((e)=>{
+      e.preventDefault();
+      formAdd.action=`${'{{ env('APP_URL') }}'}/buy-now`;
+      formAdd.submit()
+      console.log(formAdd.acction)
+    })
+    btn_add_to_card.click((e)=>{
+      formAdd.action='{{ env('APP_URL') }}'+"/add-to-cart";
+      e.preventDefault();
+      formAdd.submit()
+
+    })
     const btnOrderNow = formAdd.querySelector('.btnOrder-now')
     btnAdd.onclick = () => {
         amount.value++
@@ -182,5 +204,6 @@
           amount.value--
         }
     }
+  
   </script>
 @endsection

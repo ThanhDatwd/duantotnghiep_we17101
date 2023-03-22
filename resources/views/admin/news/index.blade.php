@@ -36,7 +36,10 @@ use Illuminate\Support\Facades\DB;
                   </td>
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
               <td>{{$item->title}}</td>
-                                        <td>{{$item->summary}}</td>
+                                        <td>
+                                          
+                                           {{ substr($item->summary, 0, 100) }}...
+                                        </td>
                                         <td>
                                             {{$item->created_by}}
                                         </td>
@@ -93,15 +96,24 @@ use Illuminate\Support\Facades\DB;
                             </div>
                         </div>
                     
+<<<<<<< HEAD
             
             
+=======
+            
+            
+
+>>>>>>> origin/develop
 
 
 </form>
-
 @endsection
 
+<<<<<<< HEAD
 </form>
+=======
+
+>>>>>>> origin/develop
   
 
 

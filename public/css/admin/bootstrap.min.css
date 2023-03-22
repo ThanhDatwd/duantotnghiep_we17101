@@ -6787,7 +6787,7 @@ fieldset:disabled .btn {
     word-break: break-word !important;
 }
 .text-primary {
-    color: #009cff !important;
+    color: var(--primary) !important;
 }
 .text-secondary {
     color: #6c757d !important;

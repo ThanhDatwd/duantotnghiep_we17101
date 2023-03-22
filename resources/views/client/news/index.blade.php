@@ -1,18 +1,17 @@
 @extends('client.appLayout.index')
 @section('main-content')
 <link rel="stylesheet" href="{{asset('css/client/news_index.css')}}">
-<div class="container" style="margin-top: 20px;">
-  <div class="path">
-    <a href="">Trang chủ</a>
-    <span></span>
-    <a href="">Tin tức</a>
-
-    <hr>
-  </div>
+<div class="container" >
+  <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
+    <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
+      <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+    </ol>
+  </nav>
 
   {{--
   <x-CouponCard data={{$products}} /> --}}
-  <div class="main">
+  <div class="main mt-2">
     <div class="main_content" style="width: 100%">
       <div class="row align-items-end">
         <div class="col-9">

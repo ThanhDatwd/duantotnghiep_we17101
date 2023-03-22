@@ -1,0 +1,87 @@
+.character {
+    /*display: table;*/
+    max-width: 100%;
+
+    padding: 20px;
+}
+
+h1 {
+    font-family: "Passion One", fantasy;
+    font-weight: 200;
+    margin-top: 18px;
+    margin-bottom: 0;
+}
+h1 span {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #666;
+}
+hr {
+    margin-top: 24px;
+    border: none;
+    border-radius: 2px;
+    height: 5px;
+}
+
+/*****  AVATAR  *****/
+
+.avatar {
+    display: table-cell;
+    position: relative;
+    min-width: 128px; /* Without this the .stat will use all the space in the container */
+    width: 128px;
+    height: 128px;
+    background-image: url("https://haycafe.vn/wp-content/uploads/2022/02/Avatar-trang-cho-nu.jpg");
+    background-size: cover;
+    border: 1px solid #444;
+    border-radius: 50%;
+}
+.avatar .level {
+    position: absolute;
+    bottom: 5px;
+    right: 6px;
+
+    padding: 3px 5px;
+    background-color: #58f; /* Light blue */
+    color: #fff;
+    font-family: "Passion One", fantasy;
+    font-size: 18px;
+    text-shadow: 0 0 1px #333; /* Make number more readable */
+    border-radius: 4px;
+    border: 2px solid #444;
+}
+
+/*****  STATS  ****/
+
+.stats {
+    display: table-cell;
+    width: 100%;
+    padding: 15px;
+
+    color: #222;
+}
+.stats ul {
+    padding-left: 0;
+    margin: 0;
+    list-style-type: none; /* Removes item icons */
+    font-family: "Quattrocento";
+    font-size: 16px;
+    line-height: 25px; /* Vertically separates list items */
+}
+.stats .fa {
+    margin-right: 3px;
+    font-size: 22px;
+    position: relative;
+    top: 2px; /* Attempt to align vertically text and icons */
+}
+
+#str,
+#con,
+#int,
+#per {
+}
+@media screen and (max-width: 600px) {
+    .avatar {
+        width: 20%;
+    }
+}
