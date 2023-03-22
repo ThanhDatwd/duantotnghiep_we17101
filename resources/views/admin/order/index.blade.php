@@ -25,6 +25,7 @@
 
 .tabset .tab-panel {
   display: none;
+  
 }
 
 .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
@@ -39,20 +40,19 @@
 /*
  Styling
 */
-body {
-  font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
-  color: #333;
-  font-weight: 300;
-}
 
 .tabset > label {
   position: relative;
   display: inline-block;
-  padding: 15px 15px 25px;
+  padding: 15px 15px 20px ;
   border: 1px solid transparent;
   border-bottom: 0;
   cursor: pointer;
   font-weight: 600;
+  background: var(--primary);
+  color:#fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .tabset > label::after {
@@ -62,28 +62,30 @@ body {
   bottom: 10px;
   width: 22px;
   height: 4px;
-  background: #8d8d8d;
+  background: #fff;
 }
 
 .tabset > label:hover,
 .tabset > input:focus + label {
-  color: #06c;
+  color:var(--primary);
 }
 
 .tabset > label:hover::after,
 .tabset > input:focus + label::after,
 .tabset > input:checked + label::after {
-  background: #06c;
+  background: var(--primary);
 }
 
 .tabset > input:checked + label {
   border-color: #ccc;
   border-bottom: 1px solid #fff;
   margin-bottom: -1px;
+  background: #fff;
+  color: var(--primary);
 }
 
 .tab-panel {
-  padding: 30px 0;
+  padding: 10px 10px 0 10px;
   border-top: 1px solid #ccc;
 }
 
@@ -99,7 +101,9 @@ body {
 
 
 .tabset {
-  max-width: 65em;
+  max-width: 100%;
+  background: #fff;
+  border-radius: 20px
 }
   </style>
 
@@ -137,7 +141,7 @@ body {
       </thead>
       <tbody>
         @foreach ($order as $o)
-        @if ($o->status == 2)
+        @if ($o->status == 1)
             <tr>
                 <th></th>
                 <th>{{$o->id}}</th>
@@ -157,7 +161,8 @@ body {
                 <td>{{$o->fee_ship}}</td>
                 <td>{{$o->total}}</td>
             
-                <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <i class="fa-solid fa-circle-info"></i> </a>
+                <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                </a>
                 </td>
             </tr>
             @endif
@@ -173,17 +178,165 @@ body {
 
     </section>
     <section id="tab2" class="tab-panel">
-      <tbody>
-        
-      </tbody>
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên người đặt</th>
+                    <th scope="col">Loại thanh toán</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Phí giao hàng</th>
+                  
+                    <th scope="col">Tổng tiền</th> 
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach ($order as $o)
+              @if ($o->status == 2)
+                  <tr>
+                      <th></th>
+                      <th>{{$o->id}}</th>
+                      <td>{{$o->user_name}}</td>
+                      <td>
+                          @if ($o->payment_type==1)
+                          Online
+                          @elseif ($o->payment_type==2)
+                          Cod
+                          @elseif ($o->payment_type==3)
+                          ATM
+                          @else
+                          Chưa phân loại
+                          @endif
+                      </td>
+                      <td>{{$o->phone}}</td>
+                      <td>{{$o->fee_ship}}</td>
+                      <td>{{$o->total}}</td>
+                  
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                      </a>
+                      </td>
+                  </tr>
+                  @endif
+      @endforeach
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              {{-- {{$order->appends(request()->all())->links()}}   --}}
+          </ul>
+        </nav>
+      </div>
     </section>
     <section id="tab3" class="tab-panel">
-      <h2>6C. Dunkles Bock</h2>
-      <p><strong>Overall Impression:</strong> A dark, strong, malty German lager beer that emphasizes the malty-rich and somewhat toasty qualities of continental malts without being sweet in the finish.</p>
-      <p><strong>History:</strong> Originated in the Northern German city of Einbeck, which was a brewing center and popular exporter in the days of the Hanseatic League (14th to 17th century). Recreated in Munich starting in the 17th century. The name “bock” is based on a corruption of the name “Einbeck” in the Bavarian dialect, and was thus only used after the beer came to Munich. “Bock” also means “Ram” in German, and is often used in logos and advertisements.</p>
-    </section>
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên người đặt</th>
+                    <th scope="col">Loại thanh toán</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Phí giao hàng</th>
+                  
+                    <th scope="col">Tổng tiền</th> 
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach ($order as $o)
+              @if ($o->status == 3)
+                  <tr>
+                      <th></th>
+                      <th>{{$o->id}}</th>
+                      <td>{{$o->user_name}}</td>
+                      <td>
+                          @if ($o->payment_type==1)
+                          Online
+                          @elseif ($o->payment_type==2)
+                          Cod
+                          @elseif ($o->payment_type==3)
+                          ATM
+                          @else
+                          Chưa phân loại
+                          @endif
+                      </td>
+                      <td>{{$o->phone}}</td>
+                      <td>{{$o->fee_ship}}</td>
+                      <td>{{$o->total}}</td>
+                  
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                      </a>
+                      </td>
+                  </tr>
+                  @endif
+      @endforeach
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              {{-- {{$order->appends(request()->all())->links()}}   --}}
+          </ul>
+        </nav>
+      </div>    </section>
     <section id="tab4" class="tab-panel">
-
+      <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tên người đặt</th>
+                    <th scope="col">Loại thanh toán</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Phí giao hàng</th>
+                  
+                    <th scope="col">Tổng tiền</th> 
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach ($order as $o)
+              @if ($o->status == 4)
+                  <tr>
+                      <th></th>
+                      <th>{{$o->id}}</th>
+                      <td>{{$o->user_name}}</td>
+                      <td>
+                          @if ($o->payment_type==1)
+                          Online
+                          @elseif ($o->payment_type==2)
+                          Cod
+                          @elseif ($o->payment_type==3)
+                          ATM
+                          @else
+                          Chưa phân loại
+                          @endif
+                      </td>
+                      <td>{{$o->phone}}</td>
+                      <td>{{$o->fee_ship}}</td>
+                      <td>{{$o->total}}</td>
+                  
+                      <td> <a style="color: green" href="/admin/order/detail/{{$o->id}}"> <button type="button" class="btn btn-outline-success">Chi tiết</button>
+                      </a>
+                      </td>
+                  </tr>
+                  @endif
+      @endforeach
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+              {{-- {{$order->appends(request()->all())->links()}}   --}}
+          </ul>
+        </nav>
+      </div>
     </section>
   </div>
   

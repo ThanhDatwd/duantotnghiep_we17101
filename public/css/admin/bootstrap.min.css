@@ -3398,7 +3398,7 @@ fieldset:disabled .btn {
 .dropdown-item {
     display: block;
     width: 100%;
-    padding: 0.25rem 1rem;
+    padding: 0.5rem 1rem;
     clear: both;
     font-weight: 400;
     color: #212529;
@@ -6787,7 +6787,7 @@ fieldset:disabled .btn {
     word-break: break-word !important;
 }
 .text-primary {
-    color: #009cff !important;
+    color: var(--primary) !important;
 }
 .text-secondary {
     color: #6c757d !important;

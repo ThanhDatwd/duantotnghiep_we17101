@@ -4,6 +4,7 @@
     --primary: #0f9249;
     --light: #f3f6f9;
     --dark: #191c24;
+    --back:#555;
 }
 /* body{
     overflow-x: hidden;
@@ -14,10 +15,10 @@
 ::-webkit-scrollbar {
     width: 1px;
 
-    color: red;
+   /* color: red; */
 }
-::-webkit-scrollbar-thumb {
-    background: red;
+::-webkit-scrollbar-thumb{
+   /* background: red; */
 }
 .texlo {
     width: 100%;
@@ -98,7 +99,7 @@
     width: 250px;
     height: 100vh;
     overflow-y: auto;
-    background: var(--light);
+    background: var(--back);
     transition: 0.5s;
     z-index: 999;
 }
@@ -147,9 +148,9 @@
 /*** Navbar ***/
 .sidebar .navbar .navbar-nav .nav-link {
     padding: 7px 20px;
-    color: var(--dark);
+    color: var(--light);
     font-weight: 500;
-    border-left: 3px solid var(--light);
+    border-left: 3px solid var(--back);
     border-radius: 0 30px 30px 0;
     outline: none;
 }
@@ -168,6 +169,7 @@
     align-items: center;
     justify-content: center;
     background: #ffffff;
+    color: #000;
     border-radius: 40px;
     margin-right: 10px;
 }
@@ -194,9 +196,13 @@
 
 .sidebar .navbar .dropdown-item {
     padding-left: 35px;
+    color: var(--light);
     border-radius: 0 30px 30px 0;
 }
-
+.sidebar .navbar .dropdown-item:hover {
+    background: #fff;
+    color: var(--primary);
+}
 .content .navbar .navbar-nav .nav-link {
     margin-left: 25px;
     padding: 12px 0;
@@ -334,7 +340,7 @@
         width: 100%;
     }
 }
-* {
+/* * {
     font-family: "Nunito", sans-serif;
     font-family: "Poppins", sans-serif;
-}
+} */

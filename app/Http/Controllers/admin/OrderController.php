@@ -17,8 +17,9 @@ class OrderController extends Controller
         return view('admin.order.index',['order'=>$order]);
     }
     public function detail($id){
-        $order_detail = order_details::find($id);
+        $order_detail = order_details::all();
         $order = order::find($id);
+        // dd($order_detail);
         
         return view('admin.order.detail',['order_detail'=>$order_detail,'order'=>$order]);
     }

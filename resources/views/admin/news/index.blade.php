@@ -96,15 +96,24 @@ use Illuminate\Support\Facades\DB;
                             </div>
                         </div>
                     
+<<<<<<< HEAD
+            
+            
+=======
             
             
 
+>>>>>>> origin/develop
 
 
 </form>
 @endsection
 
+<<<<<<< HEAD
+</form>
+=======
 
+>>>>>>> origin/develop
   
 
 

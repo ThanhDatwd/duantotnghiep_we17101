@@ -37,7 +37,7 @@
          <!-- Sidebar Start -->
     
          <div class="sidebar pe-4 pb-3 scroll">
-            <nav class="navbar bg-light navbar-light">
+            <nav class="navbar navbar-light">
               <a href="/admin" class="navbar-brand" style="margin:0 auto">
                    
                         <img src="{{asset("img/logo.png")}}" style="width:150px;margin:0 auto;border-radius:50%;padding-bottom:20px ;" alt="">
@@ -48,8 +48,8 @@
                         <img class="rounded-circle" src="https://haycafe.vn/wp-content/uploads/2022/02/Avatar-trang-cho-nu.jpg" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0">
+                    <div class="ms-3" style="color:#fff">
+                        <h6 class="mb-0" >
                             {{-- {{
                                     Auth::guard('admin')->user()->full_name??""
                                 }} --}}
@@ -58,19 +58,19 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="/admin" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Trang chủ</a>
+                    <a href="/admin" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Trang chủ</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-shopify"></i></i>Sản Phẩm</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="/admin/product" class="dropdown-item">Danh sách sản phẩm</a>
-                            <a href="/admin/product/trashed" class="dropdown-item">Thùng rác sản phẩm</a>
+                            <a href="/admin/product" class="dropdown-item">Danh sách </a>
+                            <a href="/admin/product/trashed" class="dropdown-item">Thùng rác </a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-list"></i>Loại Sản Phẩm</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="/admin/product_category" class="dropdown-item">Danh sách  loại sản phẩm</a>
-                            <a href="/admin/product_category/trashed" class="dropdown-item">Thùng rác loại sản phẩm</a>
+                            <a href="/admin/product_category" class="dropdown-item">Danh sách </a>
+                            <a href="/admin/product_category/trashed" class="dropdown-item">Thùng rác</a>
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -92,7 +92,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-bandcamp"></i>Nguồn Hàng</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn hàng</a>
+                            <a href="{{url('admin/brand')}}" class="dropdown-item">Danh sách</a>
                             <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
                         </div>
 
@@ -100,7 +100,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-bandcamp"></i>Nhập Hàng</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{url('admin/brand')}}" class="dropdown-item">Quản lý nguồn nhập</a>
+                            <a href="{{url('admin/brand')}}" class="dropdown-item">Danh sách</a>
                             <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
 
                         </div>
@@ -115,8 +115,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-brands fa-discord"></i>Mã Giảm Giá</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{url('admin/coupon')}}" class="dropdown-item">Quản lý mã giảm giá</a>
-                            <a href="{{url('admin/coupon/trashed')}}" class="dropdown-item">Thùng rác mã giảm giá</a>
+                            <a href="{{url('admin/coupon')}}" class="dropdown-item">Danh sách</a>
+                            <a href="{{url('admin/coupon/trashed')}}" class="dropdown-item">Thùng rác</a>
 
                         </div>
                     </div>  
@@ -215,7 +215,7 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="{{ route('siteadmin-profile') }}" class="dropdown-item">Hồ sơ của tôi</a>
+                            {{-- <a href="{{ route('siteadmin-profile') }}" class="dropdown-item">Hồ sơ của tôi</a> --}}
                             <a href="#" class="dropdown-item">Cài đặt</a>
                           
                          
