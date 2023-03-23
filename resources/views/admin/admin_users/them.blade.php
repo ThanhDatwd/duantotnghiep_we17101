@@ -168,15 +168,7 @@ use Illuminate\Support\Facades\DB;
                                 <div class="adpro1">
                                     <p>Chức vụ <span>(*)</span></p>
                                     <select name="role_id">
-                                   <?php
-                                      $role = DB::table('roles')->get();
-                                        foreach ($role as $key => $value) {
-                                            
-                                            echo '<option value="'.$value->id.'">'.$value->id.'</option>';
-                                        
-
-                                        }
-                                      ?>
+                                   
                                     </select>
                                   
                                     
