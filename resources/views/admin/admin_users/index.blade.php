@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
                        <table class="table">
                      <thead>
                      <tr>
-                  <th></th>
                                          <th scope="col">Check</th>
                                             <th scope="col">Avatar</th>
                                             <th scope="col">Name</th>
@@ -23,15 +22,16 @@ use Illuminate\Support\Facades\DB;
                                             
                                             
                                             <th scope="col">Action</th>
+
               </tr>
           </thead>
           <tbody>
             @foreach ($users as $item)
               <tr>
-                <th></th>
+                
                   <td><input type="checkbox" name="check[]" value="{{$item->id}}"></td>
                   <td><img src="{{asset('upload/'.$item->avatar)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" style="width: 100px;height: 100px;"></td>
-                  </td>
+               
            
                                     
                                         <td>{{$item->username}}</td>
@@ -39,16 +39,13 @@ use Illuminate\Support\Facades\DB;
                                         <td>{{$item->email}}</td>
                                     
                                     
-                                         <td>
-                                            {{-- {{$item->role_id}} --}}
-                                         </td>
+                                        
                                         
                                        
-                                         <td colspan="">
-                                            <a href="{{url('admin/admin_users/capnhat/'.$item->id)}}" class="btn btn-primary">Sửa</a>
-                                            <a href="{{url('admin/admin_users/xoa/'.$item->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-danger">Xóa</a>
-                                             
-                                        </td>
+                                         <td class="button">
+                    <a style="color: cadetblue" href="{{url('admin/admin_users/capnhat/'.$item->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a style="color: red" href="{{url('admin/admin_users/xoa/'.$item->id)}}" onclick="return myFunction();"> <i  class="fa-sharp fa-solid fa-trash"></i> </a>
+                  </td>
                                         
                                       
                                     </tr>
@@ -63,10 +60,7 @@ use Illuminate\Support\Facades\DB;
                 
                   
                   {{-- <td>{{$categories->$p->name}}</td> --}}
-                  <td class="button">
-                    <a style="color: cadetblue" href="{{url('admin/admin_users/capnhat/'.$item->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: red" href="{{url('admin/admin_users/xoa/'.$item->id)}}" onclick="return myFunction();"> <i  class="fa-sharp fa-solid fa-trash"></i> </a>
-                   
+                 
                 
 
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
@@ -79,7 +73,7 @@ use Illuminate\Support\Facades\DB;
                   </td>
 
               </tr>
-              @endforeach
+            
           </tbody>
         
           
