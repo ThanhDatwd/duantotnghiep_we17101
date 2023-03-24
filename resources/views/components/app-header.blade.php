@@ -48,7 +48,7 @@
                     <li><a href="{{route('clienthome')}}">
                         Trang chủ
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{route('clientaboutus')}}">
                         Về chúng tôi
                     </a></li>
                     <li>

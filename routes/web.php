@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\ProductCategorysController;
 use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\client\AddjobController;
+use App\Http\Controllers\client\AboutusController;
 use App\Http\Controllers\client\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\admin\OrderController;
@@ -58,6 +59,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
     Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
     Route::get('/addjobs', [AddjobController::class, 'index'])->name('addjobs');
+    Route::get('/aboutus', [AboutusController::class,'index'])->name('aboutus');
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
     Route::post('/payment_cod', [PaymentController::class, 'create_payment_cod'])->name('payment_cod');
     Route::post('/payment_vnpay', [PaymentController::class, 'create_payment_vnpay_e'])->name('payment_vnpay');

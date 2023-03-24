@@ -75,7 +75,7 @@
                             src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/icon_menu_2.png?1669280565026"
                             alt="">
                     </div>
-                    <span>Giới thiệu</span>
+                    <span>Về Chúng Tôi</span>
                 </div>
             </a>
             <a href="{{route('clientcategory-group-all')}}">
