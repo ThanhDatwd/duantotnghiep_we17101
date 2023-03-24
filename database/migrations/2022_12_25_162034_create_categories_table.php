@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('category_name');
             $table->string('thumb');
-            $table->string('type');
+            $table->integer('type')->nullable();
             $table->string('stt');
             $table->string('is_active')->default(1);
             $table->foreignId('category_group_id')->constrained('category_group');
