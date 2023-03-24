@@ -75,7 +75,7 @@ class products20 extends Seeder
                             "category_name" => $category,
                             "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
                             "stt" => 1,
-                            "type" => "combo",
+                            "type" => 1,
                             "category_group_id" => ($indexC + 1),
                             "slug" => Str::slug($category)
                         ]
