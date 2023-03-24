@@ -50,9 +50,9 @@
                     </div>
                     <div class="ms-3" style="color:#fff">
                         <h6 class="mb-0" >
-                            {{-- {{
+                            {{
                                     Auth::guard('admin')->user()->full_name??""
-                                }} --}}
+                                }}
                                 </h6>
                         <span>Admin</span>
                     </div>
@@ -209,13 +209,11 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="https://haycafe.vn/wp-content/uploads/2022/02/Avatar-trang-cho-nu.jpg" alt=""  style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex">
-                                {{-- {{
-                                    Auth::guard('admin')->user()->full_name
-                                }} --}}
+                          
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            {{-- <a href="{{ route('siteadmin-profile') }}" class="dropdown-item">Hồ sơ của tôi</a> --}}
+                        <a href="{{ route('siteadmin-profile') }}" class="dropdown-item">Hồ sơ của tôi</a> 
                             <a href="#" class="dropdown-item">Cài đặt</a>
                           
                          

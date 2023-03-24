@@ -74,7 +74,7 @@ public function index(){
         
 public function profile(){
   $users = Auth::guard('admin')->user();
-     $username = Auth::guard('admin')->user()->username;
+     $username = Auth::guard('admin')->user()->email;
      $news = DB::select('SELECT * FROM news WHERE created_by = :created_by', ['created_by' => $username]);
     
 $count_news = DB::table('news')
