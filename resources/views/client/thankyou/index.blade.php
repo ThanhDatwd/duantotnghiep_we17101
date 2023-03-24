@@ -254,6 +254,11 @@ footer{
         <button class="print-btn" onclick="window.print()">In đơn hàng</button>
       </p>
     </div>
+<<<<<<< HEAD
+  </div>
+@endsection
+=======
 </body>
 
 </html>
+>>>>>>> origin/develop

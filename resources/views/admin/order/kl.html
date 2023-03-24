@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+     
+        .product {
+            border: 1px solid #eee;
+            margin: 20px 0;
+            width: 100%;
+            height: 195px;
+            position: relative;
+
+            -webkit-transition: margin 0.2s linear, opacity 0.2s linear;
+            -moz-transition: margin 0.2s linear, opacity 0.2s linear;
+            -ms-transition: margin 0.2s linear, opacity 0.2s linear;
+            -o-transition: margin 0.2s linear, opacity 0.2s linear;
+            transition: margin 0.2s linear, opacity 0.2s linear;
+        }
+
+        .product img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .product header,
+        .product .content {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-style: none none solid none;
+            float: left;
+        }
+
+        .product header {
+            background: #000;
+            margin: 0 1% 20px 0;
+            overflow: hidden;
+            padding: 0;
+            position: relative;
+            width: 24%;
+            height: 195px;
+        }
+
+        .product header:hover img {
+            opacity: 0.7;
+        }
+
+        .product header:hover h3 {
+            bottom: 73px;
+        }
+
+        .product header h3 {
+            background: #53b5aa;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 49px;
+            margin: 0;
+            padding: 0 30px;
+            position: absolute;
+            bottom: -50px;
+            right: 0;
+            left: 0;
+
+            -webkit-transition: bottom 0.2s linear;
+            -moz-transition: bottom 0.2s linear;
+            -ms-transition: bottom 0.2s linear;
+            -o-transition: bottom 0.2s linear;
+            transition: bottom 0.2s linear;
+        }
+
+        .remove {
+            cursor: pointer;
+        }
+
+        .product .content {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 140px;
+            padding: 0 20px;
+            width: 75%;
+        }
+
+        .product h1 {
+            color: #53b5aa;
+            font-size: 25px;
+            font-weight: 300;
+            margin: 17px 0 20px 0;
+        }
+
+        .product footer.content {
+            height: 50px;
+            margin: 6px 0 0 0;
+            padding: 0;
+        }
+
+        .product footer .price {
+            background: #fcfcfc;
+            color: #000;
+            float: right;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 49px;
+            margin: 0;
+            padding: 0 30px;
+        }
+
+        .product footer .full-price {
+            background: #53b5aa;
+            color: #fff;
+            float: right;
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 49px;
+            margin: 0;
+            padding: 0 30px;
+
+            -webkit-transition: margin 0.15s linear;
+            -moz-transition: margin 0.15s linear;
+            -ms-transition: margin 0.15s linear;
+            -o-transition: margin 0.15s linear;
+            transition: margin 0.15s linear;
+        }
+
+        .qt,
+        .qt-plus,
+        .qt-minus {
+            display: block;
+            float: left;
+        }
+
+        .qt {
+            font-size: 19px;
+            line-height: 50px;
+            width: 70px;
+            text-align: center;
+        }
+
+        .qt-plus,
+        .qt-minus {
+            background: #fcfcfc;
+            border: none;
+            font-size: 30px;
+            font-weight: 300;
+            height: 100%;
+            padding: 0 20px;
+            -webkit-transition: background 0.2s linear;
+            -moz-transition: background 0.2s linear;
+            -ms-transition: background 0.2s linear;
+            -o-transition: background 0.2s linear;
+            transition: background 0.2s linear;
+        }
+
+      
+
+        .qt-plus {
+            line-height: 50px;
+        }
+
+        .qt-minus {
+            line-height: 47px;
+        }
+
+    
+      
+    </style>
+    <body>
+        
+
+            <section id="cart">
+                <article class="product">
+                    <header>
+                            <img
+                                src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg"
+                                alt=""
+/>
+
+                    </header>
+
+                    <div class="content">
+                        <h1>Lorem ipsum</h1>
+
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Soluta, numquam quis perspiciatis ea ad omnis
+                        provident laborum dolore in atque.
+
+                        
+                    </div>
+
+                    <footer class="content">
+                        <span class="qt-minus">-</span>
+                        <span class="qt">2</span>
+                        <span class="qt-plus">+</span>
+
+                        <h2 class="full-price">29.98€</h2>
+
+                        <h2 class="price">14.99€</h2>
+                    </footer>
+                </article>
+
+                
+         
+            </section>
+
+        
+    </body>
+   
+</html>

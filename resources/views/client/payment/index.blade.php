@@ -338,8 +338,13 @@
 		else{
 			formOrder.submit()
 		}
+<<<<<<< HEAD
+	}
+    let email=document.getElementById('#email')
+=======
 		}
 	})
+>>>>>>> origin/develop
 	const sendNotificationGetOtp=()=>{
 		let email=$('#user_email').val()
 		$.ajax({

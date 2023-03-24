@@ -63,7 +63,7 @@ use Symfony\Component\Routing\Router;
                         <div class="bg-light text-center rounded p-4" >
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Thống kê 5 sản phẩm bán nhiều nhất</h6>
-                                <a href="">Show All</a>
+                                <a href="">Hiển thị tất cả</a>
                             </div>
                             <div class="container-chart" style="height: 367px;width: 500px; margin: 0 auto;">
                             <canvas id="thongke2" style=""></canvas>
@@ -74,7 +74,7 @@ use Symfony\Component\Routing\Router;
                         <div class="bg-light text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Thống kê đơn hàng</h6>
-                                <a href="">Show All</a>
+                                <a href="">Hiển thị tất cả</a>
                             </div>
                             <canvas id="thongke"></canvas>
                         </div>
@@ -88,8 +88,8 @@ use Symfony\Component\Routing\Router;
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Sản phẩm mới nhất</h6>
-                        <a href="">Show All</a>
+                        <h6 class="mb-0">Sản phẩm bán chạy nhất</h6>
+                        <a href="">Hiển thị tất cả/a>
                     </div>
                     
                     <div class="table-responsive">

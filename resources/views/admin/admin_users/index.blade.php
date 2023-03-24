@@ -37,6 +37,27 @@ use Illuminate\Support\Facades\DB;
                                         <td>{{$item->username}}</td>
                                         <td>{{$item->full_name}}</td>
                                         <td>{{$item->email}}</td>
+                                    
+                                    
+                                         <td>
+                                            {{-- {{$item->role_id}} --}}
+                                         </td>
+                                        
+                                       
+                                         <td colspan="">
+                                            <a href="{{url('admin/admin_users/capnhat/'.$item->id)}}" class="btn btn-primary">Sửa</a>
+                                            <a href="{{url('admin/admin_users/xoa/'.$item->id)}}" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-danger">Xóa</a>
+                                             
+                                        </td>
+                                        
+                                      
+                                    </tr>
+                                    <tr>
+                                       
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                     
 
                 
                 
