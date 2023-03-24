@@ -9,7 +9,7 @@ use App\Models\product;
 use App\Models\news;
 // đơn hàng
 use App\Models\order;
-use App\Models\user;
+use App\Models\User;
 // khách hàng
 use App\Models\customer;
 use Illuminate\Support\Facades\Auth as FacadesAuth;

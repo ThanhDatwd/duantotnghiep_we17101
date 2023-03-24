@@ -83,7 +83,7 @@ Route::prefix('/admin')->name('site')->group(function () {
     Route::get('/admin_users/them', [AdminUserController::class, 'them'])->name('admin.admin_users.create');
     Route::post('/admin_users/them', [AdminUserController::class, 'them1'])->name('admin.admin_users.create_');
 });
-Route::prefix('/admin')->name('site')->group(function () {
+Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function () {
     //-----------------Admin Home-----------------
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
 
