@@ -25,7 +25,7 @@ class ProductCategoryRequest extends FormRequest
     {
         return [
             //'title' => 'required|string|max:255',
-            'category_name' => 'required|integer',
+            'category_name' => 'required',
             'stt' => 'required|integer',
             'thumb' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];

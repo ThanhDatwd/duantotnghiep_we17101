@@ -33,7 +33,20 @@
                 
                     </div>
                 </div>
-  
+                <div class="addpro">
+                    <div class="adpro1">
+                        <p>Nhóm loại sản phẩm</p>
+                       <select name="category_group_id">
+                        
+                        @foreach ($categroup as $cg)
+                            
+                        <option value="{{$cg->id}}">{{$cg->name}}</option>
+                        @endforeach
+                        
+                       </select>
+            
+                    </div>
+                </div>
                     <div class="addpro">
                         <div class="adpro1">
                             <p>Trạng thái</p>
@@ -52,10 +65,12 @@
                     </div>
                     <div class="addpro">
                         <div class="adpro1">
-                            <p>Số thứ tự hiện</p>
+                            <p>Vị trí hiện</p>
                            <select name="stt">
-                            <option value="1">Đầu</option>
-                            <option value="0">Cuối</option>
+                               <option value="0">0</option>
+                               <option value="1">1</option>
+                               <option value="2">2</option>
+                            <option value="3">3</option>
                            </select>
                 
                         </div>

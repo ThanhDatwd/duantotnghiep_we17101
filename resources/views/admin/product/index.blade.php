@@ -32,6 +32,7 @@
               </tr>
           </thead>
           <tbody>
+          
             @foreach ($products as $p)
               <tr>
                 <th></th>
