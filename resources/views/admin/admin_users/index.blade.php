@@ -111,7 +111,7 @@ use Illuminate\Support\Facades\DB;
 
 @endsection
 
-</form>
+
 
 
 

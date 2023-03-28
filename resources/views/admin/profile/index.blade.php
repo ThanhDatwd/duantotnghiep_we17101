@@ -90,7 +90,7 @@
               </tr>
           </thead>
           <tbody>
-            @foreach ($news as $item)
+            @foreach ($count_news as $item)
               <tr>
                 <th></th>
                   <td><input type="checkbox" name="check[]" value="{{$item->id}}"></td>
