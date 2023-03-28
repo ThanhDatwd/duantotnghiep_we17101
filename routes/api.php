@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\client\CouponController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/get_order_otp', [PaymentController::class,'get_order_otp'])->name('payment_cod');
-Route::post('/confirm_order_otp', [PaymentController::class,'confirm_order_otp'])->name('payment_cod');
+Route::post('/get_order_otp', [PaymentController::class,'get_order_otp']);
+Route::post('/confirm_order_otp', [PaymentController::class,'confirm_order_otp']);
+Route::post('/apply_coupon_code', [CouponController::class,'applyCouponCode']);
 
 Route::get('/check', function (Request $request) {
-    // return json_decode('xin chào');
     return response()->json([
         "message"=>"thành công nha"
     ],200);

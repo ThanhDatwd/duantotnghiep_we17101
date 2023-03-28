@@ -84,7 +84,7 @@
             </div>
             <div class="product-detail--other mt-4">
                 <h3 class="title underline">Thông tin chi tiết</h3>
-                <p>{{$product->content!=""?$product->content:'Đang cập nhật'}}</p>
+                <div>{!!$product->content!=""?$product->content:'Đang cập nhật'!!}</div>
             </div>
         </div>
         <div class="related-products d-sm-block d-none">
@@ -185,12 +185,12 @@
 
     btn_buy_now.click((e)=>{
       e.preventDefault();
-      formAdd.action=`${'{{ env('APP_URL') }}'}/buy-now`;
+      formAdd.action='http://127.0.0.1:8000/buy-now';
       formAdd.submit()
       console.log(formAdd.acction)
     })
     btn_add_to_card.click((e)=>{
-      formAdd.action='{{ env('APP_URL') }}'+"/add-to-cart";
+      formAdd.action='http://127.0.0.1:8000/add-to-cart';
       e.preventDefault();
       formAdd.submit()
 

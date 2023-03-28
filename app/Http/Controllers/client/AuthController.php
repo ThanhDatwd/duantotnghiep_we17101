@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 use App\Mail\SendVerifyEmail;
 use App\Models\User;
 use App\Models\user_verify;
@@ -19,14 +21,7 @@ use Twilio\Rest\Client;
 class AuthController extends Controller
 {
     //
-    public function login_user(AuthRequest $request){
-        // $request->validate([
-        //     'email'=>'required',
-        //     'password'=>'required'
-        // ]);
-       
-        // hash()
-        // dd("cin chào bạn");
+    public function login_user(LoginRequest $request){
         $arr = [
             'email' => $request->email,
             'password' =>$request->password,
@@ -81,7 +76,7 @@ class AuthController extends Controller
        
      }
     
-    public function register_user(Request $request){
+    public function register_user(RegisterRequest $request){
         $request->validate([
             'phone' => 'required',
             'email'=>'required|email',
@@ -133,15 +128,11 @@ class AuthController extends Controller
        Auth::guard('web')->logout();
        return redirect()->route('client');
      }
-
-
-    /////////////////////////////////////////
-    ////////////////////////////////////////////
-    public function login_admin(Request $request){
-        $request->validate([
-            'email'=>'required',
-            'password'=>'required'
-        ]);
+    public function forgot_password_user()
+    {
+        # code...
+    }
+    public function login_admin(RegisterRequest $request){
         $arr = [
             'email' => $request->email,
             'password' =>  $request->password,
@@ -159,7 +150,7 @@ class AuthController extends Controller
             //đăng nhập thất bại hiển thị đăng nhập thất bại
         }
         
-        return back()->with('fail','Không có tài khoản này'); 
+        return back()->with('fail','Tài khoản không tồn tại'); 
     }
     public function show_login_admin(){
         return view('auth.login');
@@ -169,7 +160,8 @@ class AuthController extends Controller
     public function logout_admin(){
         // if(Session::has('loginId')){
         //     Session::pull('loginId');
-            return  redirect('/login');
+        Auth::guard('admin')->logout();
+            return  redirect()->route('siteshow-login');
         // }
     }
 }

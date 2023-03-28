@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\client\AuthController;
+use App\Http\Controllers\client\CouponController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +75,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/remove-to-cart', [ProductsController::class, 'removeToCart'])->name('remove-to-cart');
     Route::post('/remove-all-cart', [ProductsController::class, 'removeAllCart'])->name('remove-all-cart');
     Route::post('/comment', [NewsController::class, 'comment'])->name('comment');
+    Route::post('/useCouponCode', [CouponController::class, 'useCouponCode'])->name('use-coupon-code');
 });
 //
 // Route::resource('/admin/product', AdminProductController::class);

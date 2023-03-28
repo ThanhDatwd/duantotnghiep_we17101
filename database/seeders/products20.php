@@ -31,6 +31,9 @@ class products20 extends Seeder
             ['Ngũ cốc 4 mùa', 'Hạt dinh dưỡng', 'Hoa quả sấy'],
             ['Muối Tiêu', 'Mắm các loại', 'Bơ, đường sữa', 'Hạt nêm, mì chính']
         ];
+        
+        $a=['Nho Mỹ nhập khẩu', 'Xoài Campuchia', 'Cóc Thái Lan'];
+
         $productsss = [
             [
                 ['Ba chỉ heo', 'Thăn Heo', 'Tai Heo', 'Sườn non Heo'],
@@ -61,56 +64,107 @@ class products20 extends Seeder
         $indexP = 0;
         $indexPC = 0;
         $indexCheck = 0;
-        foreach ($group_category as $grC) {
-            category_group::create([
-                "name" => $grC,
-                "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
-                "stt" => 1,
-                "slug" => Str::slug($grC)
-            ]);
-            if ($indexC < (count($categories[$indexC]))) {
-                foreach ($categories[$indexC] as $category) {
-                    category::create(
-                        [
-                            "category_name" => $category,
-                            "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
-                            "stt" => 1,
-                            "type" => 1,
-                            "category_group_id" => ($indexC + 1),
-                            "slug" => Str::slug($category)
-                        ]
-                    );
-                   
-                   if($indexP<(count($productsss[$indexC][$indexP])-1)){
-                     foreach ($productsss[$indexC][$indexP]  as $p) {
-                        $thumb = random_int(1, 100) . '.jpg';
-                        product::create(
-                            [
-                                "name" => $p,
-                                "thumb" => "https://loremflickr.com/320/240/food?random=" . $thumb,
-                                "summary" => "Đây là đoạn giới thiệu tóm tắt sản phẩm",
-                                "content" => "Nội dung chính giới  thiệu về sản phẩm ",
-                                "price" => rand(50000, 1000000),
-                                "price_current" => 100000,
-                                "quantity_input" => 100,
-                                "quantity_output" => 10,
-                                "discount" => random_int(0, 100),
-                                "brand" => "Đà Lạt",
-                                "unit" => "kg",
-                                "color" => '',
-                                "slug" => Str::slug($p),
-                                "category_id" => ($indexP + 1),
-    
-                            ]
-                        );
-                        $indexPC += 1;
-                    }
-                    $indexP += 1;
-                }
-            }
-            $indexP = 0;
-            $indexC += 1;
+
+
+        foreach ($a  as $p) {
+            $thumb = random_int(1, 100) . '.jpg';
+            product::create(
+                [
+                    "name" => $p,
+                    "thumb" => "https://loremflickr.com/320/240/food?random=" . $thumb,
+                    "summary" => "Đây là đoạn giới thiệu tóm tắt sản phẩm",
+                    "content" => "Nội dung chính giới  thiệu về sản phẩm ",
+                    "price" => rand(50000, 1000000),
+                    "price_current" => 100000,
+                    "quantity_input" => 100,
+                    "quantity_output" => 10,
+                    "discount" => random_int(0, 100),
+                    "brand" => "Đà Lạt",
+                    "unit" => "kg",
+                    "color" => '',
+                    "slug" => Str::slug($p),
+                    "category_id" => 15,
+
+                ]
+            );
+            $indexPC += 1;
         }
-    }
+
+
+    //     // foreach ($group_category as $grC) {
+    //     //     category_group::create([
+    //     //         "name" => $grC,
+    //     //         "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
+    //     //         "stt" => 1,
+    //     //         "slug" => Str::slug($grC)
+    //     //     ]);
+    //     //     if ($indexC < (count($categories[$indexC]))) {
+    //     //         foreach ($categories[$indexC] as $category) {
+    //     //             category::create(
+    //     //                 [
+    //     //                     "category_name" => $category,
+    //     //                     "thumb" => "https://loremflickr.com/320/240/food?random=1.jpg",
+    //     //                     "stt" => 1,
+    //     //                     "type" => 1,
+    //     //                     "category_group_id" => ($indexC + 1),
+    //     //                     "slug" => Str::slug($category)
+    //     //                 ]
+    //     //             );
+                   
+    //     //            if($indexP<(count($productsss[$indexC][$indexP])-1)){
+    //     //              foreach ($productsss[$indexC][$indexP]  as $p) {
+    //     //                 $thumb = random_int(1, 100) . '.jpg';
+    //     //                 product::create(
+    //     //                     [
+    //     //                         "name" => $p,
+    //     //                         "thumb" => "https://loremflickr.com/320/240/food?random=" . $thumb,
+    //     //                         "summary" => "Đây là đoạn giới thiệu tóm tắt sản phẩm",
+    //     //                         "content" => "Nội dung chính giới  thiệu về sản phẩm ",
+    //     //                         "price" => rand(50000, 1000000),
+    //     //                         "price_current" => 100000,
+    //     //                         "quantity_input" => 100,
+    //     //                         "quantity_output" => 10,
+    //     //                         "discount" => random_int(0, 100),
+    //     //                         "brand" => "Đà Lạt",
+    //     //                         "unit" => "kg",
+    //     //                         "color" => '',
+    //     //                         "slug" => Str::slug($p),
+    //     //                         "category_id" => ($indexP + 1),
+    
+    //     //                     ]
+    //     //                 );
+    //     //                 $indexPC += 1;
+    //     //             }
+    //     //             $indexP += 1;
+    //     //         }
+    //     //     }
+    //     //     $indexP = 0;
+    //     //     $indexC += 1;
+    //     // }
+    //     // foreach ($productsss[$indexC][$indexP]  as $p) {
+    //     //     $thumb = random_int(1, 100) . '.jpg';
+    //     //     product::create(
+    //     //         [
+    //     //             "name" => $p,
+    //     //             "thumb" => "https://loremflickr.com/320/240/food?random=" . $thumb,
+    //     //             "summary" => "Đây là đoạn giới thiệu tóm tắt sản phẩm",
+    //     //             "content" => "Nội dung chính giới  thiệu về sản phẩm ",
+    //     //             "price" => rand(50000, 1000000),
+    //     //             "price_current" => 100000,
+    //     //             "quantity_input" => 100,
+    //     //             "quantity_output" => 10,
+    //     //             "discount" => random_int(0, 100),
+    //     //             "brand" => "Đà Lạt",
+    //     //             "unit" => "kg",
+    //     //             "color" => '',
+    //     //             "slug" => Str::slug($p),
+    //     //             "category_id" => ($indexP + 1),
+
+    //     //         ]
+    //     //     );
+    //     //     $indexPC += 1;
+    //     // }
+    // }
 }
 }
+

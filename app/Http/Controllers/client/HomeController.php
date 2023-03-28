@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function index()
     {   
         $productsFlashSale=product::all()->where('discount','>',0);
-        $categoriesGroup=category_group::with('categories.products')->where('is_hot',true)->limit(3)->get();
+        $categoriesGroup=category_group::with('categories.products')->where('is_hot',true)->limit(4)->get();
         foreach ($categoriesGroup as $group) {
             foreach ($group->categories as $category) {
                 $category->products = $category->products()->get();
