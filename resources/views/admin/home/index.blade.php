@@ -73,7 +73,7 @@ use Symfony\Component\Routing\Router;
                     <div class="col-sm-12 col-xl-6">
                         <div class="bg-light text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Thống kê đơn hàng</h6>
+                                <h6 class="mb-0">Thống kê doanh thu </h6>
                                 <a href="">Hiển thị tất cả</a>
                             </div>
                             <canvas id="thongke"></canvas>
@@ -341,6 +341,42 @@ use Symfony\Component\Routing\Router;
       });
     }
   // Gọi hàm để tạo biểu đồ
+  createChart(ctx, datas, labels);
+</script>
+<script>
+  const ctx2 = document.getElementById('thongke2');
+  var datas2=<?php echo json_encode($top5products); ?>;
+  var labels2=<?php echo json_encode($top5products_name); ?>;
+
+  function getTime() {
+    var time = new Date();
+    var month = time.getMonth() + 1;
+    return 'Thống kê'+ ' 7 ngày qua trong' + ' tháng ' + month;
+  }
+
+  function createChart(ctx, data, labels) {
+      new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: labels2,
+          datasets: [{
+            label: getTime(),
+            data: datas2,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    }
+
   createChart(ctx, datas, labels);
 </script>
 

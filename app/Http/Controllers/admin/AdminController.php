@@ -37,36 +37,22 @@ public function index(){
   $neworders = Order::orderBy('created_at', 'desc')->take(5)->get();
   $newproducts = Product::orderBy('created_at', 'desc')->take(5)->get();
 
-  $total = Order::select(DB::raw('sum(total) as total'))
-            ->whereYear('created_at', date('Y'))
-            ->groupBy(DB::raw('Month(created_at)'))
+ $total = Order::select(DB::raw('sum(total) as total'))
+            ->whereBetween('created_at', [now()->subDays(7), now()])
+            
             ->pluck('total');
     
- $months = Order::select(DB::raw('Month(created_at) as month'))
-            ->whereYear('created_at', date('Y'))
-            ->groupBy(DB::raw('Month(created_at)'))
-          
-            ->pluck('month');
+$days = Order::select(DB::raw('DATE(created_at) as day'))
+            ->whereBetween('created_at', [now()->subDays(7), now()])
+            ->groupBy('day')
+            ->pluck('day');
     
-    $datas = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-    foreach ($months as $index => $month) {
-        $datas[$month] = $total[$index];
-    }
-    $labels = $months;
+$labels = $days;
 
+$top5products = Product::orderBy('quantity_output', 'desc')->take(5)->get()->pluck('quantity_output');
+$top5products_name = Product::orderBy('quantity_output', 'desc')->take(5)->pluck('name');
      
-
-
-        
-
-    
-
-
-    
-
-   
-
-    return view('admin.home.index', compact('news', 'products', 'orders', 'users', 'totalProducts', 'totalNews', 'totalOrders', 'totalUsers', 'neworders', 'newproducts', 'months', 'datas','labels','total'));
+return view('admin.home.index', compact('news', 'products', 'orders', 'users', 'totalProducts', 'totalNews', 'totalOrders', 'totalUsers', 'neworders', 'newproducts', 'days','labels', 'total', 'top5products', 'top5products_name'));
 }
     // tài khoản đang đăng nhập
    //logout
