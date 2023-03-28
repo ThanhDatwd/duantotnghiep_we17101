@@ -164,20 +164,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-                            <div class="addpro">
-                                <div class="adpro1">
-                                    <p>Chức vụ <span>(*)</span></p>
-                                    <select name="role_id">
-                                   
-                                    </select>
-                                  
-                                    
-                                </div>
-                                
-                            
-                              
-                             
-                            </div>
+                           
                            <div class="addpro">
                                 <div class="adpro1">
                                     <p>Kích hoạt <span>(*)</span></p>
