@@ -325,18 +325,25 @@ use Symfony\Component\Routing\Router;
 
 
 <script>
+<<<<<<< HEAD
     const ctx = document.getElementById('thongke');
+=======
+  const ctx = document.getElementById('thongke');
+  const ctx2 = document.getElementById('thongke2');
+>>>>>>> c5f597b269f3d89018982166710e8abd05484afe
   var datas=<?php echo json_encode($datas); ?>;
-  //// chào bạn lúc 
-    var time = new Date();
+  var labels=<?php echo json_encode($label1); ?>;
+  
+  var time = new Date();
    
   
     var month = time.getMonth() + 1;
 
   new Chart(ctx, {
     type: 'bar',
+
     data: {
-     
+     labels: labels,
       datasets: [{
         label: 'Thống kê'+ ' 7 ngày qua trong' + ' tháng ' + month,
         data: datas,
@@ -351,6 +358,7 @@ use Symfony\Component\Routing\Router;
       }
     }
   });
+<<<<<<< HEAD
     const ctx2 = document.getElementById('thongke2');
     var data2=<?php echo json_encode($data2); ?>;
     var label2=<?php echo json_encode($label2); ?>;
@@ -363,22 +371,46 @@ use Symfony\Component\Routing\Router;
   new Chart(ctx2, {
     type: 'doughnut',
    
+=======
+>>>>>>> c5f597b269f3d89018982166710e8abd05484afe
 
+var data2 = <?php echo json_encode($datas); ?>;
+var label2 = <?php echo json_encode($label1); ?>;
+var barchart = new Chart(ctx2, {
+    type: 'line',
     data: {
-      labels: label2,
-      datasets: [{
-        label: "Số lượng bán",
-        data: data2,
-        borderWidth: 1
-      }]
+        labels: label2,
+        datasets: [{
+            label: 'Thống kê 7 ngày qua',
+            data: data2,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+        scales: {
+            y: {
+                beginAtZero: true
+            }
         }
-      }
     }
-  });
+});
+
+
 
 
