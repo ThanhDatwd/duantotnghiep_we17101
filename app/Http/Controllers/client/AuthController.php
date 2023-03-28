@@ -132,7 +132,7 @@ class AuthController extends Controller
     {
         # code...
     }
-    public function login_admin(RegisterRequest $request){
+    public function login_admin(LoginRequest $request){
         $arr = [
             'email' => $request->email,
             'password' =>  $request->password,
