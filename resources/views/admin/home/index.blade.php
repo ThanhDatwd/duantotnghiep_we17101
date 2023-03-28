@@ -307,75 +307,43 @@ use Symfony\Component\Routing\Router;
 
 <script>
   const ctx = document.getElementById('thongke');
-  const ctx2 = document.getElementById('thongke2');
-  var datas=<?php echo json_encode($datas); ?>;
-  var labels=<?php echo json_encode($label1); ?>;
-  
-  var time = new Date();
-   
-  
+  var datas=<?php echo json_encode($total); ?>;
+  var labels=<?php echo json_encode($labels); ?>;
+
+  // Định nghĩa thời gian hiện tại
+  function getTime() {
+    var time = new Date();
     var month = time.getMonth() + 1;
+    return 'Thống kê'+ ' 7 ngày qua trong' + ' tháng ' + month;
+  }
 
-  new Chart(ctx, {
-    type: 'bar',
-
-    data: {
-     labels: labels,
-      datasets: [{
-        label: 'Thống kê'+ ' 7 ngày qua trong' + ' tháng ' + month,
-        data: datas,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-var data2 = <?php echo json_encode($datas); ?>;
-var label2 = <?php echo json_encode($label1); ?>;
-var barchart = new Chart(ctx2, {
-    type: 'line',
-    data: {
-        labels: label2,
-        datasets: [{
-            label: 'Thống kê 7 ngày qua',
-            data: data2,
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
+  // Định nghĩa biểu đồ
+  function createChart(ctx, data, labels) {
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: getTime(),
+            data: datas,
             borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
                 beginAtZero: true
-            }
+              }
+            }]
+          }
         }
+      });
     }
-});
-
-
-
+  // Gọi hàm để tạo biểu đồ
+  createChart(ctx, datas, labels);
 </script>
+
               <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
