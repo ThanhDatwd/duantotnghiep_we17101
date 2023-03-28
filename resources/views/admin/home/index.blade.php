@@ -307,10 +307,11 @@ use Symfony\Component\Routing\Router;
 
 <script>
   const ctx = document.getElementById('thongke');
+  const ctx2 = document.getElementById('thongke2');
   var datas=<?php echo json_encode($datas); ?>;
   var labels=<?php echo json_encode($label1); ?>;
   
-    var time = new Date();
+  var time = new Date();
    
   
     var month = time.getMonth() + 1;
@@ -334,9 +335,7 @@ use Symfony\Component\Routing\Router;
       }
     }
   });
-</script>
-<script>
-const ctx2 = document.getElementById('thongke2');
+
 var data2 = <?php echo json_encode($datas); ?>;
 var label2 = <?php echo json_encode($label1); ?>;
 var barchart = new Chart(ctx2, {
