@@ -16,10 +16,9 @@
   @endif
 </a>
   <div class="table-responsive">
-      <table class="table">
+      <table class="table table-hover">
           <thead>
               <tr>
-                  <th></th>
                   <th scope="col">ID</th>
                   <th scope="col">Mã giảm giá</th>
                   <th scope="col">Loại giảm giá</th>
@@ -35,7 +34,6 @@
           <tbody>
             @foreach ($coupons as $c)
               <tr>
-                <th></th>
                   <th>
                     {{$c->id}}
                   </th>
