@@ -5,9 +5,11 @@
 @endsection
 @section('content') 
 <div class="bg-light rounded h-100 p-4">
- <div class="text">
-  <h2 class="">DANH SÁCH MÃ GIẢM GIÁ </h2>
-  <a href="/admin/coupon/create"><i class="fa-solid fa-circle-plus"></i> Thêm mã giảm giá</a>
+ <div class="text d-flex justify-content-between">
+  <div class="">DANH SÁCH MÃ GIẢM GIÁ </div>
+  <div class="adding">
+     <a href="/admin/coupon/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
+  </div>
  </div>
   @if(Session::has('thongbao'))
     <div class="alert alert-success">
@@ -16,7 +18,7 @@
   @endif
 </a>
   <div class="table-responsive">
-      <table class="table table-hover">
+      <table class="table table-hover align-middle">
           <thead>
               <tr class="text-dark table-info">
                   <th scope="col">ID</th>
@@ -40,14 +42,13 @@
                   <td> 
                     {{$c->coupon_code}}
                 </td>
-
                   <td>
                     @if ($c->coupon_type == '1')
-                    <p>Giảm giá theo số tiền</p>
+                    <div>Giảm giá theo số tiền</div>
                     @elseif ($c->coupon_type == '2')
-                    <p>Giảm giá theo %</p>
+                    <div>Giảm giá theo %</div>
                     @else
-                    <p>Free ship</p>
+                    <div>Free ship</div>
                   @endif
                   </td>
                   <td> 
@@ -55,16 +56,8 @@
                   </td>
                   <td>{{$c->limit_used}}</td>
                   <td>{{$c->user_used}}</td>
-                  <td>
-                    
-                    <p>{{ date('d-m-Y', strtotime($c->start_date)) }}
-                  
-                    </p>
-                  </td>
-                  <td>
-                    <p>{{ date('d-m-Y', strtotime($c->end_date)) }} 
-                      </p>
-                </td>
+                  <td>{{ date('d-m-Y', strtotime($c->start_date)) }}</td>
+                  <td>{{ date('d-m-Y', strtotime($c->end_date)) }}</td>
                   <td>
                     <span>
                       @if(strtotime($c->end_date) > strtotime(date('Y-m-d')))
@@ -75,9 +68,9 @@
                     </span>
                   </td>
                   {{-- <td>{{$categories->$p->name}}</td> --}}
-                  <td class="button">
-                    <a style="color: cadetblue" href="/admin/coupon/update/{{$c->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: red" href="/admin/coupon/delete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-sharp fa-solid fa-trash"></i> </a>
+                  <td >
+                    <a style="color: cadetblue" href="/admin/coupon/update/{{$c->id}}"><i class="bi bi-pencil-square"></i></a>
+                    <a style="color: red" href="/admin/coupon/delete/{{$c->id}}" onclick="return myFunction();"><i class="bi bi-trash"></i> </a>
 
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
                     <script>
