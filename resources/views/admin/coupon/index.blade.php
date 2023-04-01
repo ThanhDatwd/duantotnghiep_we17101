@@ -25,7 +25,7 @@
                   <th scope="col">Loại giảm giá</th>
                   <th scope="col">Giảm giá</th>
                   <th scope="col">Giới hạn </th>
-                  <th scope="col">Số lượng mã</th>
+                  <th scope="col">Đã dùng</th>
                   <th scope="col">Bắt đầu</th>
                   <th scope="col">Kết thúc</th>
                   <th scope="col">Trạng thái</th>
@@ -49,36 +49,30 @@
                     @elseif ($c->coupon_type == '2')
                     <p>Giảm giá theo %</p>
                     @else
-                    <p>Giảm giá theo đơn hàng</p>
+                    <p>Free ship</p>
                   @endif
-                   
                   </td>
-
-                  
                   <td> 
                     {{$c->discount}}
                   </td>
                   <td>{{$c->limit_used}}</td>
-                  <td>{{$c->min_condition}}</td>
+                  <td>{{$c->user_used}}</td>
                   <td>
                     
-                    <p>Từ: {{ date(' H:i:s', strtotime($c->start_date)) }} <br>
-                   {{ date('d-m-Y', strtotime($c->start_date)) }}
+                    <p>{{ date('d-m-Y', strtotime($c->start_date)) }}
                   
                     </p>
                   </td>
                   <td>
-                    <p>Đến: 
-                      {{ date(' H:i:s', strtotime($c->end_date)) }}<br>
-                      {{ date('d-m-Y', strtotime($c->end_date)) }} 
+                    <p>{{ date('d-m-Y', strtotime($c->end_date)) }} 
                       </p>
                 </td>
                   <td>
                     <span>
-                      @if(($c->is_active)==1)
-                      <button type="button" class="btn btn-success">Hoạt Động</button>
+                      @if(strtotime($c->end_date) > strtotime(date('Y-m-d')))
+                      <button type="button" class="btn btn-sm btn-success rounded-pill" disabled>Hoạt động</button>
                       @else
-                      <button type="button" class="btn btn-danger">Hết Mã</button>                  
+                      <button type="button" class="btn btn-sm btn-secondary rounded-pill" disabled>Hết hạn</button>                  
                     @endif
                     </span>
                   </td>
