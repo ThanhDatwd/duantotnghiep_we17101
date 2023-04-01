@@ -18,7 +18,7 @@
   <div class="table-responsive">
       <table class="table table-hover">
           <thead>
-              <tr>
+              <tr class="text-dark table-info">
                   <th scope="col">ID</th>
                   <th scope="col">Mã giảm giá</th>
                   <th scope="col">Loại giảm giá</th>

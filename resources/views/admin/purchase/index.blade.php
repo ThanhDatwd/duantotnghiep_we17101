@@ -48,7 +48,7 @@
                             <img src="" alt="">
                             <div>Admin</div>
                         </div>
-                        <div class="purchase-info__time">20/12/2022</div>
+                        <div class="purchase-info__time">{{date('d/m/20y')}}</div>
                     </div>
                     <div class="purchase-info__body">
                            <div class="purchase-info__item d-flex align-items-end gap-4">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="purchase-info__footer d-flex justify-content-around">
-                    <button class="btn btn-secondary" onclick="handlePurchase()">Hủy</button>
+                    <button class="btn btn-secondary" onclick="handleCancel()">Hủy</button>
                     <button class="btn btn-info" onclick="handlePurchase(false)">Lưu Tạm</button>
                     <button class="btn btn-success" onclick="handlePurchase(true)">Hoàn Thành</button>
                 </div>
@@ -230,6 +230,10 @@ productTable.addEventListener('click', event => {
 });
 
 // CODE PHẦN CHỨC NĂNG NHẬP HÀNG
+const handleCancel=()=>{
+    products=[]
+    renderProducts()
+}
  const handlePurchase=(status=false)=>{
     $.post("http://127.0.0.1:8000/api/purchase", 
         {
@@ -240,7 +244,6 @@ productTable.addEventListener('click', event => {
         }     
     ,
         function (data, textStatus, jqXHR) {
-            console.log(data)
         },
         "json"
     )
