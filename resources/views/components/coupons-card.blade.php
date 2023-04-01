@@ -19,7 +19,7 @@
                                 Sao chép
                                 <input type="text" value={{$d->coupon_code}} hidden>
                             </button>
-                            @if ($_COOKIE["couponCode"]==$d->coupon_code)
+                            @if (isset($_COOKIE["couponCode"])&&$_COOKIE["couponCode"]==$d->coupon_code)
                                 <button class="btn mt-1 btn-sm m_copy text-white font-weight-bold pl-2 pr-2 d-block btn-used">
                                     Đã sử dụng
                                     <i class='bx bx-check'></i>

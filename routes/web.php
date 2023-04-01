@@ -17,6 +17,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\admin\PurchaseController;
 use App\Http\Controllers\client\AuthController;
 use App\Http\Controllers\client\CouponController;
 use Illuminate\Support\Facades\Auth;
@@ -88,7 +89,6 @@ Route::prefix('/admin')->name('site')->group(function () {
 Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function () {
     //-----------------Admin Home-----------------
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-
     //-----------Admin Product-------------
     Route::get('/product', [AdminProductController::class, 'index'])->name('admin-product');
     Route::get('/product/create', [AdminProductController::class, 'create'])->name('admin.product.create');
@@ -182,4 +182,8 @@ Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function 
     // ------------------------Admin Import-History-----------------
     Route::get('/import', [ImportHistoryController::class, 'index']);
     Route::get('/profile', [AdminController::class,'profile'])->name('admin-profile');
+    // ---------------------- LỊCH SỬ NHẬP HÀNG --------------------
+    Route::get('/purchase', [PurchaseController::class, 'show_import'])->name('show-purchase');
+    Route::get('/purchase/history', [PurchaseController::class, 'history'])->name('show-purchase-history');
+    
 });
