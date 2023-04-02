@@ -18,6 +18,8 @@ use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\CategoryGroupController;
+use App\Http\Controllers\admin\ImportHistoryController;
+
 use App\Http\Controllers\client\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
