@@ -51,6 +51,9 @@
     font-size: 14px;
     padding: 4px 8px;
 }
+.free-gifts .item .btn-used{
+    background: #2e9f3c !important;
+}
 .free-gifts .vmore_c {
     left: 0;
     bottom: 0px;

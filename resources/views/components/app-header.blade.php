@@ -6,10 +6,10 @@
                 <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1669280565026" alt="">
             </div>
             <div class="action">
-                 <div class="action-item search">
-                    <input type="text" placeholder="Từ khóa ...">
-                    <button><i class='bx bx-search'></i></button>
-                 </div>
+                 <form action="{{route('clientsearch')}}"  class="action-item search">
+                    <input type="text" name="q" placeholder="Từ khóa ...">
+                    <button type="submit"><i class='bx bx-search'></i></button>
+                 </form>
                  <div class="action-item hotline">
                     <i class='bx bx-phone-call bx-tada' ></i>
                     <div class="link">
@@ -22,8 +22,13 @@
                  <div class="action-item auth">
                     <i class='bx bx-user'></i>
                     <div class="link">
-                        <div><a href="">Đăng ký </a></div>
-                        <div><a href="">Đăng nhập</a></div>
+                        @if (auth()->user())
+                        <div><a href="{{route('clientaccount')}}">{{Auth::guard('web')->user()->username}}</a></div>
+                        @else
+                        <div><a href="{{route('clientshow-register')}}">Đăng ký </a></div>
+                        <div><a href="{{route('clientshow-login')}}">Đăng nhập</a></div>
+                        @endif
+                        
                     </div>
                  </div>
                  <div class="action-item cart position-relative">
@@ -79,7 +84,7 @@
                     <li><a href="{{route('clientaddjobs')}}">
                         Tuyển dụng 
                     </a></li>
-                    <li><a href="{{route('clientcontact')}}">
+                    <li><a href="{{route('clientshow-contact')}}">
                         Liên hệ
                     </a></li>
                     

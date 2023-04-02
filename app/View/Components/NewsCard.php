@@ -20,7 +20,9 @@ class NewsCard extends Component
     public $isRow;
     public $slug;
     public $content;
-    public function __construct($title=null,$thumb=null,$date=0,$summary=null,$content=null,$link='',$id=null,$isRow=false,$slug=null)
+    public $month;
+    public $day;
+    public function __construct($title=null,$thumb=null,$date=0, $month=null,$day=null,$summary=null,$content=null,$link='',$id=null,$isRow=false,$slug=null)
     {  
        $this->slug=$slug;
        $this->title=$title;
@@ -29,6 +31,8 @@ class NewsCard extends Component
        $this->content=$content;
        $this->link=$link;
        $this->date=$date;
+       $this->month=$month;
+       $this->day=$day;
        $this->id=$id;
        $this->isRow=$isRow;
     }

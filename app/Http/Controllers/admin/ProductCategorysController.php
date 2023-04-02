@@ -30,7 +30,10 @@ class ProductCategorysController extends Controller
     public function create(){
        
         $categories=category::all();
+        $categroup=category_group::get();
         $data=[
+            "categroup"=>$categroup,
+
             "categories"=>$categories,
         ];
         return view('admin.product_category.create',$data);
@@ -54,6 +57,7 @@ class ProductCategorysController extends Controller
         $p->category_name=$_POST['category_name'];
         $p->thumb=$file_name;
         $p->is_active=$_POST['is_active'];
+        $p->category_group_id=$_POST['category_group_id'];
         $p->stt=$_POST['stt'];
         $p->save();
         
@@ -85,8 +89,10 @@ class ProductCategorysController extends Controller
     }
     public function update($id){
         $p = category::find($id);
+      
+        $categroup=category_group::get();
         if($p==null) return redirect('/thongbao');
-        return view('admin.product_category.update',['p'=>$p,]);
+        return view('admin.product_category.update',['p'=>$p,'categroup'=>$categroup]);
     }
     public function update_(Request $request,$id){
         $file_name = null;
@@ -101,6 +107,7 @@ class ProductCategorysController extends Controller
         if($p==null) return redirect('/thongbao');
         $p->category_name=$_POST['category_name'];
         $p->thumb=$file_name??$p->thumb;
+        $p->category_group_id=$_POST['category_group_id'];
         $p->is_active=$_POST['is_active'];
         $p->save();
         return redirect('/admin/product_category')->with('thongbao','Cập nhật thành công sản phẩm');;

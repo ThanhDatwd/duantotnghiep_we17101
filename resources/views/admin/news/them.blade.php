@@ -40,9 +40,11 @@ use Illuminate\Support\Facades\DB;
                                
                                 <div class="adpro1">
                                     <p>Tiêu đề <span>(*)</span></p>
-                                    <input type="text" placeholder="Nhập tên tiêu đề" name="title">
+                                    <input type="text" placeholder="Nhập tên tiêu đề" name="title" value="{{old('title')}}"/>
+                               
                                     @error('title')
-                                   <p>{{$message}}</p>
+                                    <p>{{$message}}</p>
+                                        
                                     @enderror
                                     
                                 </div>
@@ -57,7 +59,7 @@ use Illuminate\Support\Facades\DB;
                                     ?>
                                      @foreach($category_news as $category)
      <option value="{{$category->id}}">{{$category->name}}</option>
-    @endforeach
+                           @endforeach
                                     </select>
                                   
                                     
@@ -73,7 +75,7 @@ use Illuminate\Support\Facades\DB;
                             <div class="addpro">
                                 <div class="adpro1">
                                       <p>Tóm tắt <span>(*)</span></p>
-                                    <textarea name="summary" id="" style="width:100%" cols="100" rows="5" name="summary">
+                                    <textarea name="summary" id="" style="width:100%" cols="100" rows="5" name="summary" value="{{old('summary')}}">
                                 </textarea>
                                    @error('summary')
                                       <p>{{$message}}</p>
@@ -86,7 +88,7 @@ use Illuminate\Support\Facades\DB;
                             <div class="addpro">
                                 <div class="adpro1">
                                     <p>Nội dung bài viết  <span>(*)</span></p>
-                                        <textarea id="editor1"  style="width:100%"  name="content">
+                                        <textarea id="editor1"  style="width:100%"  name="content" value="{{old('content')}}">
                                     </textarea>
                                     @error('content')
                                     <p>{{$message}}</p>
@@ -132,7 +134,7 @@ use Illuminate\Support\Facades\DB;
                     <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
                     <input type="file" name="thumb" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
                     @error('thumb')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <p>{{ $message }}</p>
                     @enderror
             
                 </div>

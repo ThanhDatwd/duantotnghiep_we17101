@@ -5,29 +5,16 @@
 <!-- LINK CSS -->
 @endsection
 @section('main-content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ</title>
-</head>
-<body>
-    <div class="content">
-        <div class="breadcrumbs">
-            <div class="container">
-                <ul class="breadcrumbs breadcrumb align-items-center m-0 pl-0 pr-0 border-bottom">
-                    <li class="home">
-                        <a href="/" title="trang chủ">Trang Chủ</a>
-                        <span class="slash-divider ml-2 mr-2">/</span>
-                    </li>
-                    <li>Liên Hệ</li>
-                </ul>
-            </div>
-        </div>
+
+    <div class="content container ">
+        <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
+            <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
+              <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+            </ol>
+          </nav>
         <div class="com-info">
-            <div class="container mt-3">
+            <div class="mt-2">
 
                 <div class="col-main page-title">
                     <h1>Liên Hệ</h1>
@@ -36,20 +23,33 @@
                 <div class="m-auto bg-white d-block">
                     <div class="row">
                         <div class="col-md-6 col-12">
-                            <p class="mb-2"><b> Trụ Sở Chính:</b> Ladeco Building, 266 Doi Can Street, Ba Dinh District, Hanoi.</p>
-                            <p class="mb-2"><b> Hotline:</b><a href="tel:0937.782.305">0937.782.305</a></p>
-                            <p class="mb-2"><b> Email:</b><a href="mailto:haidinh147039@gmail.com">haidinh147039@gmail.com</a></p>
+                            <p class="mb-2"><b> Địa chỉ cửa hàng:</b> {{$company_info->address}}</p>
+                            <p class="mb-2"><b> Hotline:</b><a href="tel:{{$company_info->hotline}}"> {{$company_info->hotline}}</a></p>
+                            <p class="mb-2"><b> Email:</b><a href="mailto:haidinh147039@gmail.com"> {{$company_info->email}}</a></p>
                             <div class="mt-3">
-                                <form method="post" action="/postcontact" id="contact">
+                                <form method="post" action="{{route('clientcontact')}}" id="contact">
+                                    @csrf
                                 <div class="customer-name row">
-                                    <div class="col-12 form-group">
-                                    <input type="text" class="form-control" name="contact[Name]" placeholder="Tên *" required="">
+                                    <div class="auth-form__group">
+                                        @if (Session::has('success'))
+                                        <div class="alert alert-success">{{Session::get('success')}}</div>
+                                        @endif
+                                        @if (Session::has('fail'))
+                                        <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                                        @endif
+                    
                                     </div>
-                                    <div class="col-12 form-group">
-                                        <input type="email" class="form-control" name="contact[email]" placeholder="Địa chỉ email *" required="">
+                                    <div class="col-12 form-group mb-3">
+                                    <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Tên *" required>
                                     </div>
-                                    <div class="col-12 form-group">
-                                        <textarea name="contact[Body]" placeholder="Nội dung *" class="form-control" rows="3">
+                                    <div class="col-12 form-group mb-3">
+                                        <input type="text" class="form-control" name="subject" value="{{old('subject')}}" placeholder="Tiêu đề *" required>
+                                        </div>
+                                    <div class="col-12 form-group mb-3">
+                                        <input type="email" class="form-control" name="from" value="{{old('from')}}" placeholder="Địa chỉ email *" required>
+                                    </div>
+                                    <div class="col-12 form-group mb-3">
+                                        <textarea name="content" value="{{old('content')}}" placeholder="Nội dung *" class="form-control" rows="3">
                                         </textarea>
                                     </div>
                                     <span class="require d-block mb-3">
@@ -74,8 +74,7 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
 
 
 @endsection

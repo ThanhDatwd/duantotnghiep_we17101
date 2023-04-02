@@ -8,6 +8,11 @@ use App\Models\news;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
+use App\Http\Requests\NewsRequest;
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+
 class NewsController extends Controller
 {
     public function index()
@@ -20,7 +25,7 @@ class NewsController extends Controller
     return view('admin.news.index', compact('news'));
 }
 
-   public  function them1(Request $request){
+   public  function them1(NewsRequest $request){
 
  
         $file_name = null;
@@ -41,14 +46,16 @@ class NewsController extends Controller
     $t->category_news_id = $_POST['category_news_id'];
     //slug
      $t->slug = Str::slug($request->input('title'));
-   
+     //created_by
+    $t->created_by = Auth::guard('admin')->user()->username;
+    $t->updated_by = Auth::guard('admin')->user()->username;
     
     
 
 
     $t->save();
 
-    return redirect('/admin/news');
+    return redirect('/admin/news')->with('message', 'Đã thêm thành công');
 
 
 }

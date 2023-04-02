@@ -44,6 +44,7 @@ class ProductsController extends Controller
         return view('admin.product.create',$data);
     }
     public function create_(ProductsRequest $request){
+   
         if($request->has('thumb')){
             $file = $request->thumb;
             $ext = $request->thumb->extension();
@@ -61,7 +62,7 @@ class ProductsController extends Controller
         $p->discount=$_POST['discount'];
         $p->is_active=$_POST['is_active'];
         $p->price_current=$_POST['price_current'];
-        $p->brand=$_POST['brand'];
+        $p->brand=$_POST['brand']??"";
         $p->unit=$_POST['unit'];
         $p->category_id=$_POST['category_id'];
         $p->save();
@@ -118,7 +119,7 @@ class ProductsController extends Controller
         $p->content=$_POST['content'];
         $p->price=$_POST['price'];
         $p->price_current=$_POST['price_current'];
-        $p->brand=$_POST['brand'];
+        $p->brand=$_POST['brand']??"";
         $p->unit=$_POST['unit'];
         $p->is_active=$_POST['is_active'];
         $p->category_id=$_POST['category_id'];

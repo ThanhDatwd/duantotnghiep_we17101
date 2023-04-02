@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('brands');
             $table->string('avatar');
             $table->string('address');
-            $table->string('username');
+            // $table->string('username');
             $table->string('email');
             $table->string('phone');
             $table->timestamp('deleted_at')->nullable();

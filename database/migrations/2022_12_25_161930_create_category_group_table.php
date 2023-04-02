@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('poster')->nullable();
             $table->integer('stt');
             $table->string('slug')->unique();
-            $table->boolean('is_active')->default(1);
-            $table->boolean('is_hot')->default(1);
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_hot')->default(true);
             $table->timestamp('deleted_at')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

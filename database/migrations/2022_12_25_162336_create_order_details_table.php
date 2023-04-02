@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('product_thumb');
             $table->integer('price');
             $table->integer('quantity');
+            $table->integer('discount')->default(0);
             $table->timestamps();
         });
     }

@@ -1,20 +1,19 @@
 @extends('client.appLayout.index')
 @section('main-content')
 <link rel="stylesheet" href="{{asset('css/client/news_index.css')}}">
-<div class="container" style="margin-top: 20px;">
-  <div class="path">
-    <a href="">Trang chủ</a>
-    <span></span>
-    <a href="">Tin tức</a>
-
-    <hr>
-  </div>
+<div class="container" >
+  <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
+    <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
+      <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+    </ol>
+  </nav>
 
   {{--
   <x-CouponCard data={{$products}} /> --}}
-  <div class="main" style="display:flex;">
+  <div class="main mt-2">
     <div class="main_content" style="width: 100%">
-      <div class="row">
+      <div class="row align-items-end">
         <div class="col-9">
           <div class="navbar-container">
             <h2 class="change_title">
@@ -45,7 +44,6 @@
           <div class="popular_news_title">
             <h4>Tin tức nổi bật</h4>
           </div>
-
         </div>
       </div>
 
@@ -54,20 +52,23 @@
           <div style="display: grid;grid-template-columns:repeat(3,1fr);gap :10px;margin-top: 20px;">
 
             @foreach ($news as $item )
-            <x-NewsCard isRow={{false}} link="{{route('clientnews-detail',[" slug"=>$item->slug])}}"
+            <x-NewsCard isRow={{false}} link="{{route('clientnews-detail',['slug'=>$item->slug])}}"
               title="{{$item->title}}"
               thumb="{{$item->thumb}}"
               summary="{{$item->summary}}"
+              day="{{$item->created_at->format('d')}}"
+              month="{{$item->created_at->format('m/Y')}}"
               />
               @endforeach
           </div>
+          <div class="d-flex justify-content-center mt-4">{{$news->appends(request()->all())->links()}}</div>
         </div>
         <div class="col-3 mt-3" >
           <div class="popular_news" style=" height: 100%;width: 90%;">
             <ul style="padding: 0">
               @foreach ($news as $item )
                  <li>
-                  <x-NewsCard isRow={{false}} link="{{route('clientnews-detail',[" slug"=>$item->slug])}}"
+                  <x-NewsCard isRow={{true}} link="{{route('clientnews-detail',['slug'=>$item->slug])}}"
                     title="{{$item->title}}"
                     thumb="{{$item->thumb}}"
                     summary="{{$item->summary}}"
