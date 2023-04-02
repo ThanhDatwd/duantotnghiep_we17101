@@ -121,7 +121,7 @@ use Symfony\Component\Routing\Router;
                                         {{number_format($item->price)}} VNĐ
                                     </td>
                                     <td> {{date('d-m-Y', strtotime($item->created_at))}}</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                    <td><a class="btn btn-sm btn-primary" href="">Chi tiết</a></td>
                                 </tr>
                                 @endforeach
                                 
@@ -140,7 +140,7 @@ use Symfony\Component\Routing\Router;
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0">Thông báo đơn hàng mới nhất</h6>
-                                <a href="">Show All</a>
+                                <a href="">Hiện thị tất cả</a>
                             </div>
                             @foreach($neworders as $item)
                             <div class="d-flex align-items-center border-bottom py-3">
@@ -166,8 +166,8 @@ use Symfony\Component\Routing\Router;
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Calender</h6>
-                                <a href="">Show All</a>
+                                <h6 class="mb-0">Lịch </h6>
+                                <a href="">Hiển thị tất cả</a>
                             </div>
                             <div id="calender"></div>
                         </div>
@@ -175,8 +175,8 @@ use Symfony\Component\Routing\Router;
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">To Do List</h6>
-                                <a href="">Show All</a>
+                                <h6 class="mb-0">Danh sách hiện sản phẩm</h6>
+                                <a href="">Hiển thị tất cả</a>
                             </div>
                             <div class="d-flex mb-2">
                                 <input class="form-control bg-transparent" type="text" placeholder="Enter task">
@@ -241,13 +241,13 @@ use Symfony\Component\Routing\Router;
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a href="#">Green Market</a>, 2023. 
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                            Thiết kế bởi <a href="https://htmlcodex.com">Green Market</a>
                         </br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        Phân phối <a class="border-bottom" href="https://themewagon.com" target="_blank">Green Market</a>
                         </div>
                     </div>
                 </div>

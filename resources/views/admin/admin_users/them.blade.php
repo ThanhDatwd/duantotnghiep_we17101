@@ -190,8 +190,8 @@ use Illuminate\Support\Facades\DB;
                                 <div class="adpro1">
                                     <p>Kích hoạt <span>(*)</span></p>
                                     <select name="is_active">
-                                   <option value="1">Yes</option>
-                                      <option value="2">No</option>
+                                   <option value="1">Hoạt động</option>
+                                      <option value="2">Ẩn</option>
                                     </select>
                                   
                                     

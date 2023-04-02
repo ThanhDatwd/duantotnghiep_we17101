@@ -17,6 +17,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\admin\CategoryGroupController;
 use App\Http\Controllers\client\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -180,6 +181,18 @@ Route::prefix('/')->name('client')->group(function () {
     
         // ------------------------Admin Import-History-----------------
         Route::get('/import',[ImportHistoryController::class,'index']);
+        //------------ Admin category_product ---------------
+        Route::get('/category_group', [CategoryGroupController::class,'index'])->name('admin-product_category');
+        Route::get('/category_group/create', [CategoryGroupController::class,'create']);
+        Route::post('/category_group/create', [CategoryGroupController::class,'create_']);
+        Route::get('/category_group/delete/{id}', [CategoryGroupController::class,'delete']);
+        Route::get('/category_group/trashed/forceDelete/{id}', [CategoryGroupController::class,'forceDelete']);
+        Route::get('/category_group/trashed',[CategoryGroupController::class,'trashed']);
+        Route::get('/category_group/restore/{id}',[CategoryGroupController::class,'restore']);
+        Route::get('category_group/restore-all',[CategoryGroupController::class,'restoreAll']);
+        Route::get('/category_group/update/{id}', [CategoryGroupController::class,'update']);
+        Route::post('/category_group/update/{id}', [CategoryGroupController::class,'update_']);
+        
 
 });
 

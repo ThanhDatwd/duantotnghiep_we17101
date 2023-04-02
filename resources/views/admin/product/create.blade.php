@@ -12,7 +12,7 @@
 
         <h2>THÊM SẢN PHẨM</h2>
         
-        @if ($errors->any())
+        {{-- @if ($errors->any())
         <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -20,7 +20,7 @@
             @endforeach
             </ul>
         </div>
-        @endif
+        @endif --}}
         <div class= "container-fluid">
             <div class= "row">
                <div class ="col-md-8 col-sm-6 ">

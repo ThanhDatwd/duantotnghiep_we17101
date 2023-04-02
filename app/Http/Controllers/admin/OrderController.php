@@ -11,15 +11,13 @@ class OrderController extends Controller
 {
     //
     public function index(){
-        $order = order::all();
-        // $o = DB::table('orders')->get();
-    //   dd($order[1]->status);
+        $order = order::all();  
         return view('admin.order.index',['order'=>$order]);
     }
     public function detail($id){
         $order_detail = order_details::all();
         $order = order::find($id);
-        // dd($order_detail);
+    
         
         return view('admin.order.detail',['order_detail'=>$order_detail,'order'=>$order]);
     }

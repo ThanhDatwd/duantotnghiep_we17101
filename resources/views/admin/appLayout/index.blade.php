@@ -69,6 +69,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-list"></i>Loại Sản Phẩm</a>
                         <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/admin/category_group" class="dropdown-item">Quản lí nhóm loại </a>
                             <a href="/admin/product_category" class="dropdown-item">Danh sách </a>
                             <a href="/admin/product_category/trashed" class="dropdown-item">Thùng rác</a>
                         </div>

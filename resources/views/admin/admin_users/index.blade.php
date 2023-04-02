@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\DB;
                      <thead>
                      <tr>
                   <th></th>
-                                         <th scope="col">Check</th>
-                                            <th scope="col">Avatar</th>
-                                            <th scope="col">Name</th>
+                                         <th scope="col"></th>
+                                            <th scope="col">Hình đại diện</th>
+                                            <th scope="col">Tên Admin</th>
 
-                                            <th scope="col">Username</th>
+                                            <th scope="col">Tài khoản</th>
                                             <th scope="col">Email</th>
-                                           
+                                          <th scope="col">Số điện thoại</th> 
+                                            <th scope="col"></th>
                                             
                                             
-                                            <th scope="col">Action</th>
               </tr>
           </thead>
           <tbody>
@@ -37,12 +37,10 @@ use Illuminate\Support\Facades\DB;
                                         <td>{{$item->username}}</td>
                                         <td>{{$item->full_name}}</td>
                                         <td>{{$item->email}}</td>
+                                        <td>{{$item->phone}}</td>
                                     
                                     
-                                         <td>
-                                            {{-- {{$item->role_id}} --}}
-                                         </td>
-                                        
+                                       
                                        
                                          <td colspan="">
                                             <a href="{{url('admin/admin_users/capnhat/'.$item->id)}}" class="btn btn-primary">Sửa</a>
@@ -64,8 +62,8 @@ use Illuminate\Support\Facades\DB;
                   
                   {{-- <td>{{$categories->$p->name}}</td> --}}
                   <td class="button">
-                    <a style="color: cadetblue" href="{{url('admin/admin_users/capnhat/'.$item->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: red" href="{{url('admin/admin_users/xoa/'.$item->id)}}" onclick="return myFunction();"> <i  class="fa-sharp fa-solid fa-trash"></i> </a>
+                    {{-- <a style="color: cadetblue" href="{{url('admin/admin_users/capnhat/'.$item->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a style="color: red" href="{{url('admin/admin_users/xoa/'.$item->id)}}" onclick="return myFunction();"> <i  class="fa-sharp fa-solid fa-trash"></i> </a> --}}
                    
                 
 
@@ -79,7 +77,6 @@ use Illuminate\Support\Facades\DB;
                   </td>
 
               </tr>
-              @endforeach
           </tbody>
         
           

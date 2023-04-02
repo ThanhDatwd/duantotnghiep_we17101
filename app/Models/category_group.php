@@ -16,7 +16,7 @@ class category_group extends Model
     {
         return [
             'slug' => [
-                'source' => 'category_name'
+                'source' => 'name'
             ]
         ];
     }
