@@ -23,20 +23,33 @@
                 <div class="m-auto bg-white d-block">
                     <div class="row">
                         <div class="col-md-6 col-12">
-                            <p class="mb-2"><b> Trụ Sở Chính:</b> Ladeco Building, 266 Doi Can Street, Ba Dinh District, Hanoi.</p>
-                            <p class="mb-2"><b> Hotline:</b><a href="tel:0937.782.305">0937.782.305</a></p>
-                            <p class="mb-2"><b> Email:</b><a href="mailto:haidinh147039@gmail.com">haidinh147039@gmail.com</a></p>
+                            <p class="mb-2"><b> Địa chỉ cửa hàng:</b> {{$company_info->address}}</p>
+                            <p class="mb-2"><b> Hotline:</b><a href="tel:{{$company_info->hotline}}"> {{$company_info->hotline}}</a></p>
+                            <p class="mb-2"><b> Email:</b><a href="mailto:haidinh147039@gmail.com"> {{$company_info->email}}</a></p>
                             <div class="mt-3">
-                                <form method="post" action="/postcontact" id="contact">
+                                <form method="post" action="{{route('clientcontact')}}" id="contact">
+                                    @csrf
                                 <div class="customer-name row">
-                                    <div class="col-12 form-group">
-                                    <input type="text" class="form-control" name="contact[Name]" placeholder="Tên *" required="">
+                                    <div class="auth-form__group">
+                                        @if (Session::has('success'))
+                                        <div class="alert alert-success">{{Session::get('success')}}</div>
+                                        @endif
+                                        @if (Session::has('fail'))
+                                        <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                                        @endif
+                    
                                     </div>
-                                    <div class="col-12 form-group">
-                                        <input type="email" class="form-control" name="contact[email]" placeholder="Địa chỉ email *" required="">
+                                    <div class="col-12 form-group mb-3">
+                                    <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Tên *" required>
                                     </div>
-                                    <div class="col-12 form-group">
-                                        <textarea name="contact[Body]" placeholder="Nội dung *" class="form-control" rows="3">
+                                    <div class="col-12 form-group mb-3">
+                                        <input type="text" class="form-control" name="subject" value="{{old('subject')}}" placeholder="Tiêu đề *" required>
+                                        </div>
+                                    <div class="col-12 form-group mb-3">
+                                        <input type="email" class="form-control" name="from" value="{{old('from')}}" placeholder="Địa chỉ email *" required>
+                                    </div>
+                                    <div class="col-12 form-group mb-3">
+                                        <textarea name="content" value="{{old('content')}}" placeholder="Nội dung *" class="form-control" rows="3">
                                         </textarea>
                                     </div>
                                     <span class="require d-block mb-3">
