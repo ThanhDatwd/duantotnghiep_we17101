@@ -17,9 +17,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('status');
-            $table->string('total');
+            $table->string('code');
+            $table->integer('total');
             $table->string('payment_type');
-            $table->string('fee_ship');
+            $table->integer('fee_ship');
             $table->string('user_name');
             $table->string('email');
             $table->string('province');
@@ -29,8 +30,6 @@ return new class extends Migration
             $table->string('phone');
             $table->string('customer_note')->nullable();
             $table->string('shop_note')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

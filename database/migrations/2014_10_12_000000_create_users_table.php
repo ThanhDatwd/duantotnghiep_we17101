@@ -22,8 +22,8 @@ return new class extends Migration
             // $table->string('first_name');
             // $table->string('last_name');
             // $table->string('full_name');
-            $table->boolean('gender');
-            $table->string('address');
+            $table->boolean('gender')->default(1);
+            $table->string('address')->nullable();
             $table->string('province')->nullable();
             $table->string('district')->nullable();
             $table->string('ward')->nullable();

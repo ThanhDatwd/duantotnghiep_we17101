@@ -1,5 +1,5 @@
 
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,10 +12,10 @@ body {
 
 p {
     margin: 0%;
-}
+} */
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 20px auto;
     overflow: hidden;
     background-color: #f8f9fa;
@@ -158,9 +158,10 @@ input[type="radio"] {
 }
 
 .form-select {
-    border-radius: 0;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+    
 
 }
 

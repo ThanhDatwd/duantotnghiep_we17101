@@ -24,11 +24,11 @@ return new class extends Migration
             $table->string('full_name');
             $table->boolean('gender');
             $table->timestamp('birthday')->nullable();
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('province')->nullable();
             $table->string('district')->nullable();
             $table->string('ward')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(1);
             $table->timestamp('deleted_at')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

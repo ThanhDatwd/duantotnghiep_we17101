@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="{{asset('css/client/base.css')}}">
 @section('main-content')
 <!-- Button trigger modal -->
-<button type="button" id="btn_verify_code_otp" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden>
+<button type="button" id="btn_verify_code_otp" class="btn btn-primary" data-bs-toggle="modal"
+	data-bs-target="#exampleModal" hidden>
 	Launch demo modal
 </button>
 
@@ -53,7 +54,7 @@
 				<img style="width:180px"
 					src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1676652183181" alt="">
 			</div>
-			<div class="input-infomation row">
+			<div class="input-infomation row ">
 				<form id="form-order" action="{{route('clientpayment_cod')}}" method="POST"
 					class="form-order col-lg-6 col-xs-12">
 					@csrf
@@ -65,42 +66,82 @@
 						</a>
 					</div>
 					<div class="error-txt "></div>
-					<div class="form-group order">
-						<input type="email" name="email" placeholder="email" value="{{old('email')}}">
+					<div>
+						<div class="form-group order">
+							<input type="email" name="email" placeholder="email" id="user_email"
+								value="{{old('email')}}" required>
+						</div>
+						<span class="text-danger">@error('email')
+							{{$message}}
+							@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="user_name" placeholder="Họ tên" value="{{old('user_name')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="username" placeholder="Họ tên" value="{{old('username')}}"
+								required>
+						</div>
+						<span class="text-danger">@error('username')
+							{{$message}}
+							@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)" value="{{old('phone')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)"
+								value="{{old('phone')}}" required>
+						</div>
+						<span class="text-danger">@error('phone')
+							{{$message}}
+							@enderror</span>
 					</div>
-					<div class="form-group order">
-						<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('email')}}">
+					<div>
+						<div class="form-group order">
+							<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('address')}}"
+								required>
+						</div>
+						<span class="text-danger">@error('address')
+							{{$message}}
+							@enderror</span>
 					</div>
-					<input type="text" id="input_province" name="province"  value="{{old('province')}}" hidden>
-					<input type="text" id="input_district"  name="district"  value="{{old('district')}}" hidden>
+					<input type="text" id="input_province" name="province" value="{{old('province')}}" hidden>
+					<input type="text" id="input_district" name="district" value="{{old('district')}}" hidden>
 
-					<div class="form-group order">
-						<select id="province" >
-							<option value="">-- Chọn tỉnh/thành --</option>
-
-						</select>
+					<div>
+						<div class="form-group order">
+							<select id="province">
+								<option value="">-- Chọn tỉnh/thành --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('province')
+							{{$message}}
+							@enderror</span>
+					</div>
+					<div>
+						<div class="form-group order">
+							<select id="district">
+								<option value="">-- Chọn quận/huyện --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('district')
+							{{$message}}
+							@enderror</span>
+					</div>
+					<div>
+						<div class="form-group order">
+							<select id="ward" name="ward">
+								<option value="">-- Chọn xã/phường --</option>
+							</select>
+						</div>
+						<span class="text-danger">@error('ward')
+							{{$message}}
+							@enderror</span>
 					</div>
 					<div class="form-group order">
-						<select id="district" >
-							<option value="">-- Chọn quận/huyện --</option>
-						</select>
-					</div>
-					<div class="form-group order">
-						<select id="ward" name="ward" >
-							<option value="">-- Chọn xã/phường --</option>
-						</select>
-					</div>
-					<div class="form-group order">
-						<textarea name="note_order" {{old('note_order')}} placeholder="Ghi chú">Ghi chú</textarea>
+						<textarea name="order_note" {{old('order_note')}} placeholder="Ghi chú">Ghi chú</textarea>
 					</div>
 					<input type="number" name="total" value="{{$total}}" hidden>
 					<input type="number" name="fee_ship" value="0" hidden>
+					<input type="text" id="couponCode" value={{$couponCode}} name="couponCode" hidden>
+
 				</form>
 				<div class="transition col-lg-6 col-xs-12">
 					<div class="order-title">
@@ -112,7 +153,7 @@
 								<i class='bx bxs-truck'></i>
 								Fee ship
 							</span>
-							<span>40000</span>
+							<span>0</span>
 						</div>
 					</div>
 					<div class="order-title">
@@ -168,19 +209,17 @@
 						</div>
 					</div>
 
-					{{-- <button id="payment_vnpay">thanh toán vnpay</button> --}}
-					{{-- <form action="{{route('clientpayment_vnpay')}}" method="POST">
-						@csrf
-					</form>
-					<form action="{{route('clientpayment_momo_qr')}}" method="POST">
-						@csrf
-						<button type="submit">thanh toán momo QR code</button>
-					</form>
-					<form action="{{route('clientpayment_momo_atm')}}" method="POST">
-						@csrf
-						<button type="submit" name="payUrl">thanh toán momo ATM</button>
-					</form> --}}
-
+				</div>
+				<div class="d-sm-none d-block">
+					<div class="d-flex justify-content-center ">
+						<button class="btn btn-buyNow p-10 " id="btn-order-now">Đặt mua</button>
+					</div>
+					<div class="d-flex justify-content-center mt-2">
+						<a href="{{route('clientcart')}}">
+							<i class='bx bx-chevron-left'></i>
+							Quay về trang đặt hàng
+						</a>
+					</div>
 				</div>
 
 			</div>
@@ -200,7 +239,7 @@
 					@endphp
 					<div class="order-item">
 						<div class="order-item_img">
-							<img src="{{$item->thumb}}" alt="">
+							<img src="{{asset('upload/'.$item->thumb)}}" alt="">
 							<span>{{$item->amount}}</span>
 						</div>
 						<div class="order-item_txt">
@@ -217,10 +256,15 @@
 				</ul>
 				{{-- --}}
 				<div class="discountCode">
-					<div class="form-group order">
-						<input type="text" name="" id="">
-						<button  class="btn btn-buyNow">Áp Dụng</button>
-					</div>
+					<form action="{{route('clientuse-coupon-code')}}" method="POST">
+						@csrf
+						<div class="form-group code">
+							<input type="text" id="couponCode" value="{{$couponCode}}" name="couponCode" >
+							<button  class="btn-applyCouponCode">Áp Dụng</button>
+						</div>
+					</form>
+					<span class="text-danger" id="msg-applyCouponCode-error"></span>
+					<span class="text-success" id="msg-applyCouponCode-success">{{$couponMsg}}</span>
 				</div>
 
 				<!-- Phần hiển thị tông tiền -->
@@ -243,7 +287,7 @@
 						<i class='bx bx-chevron-left'></i>
 						Quay về trang đặt hàng
 					</a>
-					<button class="btn btn-buyNow" id="btn-order-now">Đặt mua</button>
+					<button class="btn btn-buyNow d-none d-sm-block" id="btn-order-now">Đặt mua</button>
 					{{-- <button hidden class="btn btn-showModalInputCode" data-toggle="modal"
 						data-target="#exampleModalCenter">Đặt mua</button> --}}
 				</div>
@@ -254,13 +298,14 @@
 
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
 <script>
 	const paymentOnlineArea=document.querySelector(".payment.online_area")
 	const paymentCodArea=document.querySelector(".payment.cod_area")
 	const paymentCodMessage=document.querySelector(".payment.cod_area .message")
 	const paymentOnlineList=document.querySelector(".payment.online_area .payment-online")
-	const btnOrderNow=document.getElementById("btn-order-now")
+	const btnOrderNow=document.querySelectorAll(".btn.btn-buyNow")
 	const formOrder=document.getElementById('form-order')
 	const btnPaymentVnpay=document.querySelector(".payment_vnpay")
 	const btnPaymentMomo=document.querySelector(".payment_momo")
@@ -274,11 +319,17 @@
 		formOrder.action="http://127.0.0.1:8000/payment_cod"
 		paymentOnlineArea.classList.remove('active')
         paymentCodArea.classList.add('active')
+		btnPaymentVnpay.classList.remove('active')
+		btnPaymentMomo.classList.remove('active')
+      $('.payment.cod_area.active .message').slideDown(500);
+
 	}
     paymentOnlineArea.onclick=()=>{
 		getOtp=false
 		paymentOnlineArea.classList.add('active')
         paymentCodArea.classList.remove('active')
+		$('.payment.cod_area .message').slideUp(500);
+
 	}
 	btnPaymentVnpay.onclick=()=>{
 		getOtp=false
@@ -296,28 +347,91 @@
 		});
 		btnPaymentMomo.classList.add('active')
 	}
-	btnOrderNow.onclick=()=>{
-		// formOrder.submit()
-		if(getOtp==true){
-			btn_verify_code_otp.click()
+	btnOrderNow.forEach(e=>{
+		e.onclick=()=>{
+			if(getOtp==true){
 			sendNotificationGetOtp()
+		
             
 		}
 		else{
 			formOrder.submit()
 		}
 	}
-    
+    let email=document.getElementById('#email')
+		}
+	)
 	const sendNotificationGetOtp=()=>{
-		$.ajax({
-                    type: 'post',
-                    url: 'http://127.0.0.1:8000/api/get_order_otp',
-                    success:function(data){
-						console.log(data)
-                        // alert('vui lòng nhập mã xác nhận')
-                    }
-            });
-			$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+		
+		$("#form-order").validate({
+			rules: {
+			username : {
+				required: true,
+			},
+			phone: {
+				required: true,
+			},
+			email: {
+				required: true,
+				// email: true
+			},
+			address: {
+				required: true,
+			},
+			province: {
+				required: true,
+			},
+			ward: {
+				required: true,
+			},
+			district: {
+				required: true,
+			},
+			},
+			messages : {
+			username: {
+				required: "Vui lòng nhập tên khi nhận hàng"
+			},
+			phone: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			email: {
+				required : "Vui lòng nhập email nhận hàng",
+				// email: "Vui lòng nhập đúng định dạng abc@gmail.com"
+			},
+			address: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			province: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			district: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			ward: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			},
+			submitHandler: function(form) {
+				btn_verify_code_otp.click()
+				let email=$('#user_email').val()
+				console.log(email)
+				$.ajax({
+							type: 'post',
+							url: 'http://127.0.0.1:8000/api/get_order_otp',
+							data:{
+								email
+							},
+							success:function(data){
+								console.log(data)
+								// alert('vui lòng nhập mã xác nhận')
+							}
+					});
+					$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+				}
+		});
+		$("#form-order").submit()
+		
 	}
 
 	// PHẦN NHẬP CODE
@@ -357,8 +471,26 @@
         });
 		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
     }
-  
+//   PHẦN ÁP DỤNG MÃ CODE
+$("#btn-applyCouponCode").click(()=>{
+	$.post("http://127.0.0.1:8000/api/apply_coupon_code", 
+	{
+		code:$("#couponCode").val()
+	},
+		function (data) {
+		    if(data.coupon!=null){
+				$("#msg-applyCouponCode-success").text("Áp dụng mã khuyễn mãi thành công")
+				$("#msg-applyCouponCode-error").text(null)
+			}
+			else{
+				$("#msg-applyCouponCode-error").text("Mã khuyễn mãi không tồn tại hoặc hết hạn")
+				$("#msg-applyCouponCode-success").text(null)
 
+			}
+		}
+	);
+})
+    
 	// //  Chọn quận huyện thành phố 
 	// Lấy danh sách tỉnh/thành từ API
 	let input_province=document.querySelector('#input_province')

@@ -4,14 +4,14 @@
 @endsection
 @section('main-content')
 <div class="container search-page mt-4">
-  <h3>tìm thấy <strong></strong> {{count($products)}} kết quả cho <strong>" {{$q}} "</strong></h3>
+  <h3>Tìm thấy <strong></strong> {{count($products)}} kết quả cho <strong>" {{$q}} "</strong></h3>
   <div class="row mt-4">
     @foreach ($products as $item)
     @php
     $price1="";
     $price2=number_format($item->price_current);
     if($item->discount>0){
-    $price1=number_format($item->price_current)."đ";
+    $price1=number_format($item->price_current)."vnđ";
     $price2=number_format($item->price_current-($item->price_current*$item->discount/100));
     }
     @endphp

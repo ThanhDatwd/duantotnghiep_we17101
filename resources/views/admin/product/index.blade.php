@@ -8,6 +8,7 @@
 <div class="bg-light rounded h-100 p-4">
  <div class="text">
   <h2 class="">DANH SÁCH SẢN PHẨM </h2>
+  
   <a href="/admin/product/create"><i class="fa-solid fa-circle-plus"></i> Thêm sản phẩm</a>
  </div>
   @if(Session::has('thongbao'))
@@ -31,6 +32,7 @@
               </tr>
           </thead>
           <tbody>
+          
             @foreach ($products as $p)
               <tr>
                 <th></th>
@@ -86,5 +88,6 @@
       </nav>
   </div>
 </div>
+
 
 @endsection

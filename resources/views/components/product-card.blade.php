@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('css/client/component/productCard.css')}}">
 <a href="{{$link}}" class="products-card {{$isRow==true?'isRow':''}}">
     <div class="thumb">
-        <img src={{$thumb??null}} alt="">
+        <img src={{asset('upload/'.$thumb)}} alt="">
         <i class='bx bx-basket bx-tada'></i>
         <div class="discount {{$discount>0?'isActive':''}}" >{{$discount}}%</div>
     </div>
@@ -13,8 +13,8 @@
         </div>
         <h3 class="title">{{$name??null}}</h3>
         <div class="price">
-            <span class="price_new">{{$priceCurrent}}</span>
-            <del class="price_old">{{$priceOld}}</del>
+            <span class="price_new">{{$priceCurrent}} vnđ</span>
+            <del class="price_old">{{$priceOld}} {{$priceOld==null?'':'vnđ'}}</del>
         </div>
     </div>
 </a>

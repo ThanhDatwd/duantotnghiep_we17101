@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\administrators;
+use App\Models\Admin;
 
 class AdminUserController extends Controller
 {
@@ -27,16 +27,15 @@ class AdminUserController extends Controller
             $file->move(public_path('upload'), $file_name);
         }
     $request->merge(['avatar' => $file_name]);
-    $t= new administrators;
+    $t= new Admin();
     $t->last_name = $_POST['last_name'];
     $t->first_name = $_POST['first_name'];
     $t->username = $_POST['username'];
-    $t->password = $_POST['password'];
+    $t->password = bcrypt($_POST['password']);
     $t->full_name = $_POST['first_name'].$_POST['last_name'];
     $t->gender=  $_POST['gender'];
     $t->phone = $_POST['phone'];
     //role_id
-    $t->role_id = $_POST['role_id'];
     $t->address = $_POST['address'];
     //province
     $t->province = $_POST['province'];
@@ -62,13 +61,13 @@ function them(){
 }
 function capnhat($id){
 
-    $users = administrators::find($id);
+    $users = Admin::find($id);
     
     return view('admin.admin_users.capnhat',['t'=>$users]);
   
 }
 function capnhat_(Request $request,$id){
-    $t= administrators::find($id);
+    $t= Admin::find($id);
 
 
             $file_name = null;
@@ -88,7 +87,6 @@ function capnhat_(Request $request,$id){
     $t->gender=  $_POST['gender'];
     $t->phone = $_POST['phone'];
     //role_id
-    $t->role_id = $_POST['role_id'];
     $t->address = $_POST['address'];
     //province
     $t->province = $_POST['province'];
@@ -97,10 +95,13 @@ function capnhat_(Request $request,$id){
     //ward
     $t->ward = $_POST['ward'];
 
-     $t->birthday = $_POST['birthday'];
+    $t->birthday = $_POST['birthday'];
     $t->is_active = $_POST['is_active'];
     $t->email = $_POST['email'];
     $t->avatar = $file_name;
+    //created_at
+    // 
+    
 
     $t->save();
     

@@ -15,7 +15,7 @@
             <li class="auth-form__heading ">Đăng kí</li>
           </a>
         </div>
-        <form action="{{route('clientregister')}}" method="POST" class="auth-form__login ">
+        <form action="{{route('clientlogin')}}" method="POST" class="auth-form__login ">
           @csrf
           <div class="auth-form__group">
             @if (Session::has('success'))
@@ -30,11 +30,11 @@
           <!-- Đây là chỗ đăng nhập -->
           <div class="auth-form__group">
             <div class="auth-form__group-data">
-              <label class="group-label">Số điện thoại</label>
+              <label class="group-label">Email</label>
               <span class="group-obli">*</span>
             </div>
-            <input type="text" name="phone" value="{{old("phone")}}" placeholder="phone" />
-            <span class="text-danger">@error('phone')
+            <input type="text" name="email" value="{{old("email")}}" placeholder="email" />
+            <span class="text-danger">@error('email')
               {{$message}}
           @enderror</span>
           </div>

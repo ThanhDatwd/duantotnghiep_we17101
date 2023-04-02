@@ -18,10 +18,10 @@ class SendVerifyCodeMail extends Mailable
      *
      * @return void
      */
-    public $code;
-    public function __construct($code=null)
+    public $opt;
+    public function __construct($opt=null)
     {
-        $this->code=$code;
+        $this->opt=$opt;
     }
 
     /**
@@ -44,7 +44,7 @@ class SendVerifyCodeMail extends Mailable
     public function content()
     {
         return new Content(
-        view:'client.mail.index',
+        view:'client.mail.order_otp_email.index',
         );
     }
 
