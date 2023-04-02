@@ -59,7 +59,8 @@ Route::prefix('/')->name('client')->group(function () {
     Route::get('/news', [NewsController::class, 'index'])->name('news');
     Route::get('/news/{slug}', [NewsController::class, 'newsDetail'])->name('news-detail');
     Route::get('/cart', [CartController::class, 'cart'])->name('cart');
-    Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
+    Route::get('/contact', [ContactController::class, 'contact'])->name('show-contact');
+    Route::post('/contact', [ContactController::class, 'contact_'])->name('contact');
     Route::get('/addjobs', [AddjobController::class, 'index'])->name('addjobs');
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
     Route::post('/payment_cod', [PaymentController::class, 'create_payment_cod'])->name('payment_cod');

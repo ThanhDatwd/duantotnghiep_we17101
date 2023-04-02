@@ -6,14 +6,14 @@
 @if(session('success'))
 <div class="alert alert-success">
   {{ session('success') }}
-</div> 
+</div>
 @endif
 
-<section  class="container">
+<section class="container">
   <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
-    <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
-      <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
+    <ol class=" breadcrumb p-3" @style("margin:0;padding-left:0px")>
+    <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
     </ol>
   </nav>
 </section>
@@ -84,7 +84,7 @@
             </div>
             <div class="product-detail--other mt-4">
                 <h3 class="title underline">Thông tin chi tiết</h3>
-                <p>{{$product->content!=""?$product->content:'Đang cập nhật'}}</p>
+                <div>{!!$product->content!=""?$product->content:'Đang cập nhật'!!}</div>
             </div>
         </div>
         <div class="related-products d-sm-block d-none">
@@ -133,7 +133,7 @@
 @endsection
 @section('js')
 <script>
-    var mySwiperProductDetailGallery = new Swiper(".mySwiperProductDetailGallery", {
+  var mySwiperProductDetailGallery = new Swiper(".mySwiperProductDetailGallery", {
       spaceBetween: 10,
       slidesPerView: 4,
       freeMode: true,
@@ -205,5 +205,5 @@
         }
     }
   
-  </script>
+</script>
 @endsection
