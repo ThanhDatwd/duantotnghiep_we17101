@@ -10,6 +10,9 @@ use App\Http\Controllers\admin\NewsController as AdminNewsController;
 use App\Http\Controllers\admin\CategoriesNews;
 use App\Http\Controllers\admin\ProductCategorysController;
 use App\Http\Controllers\admin\BrandController;
+use App\Http\Controllers\admin\BannerController;
+use App\Http\Controllers\admin\CommentController;
+
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\client\AddjobController;
 use App\Http\Controllers\client\ContactController;
@@ -122,6 +125,21 @@ Route::prefix('/admin')->name('site')->group(function () {
     Route::get('/news/phuc-hoi-tat-ca', [AdminNewsController::class, 'restoreAll'])->name('admin.news.restoreAll');
     Route::get('/news/thung-rac', [AdminNewsController::class, 'trash'])->name('admin.news.trash');
     Route::post('/news/xoa-nhieu', [AdminNewsController::class, 'deleteMany'])->name('admin.news.deleteMany');
+    //---------------Banner-------------------
+    Route::get('/banner', [BannerController::class, 'index'])->name('banner');
+    Route::get('/banner/them', [BannerController::class, 'them'])->name('banner.them');
+    Route::post('/banner/them', [BannerController::class, 'them1'])->name('banner.them1');
+    Route::get('/banner/capnhat/{id}', [BannerController::class, 'capnhat'])->name('banner.capnhat');
+    Route::post('/banner/capnhat/{id}', [BannerController::class, 'capnhat_'])->name('banner.capnhat_');
+    Route::get('/banner/xoa/{id}', [BannerController::class, 'xoa'])->name('banner.xoa');
+    Route::get('/banner/phuc-hoi/{id}', [BannerController::class, 'restore'])->name('admin.banner.restore');
+    Route::get('/banner/phuc-hoi-tat-ca', [BannerController::class, 'restoreAll'])->name('admin.banner.restoreAll');
+    Route::get('/banner/thung-rac', [BannerController::class, 'trash'])->name('admin.banner.trash');
+    Route::post('/banner/xoa-nhieu', [BannerController::class, 'deleteMany'])->name('admin.banner.deleteMany');
+    //---------------Comment-------------------
+    Route::get('/comment', [CommentController::class, 'index'])->name('comment');
+    Route::get('/comment/xoa/{id}', [CommentController::class, 'xoa'])->name('comment.xoa');
+
 
     //-----------------Admin Category_news ------------------------
     Route::get('/categories_news', [CategoriesNews::class, 'index'])->name('categories_news');
@@ -180,4 +198,5 @@ Route::prefix('/admin')->name('site')->group(function () {
     // ------------------------Admin Import-History-----------------
     Route::get('/import', [ImportHistoryController::class, 'index']);
     Route::get('/profile', [AdminController::class,'profile'])->name('admin-profile');
+    
 });

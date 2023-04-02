@@ -78,9 +78,17 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href=" {{url('admin/categories_news')}}" class="dropdown-item">Quản lý loại tin</a>
                            <a href="{{url('admin/news')}}" class="dropdown-item">Quản lý tin tức</a>
-                            <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
+                            <a href="{{url('admin/comment')}}" class="dropdown-item">Quản lý bình luận</a>
                         </div>
                     </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-regular fa-user"></i>Banner</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href=" {{url('admin/banner')}}" class="dropdown-item">Quản lý banner</a>
+                          
+                        </div>
+                    </div>
+
 
                        <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-regular fa-user"></i>Tài Khoản</a>
