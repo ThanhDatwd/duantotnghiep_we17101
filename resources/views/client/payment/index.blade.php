@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="{{asset('css/client/base.css')}}">
 @section('main-content')
 <!-- Button trigger modal -->
-<button type="button" id="btn_verify_code_otp" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden>
+<button type="button" id="btn_verify_code_otp" class="btn btn-primary" data-bs-toggle="modal"
+	data-bs-target="#exampleModal" hidden>
 	Launch demo modal
 </button>
 
@@ -67,74 +68,80 @@
 					<div class="error-txt "></div>
 					<div>
 						<div class="form-group order">
-							<input type="email" name="email" placeholder="email" id="user_email" value="{{old('email')}}">
+							<input type="email" name="email" placeholder="email" id="user_email"
+								value="{{old('email')}}" required>
 						</div>
 						<span class="text-danger">@error('email')
 							{{$message}}
-						@enderror</span>
+							@enderror</span>
 					</div>
 					<div>
 						<div class="form-group order">
-							<input type="text" name="username" placeholder="Họ tên" value="{{old('username')}}">
+							<input type="text" name="username" placeholder="Họ tên" value="{{old('username')}}"
+								required>
 						</div>
 						<span class="text-danger">@error('username')
 							{{$message}}
-						@enderror</span>
+							@enderror</span>
 					</div>
 					<div>
 						<div class="form-group order">
-							<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)" value="{{old('phone')}}">
+							<input type="text" name="phone" placeholder="số điện thoại(tùy chọn)"
+								value="{{old('phone')}}" required>
 						</div>
 						<span class="text-danger">@error('phone')
 							{{$message}}
-						@enderror</span>
+							@enderror</span>
 					</div>
 					<div>
 						<div class="form-group order">
-							<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('address')}}">
+							<input type="text" name="address" placeholder="địa chỉ(tùy chọn)" value="{{old('address')}}"
+								required>
 						</div>
 						<span class="text-danger">@error('address')
 							{{$message}}
-						@enderror</span>
+							@enderror</span>
 					</div>
-					<input type="text" id="input_province" name="province"  value="{{old('province')}}" hidden>
-					<input type="text" id="input_district"  name="district"  value="{{old('district')}}" hidden>
+					<input type="text" id="input_province" name="province" value="{{old('province')}}" hidden>
+					<input type="text" id="input_district" name="district" value="{{old('district')}}" hidden>
 
 					<div>
 						<div class="form-group order">
-							<select id="province" >
+							<select id="province">
 								<option value="">-- Chọn tỉnh/thành --</option>
 							</select>
 						</div>
 						<span class="text-danger">@error('province')
 							{{$message}}
-						@enderror</span>
+							@enderror</span>
 					</div>
 					<div>
 						<div class="form-group order">
-							<select id="district" >
+							<select id="district">
 								<option value="">-- Chọn quận/huyện --</option>
 							</select>
 						</div>
 						<span class="text-danger">@error('district')
 							{{$message}}
-						@enderror</span>
+							@enderror</span>
 					</div>
 					<div>
 						<div class="form-group order">
-							<select id="ward" name="ward" >
+							<select id="ward" name="ward">
 								<option value="">-- Chọn xã/phường --</option>
 							</select>
 						</div>
 						<span class="text-danger">@error('ward')
 							{{$message}}
-						@enderror</span>
+							@enderror</span>
 					</div>
 					<div class="form-group order">
 						<textarea name="order_note" {{old('order_note')}} placeholder="Ghi chú">Ghi chú</textarea>
 					</div>
 					<input type="number" name="total" value="{{$total}}" hidden>
 					<input type="number" name="fee_ship" value="0" hidden>
+					<input type="text" id="couponCode" value={{$couponCode}} name="couponCode" hidden>
+
 				</form>
 				<div class="transition col-lg-6 col-xs-12">
 					<div class="order-title">
@@ -146,7 +153,7 @@
 								<i class='bx bxs-truck'></i>
 								Fee ship
 							</span>
-							<span>40000</span>
+							<span>0</span>
 						</div>
 					</div>
 					<div class="order-title">
@@ -214,7 +221,7 @@
 						</a>
 					</div>
 				</div>
-                
+
 			</div>
 		</div>
 		<div class="col-lg-4 col-xs-12">
@@ -232,7 +239,7 @@
 					@endphp
 					<div class="order-item">
 						<div class="order-item_img">
-							<img src="{{$item->thumb}}" alt="">
+							<img src="{{asset('upload/'.$item->thumb)}}" alt="">
 							<span>{{$item->amount}}</span>
 						</div>
 						<div class="order-item_txt">
@@ -249,10 +256,15 @@
 				</ul>
 				{{-- --}}
 				<div class="discountCode">
-					<div class="form-group order">
-						<input type="text" name="" id="">
-						<button  class="btn btn-buyNow">Áp Dụng</button>
-					</div>
+					<form action="{{route('clientuse-coupon-code')}}" method="POST">
+						@csrf
+						<div class="form-group code">
+							<input type="text" id="couponCode" value="{{$couponCode}}" name="couponCode" >
+							<button  class="btn-applyCouponCode">Áp Dụng</button>
+						</div>
+					</form>
+					<span class="text-danger" id="msg-applyCouponCode-error"></span>
+					<span class="text-success" id="msg-applyCouponCode-success">{{$couponMsg}}</span>
 				</div>
 
 				<!-- Phần hiển thị tông tiền -->
@@ -286,6 +298,7 @@
 
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 
 <script>
 	const paymentOnlineArea=document.querySelector(".payment.online_area")
@@ -306,11 +319,17 @@
 		formOrder.action="http://127.0.0.1:8000/payment_cod"
 		paymentOnlineArea.classList.remove('active')
         paymentCodArea.classList.add('active')
+		btnPaymentVnpay.classList.remove('active')
+		btnPaymentMomo.classList.remove('active')
+      $('.payment.cod_area.active .message').slideDown(500);
+
 	}
     paymentOnlineArea.onclick=()=>{
 		getOtp=false
 		paymentOnlineArea.classList.add('active')
         paymentCodArea.classList.remove('active')
+		$('.payment.cod_area .message').slideUp(500);
+
 	}
 	btnPaymentVnpay.onclick=()=>{
 		getOtp=false
@@ -331,34 +350,88 @@
 	btnOrderNow.forEach(e=>{
 		e.onclick=()=>{
 			if(getOtp==true){
-			btn_verify_code_otp.click()
 			sendNotificationGetOtp()
+		
             
 		}
 		else{
 			formOrder.submit()
 		}
-<<<<<<< HEAD
 	}
     let email=document.getElementById('#email')
-=======
 		}
-	})
->>>>>>> origin/develop
+	)
 	const sendNotificationGetOtp=()=>{
-		let email=$('#user_email').val()
-		$.ajax({
-                    type: 'post',
-                    url: 'http://127.0.0.1:8000/api/get_order_otp',
-					data:{
-						email:email.value
-					},
-                    success:function(data){
-						console.log(data)
-                        // alert('vui lòng nhập mã xác nhận')
-                    }
-            });
-			$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+		
+		$("#form-order").validate({
+			rules: {
+			username : {
+				required: true,
+			},
+			phone: {
+				required: true,
+			},
+			email: {
+				required: true,
+				// email: true
+			},
+			address: {
+				required: true,
+			},
+			province: {
+				required: true,
+			},
+			ward: {
+				required: true,
+			},
+			district: {
+				required: true,
+			},
+			},
+			messages : {
+			username: {
+				required: "Vui lòng nhập tên khi nhận hàng"
+			},
+			phone: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			email: {
+				required : "Vui lòng nhập email nhận hàng",
+				// email: "Vui lòng nhập đúng định dạng abc@gmail.com"
+			},
+			address: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			province: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			district: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			ward: {
+				required: "Vui lòng nhập số điện thoại nhận hàng",
+			},
+			},
+			submitHandler: function(form) {
+				btn_verify_code_otp.click()
+				let email=$('#user_email').val()
+				console.log(email)
+				$.ajax({
+							type: 'post',
+							url: 'http://127.0.0.1:8000/api/get_order_otp',
+							data:{
+								email
+							},
+							success:function(data){
+								console.log(data)
+								// alert('vui lòng nhập mã xác nhận')
+							}
+					});
+					$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+				}
+		});
+		$("#form-order").submit()
+		
 	}
 
 	// PHẦN NHẬP CODE
@@ -398,8 +471,26 @@
         });
 		$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
     }
-  
+//   PHẦN ÁP DỤNG MÃ CODE
+$("#btn-applyCouponCode").click(()=>{
+	$.post("http://127.0.0.1:8000/api/apply_coupon_code", 
+	{
+		code:$("#couponCode").val()
+	},
+		function (data) {
+		    if(data.coupon!=null){
+				$("#msg-applyCouponCode-success").text("Áp dụng mã khuyễn mãi thành công")
+				$("#msg-applyCouponCode-error").text(null)
+			}
+			else{
+				$("#msg-applyCouponCode-error").text("Mã khuyễn mãi không tồn tại hoặc hết hạn")
+				$("#msg-applyCouponCode-success").text(null)
 
+			}
+		}
+	);
+})
+    
 	// //  Chọn quận huyện thành phố 
 	// Lấy danh sách tỉnh/thành từ API
 	let input_province=document.querySelector('#input_province')

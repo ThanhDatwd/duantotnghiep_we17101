@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\DB;
 ?>
 <form action="{{url('admin/admin_users/xoa-nhieu')}}" method="post" enctype="multipart/form-data">
-@csrf
+  @csrf
 
                    <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Quản lý Admin</h6>
@@ -73,8 +73,13 @@ use Illuminate\Support\Facades\DB;
                           if(!confirm("Bạn có chắc chắn muốn xóa không!!"))
                           event.preventDefault();
                       }
-                     </script>
-                  </td>
+        </script>
+        </td>
+
+        </tr>
+
+        </tbody>
+
 
               </tr>
           </tbody>
@@ -83,40 +88,35 @@ use Illuminate\Support\Facades\DB;
       </table>
 
 
-                                
-                                  <nav aria-label="Page navigation example">
+
+      <nav aria-label="Page navigation example">
         <ul class="pagination" style="display: flex;justify-content:space-between;">
-     
-           <li> {{$users->appends(request()->all())->links()}}  </li>
-          
-           <li>
-              <a href="{{url('admin/admin_users/them')}}" class="btn btn-primary">Thêm</a>
-                                                  
-                                            <a href="{{url('admin/admin_users/thung-rac')}}" class="btn btn-primary">Thùng rác
-                                                <?php
+
+          <li> {{$users->appends(request()->all())->links()}} </li>
+
+          <li>
+            <a href="{{url('admin/admin_users/them')}}" class="btn btn-primary">Thêm</a>
+
+            <a href="{{url('admin/admin_users/thung-rac')}}" class="btn btn-primary">Thùng rác
+              <?php
                                                 $count = DB::table('administrators')->where('deleted_at','!=',null)->count();
                                                 ?>
-                                                ({{$count}})
-                                                
-                                            </a>
-                                                <button type="submit" class="btn btn-danger">Xóa nhiều</button>
-                  </li>
-         
-      
+              ({{$count}})
+
+            </a>
+            <button type="submit" class="btn btn-danger">Xóa nhiều</button>
+          </li>
+
+
         </ul>
       </nav>
-                            </div>
-                        </div>
-                    
-            
-            
+    </div>
+  </div>
+
+
+
 </form>
 
 @endsection
 
 </form>
-
-
-
-
-            

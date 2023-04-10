@@ -14,7 +14,7 @@
         <h3 class="title">{{$name??null}}</h3>
         <div class="price">
             <span class="price_new">{{$priceCurrent}} vnđ</span>
-            <del class="price_old">{{$priceOld}} vnđ</del>
+            <del class="price_old">{{$priceOld}} {{$priceOld==null?'':'vnđ'}}</del>
         </div>
     </div>
 </a>

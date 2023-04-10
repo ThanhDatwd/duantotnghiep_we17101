@@ -164,28 +164,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-                            <div class="addpro">
-                                <div class="adpro1">
-                                    <p>Chức vụ <span>(*)</span></p>
-                                    <select name="role_id">
-                                   <?php
-                                      $role = DB::table('roles')->get();
-                                        foreach ($role as $key => $value) {
-                                            
-                                            echo '<option value="'.$value->id.'">'.$value->id.'</option>';
-                                        
-
-                                        }
-                                      ?>
-                                    </select>
-                                  
-                                    
-                                </div>
-                                
-                            
-                              
-                             
-                            </div>
+                           
                            <div class="addpro">
                                 <div class="adpro1">
                                     <p>Kích hoạt <span>(*)</span></p>
@@ -201,23 +180,11 @@ use Illuminate\Support\Facades\DB;
                               
                              
                             </div>
-                      
-                       
-
-                         
-                          
-
-
+                    
                         </div>
-                        
-
                         <div class="boxlist2">
                             <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
-
-                           
                         </div>
-                        
-
                     </div>
                     <div class="tab-pane" id="2a">
                         <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>

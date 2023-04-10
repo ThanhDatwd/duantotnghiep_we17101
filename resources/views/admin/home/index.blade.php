@@ -59,24 +59,51 @@ use Symfony\Component\Routing\Router;
             <!-- Sales Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6" >
+                    <div class="col-sm-12 col-xl-12" >
                         <div class="bg-light text-center rounded p-4" >
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Thống kê 5 sản phẩm bán nhiều nhất</h6>
-                                <a href="">Hiển thị tất cả</a>
+                                <h6 class="mb-0">Thống kê doanh thu</h6>
+                                 <div class="d-flex gap-2 " id="form-statistical-revenue">
+                                    <select class="form-select form-select-sm"  name="month">
+                                        @foreach(range(1, 12) as $month)
+                                            <option value="{{ $month }}" {{ date('m') == $month ? 'selected' : '' }}>Tháng {{$month}}</option>
+                                        @endforeach
+                                    </select>
+                                    <select class="form-select form-select-sm"  name="month">
+                                        @foreach(range(date('Y'), date('Y')+10) as $y)
+                                            <option value="{{ $y }}" {{ date('m') == $y ? 'selected' : '' }}>Năm {{$y}}</option>
+                                        @endforeach
+                                    </select>
+                                    <button class=" btn btn-sm btn-primary">Lọc</button>
+                                    
+                                </div>
                             </div>
-                            <div class="container-chart" style="height: 367px;width: 500px; margin: 0 auto;">
-                            <canvas id="thongke2" style=""></canvas>
-                            </div>
+                            <canvas id="thongke" style=""></canvas>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-xl-6">
+                    <div class="col-sm-12 col-xl-12">
                         <div class="bg-light text-center rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Thống kê đơn hàng</h6>
-                                <a href="">Hiển thị tất cả</a>
+                                <div class="d-flex gap-2 " id="select-statistical-order">
+                                    <select class="form-select form-select-sm" id="select-statistical-order-type"  name="type">
+                                         <option value="date" selected>Theo ngày</option>
+                                         <option value="month">Theo tháng</option>
+                                    </select>
+                                    <select class="form-select form-select-sm"  id="select-statistical-order-month" name="month">
+                                        @foreach(range(1, 12) as $month)
+                                            <option value="{{ $month }}" {{ date('m') == $month ? 'selected' : '' }}>Tháng {{$month}}</option>
+                                        @endforeach
+                                    </select>
+                                    <select class="form-select form-select-sm" id="select-statistical-order-year"  name="year">
+                                        @foreach(range(date('Y'), date('Y')+10) as $y)
+                                            <option value="{{ $y }}" {{ date('m') == $y ? 'selected' : '' }}>Năm {{$y}}</option>
+                                        @endforeach
+                                    </select>
+                                    <button class=" btn btn-sm btn-primary btn-fillter" id="btn-statistical-order">Lọc</button>
+                                </div>
                             </div>
-                            <canvas id="thongke"></canvas>
+                            <canvas id="thongke2"></canvas>
                         </div>
                     </div>
                 
@@ -98,27 +125,25 @@ use Symfony\Component\Routing\Router;
                                 <tr class="text-dark">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">Hình ảnh</th>
-                                    <th scope="col">Invoice</th>
                                     <th scope="col">Tên sản phẩm</th>
-                                    <th scope="col">Gía</th>
-                                    <th scope="col">Ngày cập nhật</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Gía bán</th>
+                                    <th scope="col">Đã bán</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($newproducts as $item)
+                                @foreach($selling_products as $item)
                                 <tr>
                                     <td><input class="form-check-input" type="checkbox"></td>
                                     <td>
                                        
                                        <img src="{{asset($item->thumb)}}" style="width: 50px; height: 50px; " alt="">
                                     </td>
-                                    <td>INV-0123</td>
                                     <td>
                                         {{$item->name}}
                                     </td>
                                     <td>
-                                        {{number_format($item->price)}} VNĐ
+                                        {{number_format($item->price_current)}} VNĐ
                                     </td>
                                     <td> {{date('d-m-Y', strtotime($item->created_at))}}</td>
                                     <td><a class="btn btn-sm btn-primary" href="">Chi tiết</a></td>
@@ -254,117 +279,179 @@ use Symfony\Component\Routing\Router;
             </div>
 
 <script>
-     $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $(".back-to-top").fadeIn("slow");
-        } else {
-            $(".back-to-top").fadeOut("slow");
-        }
-    });
-    $(".back-to-top").click(function () {
-        $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
-        return false;
-    });
-
-    // Sidebar Toggler
-    $(".sidebar-toggler").click(function () {
-        $(".sidebar, .content").toggleClass("open");
-        return false;
-    });
-
-    // Progress Bar
-    $(".pg-bar").waypoint(
-        function () {
-            $(".progress .progress-bar").each(function () {
-                $(this).css("width", $(this).attr("aria-valuenow") + "%");
-            });
-        },
-        { offset: "80%" }
-    );
-
-    // Calender
-    $("#calender").datetimepicker({
-        inline: true,
-        format: "L",
-    });
-
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        items: 1,
-        dots: true,
-        loop: true,
-        nav: false,
-    });
-
+    //  $(window).scroll(function () {
+    //     if ($(this).scrollTop() > 300) {
+    //         $(".back-to-top").fadeIn("slow");
+    //     } else {
+    //         $(".back-to-top").fadeOut("slow");
+    //     }
+    // });
+    // $(".back-to-top").click(function () {
+    //     $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+    //     return false;
+    // });
+    // // Sidebar Toggler
+    // $(".sidebar-toggler").click(function () {
+    //     $(".sidebar, .content").toggleClass("open");
+    //     return false;
+    // });
+    // // Progress Bar
+    // $(".pg-bar").waypoint(
+    //     function () {
+    //         $(".progress .progress-bar").each(function () {
+    //             $(this).css("width", $(this).attr("aria-valuenow") + "%");
+    //         });
+    //     },
+    //     { offset: "80%" }
+    // );
+    // // Calender
+    // $("#calender").datetimepicker({
+    //     inline: true,
+    //     format: "L",
+    // });
+    // // Testimonials carousel
+    // $(".testimonial-carousel").owlCarousel({
+    //     autoplay: true,
+    //     smartSpeed: 1000,
+    //     items: 1,
+    //     dots: true,
+    //     loop: true,
+    //     nav: false,
+    // });
    
-
     
-
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
   const ctx = document.getElementById('thongke');
-  var datas=<?php echo json_encode($datas); ?>;
-  //// chào bạn lúc 
-    var time = new Date();
-   
-  
-    var month = time.getMonth() + 1;
+  const ctx2 = document.getElementById('thongke2');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-     
-      datasets: [{
-        label: 'Thống kê'+ ' 7 ngày qua trong' + ' tháng ' + month,
-        data: datas,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
+  // Định nghĩa biểu đồ
+  let ChartStatisticalProfit=null;
+  function createChartStatisticalProfit(revenues=[],profits=[], labels=[]) {
+    if (ChartStatisticalProfit !== null) {
+        ChartStatisticalProfit.destroy();
     }
-  });
-</script>
-<script>
-    const ctx2 = document.getElementById('thongke2');
-  var data2=<?php echo json_encode($data2); ?>;
-  var label2=<?php echo json_encode($label2); ?>;
-  //// chào bạn lúc 
-    var time = new Date();
-   
-  
-    var month = time.getMonth() + 1;
-
-  new Chart(ctx2, {
-    type: 'doughnut',
-   
-
-    data: {
-      labels: label2,
-      datasets: [{
-        label: "Số lượng bán",
-        data: data2,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+                {
+                label: "Doanh thu",
+                backgroundColor: "rgba(75,192,192,0.4)",
+                borderColor: "rgba(75,192,192,1)",
+                borderWidth: 1,
+                data:revenues
+                },
+                {
+                label: "Lợi nhuận",
+                backgroundColor: "rgba(255,99,132,0.4)",
+                borderColor: "rgba(255,99,132,1)",
+                borderWidth: 1,
+                data: profits
+                }
+            ]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
         }
-      }
+      });
     }
-  });
+  // Gọi hàm để tạo biểu đồ
+  const callApiStatisticalProfit=()=>{
+    $.get("http://127.0.0.1:8000/api/statistical/dtln",
+    // {
+    //     type:$("#select-statistical-order-type").val(),
+    //     month:$("#select-statistical-order-month").val(),
+    //     year:$("#select-statistical-order-year").val()
+    // },
+    function (data, textStatus, jqXHR) {
+        console.log(data)
+        let labelss=data.revenues.map((item)=>item.time)
+        let revenues=data.revenues.map((item)=>Number(item.revenue))
+        let profits=data.profits.map((item,index)=>Number(data.revenues[index].revenue)-Number(item.profit))
+         createChartStatisticalProfit(revenues,profits,labelss)
+    },
+    "json"
+);
+}
+callApiStatisticalProfit()
+ 
+
+
+
+// PHẦN GOI API THỐNG KÊ ĐƠN HÀNG
+let ChartStatisticalOrder=null;
+const createChartStatisticalOrder=(datas=[],labels=[])=>{
+    if (ChartStatisticalOrder !== null) {
+        ChartStatisticalOrder.destroy();
+    }
+    ChartStatisticalOrder = new Chart(ctx2, {
+            type: 'line',
+            data: {
+            labels: labels,
+            datasets: [
+                    {
+                    label: "Đơn hàng",
+                    backgroundColor: "rgba(75,192,192,0.4)",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderWidth: 1,
+                    data: datas
+                    },
+                ]
+            },
+            options: {
+            scales: {
+                yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+                }]
+            }
+            }
+        });
+}
+const callApiStatisticalOrder=()=>{
+    $.get("http://127.0.0.1:8000/api/statistical/orders",
+    {
+        type:$("#select-statistical-order-type").val(),
+        month:$("#select-statistical-order-month").val(),
+        year:$("#select-statistical-order-year").val()
+    },
+    function (data, textStatus, jqXHR) {
+        let labelss=data.orders.map((item)=>item.time)
+        let datass=data.orders.map((item)=>item.count_order)
+         console.log(datass)
+        createChartStatisticalOrder(datass,labelss)
+    },
+    "json"
+);
+}
+callApiStatisticalOrder()
+
+$("#btn-statistical-order").click(function (e) { 
+    e.preventDefault();
+    callApiStatisticalOrder()
+});
+
+//  PHẦN GOI API THỐNG KÊ DOANH SỐ LỢI NHUẬN
+$.get("http://127.0.0.1:8000/api/statistical/dtln",
+    function (data, textStatus, jqXHR) {
+        console.log(data)
+    },
+    "dataType"
+);
 
 </script>
+
               <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -375,9 +462,9 @@ use Symfony\Component\Routing\Router;
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Template Javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
     <script src="js/main.js"></script>
             <!-- Footer End -->
 

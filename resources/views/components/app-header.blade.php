@@ -84,7 +84,7 @@
                     <li><a href="{{route('clientaddjobs')}}">
                         Tuyển dụng 
                     </a></li>
-                    <li><a href="{{route('clientcontact')}}">
+                    <li><a href="{{route('clientshow-contact')}}">
                         Liên hệ
                     </a></li>
                     

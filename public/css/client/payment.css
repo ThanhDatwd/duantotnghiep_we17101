@@ -57,6 +57,23 @@
     position: relative;
     padding: 8px 0px;
     display: flex;
+    flex-wrap:wrap;
+}
+.form-group.code{
+    position: relative;
+    padding: 8px 0px;
+    display: flex;
+}
+.btn-applyCouponCode{
+    font-size: 18px;
+    min-width: 120px;
+    padding: 0 10px;
+    margin-left: 10px;
+    color: var(--white);
+    background-color: var(--blue);
+    border: none;
+    outline: none;
+    border-radius: 5px;
 }
  button.btn-buyNow{
     font-size: 18px;
@@ -69,13 +86,16 @@
     outline: none;
     border-radius: 5px;
 }
-
-.form-group.order input,
-.form-group.order select{
+ input, select{
     width: 100%;
     padding: 10px;
     border-radius: 3px;
     border: 1px solid #ccc;
+}
+.form-group.order label.error{
+    width: 100%;
+    font-size: 12px;
+    color: red;
 }
 form textarea{
     width: 100%;
@@ -253,12 +273,9 @@ textarea::-webkit-scrollbar{
     padding:20px 12px;
     font-size: 14px;
     background:var(--lightLeftColBackground) ;
-    display: none;
 
 }
-.payment.cod_area.active .message{
-    display: block;
-}
+
 .payment.cod_area.active .bxs-circle{
     color: var(--mainColor);
 }
