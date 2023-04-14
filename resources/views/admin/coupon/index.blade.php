@@ -4,20 +4,22 @@
 
 @endsection
 @section('content') 
-<div class="bg-light rounded h-100 p-4">
- <div class="text d-flex justify-content-between">
-  <div class="">DANH SÁCH MÃ GIẢM GIÁ </div>
-  <div class="adding">
-     <a href="/admin/coupon/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
-  </div>
- </div>
+<div class="p-4">
   @if(Session::has('thongbao'))
-    <div class="alert alert-success">
-      {{Session::get('thongbao')}}
-    </div>
+  <div class="alert alert-success">
+    {{Session::get('thongbao')}}
+  </div>
   @endif
-</a>
-  <div class="table-responsive">
+  <div class="text-start">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>Danh sách mã giảm giá</div>
+        <div class="adding">
+          <a href="/admin/product/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
       <table class="table table-hover align-middle">
           <thead>
               <tr class="text-dark table-info">
@@ -85,14 +87,17 @@
               @endforeach
           </tbody>
       </table>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-     
-            {{$coupons->appends(request()->all())->links()}}  
-         
-      
-        </ul>
-      </nav>
+    </div>
   </div>
 </div>
-@endsection
+</div>
+<div class="mt-2">
+<nav aria-label="Page navigation example ">
+  <ul class="pagination">
+    {{$coupons->appends(request()->all())->links()}}  
+  </ul>
+</nav>
+</div>
+</div>
+  @endsection
+  

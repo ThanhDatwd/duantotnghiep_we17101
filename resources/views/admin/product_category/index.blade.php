@@ -3,21 +3,22 @@
 <link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
 @endsection
 @section('content')
-
-<div class="bg-light rounded h-100 p-4">
-  <div class="text d-flex justify-content-between">
-    <div class="">DANH SÁCH DANH MỤC SẢN PHẨM</div>
-    <div class="adding">
-       <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
-    </div>
-   </div>
+<div class="p-4">
   @if(Session::has('thongbao'))
-    <div class="alert alert-success">
-      {{Session::get('thongbao')}}
-    </div>
+  <div class="alert alert-success">
+    {{Session::get('thongbao')}}
+  </div>
   @endif
-</a>
-  <div class="table-responsive">
+  <div class="text-start">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>Danh sách loại sản phẩm</div>
+        <div class="adding">
+          <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
       <table class="table table-hover align-middle">
           <thead class="text-dark table-info">
               <tr>
@@ -72,14 +73,17 @@
               @endforeach
           </tbody>
       </table>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-     
-            {{$categories->appends(request()->all())->links()}}  
-         
-      
-        </ul>
-      </nav>
+    </div>
   </div>
 </div>
+</div>
+<div class="mt-2">
+<nav aria-label="Page navigation example ">
+  <ul class="pagination">
+    {{$categories->appends(request()->all())->links()}}  
+  </ul>
+</nav>
+</div>
+</div>
+ 
 @endsection

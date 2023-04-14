@@ -16,7 +16,7 @@
       <div class="card-header d-flex justify-content-between align-items-center">
         <div>Danh sách sản phẩm</div>
         <div class="adding">
-          <a href="/admin/product/them"><i class="fa-solid fa-circle-plus fs-3"></i></a>
+          <a href="/admin/product/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
         </div>
       </div>
       <div class="card-body p-0">

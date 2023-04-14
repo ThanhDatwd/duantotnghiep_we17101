@@ -5,50 +5,33 @@
 @endsection
 @section('content')
 <form action="/admin/categories_news/them" method="post" class="col-12 m-auto" enctype="multipart/form-data">
-<div class="adproduct">
-{{-- <div class="direct-header">
-        <div class="direct">
-        <a href="/admin">Trang chủ</a>
-        <span>></span>
-        <a href="/admin/news">Tin tức</a>
-        <span>></span>
-        <a href="/admin/news/them">Thêm tin tức</a>
-    </div> --}}
-<div class="head" style="text-align: left;">
-    <h2>THÊM LOẠI TIN TỨC</h2>
-</div>
-<div class= "container-fluid">
-    <div class= "row">
-        <div class ="col-md-12 ">
-            
+    <div class="adproduct">
+            <div class="head" style="text-align: left;">
+                <h2>THÊM LOẠI TIN TỨC</h2>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 ">
                         <div class="boxlist1">
                             <div class="addpro">
-                               
                                 <div class="adpro1">
                                     <p>Tên loại tin <span>(*)</span></p>
                                     <input type="text" placeholder="Nhập tên loại tin" name="name">
                                     @error('title')
-                                   <p>{{$message}}</p>
+                                    <p>{{$message}}</p>
                                     @enderror
-                                    
                                 </div>
-                             
                             </div>
-                         
-                            </div>                     
-            
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btnmoi" type="submit">
+                            THÊM MỚI</button>
+                    </div>
+                </div>
 
+            </div>
         </div>
-        <div class ="col-md-3"> 
-            <button class="btnmoi" type="submit">
-                THÊM MỚI</button>
-                
-            
-        </div>
-    </div>
- 
-</div>
-</div>
-@csrf
- </form>  
+        @csrf
+</form>
 @endsection

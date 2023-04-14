@@ -121,7 +121,7 @@
                 </div>
                 <div class="col-md-4 col-sm-6 ">
                     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
-                    <div class="addpro" style="margin:0 25px">
+                    <div class="addpro">
                         <div class="adpro1">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <strong>Ảnh<span>(*)</span></strong>
