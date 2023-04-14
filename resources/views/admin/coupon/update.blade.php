@@ -44,8 +44,8 @@
                         <div class="adpro1">
                             <p>Loại giảm giá <span>(*)</span></p>
                             <select name="coupon_type">
-                                <option value="1">Giảm giá theo %</option>
-                                <option value="2">Giảm giá theo số tiền</option>
+                                <option value="1">Giảm giá theo số tiền</option>
+                                <option value="2">Giảm giá theo %</option>
                                 <option value="3">Giảm giá theo đơn hàng</option>
                             </select>
                         </div>

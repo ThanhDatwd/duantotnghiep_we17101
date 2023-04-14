@@ -89,6 +89,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                                 class="fa-solid fa-list"></i>Loại Sản Phẩm</a>
                         <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/admin/category_group" class="dropdown-item">Quản lý nhóm loại </a>
                             <a href="/admin/product_category" class="dropdown-item">Danh sách </a>
                             <a href="/admin/product_category/trashed" class="dropdown-item">Thùng rác</a>
                         </div>
@@ -121,7 +122,7 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="fa-brands fa-bandcamp"></i>Quản lý hàng hóa</a>
+                                class="fa-brands fa-bandcamp"></i>Hàng hóa>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{route('siteshow-purchase')}}" class="dropdown-item">Nhập hàng</a>
                             <a href="{{route('siteshow-purchase-history')}}" class="dropdown-item">Lịch sử nhập hàng</a>

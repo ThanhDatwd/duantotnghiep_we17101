@@ -58,8 +58,13 @@
     <div class="adproduct">
 
         <h2>THÊM SẢN PHẨM</h2>
+<<<<<<< HEAD
 
         @if ($errors->any())
+=======
+        
+        {{-- @if ($errors->any())
+>>>>>>> c0c09f8cce845b64b3fe7763e46b3a88110a16bc
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -67,6 +72,7 @@
                 @endforeach
             </ul>
         </div>
+<<<<<<< HEAD
         @endif
         <div class="container-fluid">
             <div class="row">
@@ -84,6 +90,25 @@
                             <div class="adpro1">
                                 <p>Loại sản phẩm <span>(*)</span></p>
                                 <select name="category_id">
+=======
+        @endif --}}
+        <div class= "container-fluid">
+            <div class= "row">
+               <div class ="col-md-8 col-sm-6 ">
+                <div class="boxlist1">
+                    <div class="addpro">
+                        <div class="adpro1">
+                            <p>Tên sản phẩm <span>(*)</span></p>
+                            <input type="text" name="name" value="{{old('name')}}" placeholder="Nhập tên sản phẩm">
+                            @error('name')
+                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
+                        </div>  
+                    </div>
+                    <div class="addpro">        
+                        <div class="adpro1">
+                            <p>Loại sản phẩm <span>(*)</span></p>
+                            <select name="category_id">
+>>>>>>> c0c09f8cce845b64b3fe7763e46b3a88110a16bc
                                     @foreach($categories as $c)
                                     <option value="{{$c->id}}">{{$c->category_name}}</option>
 

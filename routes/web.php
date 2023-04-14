@@ -21,6 +21,9 @@ use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\BannerController;
 use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\PurchaseController;
+use App\Http\Controllers\admin\CategoryGroupController;
+use App\Http\Controllers\admin\ImportHistoryController;
+
 use App\Http\Controllers\client\AuthController;
 use App\Http\Controllers\client\CouponController;
 use Illuminate\Support\Facades\Auth;
@@ -90,7 +93,7 @@ Route::prefix('/admin')->name('site')->group(function () {
     Route::get('/admin_users/them', [AdminUserController::class, 'them'])->name('admin.admin_users.create');
     Route::post('/admin_users/them', [AdminUserController::class, 'them1'])->name('admin.admin_users.create_');
 });
-Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function () {
+Route::prefix('/admin')->name('site')->group(function () {
     //-----------------Admin Home-----------------
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     //-----------Admin Product-------------
@@ -207,4 +210,18 @@ Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function 
     //  quản lý banner
     Route::get('/comment', [CommentController::class, 'index'])->name('comment');
     Route::get('/comment/xoa/{id}', [CommentController::class, 'xoa'])->name('comment.xoa');
+    
+        //------------ Admin category_product ---------------
+    Route::get('/category_group', [CategoryGroupController::class,'index'])->name('admin-product_category');
+    Route::get('/category_group/create', [CategoryGroupController::class,'create']);
+    Route::post('/category_group/create', [CategoryGroupController::class,'create_']);
+    Route::get('/category_group/delete/{id}', [CategoryGroupController::class,'delete']);
+    Route::get('/category_group/trashed/forceDelete/{id}', [CategoryGroupController::class,'forceDelete']);
+    Route::get('/category_group/trashed',[CategoryGroupController::class,'trashed']);
+    Route::get('/category_group/restore/{id}',[CategoryGroupController::class,'restore']);
+    Route::get('category_group/restore-all',[CategoryGroupController::class,'restoreAll']);
+    Route::get('/category_group/update/{id}', [CategoryGroupController::class,'update']);
+    Route::post('/category_group/update/{id}', [CategoryGroupController::class,'update_']);
+        
+
 });
