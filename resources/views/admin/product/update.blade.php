@@ -1,7 +1,46 @@
 @extends('admin.appLayout.index')
 @section("css")
 <link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
-
+<style>
+    #cvas1{
+        width: 100%;
+        aspect-ratio: 1/1;
+         position: relative;
+    }
+    #cvas1 #iconUpload{
+        width: 100%;
+        position: absolute;
+        height: 100% ;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    #imagePreviewUpload{
+        width: 100%;
+        position: absolute;
+        height: 100% ;
+        top: 0;
+        left: 0;
+    }
+    #cvas1 #iconUpload.active{
+        display: flex;
+    }
+    #cvas1 #iconUpload i{
+        z-index: 1000;
+        font-size: 40px;
+        font-weight: 900;
+    }
+    #cvas1 img{
+        width: 100%;
+        position: absolute;
+        height: 100% ;
+        top: 0;
+        left: 0;
+    }
+</style>
 @endsection
 @section('content')
 {{-- <a href="/admin/product"><button>danh sách</button></a> --}}
@@ -122,27 +161,33 @@
                 </div>
                 
                 
-                
-                
                </div>
                <div class ="col-md-4 col-sm-6 ">
         <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
-        <div class="addpro" style="margin:0 25px">
+        <div class="addpro" >
             <div class="adpro1">
-                <p>Ảnh<span>(*)</span></p>
-                <canvas  id="cvas1">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <strong>Ảnh<span>(*)</span></strong>
+                    @if ($p->thumb!=null)
+                    <button class="btn btn-sm btn-light "  id="btn-replaceImage">Thay thế</button>
+                    @endif
+                </div>
+                <div  id="cvas1">
+                    @if ($p->thumb==null)
+                    <div id="iconUpload">
+                        <i class="bi bi-upload"></i>
+                    </div>
+                    @endif
                     <img src="{{asset('upload/'.$p->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'">
-                </canvas>
+                    <canvas id="imagePreviewUpload"></canvas>
+                </div>
                 <br>
-                <!--<input type="text"
-                     id="textinput"/>--
-                <input type="button" id="btn" value="carrega" onclick="upload()"/>-->
-                <input name="thumb"  value="{{asset('upload/')}}" type="file" id="image" multiple="false" accept="{{asset('upload/news.jpg')}}" onchange="uploadIm()"/><br>
+                <input name="thumb" hidden  value="{{asset('upload/')}}" type="file" id="image" multiple="false" accept="{{asset('upload/news.jpg')}}" onchange="uploadIm()"/><br>
                 <script>
-                var img = {{$p->thumb}};
-                const input = document.querySelector("input[type=file]");
-   
-                    input.value = img;</script>
+                    var img = {{$p->thumb}};
+                    const input = document.querySelector("input[type=file]");
+                    input.value = img;
+                </script>
 
             </div>
         </div>
@@ -164,25 +209,31 @@
     </div>
 </form>
 <script>
-window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
-var drawGray = null;
-function uploadIm(){
-var canvas = document.getElementById("cvas1");
-var image = document.getElementById("image");
-var draw = new SimpleImage(image);
-drawGray = new SimpleImage(image);
-draw.drawTo(canvas);
-}
+    window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
+    var drawGray = null;
+    function uploadIm(){
+        var canvas = document.getElementById("imagePreviewUpload");
+        var image = document.getElementById("image");
+        var draw = new SimpleImage(image);
+        drawGray = new SimpleImage(image);
+        $("#iconUpload").hide(100)
+        draw.drawTo(canvas);
+    }
 </script>
 <script>
     var editor = CKEDITOR.replace( 'editor1' );
 
 // The "change" event is fired whenever a change is made in the editor.
 editor.on( 'change', function( evt ) {
-    // getData() returns CKEditor's HTML content.
-  console.log( 'This is what you typed ' + evt.editor.getData() + typeof evt.editor.getData() );
-    console.log( 'Total bytes: ' + evt.editor.getData().length );
   $('#hiddedn input').val(evt.editor.getData());
 });
+$("#btn-replaceImage").click(function (e) { 
+    e.preventDefault();
+    $("#image").click()
+});
+$("#iconUpload").click(function (e) { 
+        e.preventDefault();
+        $("#image").click()
+    });
 </script>
 @endsection

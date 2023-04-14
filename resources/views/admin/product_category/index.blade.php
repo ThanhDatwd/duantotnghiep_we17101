@@ -5,39 +5,38 @@
 @section('content')
 
 <div class="bg-light rounded h-100 p-4">
- <div class="text">
-  <h2 class="">Danh sách loại sản phẩm</h2>
-  <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus"></i> Thêm loại sản phẩm</a>
- </div>
-
+  <div class="text d-flex justify-content-between">
+    <div class="">DANH SÁCH DANH MỤC SẢN PHẨM</div>
+    <div class="adding">
+       <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
+    </div>
+   </div>
   @if(Session::has('thongbao'))
     <div class="alert alert-success">
       {{Session::get('thongbao')}}
     </div>
   @endif
 </a>
-
   <div class="table-responsive">
-      <table class="table">
-          <thead>
+      <table class="table table-hover align-middle">
+          <thead class="text-dark table-info">
               <tr>
                   <th></th>
                   <th scope="col">ID</th>
                   <th scope="col">Hình ảnh</th>
-                  <th scope="col">Tên sản phẩm</th>
-                  <th scope="col">Nhóm loại sản phẩm</th> 
-                  <th scope="col">Thứ tự hiện</th>
-                  <th scope="col">Trạng thái</th>
+                  <th scope="col">Danh mục</th>
+                  <th scope="col">Nhóm danh mục</th> 
+                  <th scope="col" class="text-center">Thứ tự hiện</th>
+                  <th scope="col" class="text-center">Trạng thái</th>
                   <th scope="col"></th>
               </tr>
           </thead>
           <tbody>
-          
             @foreach ($categories as $c)
               <tr>
                 <th></th>
                   <th>{{$c->id}}</th>
-                  <td><img src="{{asset('upload/'.$c->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" >
+                  <td><img style="width:50px; height:50px" src="{{asset('upload/'.$c->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" >
                   </td>
                   {{-- <td><img src="{{$p->thumb}}" alt=""></td> --}}
                   <td>
@@ -45,21 +44,21 @@
                     
                   </td>
                   <td>{{$c->category_group->name}}</td>
-                  <td>{{$c->stt}}</td>
+                  <td class="text-center">{{$c->stt}}</td>
                  
-                 <td>
+                 <td class="text-center">
                     <span>
                       @if(($c->is_active)==1)
-                      <button type="button" class="btn btn-success">Hiện</button>
+                      <button class="btn btn-sm btn-success rounded-pill">Hiện</button>
                       @else
-                      <button type="button" class="btn btn-danger">Ẩn</button>                  
+                      <button class="btn btn-sm btn-secondary rounded-pill">Ẩn</button>                  
                     @endif
                     </span>
                   </td>
                   {{-- <td>{{$categories->$p->name}}</td> --}}
-                  <td class="button">
-                    <a style="color: cadetblue" href="/admin/product_category/update/{{$c->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a style="color: red" href="/admin/product_category/delete/{{$c->id}}" onclick="return myFunction();"> <i onclick="myFunction()" class="fa-solid fa-trash-can"></i> </a>
+                  <td class="">
+                    <a style="color: cadetblue" href="/admin/product_category/update/{{$c->id}}"><i class="bi bi-pencil-square"></i></a>
+                    <a style="color: red" href="/admin/product_category/delete/{{$c->id}}" onclick="return myFunction();"><i class="bi bi-trash"></i> </a>
                     {{-- <button onclick="myFunction()">XÓa</button> --}}
                     <script>
                       function myFunction() {

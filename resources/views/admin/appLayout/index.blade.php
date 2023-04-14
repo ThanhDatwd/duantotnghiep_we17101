@@ -21,6 +21,8 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="{{asset('css/admin/bootstrap.min.css')}}">
     <!-- Template Stylesheet -->
+    <script type="text/javascript" src="https://cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
+
     @yield("css")
     <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -71,6 +73,10 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="/admin" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Trang chủ</a>
+                    <a href="{{url('admin/order')}}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                            Đơn Hàng
+                    </a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                                 class="fa-brands fa-shopify"></i></i>Sản Phẩm</a>
@@ -112,7 +118,6 @@
                             <a href="{{url('admin/brand')}}" class="dropdown-item">Danh sách</a>
                             <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
                         </div>
-
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
@@ -126,19 +131,18 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="fa-solid fa-cart-shopping"></i>Đơn Hàng</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{url('admin/order')}}" class="dropdown-item">Quản lý đơn hàng</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                                 class="fa-brands fa-discord"></i>Mã Giảm Giá</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{url('admin/coupon')}}" class="dropdown-item">Danh sách</a>
                             <a href="{{url('admin/coupon/trashed')}}" class="dropdown-item">Thùng rác</a>
 
                         </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="{{route('siteshow-contact')}}" class="nav-link dropdown-toggle" >
+                           <i class="fa-brands fa-discord"></i>
+                            Liên hệ
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -255,11 +259,6 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-
-
-
-
-
 
     <!-- JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

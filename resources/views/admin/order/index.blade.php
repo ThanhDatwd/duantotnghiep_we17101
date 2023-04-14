@@ -5,9 +5,12 @@
 @section('content')
 
 <div class="bg-light rounded h-100 p-4">
- <div class="text">
-  <h2 class="">Danh sách đơn hàng</h2>
- </div>
+  <div class="text d-flex justify-content-between">
+    <div class="">DANH SÁCH ĐƠN ĐẶT HÀNG</div>
+    <div class="adding">
+       <a href="/admin/product_category/create"><i class="fa-solid fa-circle-plus fs-3"></i></a>
+    </div>
+   </div>
 
   @if(Session::has('thongbao'))
     <div class="alert alert-success">

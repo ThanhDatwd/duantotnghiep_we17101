@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminContactController;
 use App\Http\Controllers\client\HomeController;
 use App\Http\Controllers\client\NewsController;
 use App\Http\Controllers\client\ProductsController;
@@ -17,6 +18,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CoupouController;
 use App\Http\Controllers\admin\AdminUserController;
+use App\Http\Controllers\admin\BannerController;
+use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\PurchaseController;
 use App\Http\Controllers\client\AuthController;
 use App\Http\Controllers\client\CouponController;
@@ -186,5 +189,22 @@ Route::prefix('/admin')->name('site')->middleware('auth.admin')->group(function 
     // ---------------------- LỊCH SỬ NHẬP HÀNG --------------------
     Route::get('/purchase', [PurchaseController::class, 'show_import'])->name('show-purchase');
     Route::get('/purchase/history', [PurchaseController::class, 'history'])->name('show-purchase-history');
-    
+    Route::get('/purchase/history/{id}', [PurchaseController::class, 'history'])->name('show-purchase-history-detail');
+    //  Quản lý liên hệ user
+    Route::get('/contact', [AdminContactController::class, 'index'])->name('show-contact');
+    Route::get('/contact/{id}', [AdminContactController::class, 'show'])->name('show-email');
+    //  Quản lý banner
+    Route::get('/banner', [BannerController::class, 'index'])->name('banner');
+    Route::get('/banner/them', [BannerController::class, 'them'])->name('banner.them');
+    Route::post('/banner/them', [BannerController::class, 'them1'])->name('banner.them1');
+    Route::get('/banner/capnhat/{id}', [BannerController::class, 'capnhat'])->name('banner.capnhat');
+    Route::post('/banner/capnhat/{id}', [BannerController::class, 'capnhat_'])->name('banner.capnhat_');
+    Route::get('/banner/xoa/{id}', [BannerController::class, 'xoa'])->name('banner.xoa');
+    Route::get('/banner/phuc-hoi/{id}', [BannerController::class, 'restore'])->name('admin.banner.restore');
+    Route::get('/banner/phuc-hoi-tat-ca', [BannerController::class, 'restoreAll'])->name('admin.banner.restoreAll');
+    Route::get('/banner/thung-rac', [BannerController::class, 'trash'])->name('admin.banner.trash');
+    Route::post('/banner/xoa-nhieu', [BannerController::class, 'deleteMany'])->name('admin.banner.deleteMany');
+    //  quản lý banner
+    Route::get('/comment', [CommentController::class, 'index'])->name('comment');
+    Route::get('/comment/xoa/{id}', [CommentController::class, 'xoa'])->name('comment.xoa');
 });

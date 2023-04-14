@@ -95,6 +95,7 @@ class ProductsController extends Controller
     }
 
     public function update($id){
+        
         $p = product::find($id);
         $brands = DB::table('brands')->get();
         $categories=category::all();

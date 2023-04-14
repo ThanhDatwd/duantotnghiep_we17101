@@ -4,7 +4,7 @@
 
 @endsection
 @section('content')
-<div class="container">
+<div class="">
     <div class="row px-4 kax">
         <div class="col-8 h-100 pt-4 ">
             <div class="import-area">

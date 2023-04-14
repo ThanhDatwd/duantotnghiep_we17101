@@ -2,13 +2,15 @@
 @extends('admin.appLayout.index')
 @section('content')
     <div class="p-4">
-
-        <div class="card text-start">
+        <div class="text-start">
           <div class="card">
-            <div class="card-header">
-               Lịch sử nhập hàng
+            <div class="card-header d-flex justify-content-between align-items-center">
+               <div>Lịch sử nhập hàng</div>
+               <div class="adding">
+                <a href="admin/news/them"><i class="fa-solid fa-circle-plus fs-3"></i></a>
+             </div>
             </div>
-            <div class="card-body">
+            <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table text-start align-middle table-bordered table-hover mb-0">
                         <thead >
@@ -41,7 +43,9 @@
                                 <td>
                                     {{number_format($item->total_cost)}} VNĐ
                                 </td>
-                                <td></td>
+                                <td>
+                                    <a href="{{route('siteshow-purchase-history-detail',['id'=>$item->id])}}">Xem</a>
+                                </td>
                             </tr>
                             @endforeach
                             
