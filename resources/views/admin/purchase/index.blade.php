@@ -52,10 +52,10 @@
                     </div>
                     <div class="purchase-info__body">
                            <div class="purchase-info__item d-flex align-items-end gap-4">
-                                <select id="brands" class="form-select">
+                                <select id="purchase_brand" class="form-select">
                                     <option value="">--Chọn nhà cung cấp--</option>
-                                    @foreach ($products as $item)
-                                    <option data-id="{{$item->id}}" value="{{$item->name}}">{{$item->name}}</option>
+                                    @foreach ($brands as $item)
+                                    <option  value="{{$item->brands}}">{{$item->brands}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -111,7 +111,7 @@
         const purchase_total_temp = document.getElementById('purchase_total_temp');
         const purchase_status = document.getElementById('purchase_status');
         const purchase_code = document.getElementById('purchase_code');
-
+        const purchase_brand = document.getElementById('purchase_brand');
         function addProduct() {
             
             if (!productName.value || !productPrice.value || !productQuantity.value) {
@@ -203,7 +203,7 @@ function renderProducts() {
 			</tr>
 		`).join('')}
 	`;
-    const totalPrice = products.reduce((total, product) => total + product.total, 0);
+    totalPrice = products.reduce((total, product) => total + product.total, 0);
 	purchase_total_temp.innerText = totalPrice;
 	purchase_total.innerText = totalPrice-Number(purchase_total_discount.value);
 }
@@ -232,7 +232,15 @@ productTable.addEventListener('click', event => {
 // CODE PHẦN CHỨC NĂNG NHẬP HÀNG
 const handleCancel=()=>{
     products=[]
+    purchase_total_discount.value=0
     renderProducts()
+}
+purchase_total_discount.onkeyup=()=>{
+    if(totalPrice<Number(purchase_total_discount.value)){
+        purchase_total.innerText=totalPrice
+        return
+    }
+    purchase_total.innerText = totalPrice-Number(purchase_total_discount.value);
 }
  const handlePurchase=(status=false)=>{
     $.post("http://127.0.0.1:8000/api/purchase", 
@@ -240,6 +248,7 @@ const handleCancel=()=>{
             products,
             purchase_code:purchase_code.value,
             purchase_status:status,
+            purchase_brand:purchase_brand.value,
             purchase_total:purchase_total.innerText
         }     
     ,

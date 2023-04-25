@@ -2,44 +2,11 @@
 @section("css")
 <link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
 <style>
-    #cvas1{
-        width: 100%;
-        aspect-ratio: 1/1;
-         position: relative;
+    #btn-replaceImage,
+    #btn-replaceImagePoster {
+        display: block
     }
-    #cvas1 #iconUpload{
-        width: 100%;
-        position: absolute;
-        height: 100% ;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
-    #imagePreviewUpload{
-        width: 100%;
-        position: absolute;
-        height: 100% ;
-        top: 0;
-        left: 0;
-    }
-    #cvas1 #iconUpload.active{
-        display: flex;
-    }
-    #cvas1 #iconUpload i{
-        z-index: 1000;
-        font-size: 40px;
-        font-weight: 900;
-    }
-    #cvas1 img{
-        width: 100%;
-        position: absolute;
-        height: 100% ;
-        top: 0;
-        left: 0;
-    }
+
 </style>
 @endsection
 @section('content')
@@ -168,9 +135,7 @@
             <div class="adpro1">
                 <div class="d-flex align-items-center justify-content-between mb-2">
                     <strong>Ảnh<span>(*)</span></strong>
-                    @if ($p->thumb!=null)
                     <button class="btn btn-sm btn-light "  id="btn-replaceImage">Thay thế</button>
-                    @endif
                 </div>
                 <div  id="cvas1">
                     @if ($p->thumb==null)

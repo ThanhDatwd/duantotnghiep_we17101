@@ -45,6 +45,8 @@ use Symfony\Component\Routing\Router;
 
 Route::prefix('/')->name('client')->middleware('auth.client')->group(function () {
     Route::get('/account', [AccountController::class, 'account'])->name('account');
+    Route::get('/account/myorder', [AccountController::class, 'myorder'])->name('account-show-order');
+    Route::get('/account/myorder/{code}', [AccountController::class, 'myorder_detail'])->name('account-show-order-detail');
 });
 
 Route::prefix('/')->name('client')->group(function () {
@@ -76,7 +78,7 @@ Route::prefix('/')->name('client')->group(function () {
     Route::post('/payment_momo_atm', [PaymentController::class, 'create_payment_momo_atm'])->name('payment_momo_atm');
     Route::get('/return_payment_momo_atm', [PaymentController::class, 'return_payment_momo_atm'])->name('return_payment_momo_atm');
     Route::get('/search', [ProductsController::class, 'search'])->name('search');
-    Route::get('thanks/{code}', [PaymentController::class, 'thanks'])->name('page-thanks');
+    Route::get('/thanks/{code}', [PaymentController::class, 'thanks'])->name('page-thanks');
     Route::post('/add-to-cart', [ProductsController::class, 'addToCart'])->name('add-to-cart');
     Route::post('/buy-now', [ProductsController::class, 'buyNow'])->name('buy-now');
     Route::post('/minus-to-cart', [ProductsController::class, 'minusToCart'])->name('minus-to-cart');
@@ -192,12 +194,12 @@ Route::prefix('/admin')->name('site')->group(function () {
     // ---------------------- LỊCH SỬ NHẬP HÀNG --------------------
     Route::get('/purchase', [PurchaseController::class, 'show_import'])->name('show-purchase');
     Route::get('/purchase/history', [PurchaseController::class, 'history'])->name('show-purchase-history');
-    Route::get('/purchase/history/{id}', [PurchaseController::class, 'history'])->name('show-purchase-history-detail');
+    Route::get('/purchase/history/{id}', [PurchaseController::class, 'historyDetail'])->name('show-purchase-history-detail');
     //  Quản lý liên hệ user
     Route::get('/contact', [AdminContactController::class, 'index'])->name('show-contact');
     Route::get('/contact/{id}', [AdminContactController::class, 'show'])->name('show-email');
     //  Quản lý banner
-    Route::get('/banner', [BannerController::class, 'index'])->name('banner');
+    Route::get('/banner', [BannerController::class, 'index'])->name('show-banner');
     Route::get('/banner/them', [BannerController::class, 'them'])->name('banner.them');
     Route::post('/banner/them', [BannerController::class, 'them1'])->name('banner.them1');
     Route::get('/banner/capnhat/{id}', [BannerController::class, 'capnhat'])->name('banner.capnhat');
@@ -208,7 +210,7 @@ Route::prefix('/admin')->name('site')->group(function () {
     Route::get('/banner/thung-rac', [BannerController::class, 'trash'])->name('admin.banner.trash');
     Route::post('/banner/xoa-nhieu', [BannerController::class, 'deleteMany'])->name('admin.banner.deleteMany');
     //  quản lý banner
-    Route::get('/comment', [CommentController::class, 'index'])->name('comment');
+    Route::get('/comment', [CommentController::class, 'index'])->name('show-comment');
     Route::get('/comment/xoa/{id}', [CommentController::class, 'xoa'])->name('comment.xoa');
     
         //------------ Admin category_product ---------------

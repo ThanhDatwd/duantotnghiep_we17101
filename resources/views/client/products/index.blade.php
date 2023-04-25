@@ -22,41 +22,24 @@
 <div class="container">
     <div class="products">
         <h1>{{$title}}</h1>
-        <div class="image-slider">
-            <div class="image-item">
-                <div class="image">
-                    <img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528"
-                        alt="">
-                </div>
+        <div class="swiper mySwiperService">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                  <img style="width:100%"
+                    src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/banner_collec_1.jpg?1681360920404"
+                    alt="">
+              </div>
+              <div class="swiper-slide">
+                  <img style="width:100%"
+                    src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/banner_collec_2.jpg?1681360920404"
+                    alt="">
+              </div>
+              
             </div>
-            <div class="image-item">
-                <div class="image">
-                    <img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528"
-                        alt="">
-                </div>
-            </div>
-            <div class="image-item">
-                <div class="image">
-                    <img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528"
-                        alt="">
-                </div>
-            </div>
-            <div class="image-item">
-                <div class="image">
-                    <img src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/healthy-eating-ingredients-1296x728-header.jpg?w=1155&h=1528"
-                        alt="">
-                </div>
-            </div>
-            <div class="image-item">
-                <div class="image">
-                    <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/processed-food700-350-e6d0f0f.jpg"
-                        alt="">
-                </div>
-            </div>
-
-        </div>
-
-
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
         {{-- ----------------------------- --}}
         <div class="row">
             <div class="col-12 col-lg-3 d-sm-block d-none">
@@ -81,12 +64,6 @@
 
                             </div>
                             @endforeach
-
-
-
-
-
-
                         </div>
 
                     </div>
@@ -133,7 +110,7 @@
             <div class="col-12 col-lg-9">
 
                 <div class="pro-xep">
-                    <div class="pro-x d-flex align-items-center gap-2">
+                    <div class="pro-x d-flex align-items-center gap-2" style="flex-wrap: wrap;">
                         <strong>Sắp xếp:</strong>
 
                         <form  class="pro-text d-flex align-items-center gap-1" >
@@ -194,11 +171,35 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{asset('./js/client/product.js')}}"></script>
-
-
-
-
 <script src="{{asset('js/client/product.js')}}"></script>
+<script>
+    var mySwiperNews = new Swiper(".mySwiperService", {
+     slidesPerView: 2,
+     spaceBetween: 20,
+     navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+          pagination: {
+              el: ".swiper-pagination",
+              dynamicBullets: true,
+
+            },
+        },
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+      },
+   });
+</script>
 @endsection

@@ -209,7 +209,7 @@ class PaymentController extends Controller
       setcookie('cartFarmApp', json_encode([]), time() + 3 * 24 * 60 * 60, '/');
       setcookie('couponCode', null, time() - 3 * 24 * 60 * 60, '/');
 
-      return redirect()->route('clientpage-thanks');
+      return redirect()->route('clientpage-thanks',['code'=>$data['order_code']]);
     } catch (\Throwable $th) {
       throw $th;
     }
@@ -390,6 +390,7 @@ class PaymentController extends Controller
       && $request->ward != null
     ) {
       $cartFarmApp = [];
+      $order_code=mt_rand(1000, 9999);
       if (isset($_COOKIE["cartFarmApp"])) {
         $json = $_COOKIE["cartFarmApp"];
         $cartFarmApp = json_decode($json, true);
@@ -406,7 +407,7 @@ class PaymentController extends Controller
       $order->payment_type = 'cod';
       $order->status = 1;
       $order->total = $request->total;
-      $order->code = mt_rand(1000, 9999);
+      $order->code = $order_code;
       $order->fee_ship = $request->fee_ship;
       $order->save();
       foreach ($cartFarmApp as $item) {
@@ -431,14 +432,13 @@ class PaymentController extends Controller
       }
       setcookie('cartFarmApp', json_encode([]), time() - 3 * 24 * 60 * 60, '/');
       setcookie('couponCode', null, time() - 3 * 24 * 60 * 60, '/');
-      return redirect()->route('clientpage-thanks');
+      return redirect()->route('clientpage-thanks',['code'=>$order_code]);
     } else {
       dd("Vui lòng nhập  thông tin");
     }
   }
   public function thanks($code)
   {
-
     $order = order::where('code', $code)->first();
     $data = [
       "order" => $order

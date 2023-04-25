@@ -95,9 +95,7 @@ use Illuminate\Support\Facades\DB;
                         </div>
                     </div>
                 </div>
-            
             </div>
-
             <div class="col-md-4 col-sm-6">
                 <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
                 </script>
@@ -106,20 +104,22 @@ use Illuminate\Support\Facades\DB;
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <strong>Ảnh<span>(*)</span></strong>
                             @if ($t->thumb!=null)
-                            <button class="btn btn-sm btn-light "  id="btn-replaceImage">Thay thế</button>
+                            <button class="btn btn-sm btn-light " id="btn-replaceImage">Thay thế</button>
                             @endif
                         </div>
-                        <div  id="cvas1">
+                        <div id="cvas1">
                             @if ($t->thumb==null)
                             <div id="iconUpload">
                                 <i class="bi bi-upload"></i>
                             </div>
                             @endif
-                            <img src="{{asset('upload/'.$t->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'">
+                            <img src="{{asset('upload/'.$t->thumb)}}" alt=""
+                                onerror="this.src='{{asset('upload/error.jpg')}}'">
                             <canvas id="imagePreviewUpload"></canvas>
                         </div>
                         <br>
-                        <input name="thumb" hidden  value="{{asset('upload/')}}" type="file" id="image" multiple="false" accept="{{asset('upload/news.jpg')}}" onchange="uploadIm()"/><br>
+                        <input name="thumb" hidden value="{{asset('upload/')}}" type="file" id="image" multiple="false"
+                            accept="{{asset('upload/news.jpg')}}" onchange="uploadIm()" /><br>
                         <script>
                             var img = {{$t->thumb}};
                             const input = document.querySelector("input[type=file]");
@@ -127,12 +127,10 @@ use Illuminate\Support\Facades\DB;
                         </script>
                     </div>
                 </div>
-                
             </div>
         </div>
         <button class="btn btn-success mt-4" type="submit">Cập nhật</button>
 </div>
-@csrf
 </form>
 </div>
 <script>

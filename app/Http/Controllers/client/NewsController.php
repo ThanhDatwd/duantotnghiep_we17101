@@ -13,11 +13,19 @@ use Illuminate\Support\Facades\Auth;
 class NewsController extends Controller
 {
     //
-    public function index(){
-        $news=news::paginate(6);
+    public function index(Request $request){
+        $query=news::query();
+        $category_news=category_news::all();
+        $cate=$request->get('group');
+        
+       if($cate){
+          $query->where('category_news_id',$cate);
+       }
+        $news=$query->paginate(6);
         // dd($news);
         $data=[
-            "news"=>$news
+            "news"=>$news,
+            "category_news"=>$category_news
         ];
         return view('client.news.index',$data);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\category;
 use App\Models\category_group;
 use App\Models\news;
@@ -24,12 +25,14 @@ class HomeController extends Controller
             }
         }
         $news=news::limit(5)->get();
-       $categories=category::limit(3)->get();
+        $categories=category::limit(3)->get();
+        $banners=Banner::all();
         $data=[
             "productsFlashSale"=>$productsFlashSale,
             "categoriesGroup"=>$categoriesGroup,
             "categories"=>$categories,
             "news"=>$news,
+            "banners"=>$banners
         ];
         return view('client.home.index',$data);
     }

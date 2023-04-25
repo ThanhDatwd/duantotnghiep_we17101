@@ -183,3 +183,59 @@ td img {
 .pagination {
     justify-content: right;
 }
+
+
+
+#cvas1 {
+    width: 100%;
+    position: relative;
+}
+#cvas1.poster{
+    height: 300px;
+}
+#cvas1 #iconUpload ,
+#cvas1 #iconUploadPoster{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btn-replaceImage,
+#btn-replaceImagePoster {
+    display: none
+}
+
+#imagePreviewUpload,
+#imagePreviewUploadPoster
+ {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#cvas1 #iconUpload.active ,
+#iconUploadPoster.active{
+    display: flex;
+}
+
+#cvas1 #iconUpload i ,
+#cvas1 #iconUploadPoster i {
+    z-index: 1000;
+    font-size: 40px;
+    font-weight: 900;
+}
+#cvas1 img {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+}

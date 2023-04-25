@@ -58,7 +58,6 @@ class ProductsController extends Controller
         $p->thumb=$file_name;
         $p->summary=$_POST['summary'];
         $p->content=$_POST['content'];
-        $p->price=$_POST['price'];
         $p->discount=$_POST['discount'];
         $p->is_active=$_POST['is_active'];
         $p->price_current=$_POST['price_current'];
@@ -118,7 +117,6 @@ class ProductsController extends Controller
         $p->summary=$_POST['summary'];
         $p->discount=$_POST['discount'];
         $p->content=$_POST['content'];
-        $p->price=$_POST['price'];
         $p->price_current=$_POST['price_current'];
         $p->brand=$_POST['brand']??"";
         $p->unit=$_POST['unit'];

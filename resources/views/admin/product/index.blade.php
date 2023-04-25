@@ -63,8 +63,8 @@
                 <td>
                   <a style="color: cadetblue" href="/admin/product/update/{{$p->id}}"><i
                       class="bi bi-pencil-square"></i></a>
-                  <a style="color: red" href="/admin/product/delete/{{$p->id}}" onclick="return myFunction();"><i
-                      class="bi bi-trash"></i> </a>
+                  <a style="color: red" href="/admin/product/delete/{{$p->id}}" onclick="return myFunction();">
+                    <i class="bi bi-trash"></i> </a>
                   {{-- <button onclick="myFunction()">XÓa</button> --}}
                   <script>
                     function myFunction() {

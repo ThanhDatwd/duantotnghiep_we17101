@@ -5,7 +5,7 @@
   <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
     <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
       <li class="breadcrumb-item"><a href="{{route('client')}}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Liên hệ</li>
+      <li class="breadcrumb-item active" aria-current="page">Tin tức</li>
     </ol>
   </nav>
 
@@ -16,27 +16,14 @@
       <div class="row align-items-end">
         <div class="col-9">
           <div class="navbar-container">
-            <h2 class="change_title">
-              Mẹo ăn ngon
-            </h2>
             <ul>
+              @foreach ($category_news as $item )
               <li class="nav-link active-link">
-                <a href="#">Mẹo ăn ngon
+                <a href="{{ route('clientnews') }}?group={{$item->id}}">{{$item->name}}
                 </a>
                 <div class="underline"></div>
               </li>
-              <li class="nav-link">
-                <a href="#">Vào bếp cùng Mew</a>
-                <div class="underline"></div>
-              </li>
-              <li class="nav-link">
-                <a href="#">Review ẩm thực</a>
-                <div class="underline"></div>
-              </li>
-              <li class="nav-link">
-                <a href="#">Khuyến mãi hot</a>
-                <div class="underline"></div>
-              </li>
+              @endforeach
             </ul>
           </div>
         </div>

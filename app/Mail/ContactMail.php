@@ -34,7 +34,7 @@ class ContactMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'EMAIL LIÊN HỆ TỪ KHÁCH HÀNG GREEN MARKET',
+            subject: 'GREEN MARKET-HỆ THỐNG CUNG CẤP THỰC PHẨM SẠCH',
         );
     }
 
@@ -45,9 +45,7 @@ class ContactMail extends Mailable
      */
     public function content()
     {
-        return new Content(
-        view:'client.mail.order_otp_email.index',
-        );
+        return new Content(view:'client.mail.contact_email.index',);
     }
 
     /**

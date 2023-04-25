@@ -7,9 +7,9 @@
 <section class="banner">
   <div class="swiper mySwiperBanner">
     <div class="swiper-wrapper">
-      @foreach ($productsFlashSale as $item)
+      @foreach ($banners as $item)
       <div class="swiper-slide">
-        <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/slide-img2.png?1669280565026" alt="">
+        <img src="{{asset('upload/'.$item->url)}}" alt="">
       </div>
       @endforeach
     </div>
@@ -85,7 +85,7 @@
       <div class="swiper-wrapper">
         @foreach ($categoriesGroup as $group)
         <div class="swiper-slide">
-          <div class="category__group__card">
+          <div class="category__group__card" style="min-height: 160px">
             <div class="content">
               <a href="" class="name">{{$group->name}}</a>
               <div class="categories">
@@ -95,9 +95,7 @@
               </div>
             </div>
             <div class="thumb">
-              <img
-                src="https://bizweb.dktcdn.net/thumb/compact/100/434/011/collections/untitled-design-3.png?v=1639501059257"
-                alt="">
+              <img  src="{{asset('upload/'.$group->thumb)}}" alt="" onerror="this.src='{{asset('upload/error.jpg')}}'" >
             </div>
           </div>
 
@@ -166,7 +164,7 @@ $indexCategory++;
       <div class="col-xl-3 col-lg-4 col-md-5 col-xs-12 mb-3 mb-md-0">
         <a href="">
           <img style="width:100%;height:100%" class="category-thumb"
-            src="{{$group->poster}}" onerror="this.src='https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/bn_pr_3.png?1669280565026'" alt="">
+            src="{{asset('upload/'.$group->poster)}}" onerror="this.src='{{asset('upload/error.jpg')}}'" alt="">
         </a>
       </div>
       <div class="col-xl-9 col-lg-8 col-md-7 col-xs-12" style="height:100%">
@@ -216,15 +214,29 @@ $indexCategory++;
         <div class="swiper-slide ">
           <div class="feedback-card">
             <div class="info">
-              <img src="https://static-images.vnncdn.net/files/publish/2022/12/2/bo-kobe-1052.gif" class="thumb" alt="">
+              <img src="https://bizweb.dktcdn.net/thumb/small/100/434/011/themes/845632/assets/ykkh_1.jpg?1681360920404" class="thumb" alt="">
               <div class="auth">
-                <div class="name">Thành Đạt</div>
-                <div class="posittion">Manager</div>
+                <div class="name">Vũ Quýnh Trang</div>
+                <div class="posittion">Nội trợ</div>
               </div>
             </div>
             <div class="content">
-              Mình rất ưng khi đến Mew yummy. Ở đây có rất nhiều thực phẩm phong phú, tha hồ lựa chọn. Nhân viên chuyên
-              nghiệp, nhiệt tình. Chúc Mew Yummy ngày càng phát triển.
+              Mình rất ưng khi đến green market. Ở đây có rất nhiều thực phẩm phong phú, tha hồ lựa chọn. Nhân viên chuyên
+              nghiệp, nhiệt tình. Chúc green market ngày càng phát triển.
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide ">
+          <div class="feedback-card">
+            <div class="info">
+              <img src="https://bizweb.dktcdn.net/thumb/small/100/434/011/themes/845632/assets/ykkh_2.jpg?1681360920404" class="thumb" alt="">
+              <div class="auth">
+                <div class="name">Đoàn Hương Giang</div>
+                <div class="posittion">Nhân viên văn phòng</div>
+              </div>
+            </div>
+            <div class="content">
+             Mình là một nhân viên văn phòng nên thời gian để đi chợ là không có, thật may mắn mình đã tìm được green market.  Theo mình thì đây là website về thực phẩm tốt nhất hiện nay,
             </div>
           </div>
         </div>
@@ -246,7 +258,9 @@ $indexCategory++;
         <div class="swiper-slide">
           <x-NewsCard title="{{$item->title}}"
             thumb="{{$item->thumb}}"
-            summary="{{$item->summary}} " />
+            summary="{{$item->summary}} "
+            day="{{$item->created_at->format('d')}}"
+            month="{{$item->created_at->format('m/Y')}}" />
         </div>
         @endforeach
       </div>

@@ -15,11 +15,11 @@ class OrderController extends Controller
         return view('admin.order.index',['order'=>$order]);
     }
     public function detail($id){
-        $order_detail = order_details::all();
-        $order = order::find($id);
+        $order_detail = order_details::where('order_id',$id)->get();
+        $order = order::where('id',$id)->first();
     
         
-        return view('admin.order.detail',['order_detail'=>$order_detail,'order'=>$order]);
+        return view('admin.order.detail',['order_details'=>$order_detail,'order'=>$order]);
     }
     public function update(Request $request,$id){
         $order= order::find($id);

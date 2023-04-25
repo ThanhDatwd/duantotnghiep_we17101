@@ -51,7 +51,7 @@
                                         <div class="section-policy-padding">
                                             <h3>Hỗ trợ khách hàng 24/7</h3>
                                             <div class="section-policy-title">
-                                                Mọi thông tin cần hỗ trợ liên hệ qua hotline: 0937.782.305.
+                                                Mọi thông tin cần hỗ trợ liên hệ qua hotline: 19006750.
                                             </div>
                                         </div>
                                     </div>
@@ -82,9 +82,6 @@
     <div class="container">
         <div class="footer-inner padding-bootom-10 padding-top-50">
             <div class="row">
-                <div class="footer-widget">
-                    <a href="#"><img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1669280565026" alt="LOGO"></a>
-                </div>
                 <div class="align-items">
                     <div class="align-items-stretch">
                         <!-- GIỚI THIỆU -->
@@ -195,15 +192,15 @@
                     <address class="vcard mb-4">
                         <p class="adr">
                             <b>Địa Chỉ: </b>
-                            Ladeco Building, 266 Doi Can Street, Ba Dinh District, Hanoi.
+                            68 Phúc Lộc Thọ, Quận 1, Thành phố Hồ Chí Minh
                         </p>
                         <p class="email">
                             <b>Email:</b>
-                            <a href="mailto:haidinh147039@gmail.com" title="haidinh147039@gmail.com">haidinh147039@gmail.com</a>
+                            <a href="mailto:haidinh147039@gmail.com" title="haidinh147039@gmail.com">greenmarket@gmail.com</a>
                         </p>
                         <p class="hotline">
                             <b>Hotline: </b>
-                            <a href="tel:0937782305" title="0937.782.305">0937.782.305</a>
+                            <a href="tel:0937782305" title="19006750">19006750</a>
                         </p>
                         <p class="giayphep">
                         Giấy chứng nhận Đăng ký Kinh doanh số 0309532xxx do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp ngày 01/04/2002
@@ -277,7 +274,7 @@
                     <div class="coppyright">
                         Bản quyền thuộc về
                         <a href="#" rel="nofollow noopener" title="NewYummy" target="_bla
-                        "> New Yummy.</a>
+                        "> green market.</a>
                     </div>
                 </div>
             </div>

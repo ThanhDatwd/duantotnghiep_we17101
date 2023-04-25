@@ -1,53 +1,7 @@
 @extends('admin.appLayout.index')
 @section("css")
 <link rel="stylesheet" href="{{asset('css/admin/product/product.css')}}">
-<style>
-    #cvas1 {
-        width: 100%;
-        position: relative;
-    }
 
-    #cvas1 #iconUpload {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #btn-replaceImage {
-        display: none
-    }
-
-    #imagePreviewUpload {
-        width: 100%;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        left: 0;
-    }
-
-    #cvas1 #iconUpload.active {
-        display: flex;
-    }
-
-    #cvas1 #iconUpload i {
-        z-index: 1000;
-        font-size: 40px;
-        font-weight: 900;
-    }
-    #cvas1 img {
-        width: 100%;
-        position: absolute;
-        height: 100%;
-        top: 0;
-        left: 0;
-    }
-</style>
 @endsection
 @section('content')
 
@@ -56,15 +10,8 @@
 <form action="/admin/product/create" enctype="multipart/form-data" method="post">
     @csrf
     <div class="adproduct">
-
         <h2>THÊM SẢN PHẨM</h2>
-<<<<<<< HEAD
-
-        @if ($errors->any())
-=======
-        
         {{-- @if ($errors->any())
->>>>>>> c0c09f8cce845b64b3fe7763e46b3a88110a16bc
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -72,8 +19,7 @@
                 @endforeach
             </ul>
         </div>
-<<<<<<< HEAD
-        @endif
+        @endif --}}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 col-sm-6 ">
@@ -90,25 +36,6 @@
                             <div class="adpro1">
                                 <p>Loại sản phẩm <span>(*)</span></p>
                                 <select name="category_id">
-=======
-        @endif --}}
-        <div class= "container-fluid">
-            <div class= "row">
-               <div class ="col-md-8 col-sm-6 ">
-                <div class="boxlist1">
-                    <div class="addpro">
-                        <div class="adpro1">
-                            <p>Tên sản phẩm <span>(*)</span></p>
-                            <input type="text" name="name" value="{{old('name')}}" placeholder="Nhập tên sản phẩm">
-                            @error('name')
-                            <span class="badge badge-danger">{{ $message }}</span>                         @enderror
-                        </div>  
-                    </div>
-                    <div class="addpro">        
-                        <div class="adpro1">
-                            <p>Loại sản phẩm <span>(*)</span></p>
-                            <select name="category_id">
->>>>>>> c0c09f8cce845b64b3fe7763e46b3a88110a16bc
                                     @foreach($categories as $c)
                                     <option value="{{$c->id}}">{{$c->category_name}}</option>
 
@@ -124,14 +51,15 @@
 
                         </div>
                         <div class="addpro">
-                            <div class="adpro1">
-                                <p>Giá<span>(*)</span></p>
-                                <input type="number" name="price" value="{{old('price')}}" placeholder="Nhập giá ">
-                                @error('price')
-                                <span class="badge badge-danger">{{ $message }}</span> @enderror
-
+                            <div class="adpro1" >
+                                <p>Đơn vị <span>(*)</span></p>
+                                <select name="unit">
+                                    <option value="kg">Kg</option>
+                                    <option value="tấn">Tấn</option>
+                                    <option value="tạ">Tạ</option>
+    
+                                </select>
                             </div>
-
                             <div class="adpro1">
                                 <p>Giá bán <span>(*)</span></p>
                                 <input type="number" name="price_current" value="{{old('price_current')}}"
@@ -149,39 +77,24 @@
                             </div>
                         </div>
                         <div class="addpro">
-                            <div class="adpro1" style="width:200px">
-                                <p>Xuất xứ</p>
+                            <div class="adpro1" >
+                                <p>Nguồn hàng</p>
                                 <select name="brand">
                                     @foreach($brands as $b)
                                     <option value="{{$b->brands}}">{{$b->brands}}</option>
-
                                     @endforeach
-
                                 </select>
                             </div>
-
-                            <div class="adpro1" style="width:200px">
-                                <p>Đơn vị <span>(*)</span></p>
-                                <select name="unit">
-                                    <option value="kg">Kg</option>
-                                    <option value="tấn">Tấn</option>
-                                    <option value="tạ">Tạ</option>
-
-                                </select>
-                            </div>
-
                         </div>
-
-
                         <div class="addpro">
                             <div class="adpro1">
                                 <p>Mô tả ngắn <span>(*)</span></p>
                                 <textarea name="summary" id="" style="width:100%" cols="100" rows="5"></textarea>
+                                @error('summary')
+                                <span class="badge badge-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
-                            @error('summary')
-                            <span class="badge badge-danger">{{ $message }}</span>
-                            @enderror
                         </div>
                         <div class="addpro">
                             <div class="adpro1">
@@ -203,10 +116,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
                 <div class="col-md-4 col-sm-6 ">
                     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
@@ -228,7 +137,7 @@
                             <span class="badge badge-danger">{{ $message }}</span> @enderror
                         </div>
                     </div>
-                    <div class="addpro" >
+                    {{-- <div class="addpro" >
                         <div class="adpro1">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <strong>Bộ sưu tập</strong>
@@ -239,7 +148,7 @@
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="ci">
@@ -283,22 +192,22 @@
     });
 
 
-    function handleFiles() {
-  const fileList = document.getElementById("file-input").files;
-  const previewContainer = document.getElementById("image-preview");
+//     function handleFiles() {
+//   const fileList = document.getElementById("file-input").files;
+//   const previewContainer = document.getElementById("image-preview");
 
-  for (let i = 0; i < fileList.length; i++) {
-    const file = fileList[i];
+//   for (let i = 0; i < fileList.length; i++) {
+//     const file = fileList[i];
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
 
-    reader.onloadend = function () {
-      const previewImage = document.createElement("img");
-      previewImage.src = reader.result;
-      previewContainer.appendChild(previewImage);
-    };
-  }
-}
+//     reader.onloadend = function () {
+//       const previewImage = document.createElement("img");
+//       previewImage.src = reader.result;
+//       previewContainer.appendChild(previewImage);
+//     };
+//   }
+// }
 </script>
 @endsection

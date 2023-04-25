@@ -244,6 +244,10 @@ element.style {
     background-color: var(--mainColor);
     border-color: var(--mainColor);
 }
+
+
+/*  */
+
 @media only screen and (max-width: 576px){
    .product-dashboard{
     display: none;

@@ -30,7 +30,6 @@ class ContactController extends Controller
             $customer_email->save();
             return back()->with('success','Gửi liên hệ thành công, chúng tôi sẽ sớm phảm hồi email của bạn'); 
         } catch (\Throwable $th) {
-            
             return back()->with('fail','Đã có lỗi vui lòng thực hiện lại'); 
         }
         

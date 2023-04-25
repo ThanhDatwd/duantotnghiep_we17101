@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{asset('css/client/component/navbarMobile.css')}}">
 <div class="navbar__mobile">
-    <a href="" class="item">
+    <a href="{{route('client')}}" class="item">
         <i class='bx bx-home'></i>
         <span>Trang chủ</span>
     </a>
@@ -41,15 +41,15 @@
             </div>
         </div>
     </div>
-    <a href="" class="item">
+    <a href="{{route('clientaccount')}}" class="item">
         <i class='bx bx-user'></i>
         <span>Tài khoản</span>
     </a>
-    <a href="" class="item">
+    <a href="{{route('clientcart')}}" class="item">
         <div class="cart position-relative">
             <i class='bx bx-basket'></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill ">
-                99+
+                
             </span>
         </div>
         <span>Giỏ hàng</span>

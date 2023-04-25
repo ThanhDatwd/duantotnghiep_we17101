@@ -27,9 +27,9 @@ class AuthController extends Controller
             'password' =>$request->password,
         ];
 
-        //kiểm tra trường remember có được chọn hay không
         
         if (Auth::guard('web')->attempt($arr)) {
+            //kiểm tra trường remember có được chọn hay không
                 return redirect()->route('client');
             
         } else {
@@ -56,7 +56,7 @@ class AuthController extends Controller
                 $user=new User();
                 $user->username=$user_v->username;
                 $user->email=$user_v->email;
-                $user->password=$user_v->password;
+                $user->password=bcrypt($user_v->password);
                 $user->phone=$user_v->phone;
                 $user->save();
                
@@ -86,16 +86,22 @@ class AuthController extends Controller
         try {
             // $user_check=User::where('email',$request->email)->where('phone',$request->phone)->first();
             $token = hash_hmac('sha256', Str::random(40), config('app.key'));
-            $user=new user_verify();
-             $user->username=$request->username;
-             $user->email=$request->email;
-             $user->password=bcrypt($request->password);
-             $user->phone=$request->phone;
-             $user->verify_email_code=$token;
-             $user->save();
-             $mail=new SendVerifyEmail($token);
-             Mail:: to($request->email)->queue($mail);
-             return back()->with('success','Một tin nhắn xác nhận đã được gửi vào email của bạn'); 
+            $userCheck=user::where('email',$request->email)->get();
+            if(count($userCheck)>0){
+               return back()->with('fail','Thông tin email hoặc số điện thoại đã tồn tại'); 
+            }
+            else{
+                $user=new user_verify();
+                 $user->username=$request->username;
+                 $user->email=$request->email;
+                 $user->password=$request->password;
+                 $user->phone=$request->phone;
+                 $user->verify_email_code=$token;
+                 $user->save();
+                 $mail=new SendVerifyEmail($token);
+                 Mail:: to($request->email)->send($mail);
+                 return back()->with('success','Một tin nhắn xác nhận đã được gửi vào email của bạn'); 
+            }
         } catch (\Throwable $th) {
             dd($th);
         }

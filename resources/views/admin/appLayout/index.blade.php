@@ -73,7 +73,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="/admin" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Trang chủ</a>
-                    <a href="{{url('admin/order')}}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <a href="{{url('admin/order')}}" class="nav-link dropdown-toggle">
                         <i class="fa-solid fa-cart-shopping"></i>
                             Đơn Hàng
                     </a>
@@ -100,29 +100,13 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href=" {{url('admin/categories_news')}}" class="dropdown-item">Quản lý loại tin</a>
                             <a href="{{url('admin/news')}}" class="dropdown-item">Quản lý tin tức</a>
-                            <a href="element.html" class="dropdown-item">Quản lý bình luận</a>
+                            <a href="{{route('siteshow-comment')}}" class="dropdown-item">Quản lý bình luận</a>
                         </div>
                     </div>
-
+                    
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="fa-regular fa-user"></i>Tài Khoản</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href=" {{url('admin/admin_users')}}" class="dropdown-item">Quản lý admin</a>
-
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="fa-brands fa-bandcamp"></i>Nguồn Hàng</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{url('admin/brand')}}" class="dropdown-item">Danh sách</a>
-                            <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="fa-brands fa-bandcamp"></i>Hàng hóa>
+                                class="fa-brands fa-bandcamp"></i>Hàng hóa</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{route('siteshow-purchase')}}" class="dropdown-item">Nhập hàng</a>
                             <a href="{{route('siteshow-purchase-history')}}" class="dropdown-item">Lịch sử nhập hàng</a>
@@ -132,19 +116,33 @@
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
-                                class="fa-brands fa-discord"></i>Mã Giảm Giá</a>
+                                class="fa-brands fa-bandcamp"></i>Đối tác</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{url('admin/brand')}}" class="dropdown-item">Danh sách</a>
+                            <a href="{{url('admin/brand/trashed')}}" class="dropdown-item">Thùng rác</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-ticket"></i>
+                            Mã Giảm Giá</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{url('admin/coupon')}}" class="dropdown-item">Danh sách</a>
                             <a href="{{url('admin/coupon/trashed')}}" class="dropdown-item">Thùng rác</a>
 
                         </div>
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="{{route('siteshow-contact')}}" class="nav-link dropdown-toggle" >
-                           <i class="fa-brands fa-discord"></i>
-                            Liên hệ
-                        </a>
-                    </div>
+                    <a href="{{route('siteshow-contact')}}" class="nav-link dropdown-toggle" >
+                        <i class="fa-sharp fa-solid fa-envelope"></i>
+                        Liên hệ
+                    </a>
+                    <a href="{{route('siteshow-banner')}}" class="nav-link dropdown-toggle" >
+                        <i class="fa-solid fa-image"></i>
+                        Banner
+                    </a>
+                    <a href="{{url('admin/admin_users')}}" class="nav-link dropdown-toggle">
+                        <i class="fa-regular fa-user"></i>Tài Khoản
+                    </a>
                 </div>
             </nav>
         </div>

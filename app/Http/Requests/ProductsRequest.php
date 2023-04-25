@@ -28,7 +28,6 @@ class ProductsRequest extends FormRequest
             'name' => 'required|string',
             'category_id' => 'required|integer',
             'summary' => 'required|string|max:255',
-            'price' => 'required|integer',
             'price_current'=>'required|integer',
             'content' => 'required|string',
             'thumb' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

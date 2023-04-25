@@ -4,12 +4,22 @@
 @endsection
 @section('main-content')
     <div class="container mt-4">
+        <nav aria-label="breadcrumb  " @style("border-bottom:1px solid #eae8e8; ")>
+            <ol class="breadcrumb p-3" @style("margin:0;padding-left:0px")>
+              <li class="breadcrumb-item"><a href="{{route('client')}}">Trang chủ</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
+            </ol>
+          </nav>
         <div class="row">
             <div class="col-8">
                 <div class="d-flex account-tabs">
                     <div class="col-6 d-flex align-items-center flex-column account-tab ">
-                        <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/checklist.png?1676652183181" alt="">
-                        <div class="tab-title">Lịch sử đơn hàng</div>
+                    <a href="{{route('clientaccount-show-order')}}">
+                             <div class="d-flex align-items-center">
+                                 <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/checklist.png?1676652183181" alt="">
+                             </div>
+                            <div class="tab-title">Lịch sử đơn hàng</div>
+                        </a>
                     </div>
                     <div class="col-6 d-flex align-items-center flex-column account-tab">
                         <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/account.png?1676652183181" alt="">

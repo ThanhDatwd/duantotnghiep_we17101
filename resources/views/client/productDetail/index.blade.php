@@ -68,6 +68,7 @@
           @endif
         </div>
         <form id="form-add" method="post" action={{route('clientadd-to-cart')}}>
+          @csrf
           <input type="text" hidden name="productId" value={{$product->id}}>
           <div class="form-group">
             <label for="">Số Lượng</label>
@@ -77,7 +78,6 @@
               <div class="btn btn-amount add"><i class='bx bx-plus'></i></div>
             </div>
           </div>
-          @csrf
           <div class="product-detail--info__cta">
             @if ($product->quantity_input>$product->quantity_output)
             <button class="btn btn-1" id="btn_add_to_card">Thêm vào giỏ hàng</button>

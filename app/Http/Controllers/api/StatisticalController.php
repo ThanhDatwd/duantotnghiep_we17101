@@ -80,7 +80,7 @@ class StatisticalController extends Controller
                 ->orderBy('time', 'ASC')
                 ->get();
             foreach ($profits as $profit) {
-                $profitTemp[$profit->time] = $profit->profit;
+                $profitTemp[$profit->time] =  $revenueTemp[$profit->time]-$profit->profit;
             }
             // purchase_histories
     

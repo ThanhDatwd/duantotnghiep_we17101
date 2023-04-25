@@ -8,7 +8,7 @@
     
     <div class=" user col-7 pt-4">
         <div class="d-flex align-items-center mb-4">
-            <div class="fw-bold" style="font-size: 25px">Sản phẩm đặt hàng</div>
+            <div class="fw-bold" style="font-size: 20px">Sản phẩm đặt hàng</div>
         </div>
         <div class="box-inner-1 pb-3 mb-3 ">
             <div id="my" class="carousel slide carousel-fade img-details" data-bs-ride="carousel"
@@ -60,11 +60,10 @@
                                 font-size: 14px
                             }
                         </style>
-                        @foreach ($order_detail as $od)
-                        @if ($od->order_id == $order->id)
+                        @foreach ($order_details as $od)
                         <div class="sanpham">
                             <div class="box box1">
-                                <img  src="{{asset('upload/'.$od->thumb)}}"
+                                <img  src="{{asset('upload/'.$od->product->thumb)}}"
                                     onerror="this.src='{{asset('upload/error.jpg')}}'" class="orderDetaiProductImg" alt="">
                             </div>
                             <div class="box box2 ">
@@ -73,13 +72,12 @@
                                 </div>
                                 <div class="boxcon boxx">
                                     <div class="right">Số lượng: {{$od->quantity}}</div>
-                                    <div class="left">Đơn giá: {{$od->price}}</div>
+                                    <div class="left">Đơn giá: {{number_format($od->price)}} Vnđ</div>
                                 </div>
 
                             </div>
 
                         </div>
-                        @endif
                         @endforeach
                     </div>
 
@@ -99,7 +97,7 @@
     <div class="col-5 pt-4">
         <div class="box-inner-2">
             <div class="d-flex align-items-center mb-4">
-                <div class="fw-bold" style="font-size: 25px">Thông tin đơn đặt hàng</div>
+                <div class="fw-bold" style="font-size: 20px">Thông tin đơn đặt hàng</div>
             </div>
             <form action="/admin/order/detail/{{$order->id}}" enctype="multipart/form-data" method="post">
                 <div>

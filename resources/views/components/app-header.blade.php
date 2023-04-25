@@ -3,7 +3,7 @@
         <div class="app__header__control">
            <div class="container">
             <div class="app__logo">
-                <img src="https://bizweb.dktcdn.net/100/434/011/themes/845632/assets/logo.png?1669280565026" alt="">
+                <img src="{{asset('img/logo.png')}}" alt="">
             </div>
             <div class="action">
                  <form action="{{route('clientsearch')}}"  class="action-item search">

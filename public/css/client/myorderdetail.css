@@ -1,0 +1,151 @@
+.user-page{
+    display: grid;
+    grid-template-columns: 25% 75%;
+    margin-top: 30px;
+}
+.user-page__head{
+    margin-bottom: 20px;
+
+}
+.user-page__head h5{
+    margin: 0;
+}
+.user-page__category--item{
+    margin-bottom: 10px;
+}
+.user-page__category--item a{
+    color:black;
+    font-size: 14px;
+    font-weight: 400;
+    word-spacing: 2px;
+}
+.user-page__category--item:hover a{
+    color: var(--mainColor);
+}
+.user-page__category--item.active a{
+    color: var(--mainColor);
+}
+
+
+
+/* PHẦN THỒNG TIN KHÁCH HÀNG  */
+
+.user-page__info{
+ /* display: flex; */
+ justify-content: space-between;
+ align-items: center;
+ padding: 16px 0;
+ border-top: 1px solid #ececec;
+}
+.user-page__info.custom{
+    font-size: 14px !important;
+}
+.user-page__info .custom-btn{
+    color: var(--mainColor);
+    font-weight: 600;
+    cursor: pointer;
+}
+.user-page__info.custom .info-item label,
+.user-page__info.custom .info-item span{
+    font-size: 14px;
+}
+.info-item{
+    /* margin-bottom: 8px; */
+    padding: 4px 0;
+}
+.info-item label{
+    font-size: 16px;
+    font-weight: 600;
+    
+}
+.info-item span{
+    font-size: 16px;
+}
+
+/* PHẦN THÂY ĐỔI MẬT KHẨU KHÁCH HÀNG */
+ .mesage{
+    padding: 16px ;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #f5c2c7;
+
+    color: #842029;
+    background: #f8d7da;
+    display: none;
+
+}
+.mesage.active{
+   display: block;
+}
+.form-update-pass form{
+    margin-top: 16px;
+}
+.form-update-pass .form-group label{
+   font-weight: 600;
+   font-size: 15px;
+   margin-bottom: 6px;
+}
+.form-update-pass .form-group input{
+    outline: none;
+    background: #ececec;
+    font-weight: 400;
+ }
+ .form-update-pass .form-group input:focus{
+     border: none;
+     outline: none !important;
+ }
+/* ĐƠN HÀNG CHI TIẾT */
+.order-status{
+  display: flex;
+  gap: 30px;
+  margin: 10px 0;
+}
+.order-status .status{
+  font-weight: 600;
+  font-style: italic;
+  color: red;
+}
+.myOrderDetail .row{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.order-info{
+
+}
+.order-box{
+}
+.order-box__info{
+  min-height: 110px;
+  padding: 16px;
+  border: 1px solid var(--mainColor);
+  border-radius: 4px;
+  font-size: 14px;
+  /* line-height: 16px; */
+}
+.order-box__info .name{
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.order-box__info p{
+  margin-bottom: 6px;
+}
+.myOrderDetail .price.total{
+  font-weight: 600;
+  color: var(--mainColor);
+}
+.table .column_product{
+   display: flex;
+   gap: 8px;
+}
+.table .column_product .image{
+  width: 60px ;
+  height: 60px;
+}
+.table .column_product .image img{
+  width: 100%;
+  height: 100%;
+}
+.table .column_product p{
+  margin-bottom: 4px;
+  font-weight: 400;
+}

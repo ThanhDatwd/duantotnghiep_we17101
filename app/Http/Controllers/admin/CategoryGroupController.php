@@ -32,14 +32,23 @@ class CategoryGroupController extends Controller
         if($request->has('thumb')){
             $file = $request->thumb;
             $ext = $request->thumb->extension();
-            $file_name = time().'-'.'news'. '.' .$ext;
+            $file_name = time().'-'.'category_group'. '.' .$ext;
             $file->move(public_path('upload'), $file_name);
+            $request->merge(['thumb' => $file_name]);
         }
-        $request->merge(['thumb' => $file_name]);
+        $file_poster=null;
+        if($request->has('poster')){
+            $file = $request->poster;
+            $ext = $request->poster->extension();
+            $file_poster = time().'-'.'category_group'. '.' .$ext;
+            $file->move(public_path('upload'), $file_poster);
+            $request->merge(['poster' => $file_poster]);
+        }
         
         $p = new category_group;
         $p->name=$_POST['name'];
         $p->thumb=$file_name;
+        $p->poster=$file_poster;
         $p->is_active=$_POST['is_active'];
         $p->stt=$_POST['stt']??'1';
         $p->save();
@@ -78,18 +87,28 @@ class CategoryGroupController extends Controller
         return view('admin.category_group.update',['p'=>$p]);
     }
     public function update_(Request $request,$id){
+        $p = category_group::find($id);
+        if($p==null) return redirect('/thongbao');
         $file_name = null;
         if($request->has('thumb')){
             $file = $request->thumb;
             $ext = $request->thumb->extension();
-            $file_name = time().'-'.'news'. '.' .$ext;
+            $file_name = time().'-'.'category_group'. '.' .$ext;
             $file->move(public_path('upload'), $file_name);
+            $request->merge(['thumb' => $file_name]);
         }
-        $request->merge(['thumb' => $file_name]);
-        $p = category_group::find($id);
-        if($p==null) return redirect('/thongbao');
+        $file_poster=null;
+        if($request->has('poster')){
+            $file = $request->poster;
+            $ext = $request->poster->extension();
+            $file_poster = time().'-'.'category_group'. '.' .$ext;
+            $file->move(public_path('upload'), $file_poster);
+            $request->merge(['poster' => $file_poster]);
+        }
+      
         $p->name=$_POST['name'];
         $p->thumb=$file_name??$p->thumb;
+        $p->poster=$file_poster??$p->poster;
         $p->is_active=$_POST['is_active'];
         $p->save();
         return redirect('/admin/category_group')->with('thongbao','Cập nhật thành công sản phẩm');;

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Models\customer_emails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminContactController extends Controller
 {
@@ -25,5 +27,13 @@ class AdminContactController extends Controller
             "email"=>$email
         ];
         return view('admin.contact.show',$data);
+    }
+    public function reply(Request $request)
+    {
+        $username=$request->username;
+        $content= $request->content;
+        $mail=new ContactMail($username,$content);
+        Mail:: to($request->email)->queue($mail);
+        return back()->with('success','Phản hồi email thành công'); 
     }
 }
